@@ -1,3 +1,3 @@
 ReadMe.txt
 
-DTO ╞╨┼░┴Ў
+DTO эМиэВдьзА
