@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 컴포넌트 스캔 @태그가 붙은 모든 com.open.job의 하위폴더 안에 있는 java 파일에 대하여 스캔-->
+	<context:component-scan base-package="com.open.job.*"/>
+	
+	<!-- DB properties -->
+	<context:property-placeholder location="/resources/db.properties"/>
+	
+	<!-- DB 다중 접속 처리를 위한 Bean -->
+	<bean class="org.apache.commons.dbcp.BasicDataSource" id="basicDataSource"
+	p:driverClassName="${db.driverClassName}"
+	p:url="${db.url}"
+	p:username="${db.username}"
+	p:password="${db.password}"
+	/>
+	
+	<!-- Mybatis를 통한 SQL Factory Bean -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean"
+	p:mapperLocations="/WEB-INF/spring/mapper/*.xml"
+	p:dataSource-ref="basicDataSource"
+	/>
+	
+	<!-- Mapper를 통한 IDAO 구현체 생성 -->
+	<!-- 
+	템플릿
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="{mapper 이름}"
+	 c:mapperInterface="com.open.job.IDAO.{DAO Interface 이름}" 
+	 p:sqlSessionFactory-ref="sqlSessionFactoryBean"
+	 />
+	 
+	기본 예제
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="MemberMapper"
+	 c:mapperInterface="com.open.job.IDAO.MemberDAO" 
+	 p:sqlSessionFactory-ref="sqlSessionFactoryBean"
+	 />
+	 -->
+	 
+</beans>
