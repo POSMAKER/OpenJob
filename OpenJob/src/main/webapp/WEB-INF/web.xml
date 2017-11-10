@@ -30,6 +30,10 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+
+	<!-- TESTESTESTESTEST -->
+
 	
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
