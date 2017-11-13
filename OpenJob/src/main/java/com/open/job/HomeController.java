@@ -20,11 +20,9 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		System.out.println("WOW");
 		List<Company> companyList = cServ.getCompanyList();
-		System.out.println("WOW");
 		model.addAttribute("companyList",companyList);
-		System.out.println("WOW");
+		System.out.println();
 		return "home";
 	}
 	
