@@ -1,20 +1,30 @@
 package com.open.job;
 
+import java.util.List;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.open.job.DTO.Company;
+import com.open.job.IService.CompanyService;
+
 @Controller
 public class HomeController {
-	
+	@Autowired CompanyService cServ;
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		
+		System.out.println("WOW");
+		List<Company> companyList = cServ.getCompanyList();
+		System.out.println("WOW");
+		model.addAttribute("companyList",companyList);
+		System.out.println("WOW");
 		return "home";
 	}
 	

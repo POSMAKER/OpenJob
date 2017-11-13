@@ -43,5 +43,8 @@
 	 p:sqlSessionFactory-ref="sqlSessionFactoryBean"
 	 />
 	 -->
-	 
+	 <bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="CompanyMapper"
+	 c:mapperInterface="com.open.job.IDAO.CompanyDAO"
+	 p:sqlSessionFactory-ref="sqlSessionFactoryBean"
+	 />
 </beans>
