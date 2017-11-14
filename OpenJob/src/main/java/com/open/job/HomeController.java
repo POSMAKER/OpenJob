@@ -23,7 +23,17 @@ public class HomeController {
 		List<Company> companyList = cServ.getCompanyList();
 		model.addAttribute("companyList",companyList);
 		System.out.println();
-		return "home";
+		return "test";
+	}
+	
+	@RequestMapping(value = "/top")
+	public String top() {
+		return "common/top";
+	}
+
+	@RequestMapping(value = "/footer")
+	public String footer() {
+		return "common/footer";
 	}
 	
 }
