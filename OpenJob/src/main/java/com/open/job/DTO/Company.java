@@ -1,5 +1,7 @@
 package com.open.job.DTO;
 
+import com.open.job.DTO.sub.CompanyInfo;
+
 public class Company extends CompanyInfo{
 	  // 기업 번호 
     private Integer companyno;
