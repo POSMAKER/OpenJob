@@ -1,4 +1,4 @@
-package com.open.job.DTO;
+package com.open.job.DTO.sub;
 
 public class Companyimg {
 	 // 기업 번호 
