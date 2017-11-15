@@ -4,7 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 <c:set var="home" value="<%=request.getContextPath()%>"></c:set>
-<c:set var="path" value="/" />
 
 <html>
 <head>
