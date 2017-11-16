@@ -3,7 +3,15 @@
 <mapper namespace="com.open.job.IDAO.CompanyDAO">
 <select id="getCompanyList" resultType="com.open.job.DTO.Company">
 	SELECT * FROM Company 
-	Inner Join CompanyInfo Using(companyNo)
-	Inner Join Companyimg Using(companyNo);
+	<include refid="compjoin"/>
 </select>
+<select id="getCompanyInfo" parameterType="Integer" resultType="com.open.job.DTO.Company">
+	Select * From Company
+	<include refid="compjoin"/>
+	 Where companyNo = #{companyno}
+</select>
+<sql id="compjoin">
+	Inner Join CompanyInfo Using(companyNo)
+	Inner Join Companyimg Using(companyNo)
+</sql>
 </mapper>
