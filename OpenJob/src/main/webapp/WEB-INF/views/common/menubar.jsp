@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <style>
 a {
-	width: 150px;
 }
 
 </style>
@@ -11,7 +10,9 @@ a {
 	<ul class="navbar-nav">
 		<li class="nav-item"><a class="nav-link" href="${home }/companyhome">기업</a></li>
 		<li class="nav-item"><a class="nav-link" href="${home }/searchhome">검색</a></li>
-		<li class="nav-item"><a class="nav-link" href="${home }/memberhome">회원</a></li>
+		<li class="nav-item"><a class="nav-link" href="${home }/memberhome">회원</a></li>	
+	</ul>
+	<ul class="navbar-nav ml-auto">
 		<li class="nav-item dropdown">
       		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">기업 서비스</a>
 			<div class="dropdown-menu">
@@ -22,6 +23,5 @@ a {
    		</li>
 		<li class="nav-item"><a class="nav-link" href="${home }/">로그인</a></li>
 		<li class="nav-item"><a class="nav-link" href="${home }/">회원가입</a></li>
-		
 	</ul>
 </nav>
