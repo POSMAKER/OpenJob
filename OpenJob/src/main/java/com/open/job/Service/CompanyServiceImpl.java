@@ -1,11 +1,10 @@
 package com.open.job.Service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.sub.CompanyInfo;
 import com.open.job.IDAO.CompanyDAO;
 import com.open.job.IService.CompanyService;
 
@@ -14,13 +13,12 @@ public class CompanyServiceImpl implements CompanyService{
 	@Autowired CompanyDAO cdao;
 
 	@Override
-	public List<Company> getCompanyList() {
-		return cdao.getCompanyList();
+	public CompanyInfo getCompanyInfo(Integer companyno) {
+		return cdao.getCompanyInfo(companyno);
 	}
 
 	@Override
-	public Company getCompanyInfo(Integer companyno) {
-		return cdao.getCompanyInfo(companyno);
+	public Company getCompanyBase(Integer companyno) {
+		return cdao.getCompanyBase(companyno);
 	}
-	
 }

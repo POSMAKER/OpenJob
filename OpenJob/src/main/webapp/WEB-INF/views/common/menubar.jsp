@@ -3,7 +3,7 @@
 <style>
 
 </style>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top"">
 	<a class="navbar-brand" href="${home }/"><i class="fa fa-home" style="font-size: 30px"></i><span class = "d-md-none" style="font: 25px bold;">&nbsp;Open Job</span></a>
 	
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
@@ -16,6 +16,7 @@
 		<li class="nav-item"><a class="nav-link" href="${home }/searchhome">검색</a></li>
 		<li class="nav-item"><a class="nav-link" href="${home }/memberhome">회원</a></li>
 	</ul>
+	
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item dropdown ">
       		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">기업 서비스</a>

@@ -43,6 +43,7 @@ td, tr {
 			<div class="imgLogo">
 				<a href="${home }/"><img src="${home }/imgs/logo.jpg" style="width: 400px; height: 130px;"></a>
 			</div>
+			<form action="${home }/company/20/info" method="post">
 			<table>
 				<tr>
 					<td><select id="category" style="width: 80px; border-style: none;">
@@ -51,9 +52,10 @@ td, tr {
 							<option value="post">채용</option>
 					</select></td>
 					<td><input type="text" id="searchWord" placeholder="기업, 채용공고를 검색해보세요." style="width: 400px; border: none;" /></td>
-					<td><a id="searchBtn" href="#"> <i class="fa fa-search" style="font-size: 25px;"></i></a></td>
+					<td><button style="background:transparent; border:none"><i class="fa fa-search" style="font-size: 25px; color:blue"></i></button></td>
 				</tr>
 			</table>
+			</form>
 		</div>
 	</div>
 </body>
