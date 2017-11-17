@@ -21,7 +21,7 @@ public class CompanyController {
 			@PathVariable String companyNo,
 			Model model
 			) {
-		Integer companyno = commServ.IntegerFilter(companyNo);
+		 Integer companyno= commServ.IntegerFilter(companyNo);
 		if(companyno==null||companyno<1) {
 			return "redirect:/";
 		}else {

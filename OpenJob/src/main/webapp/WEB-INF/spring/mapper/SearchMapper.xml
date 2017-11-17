@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.open.job.IDAO.SearchDAO">
-<select id="getAllPostList" resultType="com.open.job.DTO.Post">
-	SELECT * FROM Post
-</select>
-<select id="getSearchPostList" resultType="com.open.job.DTO.Post" parameterType="Map">
-	SELECT * FROM Post
-	<where>
+	<select id="getAllPostList" resultType="com.open.job.DTO.Post">
+		SELECT * FROM Post
+	</select>
+	<select id="getSearchPostList" resultType="com.open.job.DTO.Post"
+		parameterType="Map">
+		SELECT * FROM Post
+		<where>
 			<choose>
-				<when test='searchOpt eq "post"'>
+				<when test='category eq "post"'>
 					title LIKE '%${searchWord}%'
 				</when>
-				<when test='searchOpt eq "all"'>
+				<when test='category eq "all"'>
 					title LIKE '%${searchWord}%'
 				</when>
 			</choose>
 		</where>
-</select>
+	</select>
+	<select id="getSearchCompanyList" resultType="com.open.job.DTO.Company"
+		parameterType="Map">
+		SELECT * FROM Company
+		<where>
+			<choose>
+				<when test='category eq "company"'>
+					companyname LIKE '%${searchWord}%'
+				</when>
+				<when test='category eq "all"'>
+					companyname LIKE '%${searchWord}%'
+				</when>
+			</choose>
+		</where>
+	</select>
 </mapper>
