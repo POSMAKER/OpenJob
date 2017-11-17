@@ -53,7 +53,6 @@ td, tr {
 				<a href="${home }/"><img src="${home }/imgs/logo.jpg"
 					style="width: 400px; height: 130px;"></a>
 			</div>
-			<form action="${home }/company/20/info" method="post">
 			<table>
 				<tr>
 					<td><select id="category"
@@ -62,10 +61,6 @@ td, tr {
 							<option value="company">기업</option>
 							<option value="post">채용</option>
 					</select></td>
-<<<<<<< HEAD
-					<td><input type="text" id="searchWord" placeholder="기업, 채용공고를 검색해보세요." style="width: 400px; border: none;" /></td>
-					<td><button style="background:transparent; border:none"><i class="fa fa-search" style="font-size: 25px; color:blue"></i></button></td>
-=======
 					<td><input type="text" id="searchWord"
 						placeholder="기업, 채용공고를 검색해보세요."
 						style="width: 400px; border: none;" /></td>
@@ -73,14 +68,8 @@ td, tr {
 							style="background: transparent; border: none;">
 							<i class="fa fa-search" style="font-size: 25px;"></i>
 						</button></td>
->>>>>>> branch 'master' of https://github.com/POSMAKER/OpenJob.git
 				</tr>
 			</table>
-<<<<<<< HEAD
-			</form>
-=======
-
->>>>>>> branch 'master' of https://github.com/POSMAKER/OpenJob.git
 		</div>
 	</div>
 </body>
