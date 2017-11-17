@@ -37,7 +37,6 @@ public class CompanyController {
 			@PathVariable String companyNo,
 			Model model
 			) {
-<<<<<<< HEAD
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		
@@ -69,16 +68,5 @@ public class CompanyController {
 		
 		model.addAttribute("postactive", "active");
 		return "companyview/companyPost";
-=======
-		 Integer companyno= commServ.IntegerFilter(companyNo);
-		if(companyno==null||companyno<1) {
-			return "redirect:/";
-		}else {
-			Company company = compServ.getCompanyInfo(companyno);
-			model.addAttribute("company",company);
-			model.addAttribute("infoactive","active");
-			return "/companyview/companyview";
-		}
->>>>>>> branch 'master' of https://github.com/POSMAKER/OpenJob.git
-	}
+}
 }
