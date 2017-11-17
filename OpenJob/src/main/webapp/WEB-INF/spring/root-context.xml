@@ -52,4 +52,6 @@
 	 c:mapperInterface="com.open.job.IDAO.SearchDAO"
 	 p:sqlSessionFactory-ref="sqlSessionFactoryBean"
 	 />
+	 
+	 
 </beans>
