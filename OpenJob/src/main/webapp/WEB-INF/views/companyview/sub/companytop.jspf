@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<html>
+<body>
+	<%@include file="/WEB-INF/views/common/menubar.jsp"%>
+	<div class="container-fluid"
+		style="height: 1500px; margin-top: 55px; padding: 0px;">
+		<%@include file="/WEB-INF/views/companyview/sub/companytitle.jsp" %>
+		<%@include file="/WEB-INF/views/companyview/sub/companyNavi.jsp" %>
+		<div style="background-color: #e6e6e6;">
+			<div class="row">
+				<div class="col-sm-3"></div>		
+					<div class="col-sm-6">

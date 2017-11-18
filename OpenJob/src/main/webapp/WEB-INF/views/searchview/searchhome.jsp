@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
 table {
@@ -14,19 +13,30 @@ td, tr {
 </style>
 
 <script type="text/javascript">
+	$(document).ready(function (){
+   		$("#searchWord").keyup(function (key) {
+    	    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+    	    	$("#hcategory").val() = $("#category").val();
+    	    	alert($("#hcategory").val());
+    	    }
+  	 	});
+	});
+	
 	$(document).ready(function() {
 		$("#searchBtn").click(function() {
 
-			var searchOpt = $("#searchOpt").val();
+			var category = $("#category").val();
+			var searchWord = $("#searchWord").val();
 
 			var $form = $('<form></form>');
-			$form.attr('action', '${home}/search/searchopt');
-			$form.attr('method', 'post');
+			$form.attr('action', '${home}/search/category');
+			$form.attr('method', 'get');
 			$form.appendTo('body');
 
-			var input_hidden = $('<input type="hidden" value="' + searchOpt + '" name="searchOpt">');
+			var hidden_category = $('<input type="hidden" value="' + category + '" name="category">');
+			var hidden_searchWord = $('<input type="hidden" value="' + searchWord + '" name="searchWord">');
 
-			$form.append(input_hidden);
+			$form.append(hidden_category).append(hidden_searchWord);
 			$form.submit();
 		});
 	})
@@ -40,17 +50,24 @@ td, tr {
 	<div class="container-fluid" style="margin-top: 100px">
 		<div align="center">
 			<div class="imgLogo">
-				<a href="${home }/"><img src="${home }/imgs/logo.jpg" style="width: 300px; height: 100px;"></a>
+				<a href="${home }/"><img src="${home }/imgs/logo.jpg"
+					style="width: 400px; height: 130px;"></a>
 			</div>
-			<table border="0">
+			<table>
 				<tr>
-					<td><select id="searchOpt" style="width: 80px; border-style: none;">
-							<option value="all">전체</option>
+					<td><select id="category"
+						style="width: 80px; border-style: none;">
+							<option value="all">통합</option>
 							<option value="company">기업</option>
 							<option value="post">채용</option>
 					</select></td>
-					<td><input type="text" id="search" placeholder="기업, 채용공고를 검색해보세요." style="width: 400px; border: none;" /></td>
-					<td><a id="searchBtn" href="#"> <i class="fa fa-search" style="font-size: 25px;"></i></a></td>
+					<td><input type="text" id="searchWord"
+						placeholder="기업, 채용공고를 검색해보세요."
+						style="width: 400px; border: none;" /></td>
+					<td><button type="button" id="searchBtn"
+							style="background: transparent; border: none;">
+							<i class="fa fa-search" style="font-size: 25px;"></i>
+						</button></td>
 				</tr>
 			</table>
 		</div>

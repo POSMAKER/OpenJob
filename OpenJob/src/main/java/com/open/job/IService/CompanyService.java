@@ -1,9 +1,9 @@
 package com.open.job.IService;
 
-import java.util.List;
-
 import com.open.job.DTO.Company;
+import com.open.job.DTO.sub.CompanyInfo;
 
 public interface CompanyService {
-	public List<Company> getCompanyList();
+	public CompanyInfo getCompanyInfo(Integer companyno);
+	public Company getCompanyBase(Integer companyno);
 }
