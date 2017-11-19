@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html>
+<body>
+	<div>
+		<dl class="industry">
+			<dt>지역</dt>
+				<dd>
+					<div>
+						<ul>
+							<li>경영</li>
+						</ul>
+					</div>
+				</dd>
+				<dd>
+					<div>
+						<ul>
+							<li>제조</li>
+						</ul>
+					</div>
+				</dd>
+			<dt>경력</dt>
+				<dd>
+					<div>
+						<ul>
+							<li>1년</li>
+						</ul>
+					</div>
+				</dd>
+				<dd>
+					<div>
+						<ul>
+							<li>2~3년</li>
+						</ul>
+					</div>
+				</dd>
+		</dl>
+	</div>
+</body>
+</html>

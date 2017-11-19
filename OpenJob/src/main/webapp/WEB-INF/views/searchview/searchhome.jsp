@@ -33,7 +33,7 @@ td, tr {
 				<a href="${home }/"><img src="${home }/imgs/logo.jpg"
 					style="width: 400px; height: 130px;"></a>
 			</div>
-			<form action="${home }/search/category" method="get">
+			<form action="${home }/search" method="get">
 			<table>
 				<tr>
 					<td><select name="category" style="width: 80px; border-style: none;">
@@ -47,6 +47,7 @@ td, tr {
 			</table>
 			</form>
 		</div>
+		<a href="${home }/search_wrap">search_wrap test</a>
 	</div>
 </body>
 </html>
