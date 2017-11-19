@@ -27,7 +27,7 @@ public class SearchController {
 	public String home(Model model,
 			@RequestParam(value = "category", required = false) String category,
 			@RequestParam(value = "searchWord") String searchWord) {
-
+		
 		List<Post> postList = searchServ.getPostList(category, searchWord);
 		model.addAttribute("postList", postList);
 		
