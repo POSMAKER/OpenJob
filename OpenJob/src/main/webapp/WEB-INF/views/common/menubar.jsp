@@ -3,7 +3,7 @@
 <style>
 
 </style>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top"">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
 	<a class="navbar-brand" href="${home }/"><i class="fa fa-home" style="font-size: 30px"></i><span class = "d-md-none" style="font: 25px bold;">&nbsp;Open Job</span></a>
 	
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
