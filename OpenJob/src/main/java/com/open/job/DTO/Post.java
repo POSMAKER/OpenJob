@@ -7,7 +7,7 @@ import com.open.job.DTO.sub.SubCommonInfo;
 public class Post extends SubCommonInfo{
 	// 공고 번호 
     private Integer postno;
-
+    
     // 기업 번호 
     private Integer companyno;
 
@@ -58,6 +58,26 @@ public class Post extends SubCommonInfo{
 
     // 공고 타이틀 공고 타이틀
     private String title;
+    
+    private String companyname;
+    
+    public String getCompanyname() {
+		return companyname;
+	}
+
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
+
+	public String getThumbimg() {
+		return thumbimg;
+	}
+
+	public void setThumbimg(String thumbimg) {
+		this.thumbimg = thumbimg;
+	}
+
+	private String thumbimg;
 
 	public Integer getPostno() {
 		return postno;

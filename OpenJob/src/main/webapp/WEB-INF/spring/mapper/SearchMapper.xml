@@ -3,10 +3,14 @@
 <mapper namespace="com.open.job.IDAO.SearchDAO">
 	<select id="getAllPostList" resultType="com.open.job.DTO.Post">
 		SELECT * FROM Post
+		Inner Join Companyimg Using(companyNo)
+		Inner join Company using(companyNo)
 	</select>
 	<select id="getSearchPostList" resultType="com.open.job.DTO.Post"
 		parameterType="Map">
 		SELECT * FROM Post
+		Inner Join Companyimg Using(companyNo)
+		Inner join Company using(companyNo)
 		<where>
 			<choose>
 				<when test='category eq "post"'>
@@ -21,6 +25,7 @@
 	<select id="getSearchCompanyList" resultType="com.open.job.DTO.Company"
 		parameterType="Map">
 		SELECT * FROM Company
+		Inner Join Companyimg Using(companyNo)
 		<where>
 			<choose>
 				<when test='category eq "company"'>
