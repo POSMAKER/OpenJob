@@ -13,11 +13,8 @@
 		Inner join Company using(companyNo)
 		<where>
 			<choose>
-				<when test='category eq "post"'>
-					title LIKE '%${searchWord}%'
-				</when>
-				<when test='category eq "all"'>
-					title LIKE '%${searchWord}%'
+				<when test='category neq "company"'>
+					title LIKE '%${searchWord}%' or companyname LIKE '%${searchWord}%'
 				</when>
 			</choose>
 		</where>
@@ -28,10 +25,7 @@
 		Inner Join Companyimg Using(companyNo)
 		<where>
 			<choose>
-				<when test='category eq "company"'>
-					companyname LIKE '%${searchWord}%'
-				</when>
-				<when test='category eq "all"'>
+				<when test='category neq "post"'>
 					companyname LIKE '%${searchWord}%'
 				</when>
 			</choose>

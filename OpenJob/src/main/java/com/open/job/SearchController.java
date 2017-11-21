@@ -20,13 +20,24 @@ public class SearchController {
 
 	@Autowired
 	private SearchService searchServ;
-	// 타이틀, 공고시작일, 공고마감일, 경력, 직종, 직종상세, 지역, 이미지
 
 	@RequestMapping(value = "/search")
 	public String search(Model model, 
-			@RequestParam(value = "category", required = false) String category,
+			@RequestParam(value = "category", required = false, defaultValue = "all") String category,
 			@RequestParam(value = "searchWord") String searchWord) {
 		
+		//검색어, 검색옵션 저장
+		model.addAttribute("searchWord", searchWord);
+		model.addAttribute("category", category);
+		
+		//검색옵션 selected
+		if("company".equals(category)) {
+			model.addAttribute("companySelected", "selected");
+		}else if("post".equals(category)) {
+			model.addAttribute("postSelected", "selected");
+		}
+		
+		//채용 검색
 		if ("post".equals(category) || "all".equals(category)) {
 			List<Post> postList = searchServ.getPostList(category, searchWord);
 
@@ -38,6 +49,7 @@ public class SearchController {
 			}
 		} 
 		
+		//기업 검색
 		if("company".equals(category) || "all".equals(category)) {
 			List<Company> companyList = searchServ.getCompanyList(category, searchWord);
 			
