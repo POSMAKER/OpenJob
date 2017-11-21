@@ -3,7 +3,7 @@ package com.open.job.DTO;
 import com.open.job.DTO.sub.InterviewReviewInfo;
 
 public class InterviewReview extends InterviewReviewInfo{
-	 // 면접 후기 번호 
+	// 면접 후기 번호 
     private Integer reviewno;
 
     // 면접 과정 
