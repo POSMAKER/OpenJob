@@ -11,6 +11,7 @@
 <div class="container-fluid" style="margin-top:80px">
   <h3>기업 페이지</h3>
   <a href="${home }/company/21/info">기업 페이지 예제</a>
+ 
 </div>
 </body>
 </html>

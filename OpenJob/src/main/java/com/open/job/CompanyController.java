@@ -26,6 +26,7 @@ public class CompanyController {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyno));
+		model.addAttribute("frmoption","review");
 		model.addAttribute("infoactive", "active");
 		return "companyview/companyInfo";
 	}
@@ -39,7 +40,7 @@ public class CompanyController {
 			) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
-		
+		model.addAttribute("frmoption","review");
 		model.addAttribute("reviewactive", "active");
 		return "companyview/companyReview";
 	}
@@ -52,7 +53,7 @@ public class CompanyController {
 			) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
-		
+		model.addAttribute("frmoption","interview");
 		model.addAttribute("interviewactive", "active");
 		return "companyview/companyInterview";
 	}
@@ -65,8 +66,12 @@ public class CompanyController {
 			) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
-		
+		model.addAttribute("frmoption","post");
 		model.addAttribute("postactive", "active");
 		return "companyview/companyPost";
 }
+	@RequestMapping(value= "/{frmName:^.+Form$}")
+	public String showform(@PathVariable String frmName) {
+		return "companyview/Form/"+frmName;
+	}
 }

@@ -8,8 +8,6 @@
 <select id="getCompanyBase" parameterType="Integer" resultType="com.open.job.DTO.Company">
 	Select * From Company
 	Inner Join Companyimg Using(companyNo)
-	 Where companyNo = #{companyno}
+	Where companyNo = #{companyno}
 </select>
-	
-
 </mapper>
