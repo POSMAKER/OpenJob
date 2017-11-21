@@ -8,6 +8,34 @@
 			<input type="text" style="width: 90%;">
 		</div>
 	</div>
+	
+	기업번호, 자동, 기업 이름으로 1, hidden, 수정불가
+	직종, 1, select
+	직종 상세, 1, select (dynamic) 파일 있음, 기술 있음
+	고용 형태, 1, select
+	근무 지역, 1, select
+	최종 학력, 1, select 고등학교 이하, 대학교 4년, 대학교 2,3년, 대학원 석사, 대학원 박사, 기타
+	급여, 1, text 
+	직급, 1 select
+	직책, 1 text 
+	경력, 1 select
+
+	<select id="salary_job_rank_id" name="salary[job_rank_id]"><option value="">직급</option>
+<option value="사원">사원</option>
+<option value="주임/계장">주임/계장</option>
+<option value="대리">대리</option>
+<option value="과장">과장</option>
+<option value="차장">차장</option>
+<option value="부장">부장</option>
+<option value="이사">이사</option>
+<option value="상무">상무</option>
+<option value="전무">전무</option>
+<option value="부사장">부사장</option>
+<option value="사장">사장</option>
+<option value="기타">기타</option></select>
+
+
+
 	<div class="row" style="padding: 15px;">
 		<div class="col-lg-3">직종</div>
 		<div class="col-lg-7">
@@ -18,20 +46,20 @@
 				<option value="교육">교육</option>
 				<option value="금융/재무">금융/재무</option>
 				<option value="디자인">디자인</option>
-				<option value="10200">마케팅/시장조사</option>
-				<option value="10500">미디어/홍보</option>
-				<option value="10700">법률/법무</option>
-				<option value="11100">생산/제조</option>
-				<option value="11200">생산관리/품질관리</option>
-				<option value="10400">서비스/고객지원</option>
-				<option value="11300">엔지니어링</option>
-				<option value="11400">연구개발</option>
-				<option value="10300">영업/제휴</option>
-				<option value="11500">유통/무역</option>
-				<option value="11000">의약</option>
-				<option value="10800">인사/총무</option>
-				<option value="11800">전문직</option>
-				<option value="11900">특수계층/공공</option></select>
+				<option value="마케팅/시장조사">마케팅/시장조사</option>
+				<option value="미디어/홍보">미디어/홍보</option>
+				<option value="법률/법무">법률/법무</option>
+				<option value="생산/제조">생산/제조</option>
+				<option value="생산관리/품질관">생산관리/품질관리</option>
+				<option value="서비스/고객지원">서비스/고객지원</option>
+				<option value="엔지니어링">엔지니어링</option>
+				<option value="연구개발">연구개발</option>
+				<option value="영업/제휴">영업/제휴</option>
+				<option value="유통/무역">유통/무역</option>
+				<option value="의약">의약</option>
+				<option value="인사/총무">인사/총무</option>
+				<option value="전문직">전문직</option>
+				<option value="특수계층/공공">특수계층/공공</option></select>
 		</div>
 	</div>
 	<div class="row" style="padding: 15px;">
@@ -39,12 +67,12 @@
 		<div class="col-lg-7">
 			<select id="review_job_type_id" name="review[job_type_id]"><option
 					value="">고용형태</option>
-				<option selected="selected" value="1">인턴직</option>
-				<option value="2">아르바이트</option>
-				<option value="3">정규직</option>
-				<option value="4">계약직</option>
-				<option value="5">프리렌서</option>
-				<option value="10">기타</option></select>
+				<option selected="selected" value="인턴직">인턴직</option>
+				<option value="아르바이트">아르바이트</option>
+				<option value="정규직">정규직</option>
+				<option value="계약직">계약직</option>
+				<option value="프리렌서">프리렌서</option>
+				<option value="기타">기타</option></select>
 		</div>
 	</div>
 	<div class="row" style="padding: 15px;">
@@ -53,7 +81,7 @@
 			<select id="review_years_of_experience"
 				name="review[years_of_experience]"><option value="">총 경력 (이전 경력 포함)</option>
 				<option value="1">1년차</option>
-				<option selected="selected" value="2">2년차</option>
+				<option value="2">2년차</option>
 				<option value="3">3년차</option>
 				<option value="4">4년차</option>
 				<option value="5">5년차</option>
@@ -71,17 +99,7 @@
 				<option value="17">17년차</option>
 				<option value="18">18년차</option>
 				<option value="19">19년차</option>
-				<option value="20">20년차</option>
-				<option value="21">21년차</option>
-				<option value="22">22년차</option>
-				<option value="23">23년차</option>
-				<option value="24">24년차</option>
-				<option value="25">25년차</option>
-				<option value="26">26년차</option>
-				<option value="27">27년차</option>
-				<option value="28">28년차</option>
-				<option value="29">29년차</option>
-				<option value="30">30년차 이상</option>
+				<option value="20">20년차 이상</option>
 			</select><br> <span style="font-size: 8px;">※ 경력 정보는 노출되지 않습니다.
 				(현재, 또는 퇴직 당시의 경력 정보를 입력해주세요.)</span>
 		</div>
@@ -111,7 +129,4 @@
 			</select>
 		</div>
 	</div>
-	<hr style="width: 100%">
-	<button type="button" data-dismiss="modal">취소</button>
-	<button type="button" onclick="shownext()">다음</button>
 </div>

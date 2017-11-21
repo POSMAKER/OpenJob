@@ -8,21 +8,7 @@
 </c:if>
 <head>
 <title>${company.companyname }</title>
-<style type="text/css">
-    @media screen and (min-width: 768px) {
-        .modal-dialog {
-          width: 1000px; /* New width for default modal */
-        }
-        .modal-sm {
-          width: 350px; /* New width for small modal */
-        }
-    }
-    @media screen and (min-width: 992px) {
-        .modal-lg {
-          width: 1000px; /* New width for large modal */
-        }
-    }
-</style>
+
 </head>
 <%@include file="/WEB-INF/views/companyview/sub/companytop.jspf"%>
 
