@@ -31,6 +31,7 @@
 	});
 	
 </script>
+
 <html>
 <body>
 	<%@include file="/WEB-INF/views/common/menubar.jsp"%>
