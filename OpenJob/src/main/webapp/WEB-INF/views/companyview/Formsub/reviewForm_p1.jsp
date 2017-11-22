@@ -130,7 +130,4 @@
 			</select>
 		</div>
 	</div>
-	<hr style="width: 100%">
-	<button type="button" data-dismiss="modal">취소</button>
-	<button type="button" onclick="shownext()">다음</button>
 </div>

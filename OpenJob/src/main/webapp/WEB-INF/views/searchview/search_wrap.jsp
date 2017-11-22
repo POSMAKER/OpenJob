@@ -1,40 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<style>
+.test {
+	display: inline-block;
+}
+</style>
+
 <html>
 <body>
-	<div>
-		<dl class="industry">
-			<dt>지역</dt>
+	<%@include file="/WEB-INF/views/common/menubar.jsp"%>
+	<div class="container-fluid" style="margin-top: 70px; padding: 0px;">
+		<div class="test">
+			<dl class="industry">
+				<dt>지역</dt>
 				<dd>
 					<div>
 						<ul>
-							<li>경영</li>
+							<li><input type="checkbox" id="location_100"> <label
+								for="location_100">서울</label></li>
+							<li><input type="checkbox" id="location_200"> <label
+								for="location_200">경기</label></li>
+							<li><input type="checkbox" id="location_300"> <label
+								for="location_300">인천</label></li>
+							<li><input type="checkbox" id="location_400"> <label
+								for="location_400">강원</label></li>
+							<li><input type="checkbox" id="location_500"> <label
+								for="location_500">세종</label></li>
 						</ul>
 					</div>
 				</dd>
+
+			</dl>
+		</div>
+		<div class="test">
+			<dl class="industry">
+				<dt>지역</dt>
 				<dd>
 					<div>
 						<ul>
-							<li>제조</li>
+							<li><input type="checkbox" id="location_100"> <label
+								for="location_100">서울</label></li>
+							<li><input type="checkbox" id="location_200"> <label
+								for="location_200">경기</label></li>
+							<li><input type="checkbox" id="location_300"> <label
+								for="location_300">인천</label></li>
+							<li><input type="checkbox" id="location_400"> <label
+								for="location_400">강원</label></li>
+							<li><input type="checkbox" id="location_500"> <label
+								for="location_500">세종</label></li>
 						</ul>
 					</div>
 				</dd>
-			<dt>경력</dt>
-				<dd>
-					<div>
-						<ul>
-							<li>1년</li>
-						</ul>
-					</div>
-				</dd>
-				<dd>
-					<div>
-						<ul>
-							<li>2~3년</li>
-						</ul>
-					</div>
-				</dd>
-		</dl>
+
+			</dl>
+		</div>
 	</div>
 </body>
 </html>

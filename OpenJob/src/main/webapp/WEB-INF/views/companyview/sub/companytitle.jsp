@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <div style="background-color: #bfbfbf; height: 170px; padding:0px;">
 			<div class="row" style="height:100%; width:100%;" >
-				<div class="col-lg-3" style="height:1px;"></div>
-				<div class="col-lg-6" style="min-width:400px; height:100%; padding:0px;" >
+				<div class="col-lg-2" style="height:1px;"></div>
+				<div class="col-lg-8" style="min-width:400px; height:100%; padding:0px;" >
 				<table style="position:relative; top:45px; left:15px;">
 					<tr>
 						<td>
@@ -15,6 +15,6 @@
 					</tr>
 				</table>
 				</div>
-				<div class="col-lg-3" style="height:1px;"></div>
+				<div class="col-lg-2" style="height:1px;"></div>
 			</div>
 		</div>
