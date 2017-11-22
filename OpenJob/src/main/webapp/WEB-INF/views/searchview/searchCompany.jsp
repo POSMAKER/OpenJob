@@ -16,7 +16,7 @@
 						<table border="1" style="min-width: 600px;">
 							<c:forEach var="company" items="${companyList }">
 								<tr>
-									<td rowspan="3"><a href="${home }/company/${company.companyno }/info"><img
+									<td rowspan="3" style="padding:15px;"><a href="${home }/company/${company.companyno }/info"><img
 											src="${home }/companyimgs/${company.thumbimg }"
 											style="width: 100px;"></a></td>
 									<td colspan="2" style="font-weight:bold;"><a href="${home }/company/${company.companyno }/info">${company.companyname }</a></td>
@@ -26,7 +26,7 @@
 									<td>${company.address }</td>
 								</tr>
 								<tr>
-									<td colspan="2"><a href="${home }/company/${company.companyno }/review">기업리뷰</a> <a href="${home }/company/${company.companyno }/post">면접후기</a>
+									<td colspan="2"><a href="${home }/company/${company.companyno }/review">기업리뷰</a> / <a href="${home }/company/${company.companyno }/post">면접후기</a>
 									</td>
 								</tr>
 							</c:forEach>
