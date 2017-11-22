@@ -15,7 +15,8 @@
 		});
 
 		$("#closeBtn").click(function() {
-			$("#subLocation").css("display", "none");
+			var id = $(this).parent().attr("id");
+			$("#" + id).css("display", "none");
 		});
 
 		$('input:checkbox[name="chkBox"]').change(function() {
