@@ -61,7 +61,7 @@
 		</div>
 	</div>
 	<!-- RIGHT -->
-	<div class="col-lg-4" align="center">
+	<div class="col-lg-4" align="center" style="padding-right:0px;">
 		<img src="${home }/imgs/AD1.jpg"
 			style="width: 100%; min-width: 145px; max-width: 320px;">
 	</div>

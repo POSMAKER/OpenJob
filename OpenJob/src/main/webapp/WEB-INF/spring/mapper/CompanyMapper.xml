@@ -10,4 +10,18 @@
 	Inner Join Companyimg Using(companyNo)
 	Where companyNo = #{companyno}
 </select>
+<select id="getJobcategory" resultType="com.open.job.DTO.Jobcategory">
+	Select * From Jobcategory
+	Where subjobcategory IS null
+</select>
+<select id="getSubjobcategory" parameterType="Integer" resultType="com.open.job.DTO.Jobcategory">
+	Select * From Jobcategory
+	Where jobcategoryNo &gt; #{jobcategoryno} AND jobcategoryNo &lt; #{jobcategoryno} + 100
+</select>
+<select id="getLocation" resultType="com.open.job.DTO.Location">
+	Select * From Location
+</select>
+<select id="getEmploytype" resultType="com.open.job.DTO.Employtype">
+	Select * From Employtype
+</select>
 </mapper>

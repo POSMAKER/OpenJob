@@ -30,12 +30,17 @@ public class SearchController {
 		model.addAttribute("searchWord", searchWord);
 		model.addAttribute("category", category);
 		
-		//검색옵션 selected
+		//검색옵션 selected, input placeholder
 		if("company".equals(category)) {
 			model.addAttribute("companySelected", "selected");
-		}else if("post".equals(category)) {
+			model.addAttribute("placeholderText", "기업명으로 검색");
+		} else if("post".equals(category)) {
 			model.addAttribute("postSelected", "selected");
+			model.addAttribute("placeholderText", "회사명, 희망직무 등으로 검색");
+		} else if("all".equals(category)) {
+			model.addAttribute("placeholderText", "기업, 채용공고를 검색해보세요.");
 		}
+
 		
 		//채용 검색
 		if ("post".equals(category) || "all".equals(category)) {
@@ -64,9 +69,9 @@ public class SearchController {
 		return "/searchview/detailSearchView";
 	}
 
-	@RequestMapping(value = "/search_wrap")
+	@RequestMapping(value = "/searchWrap")
 	public String search_wrap() {
 
-		return "/searchview/search_wrap";
+		return "/searchview/searchWrap";
 	}
 }

@@ -17,7 +17,7 @@
 						<table border="1" style="min-width: 600px;">
 							<c:forEach var="post" items="${postList }">
 								<tr>
-									<td style="width: 130px;" rowspan="3"><a
+									<td style="width: 130px; padding: 15px;" rowspan="3"><a
 										href="${home }/company/${post.companyno }/info"><img
 											src="${home }/companyimgs/${post.thumbimg }"
 											style="width: 100px;"></a></td>

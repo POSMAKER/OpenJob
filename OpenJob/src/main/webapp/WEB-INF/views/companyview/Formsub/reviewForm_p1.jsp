@@ -58,7 +58,7 @@
 		<div class="col-lg-7">
 			<select id="review_job_type_id" name="review[job_type_id]"><option
 					value="">고용형태</option>
-				<option selected="selected" value="1">인턴직</option>
+				<option value="1">인턴직</option>
 				<option value="2">아르바이트</option>
 				<option value="3">정규직</option>
 				<option value="4">계약직</option>
@@ -90,17 +90,7 @@
 				<option value="17">17년차</option>
 				<option value="18">18년차</option>
 				<option value="19">19년차</option>
-				<option value="20">20년차</option>
-				<option value="21">21년차</option>
-				<option value="22">22년차</option>
-				<option value="23">23년차</option>
-				<option value="24">24년차</option>
-				<option value="25">25년차</option>
-				<option value="26">26년차</option>
-				<option value="27">27년차</option>
-				<option value="28">28년차</option>
-				<option value="29">29년차</option>
-				<option value="30">30년차 이상</option>
+				<option value="20">20년차 이상</option>
 			</select><br> <span style="font-size: 8px;">※ 경력 정보는 노출되지 않습니다.
 				(현재, 또는 퇴직 당시의 경력 정보를 입력해주세요.)</span>
 		</div>

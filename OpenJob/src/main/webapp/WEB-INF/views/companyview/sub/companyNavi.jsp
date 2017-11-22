@@ -45,18 +45,17 @@ body {
 <div class="row flex-row-reverse">
 	<div class="col-lg-2" style="height: 1px;"></div>
 	<div class="col-lg-2" style="padding: 15px;" align="center">
-
 		<button type="button" data-toggle="modal" data-target="#myModal"
-			data-backdrop="static" data-keyboard="false">
+			data-backdrop="static" data-keyboard="false" class="btn btn-success" style="height:41px;">
 			<c:choose>
 				<c:when test="${frmoption eq 'review'}">
-					기업 리뷰 작성
+					<span style="font-weight: bold; font-size: 18px;">기업 리뷰 작성</span>
 				</c:when>
 				<c:when test="${frmoption == 'interview'}">
-					면접 후기 작성
+					<span style="font-weight: bold; font-size: 18px;">면접 후기 작성</span>
 				</c:when>
 				<c:when test="${frmoption == 'post'}">
-					채용 공고 등록
+					<span style="font-weight: bold; font-size: 18px;">채용 공고 등록</span>
 				</c:when>
 			</c:choose>
 		</button>
