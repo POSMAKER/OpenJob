@@ -31,4 +31,7 @@
 			</choose>
 		</where>
 	</select>
+	<select id="getLocation" resultType="com.open.job.DTO.Location">
+		SELECT * FROM Location
+	</select>
 </mapper>

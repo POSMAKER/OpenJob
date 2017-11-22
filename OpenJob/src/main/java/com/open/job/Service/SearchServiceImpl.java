@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
 import com.open.job.IDAO.SearchDAO;
 import com.open.job.IService.SearchService;
@@ -46,6 +47,12 @@ public class SearchServiceImpl implements SearchService {
 			return sdao.getSearchCompanyList(map);
 		}
 
+	}
+
+	@Override
+	public List<Location> getLocation() {
+		
+		return sdao.getLocation();
 	}
 
 }
