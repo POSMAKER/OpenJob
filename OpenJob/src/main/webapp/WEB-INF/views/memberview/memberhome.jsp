@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
 <html>
@@ -34,7 +32,6 @@ body {
 }
 </style>
 -->
-
 </head>
 
 
@@ -42,7 +39,7 @@ body {
 <body >
 <%@include file="/WEB-INF/views/common/menubar.jsp" %>    
 
-<form>
+<form action="${home }/TermsUse" method="get">
     <div class="signUpstep1_wrap" style="margin-top: 150px;">
         <div class="sign_wrap">
             <h2 align="center">회원가입</h2>
@@ -51,15 +48,15 @@ body {
                 <fieldset>
                     <label class="email">
                         <span class="tit">이메일 주소</span>
-                        <input autofocus="autofocus" data-valid="false" id="user_email" name="user[email]" placeholder="이메일 주소" type="email" value="" />
+                        <input autofocus="autofocus" data-valid="false" id="user_email" name="UserEmail" placeholder="이메일 주소" type="email" value="" />
                     </label>
                     
                     <label class="password">
-                        <input id="user_password" name="user[password]" placeholder="비밀번호 (8자리 이상)" type="password" value="" />
+                        <input id="userpassword" name="UserPassword" placeholder="비밀번호 (8자리 이상)" type="password" value="" />
                     </label>
                     
                     <label class="password_check">
-                        <input id="user_password_confirmation" name="user[password_confirmation]" placeholder="비밀번호 확인" type="password" value="" />
+                        <input id="user_password_confirmation" name="UserPasswordConfirmation" placeholder="비밀번호 확인" type="password" value="" />
                     </label>
                     
                     <button class="btn_sign_up" type="submit" style="height: 50px; width: 237px">이메일로 가입</button>
