@@ -54,7 +54,7 @@
 		<div class="col-lg-3">경영진에 바라는 점</div>
 		<div class="col-lg-9">
 			<textarea style="width: 100%; height: 100px; resize: none;"
-				placeholder="예) 신규 사업 추진에 적극적인 투자 의지를 보여줬으면. 직원들의 불만을 듣지만 말고 해결책을 마련해줬으면. 합리적인 복지 및 보상 체계를 마련해줬으면 좋겠다. 군대 문화를 줄여줬으면 좋겠다."></textarea>
+				placeholder="예) 직원들의 불만을 듣지만 말고 해결책을 마련해줬으면. 합리적인 복지 및 보상 체계를 마련해줬으면 좋겠다. 군대 문화를 줄여줬으면 좋겠다."></textarea>
 		</div>
 	</div>
 

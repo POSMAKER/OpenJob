@@ -12,7 +12,7 @@
 <%@include file="/WEB-INF/views/companyview/sub/companytop.jspf" %>
 <div class="row" style="padding-top: 15px;">
 	<!-- LEFT -->
-	<div class="col-sm-11" style="margin-bottom: 15px;" align="center">
+	<div class="col-lg-12" style="margin-bottom: 15px;" align="center">
 		<!-- 기업 리뷰 페이지 -->
 		<div
 			style="width: 100%; background-color: #ffffff; margin-bottom: 15px; padding:15px;"

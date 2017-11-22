@@ -12,7 +12,7 @@
 <%@include file="/WEB-INF/views/companyview/sub/companytop.jspf"%>
 <div class="row" style="padding-top: 15px;">
 	<!-- LEFT -->
-	<div class="col-sm-8" style="margin-bottom: 15px;" align="center">
+	<div class="col-lg-8" style="margin-bottom: 15px;" align="center">
 		<!-- 기업 리뷰 통계 -->
 		<div
 			style="width: 100%; background-color: #ffffff; margin-bottom: 15px;"
@@ -60,7 +60,7 @@
 			align="left"></div>
 	</div>
 	<!-- RIGHT -->
-	<div class="col-md-4" align="center">
+	<div class="col-lg-4" align="center">
 		<img src="${home }/imgs/AD2.jpg"
 			style="width: 100%; min-width: 145px; max-width: 320px;">
 	</div>

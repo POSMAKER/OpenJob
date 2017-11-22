@@ -1,12 +1,18 @@
 package com.open.job;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.sub.CompanyInfo;
 import com.open.job.IService.CompanyService;
 import com.open.job.common.CommonService;
@@ -57,7 +63,7 @@ public class CompanyController {
 		model.addAttribute("interviewactive", "active");
 		return "companyview/companyInterview";
 	}
-	// 기업 면접후기 페이지로 이동
+	// 기업 공고 페이지로 이동
 	// companyNo로 DB에서 불러와서 정보를 줌
 	@RequestMapping("/{companyNo:^[0-9]*$}/post")
 	public String showCompanyPost(
@@ -68,8 +74,17 @@ public class CompanyController {
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		model.addAttribute("frmoption","post");
 		model.addAttribute("postactive", "active");
+		model.addAttribute("jobcategoryLst", compServ.getJobcategory());
+		model.addAttribute("locLst", compServ.getLocation());
+		model.addAttribute("employtypeLst", compServ.getEmploytype());
 		return "companyview/companyPost";
 }
+	@ResponseBody
+	@RequestMapping(value="/jobsubcategory", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String getJobsubcategory(@RequestParam String jobcategoryno) {
+		return compServ.getSubjobcategory(commServ.IntegerFilter(jobcategoryno));
+	}
+	
 	@RequestMapping(value= "/{frmName:^.+Form$}")
 	public String showform(@PathVariable String frmName) {
 		return "companyview/Form/"+frmName;
