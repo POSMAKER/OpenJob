@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <script type="text/javascript">
 	$(document).ready(function() {
 
 		$(".showSubLocation").change(function() {
 			var id = $(this).attr("id");
-			
+
 			if ($('input:checkbox[id=' + id + ']').is(":checked")) {
 				$("#subLocation" + id).css("display", "block");
 			} else {
@@ -29,7 +29,6 @@
 			}
 		});
 	});
-	
 </script>
 
 <html>
@@ -53,8 +52,9 @@
 									<ul style="list-style: none; padding: 10px;">
 										<c:if test="${locationList!=null }">
 											<c:forEach var="location" items="${locationList }">
-												<li><input type="checkbox" id="${location.locationno }" class="showSubLocation">
-													<label for="${location.locationno }">${location.location }</label></li>
+												<li><input type="checkbox" id="${location.locationno }"
+													class="showSubLocation"> <label
+													for="${location.locationno }">${location.location }</label></li>
 											</c:forEach>
 										</c:if>
 									</ul>
@@ -63,10 +63,14 @@
 								<!-- 상세조건  -->
 								<div id="subLocation1"
 									style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; height: 255px; background-color: #fff; border: 1px solid black;">
-
+									<button id="closeBtn"
+										style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
+										<i class="material-icons" style="font-size: 20px">clear</i>
+									</button>
 									<dl class="location">
 										<dt
-											style="padding: 10px; background-color: #f2f2f2; color: blue; font-weight: bold;">서울 상세지역</dt>
+											style="padding: 10px; background-color: #f2f2f2; color: blue; font-weight: bold;">
+											서울 상세지역</dt>
 										<dd>
 											<div
 												style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
@@ -88,8 +92,8 @@
 														name="chkBox"> <label id="location322"
 														for="location322"
 														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">강남구</label></li>
-														
-														<li style="display: inline;"><input
+
+													<li style="display: inline;"><input
 														style="display: none;" type="checkbox" id="location422"
 														name="chkBox"> <label id="location422"
 														for="location422"
@@ -99,14 +103,15 @@
 										</dd>
 									</dl>
 								</div>
-								
+
 								<!-- 뒤에 숫자가 아이디를 의미함  -->
 								<div id="subLocation2"
 									style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; height: 255px; background-color: #fff; border: 1px solid black;">
 
 									<dl class="location">
 										<dt
-											style="padding: 10px; background-color: #f2f2f2; color: blue; font-weight: bold;">경기 상세지역</dt>
+											style="padding: 10px; background-color: #f2f2f2; color: blue; font-weight: bold;">경기
+											상세지역</dt>
 										<dd>
 											<div
 												style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
@@ -128,8 +133,8 @@
 														name="chkBox"> <label id="location323"
 														for="location323"
 														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">성남시</label></li>
-														
-														<li style="display: inline;"><input
+
+													<li style="display: inline;"><input
 														style="display: none;" type="checkbox" id="location423"
 														name="chkBox"> <label id="location423"
 														for="location423"
