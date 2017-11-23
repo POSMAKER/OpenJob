@@ -9,6 +9,7 @@ import com.open.job.DTO.Company;
 import com.open.job.DTO.Employtype;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
+import com.open.job.DTO.Post;
 import com.open.job.DTO.sub.CompanyInfo;
 import com.open.job.IDAO.CompanyDAO;
 import com.open.job.IService.CompanyService;
@@ -52,5 +53,15 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public List<Employtype> getEmploytype() {
 		return cdao.getEmploytype();
+	}
+
+	@Override
+	public int insertPost(Post post) {
+		return cdao.insertPost(post);
+	}
+
+	@Override
+	public List<Post> getPost(Integer companyno) {
+		return cdao.getPost(companyno);
 	}
 }

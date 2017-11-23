@@ -43,10 +43,10 @@ body {
 </style>
 <c:url var="compurl" value="/company/${company.companyno }" />
 <div class="row flex-row-reverse">
-	<div class="col-lg-2" style="height: 1px;"></div>
+	<div class="col-lg-2" style="height: 0px;"></div>
 	<div class="col-lg-2" style="padding: 15px;" align="center">
 		<button type="button" data-toggle="modal" data-target="#myModal"
-			data-backdrop="static" data-keyboard="false" class="btn btn-success" style="height:41px;">
+			data-backdrop="static" data-keyboard="false" class="btn btn-success" style="width:200px; height:41px;">
 			<c:choose>
 				<c:when test="${frmoption eq 'review'}">
 					<span style="font-weight: bold; font-size: 18px;">기업 리뷰 작성</span>
@@ -61,7 +61,7 @@ body {
 		</button>
 
 	</div>
-	<div class="col-lg-6" style="min-width: 320px; padding-left: 15px;">
+	<div class="col-lg-6" style="min-width: 350px; padding-left: 15px;">
 		<ul class="mynavi">
 			<li class="mynaviitem"><a class="mylink ${infoactive}"
 				href="${compurl }/info">Info<br> 기업정보
@@ -77,7 +77,7 @@ body {
 			</a></li>
 		</ul>
 	</div>
-	<div class="col-lg-2"></div>
+	<div class="col-sm-2" style="height: 0px;"></div>
 </div>
 
 

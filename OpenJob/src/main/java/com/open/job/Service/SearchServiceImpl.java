@@ -55,4 +55,12 @@ public class SearchServiceImpl implements SearchService {
 		return sdao.getLocation();
 	}
 
+	@Override
+	public List<Location> getSubLocation() {
+		
+		return sdao.getSubLocation();
+	}
+	
+	
+
 }

@@ -54,12 +54,12 @@ a:active {
 		<%@include file="/WEB-INF/views/searchview/searchBar.jsp"%>
 		<div style="background-color: #e6e6e6; padding: 20px;">
 
-			<!-- 채용 정보 div -->
+			<!-- 채용 정보  -->
 			<c:if test="${category ne 'company' }">
 				<%@include file="/WEB-INF/views/searchview/searchPost.jsp"%>
 			</c:if>
 
-			<!-- 기업 정보 div -->
+			<!-- 기업 정보  -->
 			<c:if test="${category ne 'post' }">
 				<%@include file="/WEB-INF/views/searchview/searchCompany.jsp"%>
 			</c:if>
@@ -67,3 +67,19 @@ a:active {
 	</div>
 </body>
 </html>
+
+<!-- 
+
+post
+직종
+직종상세
+근무지역
+경력
+공고시작일>>>공고가 올라온 기간을 검색하기 위하여
+작성일
+
+
+company
+기업형태
+
+ -->
