@@ -1,27 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.open.job.IDAO.CompanyDAO">
-<select id="getCompanyInfo" parameterType="Integer" resultType="com.open.job.DTO.sub.CompanyInfo">
-	Select * From CompanyInfo
-	Where companyNo = #{companyno}
-</select>
-<select id="getCompanyBase" parameterType="Integer" resultType="com.open.job.DTO.Company">
-	Select * From Company
-	Inner Join Companyimg Using(companyNo)
-	Where companyNo = #{companyno}
-</select>
-<select id="getJobcategory" resultType="com.open.job.DTO.Jobcategory">
-	Select * From Jobcategory
-	Where subjobcategory IS null
-</select>
-<select id="getSubjobcategory" parameterType="Integer" resultType="com.open.job.DTO.Jobcategory">
-	Select * From Jobcategory
-	Where jobcategoryNo &gt; #{jobcategoryno} AND jobcategoryNo &lt; #{jobcategoryno} + 100
-</select>
-<select id="getLocation" resultType="com.open.job.DTO.Location">
-	Select * From Location
-</select>
-<select id="getEmploytype" resultType="com.open.job.DTO.Employtype">
-	Select * From Employtype
-</select>
+	<select id="getCompanyInfo" parameterType="Integer"
+		resultType="com.open.job.DTO.sub.CompanyInfo">
+		Select * From CompanyInfo
+		Where companyNo = #{companyno}
+	</select>
+	<select id="getCompanyBase" parameterType="Integer"
+		resultType="com.open.job.DTO.Company">
+		Select * From Company
+		Inner Join Companyimg Using(companyNo)
+		Where companyNo = #{companyno}
+	</select>
+	<select id="getJobcategory" resultType="com.open.job.DTO.Jobcategory">
+		Select * From Jobcategory
+		Where subjobcategory IS null
+	</select>
+	<select id="getSubjobcategory" parameterType="Integer"
+		resultType="com.open.job.DTO.Jobcategory">
+		Select * From Jobcategory
+		Where jobcategoryNo &gt; #{jobcategoryno} AND jobcategoryNo &lt;
+		#{jobcategoryno} + 100
+	</select>
+	<select id="getLocation" resultType="com.open.job.DTO.Location">
+		Select * From Location
+		Where sublocation IS null
+	</select>
+	<select id="getEmploytype" resultType="com.open.job.DTO.Employtype">
+		Select * From Employtype
+	</select>
+	<insert id="insertPost" parameterType="com.open.job.DTO.Post">
+		INSERT INTO Post
+		(companyNo,
+		companyIntro,
+		mainduty,
+		requirement,
+		process,
+		personcharged,
+		emailcharged,
+		phonecharged,
+		jobcategory,
+		subjobcategory,
+		employtype,
+		location,
+		educationrecord,
+		salary,
+		position,
+		duty,
+		career,
+		endDate,
+		startDate,
+		writeDate,
+		title)
+		VALUES
+		(#{companyno},
+		#{companyintro},
+		#{mainduty},
+		#{requirement},
+		#{process},
+		#{personcharged},
+		#{emailcharged},
+		#{phonecharged},
+		#{jobcategory},
+		#{subjobcategory},
+		#{employtype},
+		#{location},
+		#{educationrecord},
+		#{salary},
+		#{position},
+		#{duty},
+		#{career},
+		#{enddate},
+		#{startdate},
+		NOW(),
+		#{title});
+	</insert>
+	<select id="getPost" parameterType="Integer" resultType="com.open.job.DTO.Post">
+		SELECT * FROM Post
+		WHERE companyNo = #{companyno}
+	</select>
 </mapper>

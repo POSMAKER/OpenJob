@@ -14,7 +14,7 @@
 </div>
 <%@include file="/WEB-INF/views/companyview/Formsub/modalmid_2.jsp"%>
 <div class="col-md-3" style="padding-top: 10px; padding-right: 0px;">
-	<%@include file="/WEB-INF/views/companyview/Formsub/policy.jsp"%>
+	<%@include file="/WEB-INF/views/companyview/Formsub/policy_user.jsp"%>
 	<%@include file="/WEB-INF/views/companyview/Formsub/interviewForm_sub.jsp"%>
 </div>
 <%@include file="/WEB-INF/views/companyview/Formsub/modalbot.jsp"%>

@@ -5,14 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.open.job.DTO.Company;
 import com.open.job.DTO.Jobcategory;
+import com.open.job.DTO.Post;
 import com.open.job.DTO.sub.CompanyInfo;
 import com.open.job.IService.CompanyService;
 import com.open.job.common.CommonService;
@@ -72,6 +76,7 @@ public class CompanyController {
 			) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
+		model.addAttribute("postLst",compServ.getPost(companyno));
 		model.addAttribute("frmoption","post");
 		model.addAttribute("postactive", "active");
 		model.addAttribute("jobcategoryLst", compServ.getJobcategory());
@@ -88,5 +93,10 @@ public class CompanyController {
 	@RequestMapping(value= "/{frmName:^.+Form$}")
 	public String showform(@PathVariable String frmName) {
 		return "companyview/Form/"+frmName;
+	}
+	@RequestMapping(value="/postProc", method=RequestMethod.POST)
+	public String postProc(@ModelAttribute Post post) {
+		int result = compServ.insertPost(post);
+		return "redirect:/company/"+post.getCompanyno()+"/post";
 	}
 }

@@ -2,6 +2,8 @@ package com.open.job.DTO;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.open.job.DTO.sub.SubCommonInfo;
 
 public class Post extends SubCommonInfo{
@@ -48,12 +50,15 @@ public class Post extends SubCommonInfo{
     private String career;
 
     // 공고 마감일 Null이면 채용시 마감.
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date enddate;
 
     // 공고 시작일 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startdate;
 
     // 작성일 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date writedate;
 
     // 공고 타이틀 공고 타이틀
