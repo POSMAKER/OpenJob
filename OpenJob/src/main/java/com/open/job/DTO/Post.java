@@ -64,6 +64,7 @@ public class Post extends SubCommonInfo{
     // 공고 타이틀 공고 타이틀
     private String title;
     
+    //회사이름
     private String companyname;
     
     public String getCompanyname() {

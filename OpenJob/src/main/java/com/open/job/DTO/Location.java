@@ -5,13 +5,12 @@ public class Location {
     private Integer locationno;
     // 지역 
     private String location;
-    // 지역 
+
     private String sublocation;
     
     public String getSublocation() {
 		return sublocation;
 	}
-
 	public void setSublocation(String sublocation) {
 		this.sublocation = sublocation;
 	}
