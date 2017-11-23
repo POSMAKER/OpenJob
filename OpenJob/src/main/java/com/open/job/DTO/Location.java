@@ -6,8 +6,19 @@ public class Location {
 
     // 지역 
     private String location;
+    
+    // 상세지역 
+    private String sublocation;
 
-    public Integer getLocationno() {
+    public String getSublocation() {
+		return sublocation;
+	}
+
+	public void setSublocation(String sublocation) {
+		this.sublocation = sublocation;
+	}
+
+	public Integer getLocationno() {
         return locationno;
     }
 

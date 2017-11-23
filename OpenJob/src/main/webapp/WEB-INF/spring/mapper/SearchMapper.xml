@@ -33,5 +33,10 @@
 	</select>
 	<select id="getLocation" resultType="com.open.job.DTO.Location">
 		SELECT * FROM Location
+		WHERE sublocation IS null order by locationno
+	</select>
+	<select id="getSubLocation" resultType="com.open.job.DTO.Location">
+		SELECT * FROM Location
+		WHERE sublocation IS not null order by locationno
 	</select>
 </mapper>

@@ -12,4 +12,5 @@ public interface SearchDAO {
 	public List<Post> getSearchPostList(Map<String, String> map);
 	public List<Company> getSearchCompanyList(Map<String, String> map); 
 	public List<Location> getLocation();
+	public List<Location> getSubLocation();
 }

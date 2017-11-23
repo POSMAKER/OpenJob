@@ -10,4 +10,5 @@ public interface SearchService {
 	public List<Post> getPostList(String category,String searchWord);
 	public List<Company> getCompanyList(String category,String searchWord);
 	public List<Location> getLocation();
+	public List<Location> getSubLocation();
 }
