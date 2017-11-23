@@ -71,10 +71,22 @@ public class SearchController {
 	}
 
 	@RequestMapping(value = "/searchWrap")
-	public String search_wrap(Model model) {
+	public String searchWrap(Model model) {
+		int locationno = 100;
+		
+		
 		List<Location> locationList = searchServ.getLocation();
 		model.addAttribute("locationList", locationList);
+		
+		List<Location> sublocationList = searchServ.getSubLocation();
+		model.addAttribute("sublocationList", sublocationList);
 
 		return "/searchview/searchWrap";
+	}
+	
+	@RequestMapping(value = "/addressAPI")
+	public String addressAPI(Model model) {
+
+		return "/searchview/addressAPI";
 	}
 }
