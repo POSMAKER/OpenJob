@@ -1,22 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<style>
-dl {
-	display: inline-block;
-}
-</style>
+
 <script type="text/javascript">
-$(document).ready(function(){
-	$("#location100").click(function(){
-		if($('input:checkbox[id="location100"]').is(":checked")){
-			$("#test").css("display","block");
-		} else {
-			$("#test").css("display","none");
-		}
-		
+	$(document).ready(function() {
+
+		$(".showSubLocation").change(function() {
+			var id = $(this).attr("id");
+
+			if ($('input:checkbox[id=' + id + ']').is(":checked")) {
+				$("#subLocation" + id).css("display", "block");
+			} else {
+				$("#subLocation" + id).css("display", "none");
+			}
+		});
+
+		$("#closeBtn").click(function() {
+			var id = $(this).parent().attr("id");
+			$("#" + id).css("display", "none");
+		});
+
+		$('input:checkbox[name="chkBox"]').change(function() {
+			var id = $(this).attr("id");
+			if (this.checked) {
+				$('label[id=' + id + ']').css("background", "#0099ff");
+				$('label[id=' + id + ']').css("color", "#ffffff");
+			} else {
+				$('label[id=' + id + ']').css("background", "#ffffff");
+				$('label[id=' + id + ']').css("color", "black");
+			}
+		});
 	});
-});
 </script>
+
 <html>
 <body>
 	<%@include file="/WEB-INF/views/common/menubar.jsp"%>
@@ -29,48 +44,106 @@ $(document).ready(function(){
 					style="background-color: white; padding: 30px; min-width: 700px;">
 
 					<div class="searchWrap">
-						<dl class="location" style="border: 1px solid black; ">
-							<dt style="padding: 10px; ">지역</dt>
-							<dd>
-								<div
-									style="width: 150px; height: 200px; overflow-x: hidden; overflow-y: scroll; ">
-									<ul style="list-style: none; padding: 10px;">
-										<li><input type="checkbox" id="location100"> <label
-											for="location100">서울</label></li>
-										<li><input type="checkbox" id="location200"> <label
-											for="location200">경기</label></li>
-										<li><input type="checkbox" id="location300"> <label
-											for="location300">인천</label></li>
-										<li><input type="checkbox" id="location400"> <label
-											for="location400">강원</label></li>
-										<li><input type="checkbox" id="location500"> <label
-											for="location500">세종</label></li>
-										<li><input type="checkbox" id="location600"> <label
-											for="location600">충북</label></li>
-										<li><input type="checkbox" id="location700"> <label
-											for="location700">경북</label></li>
-									</ul>
-								</div>
-								<div id="test" style="display: none; position: absolute; left:180px; top: 30px; min-width:30%; height: 255px; background-color: black;"></div>
-							</dd>
-						</dl>
-						<dl class="industry" style="border: 1px solid black;">
-							<dt style="padding: 10px;">산업</dt>
+						<dl class="location" style="display: inline-block;">
+							<dt
+								style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역</dt>
 							<dd>
 								<div
 									style="width: 150px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 									<ul style="list-style: none; padding: 10px;">
-										<li><input type="checkbox" id="location_100"> <label
-											for="location_100">IT</label></li>
-										<li><input type="checkbox" id="location_200"> <label
-											for="location_200">의료</label></li>
-										<li><input type="checkbox" id="location_300"> <label
-											for="location_300">화학</label></li>
-										<li><input type="checkbox" id="location_400"> <label
-											for="location_400">제조</label></li>
-										<li><input type="checkbox" id="location_500"> <label
-											for="location_500">조선</label></li>
+										<c:if test="${locationList!=null }">
+											<c:forEach var="location" items="${locationList }">
+												<li><input type="checkbox" id="${location.locationno }"
+													class="showSubLocation"> <label
+													for="${location.locationno }">${location.location }</label></li>
+											</c:forEach>
+										</c:if>
 									</ul>
+								</div>
+
+								<!-- 상세조건  -->
+								<div id="subLocation1"
+									style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; height: 255px; background-color: #fff; border: 1px solid black;">
+									<button id="closeBtn"
+										style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
+										<i class="material-icons" style="font-size: 20px">clear</i>
+									</button>
+									<dl class="location">
+										<dt
+											style="padding: 10px; background-color: #f2f2f2; color: blue; font-weight: bold;">
+											서울 상세지역</dt>
+										<dd>
+											<div
+												style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
+												<ul style="list-style: none; padding: 10px;">
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location122"
+														name="chkBox"> <label id="location122"
+														for="location122"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">종로구</label></li>
+
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location222"
+														name="chkBox"> <label id="location222"
+														for="location222"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">강북구</label></li>
+
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location322"
+														name="chkBox"> <label id="location322"
+														for="location322"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">강남구</label></li>
+
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location422"
+														name="chkBox"> <label id="location422"
+														for="location422"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">강서구</label></li>
+												</ul>
+											</div>
+										</dd>
+									</dl>
+								</div>
+
+								<!-- 뒤에 숫자가 아이디를 의미함  -->
+								<div id="subLocation2"
+									style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; height: 255px; background-color: #fff; border: 1px solid black;">
+
+									<dl class="location">
+										<dt
+											style="padding: 10px; background-color: #f2f2f2; color: blue; font-weight: bold;">경기
+											상세지역</dt>
+										<dd>
+											<div
+												style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
+												<ul style="list-style: none; padding: 10px;">
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location123"
+														name="chkBox"> <label id="location123"
+														for="location123"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">안산시</label></li>
+
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location223"
+														name="chkBox"> <label id="location223"
+														for="location223"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">수원시</label></li>
+
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location323"
+														name="chkBox"> <label id="location323"
+														for="location323"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">성남시</label></li>
+
+													<li style="display: inline;"><input
+														style="display: none;" type="checkbox" id="location423"
+														name="chkBox"> <label id="location423"
+														for="location423"
+														style="width: 120px; padding: 5px; border: 1px solid #0099ff; border-radius: 12px; cursor: pointer; text-align: center;">안양시</label></li>
+												</ul>
+											</div>
+										</dd>
+									</dl>
 								</div>
 							</dd>
 						</dl>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
 import com.open.job.IService.SearchService;
 
@@ -70,7 +71,9 @@ public class SearchController {
 	}
 
 	@RequestMapping(value = "/searchWrap")
-	public String search_wrap() {
+	public String search_wrap(Model model) {
+		List<Location> locationList = searchServ.getLocation();
+		model.addAttribute("locationList", locationList);
 
 		return "/searchview/searchWrap";
 	}
