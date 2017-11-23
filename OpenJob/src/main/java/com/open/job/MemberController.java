@@ -29,4 +29,25 @@ public class MemberController {
 
 		return "/memberview/Genders";
 	}
+	
+	
+	@RequestMapping(value = "/UserAcount")
+	public String UserAcount() {
+
+		return "/memberview/MyAccount/UserAcount";
+	}
+	
+	
+	@RequestMapping(value = "/Favorites")
+	public String Favorites() {
+
+		return "/memberview/MyAccount/Favorites";
+	}
+	
+	
+	@RequestMapping(value = "/SaveJobs")
+	public String SaveJobs() {
+
+		return "/memberview/MyAccount/SaveJobs";
+	}
 }
