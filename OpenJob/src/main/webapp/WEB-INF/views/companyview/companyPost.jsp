@@ -43,7 +43,9 @@ span.subtitle{
 				<c:forEach var="item" items="${employstatus}">
 					<option value="${item }">${item }</option>
 				</c:forEach>
-			</select> <br /> <br /> 총 <span style="color:#ff4d4d; font-size: 16px; font-weight: bold">${fn:length(postLst) }</span> 개의 기업 공고
+			</select> <br /> <br /> 총 <span
+				style="color: #ff4d4d; font-size: 16px; font-weight: bold">${fn:length(postLst) }</span>
+			개의 기업 공고
 		</div>
 		<c:forEach var="post" items="${postLst }" varStatus="status">
 			<c:if test="${status.index mod 3 == 0}">
@@ -51,20 +53,28 @@ span.subtitle{
 			</c:if>
 			<div class="col-lg-4" style="padding-bottom: 15; height: 190px;"
 				align="left">
-				
-				<div style="background-color: #ffffff; width: 100%; height: 100%; padding: 20px;">
+
+				<div
+					style="background-color: #ffffff; width: 100%; height: 100%; padding: 20px;">
 					<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
 						integerOnly="true" var="enddate" />
 					<div
 						style="margin-bottom: 10px; border: 1px lime solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: lime">D-${enddate-nowdate }</div>
-					<br><span style="width:100%; overflow: hidden;   display:inline-block; font-size: 17px; font-weight: bold;  white-space: nowrap; text-overflow: ellipsis"><a style="color:black;"href="${home}/company/${company.companyno }/post/${post.postno}">${post.title}</a></span><br>
-					<span class="subtitle" style="width:100%; overflow: hidden; display:inline-block; white-space: nowrap; text-overflow: ellipsis">${post.jobcategory }, ${post.subjobcategory }</span><br><br>
-					<span class="tag">${post.location }</span><span class="tag">${post.career }</span>
+					<br>
+					<span
+						style="width: 100%; overflow: hidden; display: inline-block; font-size: 17px; font-weight: bold; white-space: nowrap; text-overflow: ellipsis"><a
+						style="color: black;"
+						href="${home}/company/${company.companyno }/post/${post.postno}">${post.title}</a></span><br>
+					<span class="subtitle"
+						style="width: 100%; overflow: hidden; display: inline-block; white-space: nowrap; text-overflow: ellipsis">${post.jobcategory },
+						${post.subjobcategory }</span><br>
+					<br> <span class="tag">${post.location }</span><span
+						class="tag">${post.career }</span>
 				</div>
 			</div>
 			<c:if test="${status.index mod 3 == 2 || status.last}">
-	</div>
-	</c:if>
+			</div>
+			</c:if>
 	</c:forEach>
 </div>
 <!-- RIGHT -->
