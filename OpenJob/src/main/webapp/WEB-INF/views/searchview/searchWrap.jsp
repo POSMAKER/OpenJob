@@ -29,13 +29,13 @@
 				$('label[id=' + id + ']').css("color", "#ffffff");
 				$('label[id=' + id + ']').css("font-weight", "bold");
 
-				$('label[for=' + id + ']').addClass("checked");
+				$('label[id=' + id + ']').addClass("checked");
 			} else {
 				$('label[id=' + id + ']').css("background", "#ffffff");
 				$('label[id=' + id + ']').css("color", "black");
 				$('label[id=' + id + ']').css("font-weight", "normal");
 
-				$('label[for=' + id + ']').removeClass("checked");
+				$('label[id=' + id + ']').removeClass("checked");
 			}
 		});
 		
