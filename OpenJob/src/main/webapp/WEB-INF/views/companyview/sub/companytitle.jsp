@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="USER" class="com.open.job.DTO.USER" scope="page"/>
+	<c:set target="${USER }" property="memberno" value="1"/>
+	<c:set target="${USER }" property="memberemail" value="kumasyrwork@cjfood.co.kr"/>
+	<c:set target="${USER }" property="companyno" value="13"/>
+	<c:set target="${USER }" property="companyname" value="씨제이푸드빌(주)"/>
+<!-- 임시 -->
 <div
 	style="background-image:url('${home}/imgs/wall.png'); height: 150px; padding:0px;">
 	<div class="row" style="height: 100%; width: 100%;">

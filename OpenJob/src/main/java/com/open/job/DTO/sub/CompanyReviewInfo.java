@@ -18,6 +18,10 @@ public class CompanyReviewInfo extends SubCommonInfo{
     // 직장 상태 
     private String employstatus;
 
+    public CompanyReviewInfo getCompanyReviewInfo() {
+    	return this;
+    }
+    
 	public Integer getCompanyreviewno() {
 		return companyreviewno;
 	}
