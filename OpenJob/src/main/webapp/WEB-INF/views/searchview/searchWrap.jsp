@@ -23,6 +23,7 @@
 			}
 		});
 
+		
 		//지역 상세보기의 닫기버튼
 		$(".closeBtn").click(function() {
 			var id = $(this).parent().attr("id");
