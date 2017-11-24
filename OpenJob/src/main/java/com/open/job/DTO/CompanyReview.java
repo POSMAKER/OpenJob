@@ -28,7 +28,7 @@ public class CompanyReview extends CompanyReviewInfo{
     private Integer walfarescore;
 
     // 삶의질 1~5
-    private Integer balancescoe;
+    private Integer balancescore;
 
     // 사내문화 1~5
     private Integer atmospherescore;
@@ -109,12 +109,12 @@ public class CompanyReview extends CompanyReviewInfo{
 		this.walfarescore = walfarescore;
 	}
 
-	public Integer getBalancescoe() {
-		return balancescoe;
+	public Integer getBalancescore() {
+		return balancescore;
 	}
 
-	public void setBalancescoe(Integer balancescoe) {
-		this.balancescoe = balancescoe;
+	public void setBalancescore(Integer balancescoe) {
+		this.balancescore = balancescoe;
 	}
 
 	public Integer getAtmospherescore() {

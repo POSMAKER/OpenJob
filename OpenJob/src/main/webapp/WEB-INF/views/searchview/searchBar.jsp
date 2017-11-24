@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- 상단 검색바 -->
 <div class="searchBar">
 	<div class="row">
 		<!-- 로고 -->

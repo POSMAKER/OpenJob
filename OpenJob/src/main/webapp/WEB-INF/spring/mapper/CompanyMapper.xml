@@ -19,12 +19,14 @@
 	<select id="getSubjobcategory" parameterType="Integer"
 		resultType="com.open.job.DTO.Jobcategory">
 		Select * From Jobcategory
-		Where jobcategoryNo &gt; #{jobcategoryno} AND jobcategoryNo &lt;
+		Where jobcategoryNo &gt;
+		#{jobcategoryno} AND jobcategoryNo &lt;
 		#{jobcategoryno} + 100
 	</select>
 	<select id="getLocation" resultType="com.open.job.DTO.Location">
 		Select * From Location
-		Where sublocation IS null
+		Where
+		sublocation IS null
 	</select>
 	<select id="getEmploytype" resultType="com.open.job.DTO.Employtype">
 		Select * From Employtype
@@ -76,7 +78,67 @@
 		#{title});
 	</insert>
 	<select id="getPost" parameterType="Integer" resultType="com.open.job.DTO.Post">
-		SELECT * FROM Post
+		SELECT *
+		FROM Post
 		WHERE companyNo = #{companyno}
 	</select>
+	<insert id="insertCompanyReviewInfo">
+		<selectKey keyProperty="companyreviewno" resultType="Integer"
+			order="BEFORE">
+			SELECT IFNULL(MAX(companyreviewNo),0)+1 as companyreviewNo FROM CompanyReviewInfo
+		</selectKey>
+		INSERT INTO CompanyReviewInfo
+		(companyreviewNo,
+		companyNo,
+		memberNo,
+		writeDate,
+		employstatus,
+		jobcategory,
+		subjobcategory,
+		employtype,
+		location)
+		VALUES
+		(#{companyreviewno},
+		#{companyno},
+		#{memberno},
+		NOW(),
+		#{employstatus},
+		#{jobcategory},
+		#{subjobcategory},
+		#{employtype},
+		#{location});
+	</insert>
+	<insert id="insertCompanyReview">
+		INSERT INTO CompanyReview
+    (companyreviewNo,
+    summary, 
+    positive, 
+    negative, 
+    wishlist, 
+    totalScore, 
+    promotionScore, 
+    walfareScore, 
+    balanceScore, 
+    atmosphereScore, 
+    executiveScore, 
+    CEOScore, 
+    recommandScore, 
+    futureScore)
+VALUES
+    (
+    #{companyreviewno},
+    #{summary},
+    #{positive}, 
+    #{negative}, 
+    #{wishlist}, 
+    #{totalscore}, 
+    #{promotionscore}, 
+    #{walfarescore}, 
+    #{balancescore}, 
+    #{atmospherescore}, 
+    #{executivescore}, 
+    #{ceoscore}, 
+    #{recommandscore}, 
+    #{futurescore});
+	</insert>
 </mapper>

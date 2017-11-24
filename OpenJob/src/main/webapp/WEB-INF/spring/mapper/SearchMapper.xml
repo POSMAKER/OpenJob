@@ -39,4 +39,8 @@
 		SELECT * FROM Location
 		WHERE sublocation IS not null order by locationno
 	</select>
+	<select id="getQuickCompSearch" parameterType="String" resultType="com.open.job.DTO.Company">
+		SELECT companyNo, companyName FROM Company
+		WHERE companyName LIKE CONCAT('%',#{searchword},'%')
+	</select>
 </mapper>

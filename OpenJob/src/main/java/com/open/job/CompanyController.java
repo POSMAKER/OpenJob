@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.CompanyReview;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Post;
 import com.open.job.DTO.sub.CompanyInfo;
@@ -53,6 +54,9 @@ public class CompanyController {
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		model.addAttribute("frmoption","review");
 		model.addAttribute("reviewactive", "active");
+		model.addAttribute("jobcategoryLst", compServ.getJobcategory());
+		model.addAttribute("locLst", compServ.getLocation());
+		model.addAttribute("employtypeLst", compServ.getEmploytype());
 		return "companyview/companyReview";
 	}
 	// 기업 면접후기 페이지로 이동
@@ -95,9 +99,19 @@ public class CompanyController {
 	public String showform(@PathVariable String frmName) {
 		return "companyview/Form/"+frmName;
 	}
+	@RequestMapping(value="/reviewProc", method=RequestMethod.POST)
+	public String reviewProc(@ModelAttribute CompanyReview review) {
+		compServ.insertReview(review);
+		return "redirect:/company/"+review.getCompanyno()+"/review";
+	}
 	@RequestMapping(value="/postProc", method=RequestMethod.POST)
 	public String postProc(@ModelAttribute Post post) {
-		int result = compServ.insertPost(post);
+		compServ.insertPost(post);
 		return "redirect:/company/"+post.getCompanyno()+"/post";
+	}
+	@ResponseBody
+	@RequestMapping(value="/getcompbasebody", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String getCompBasebody(@RequestParam String companyno) {
+		return compServ.getCompBaseBody(commServ.IntegerFilter(companyno));
 	}
 }

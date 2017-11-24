@@ -54,12 +54,12 @@ a:active {
 		<%@include file="/WEB-INF/views/searchview/searchBar.jsp"%>
 		<div style="background-color: #e6e6e6; padding: 20px;">
 
-			<!-- 채용 정보 div -->
+			<!-- 채용 정보  -->
 			<c:if test="${category ne 'company' }">
 				<%@include file="/WEB-INF/views/searchview/searchPost.jsp"%>
 			</c:if>
 
-			<!-- 기업 정보 div -->
+			<!-- 기업 정보  -->
 			<c:if test="${category ne 'post' }">
 				<%@include file="/WEB-INF/views/searchview/searchCompany.jsp"%>
 			</c:if>

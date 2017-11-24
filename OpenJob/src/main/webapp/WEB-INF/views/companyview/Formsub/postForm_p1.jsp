@@ -2,13 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%-- USER 세션이 존재하고, MyCompany 세션이 존재할 때. "사용자 회사"의 공고 작성 가능 --%>
 <%-- USER 세션이 존재하고, MyCompany 세션이 존재하고, 공고 번호가 존재하면. "사용자 회사"의 공고 수정 가능 --%>
-<!-- 임시 -->
-<jsp:useBean id="USER" class="com.open.job.DTO.USER" scope="page"/>
-	<c:set target="${USER }" property="memberno" value="1"/>
-	<c:set target="${USER }" property="memberemail" value="kumasyrwork@cjfood.co.kr"/>
-	<c:set target="${USER }" property="companyno" value="13"/>
-	<c:set target="${USER }" property="companyname" value="씨제이푸드빌(주)"/>
-<!-- 임시 -->
 <!-- page 1 -->
 <div class="container-fluid" id="p1">
 	<div class="row" style="padding: 15px;">
