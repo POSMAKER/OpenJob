@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,9 +74,6 @@ public class SearchController {
 
 	@RequestMapping(value = "/searchWrap")
 	public String searchWrap(Model model) {
-		int locationno = 100;
-		
-		
 		List<Location> locationList = searchServ.getLocation();
 		model.addAttribute("locationList", locationList);
 		
@@ -92,6 +88,15 @@ public class SearchController {
 
 		return "/searchview/addressAPI";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/buttonVal", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String buttonVal(Model model, @RequestParam(value = "subLocationName")String subLocationName) {
+		String test= "";
+		logger.info(subLocationName);
+		return test;
+	}
+	
 	// searchword는 검색 단어, onclickfunction_name은 해당 단어가 클릭되었을 때 발생하는 Javascript 함수의 이름을 지정.
 	@ResponseBody
 	@RequestMapping(value="/quick_companysearch", method=RequestMethod.POST, produces = "application/text; charset=utf8")
