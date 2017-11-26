@@ -19,7 +19,7 @@ import com.open.job.IService.SearchService;
 
 @Controller
 public class SearchController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 
 	@Autowired
 	private SearchService searchServ;

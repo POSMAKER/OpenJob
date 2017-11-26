@@ -10,6 +10,9 @@
 			if ($(this).is(":checked")) {
 				$("#sub" + locaId).css("display", "block");
 				
+				var locationName = $(this).parent().find("span").text();
+				$("#button").append('<button id=' + locaId + '>'+locationName+' 전체</button>');
+				
 				//스타일
 				$('span[id=' + locaId + ']').css("border", "1px solid #0099ff");
 				$('span[id=' + locaId + ']').css("border-radius", "12px");
@@ -17,31 +20,31 @@
 				$('span[id=' + locaId + ']').css("color", "#0099ff");
 			} else {
 				$("#sub" + locaId).css("display", "none");
-				$('input:checkbox[name="sublocationBox"]').each(function(){
+				$('button[id=' + locaId + ']').remove();
+				$('input:checkbox[name="sublocationBox"]').each(function() {
 					
 					var subId = $(this).attr("id");
-					//수정 해야할 부분(11/26)
-					if($(this).is(':checked')){
-						if(subId.length == 6){
-							if(subId.substring(3,4) == locaId.substring(8,9)){
+					
+					if($(this).is(':checked')) {
+						if(locaId.length == 11) {
+							if(subId.substring(3,4) == locaId.substring(8,9)) {
 								$('button[id=' + subId + ']').remove();
-								
+								$(this).prop("checked", false);
+								$(this).parent().find("span").css("background", "#ffffff");
+								$(this).parent().find("span").css("color", "black");
+								$(this).parent().find("span").css("font-weight", "normal");
 							}
 						} else {
-							if(subId.substring(3,5) == locaId.substring(8,10)){
+							if(subId.substring(3,5) == locaId.substring(8,10)) {
 								$('button[id=' + subId + ']').remove();
-								
+								$(this).prop("checked", false);
+								$(this).parent().find("span").css("background", "#ffffff");
+								$(this).parent().find("span").css("color", "black");
+								$(this).parent().find("span").css("font-weight", "normal");
 							}
 						}
 					}
 					
-					//체크해제 과정
-					if(subId.substring(3,4) == locaId.substring(8,9)){
-						$(this).prop("checked", false);
-						$(this).parent().find("span").css("background", "#ffffff");
-						$(this).parent().find("span").css("color", "black");
-						$(this).parent().find("span").css("font-weight", "normal");
-					}
 				});
 				
 				//스타일
@@ -61,13 +64,18 @@
 
 		//지역 상세보기 체크박스
 		$('input:checkbox[name="sublocationBox"]').click(function() {
-			if($('input:checkbox[name="sublocationBox"]:checked').length > 5){
+			if($('input:checkbox[name="sublocationBox"]:checked').length > 5) {
 				alert("5개 지역 선택가능");
 				$(this).prop("checked", false);
 				return;
 			}
 			
-			if($('input:checkbox[name="sublocationBox"]:checked').length == 0){
+			//오류 (11/26)
+			//각각의 div에서 길이가 0일때 창이 닫혀야함
+			//현재는 전제 div 길이가 0일때 동작함
+			//0일때 전체 버튼 삭제
+			//상세지역 div 닫는 문제 
+			if($('input:checkbox[name="sublocationBox"]:checked').length == 0) {
 				var subId = $(this).attr("id");
 				$('span[id=' + subId + ']').css("background", "#ffffff");
 				$('span[id=' + subId + ']').css("color", "black");
@@ -75,9 +83,10 @@
 
 				$('input:checkbox[name="locationBox"]').each(function(){
 					var locaId = $(this).attr("id");
-					if(subId.length == 6){
+
+					if(subId.length == 6) {
 						//중복코드 수정해야함
-						if(subId.substring(3,4) == locaId.substring(8,9)){
+						if(subId.substring(3,4) == locaId.substring(8,9)) {
 							$(this).prop("checked", false);
 							$("#sub" + locaId).css("display", "none");
 							$('button[id=' + subId + ']').remove();
@@ -86,8 +95,8 @@
 							$('span[id=' + locaId + ']').css("font-weight", "normal");
 							$('span[id=' + locaId + ']').css("color", "black");
 						}
-					}else{
-						if(subId.substring(3,5) == locaId.substring(8,10)){
+					} else {
+						if(subId.substring(3,5) == locaId.substring(8,10)) {
 							$(this).prop("checked", false);
 							$("#sub" + locaId).css("display", "none");
 							$('button[id=' + subId + ']').remove();
@@ -97,9 +106,7 @@
 							$('span[id=' + locaId + ']').css("color", "black");
 						}
 					}
-					
 				});
-				
 				return;
 			}
 
@@ -107,7 +114,6 @@
 			
 			if ($(this).is(":checked")) {
 				$(this).prop("checked", true);
-				
 
 				var subLocationName = $(this).parent().find("span").text();
 				
@@ -124,6 +130,7 @@
 				});
 				
 				$("#button").append('<button id=' + subId + '>'+subLocationName+'</button>');
+				
 				
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#0099ff");
@@ -144,7 +151,6 @@
 		});
 
 		//span에 마우스를 올렸을 때 추가예정(11/25에 작성)
-		
 		
 	});
 </script>
