@@ -92,4 +92,10 @@ public class CompanyServiceImpl implements CompanyService{
 		int res2 = cdao.insertCompanyReview(review);
 		return res1*res2;
 	}
+
+	@Override
+	public List<CompanyReview> getCompanyReview(Integer companyno) {
+		System.out.println( cdao.getCompanyReview(companyno));
+		return cdao.getCompanyReview(companyno);
+	}
 }

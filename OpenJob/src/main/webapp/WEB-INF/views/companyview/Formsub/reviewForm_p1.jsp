@@ -17,7 +17,7 @@ div.searchresult_div div:hover {
 		</div>
 	</div>
 	<input type="hidden" id="companyno" name="companyno"/>
-	<input type="text" name="memberno" value="${USER.memberno }"/>
+	<input type="hidden" name="memberno" value="${USER.memberno }"/>
 	<script>
 		function searchclick(data){
 			var datasplit = data.split(",");

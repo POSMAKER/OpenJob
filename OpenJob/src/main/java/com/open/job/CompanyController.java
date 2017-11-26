@@ -57,6 +57,7 @@ public class CompanyController {
 		model.addAttribute("jobcategoryLst", compServ.getJobcategory());
 		model.addAttribute("locLst", compServ.getLocation());
 		model.addAttribute("employtypeLst", compServ.getEmploytype());
+		model.addAttribute("reviewLst",compServ.getCompanyReview(companyno));
 		return "companyview/companyReview";
 	}
 	// 기업 면접후기 페이지로 이동
@@ -113,5 +114,14 @@ public class CompanyController {
 	@RequestMapping(value="/getcompbasebody", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String getCompBasebody(@RequestParam String companyno) {
 		return compServ.getCompBaseBody(commServ.IntegerFilter(companyno));
+	}
+	@ResponseBody
+	@RequestMapping(value="/followProc", method=RequestMethod.POST)
+	public String followProc(
+			@RequestParam String memberno,
+			@RequestParam String companyno,
+			@RequestParam String userfollow
+			) {
+		return "true";
 	}
 }

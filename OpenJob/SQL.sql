@@ -11,3 +11,6 @@ ALTER TABLE CompanyReview CHANGE balancescoe balancescore VARCHAR(8) NOT NULL;
 SELECT * FROM CompanyReviewInfo
 
 Delete FROM  CompanyReviewInfo WHERE companyNo = 32
+
+
+SELECT * FROM Compan
