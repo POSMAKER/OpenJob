@@ -4,25 +4,46 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		//지역 상세보기 열기
 		$('input:checkbox[name="locationBox"]').click(function() {
 			var locaId = $(this).attr("id");	//span에 스타일을 추가하기 위해
+			
+			//지역 상세보기 열기			
 			if ($(this).is(":checked")) {
+				$('input:checkbox[name="locationBox"]').each(function() {
+					var locaId = $(this).attr("id");
+					$("#sub" + locaId).css("display", "none");
+				});
+
 				$("#sub" + locaId).css("display", "block");
 				
+				//지역 버튼 추가
 				var locationName = $(this).parent().find("span").text();
-				$("#button").append('<button id=' + locaId + '>'+locationName+' 전체</button>');
+				$("#button").append('<button id=' + locaId + '>' + locationName+' 전체</button>');
 				
 				//스타일
 				$('span[id=' + locaId + ']').css("border", "1px solid #0099ff");
 				$('span[id=' + locaId + ']').css("border-radius", "12px");
 				$('span[id=' + locaId + ']').css("font-weight", "bold");
 				$('span[id=' + locaId + ']').css("color", "#0099ff");
+				
+				var LocationName = $(this).parent().find("span").text();
+				//검색조건이 추가될때 마다 검색
+				$.ajax({
+					type : 'post',
+					url : '${home}/Location',
+					data : {
+						LocationName : LocationName
+					},
+					success : function(result){
+						$("#result").html(result);
+					}
+				});
+				
 			} else {
 				$("#sub" + locaId).css("display", "none");
 				$('button[id=' + locaId + ']').remove();
+				
 				$('input:checkbox[name="sublocationBox"]').each(function() {
-					
 					var subId = $(this).attr("id");
 					
 					if($(this).is(':checked')) {
@@ -61,20 +82,24 @@
 			$("#" + id).css("display", "none");
 		});
 		
-
 		//지역 상세보기 체크박스
 		$('input:checkbox[name="sublocationBox"]').click(function() {
-			if($('input:checkbox[name="sublocationBox"]:checked').length > 5) {
-				alert("5개 지역 선택가능");
-				$(this).prop("checked", false);
-				return;
-			}
+			var subId = $(this).attr("id");
+
+			//지역전체 버튼 삭제 및  체크 해제
+			$('input:checkbox[name="locationBox"]').each(function(){
+				var locaId = $(this).attr("id");
+				if(subId.length == 6) {
+					if(subId.substring(3,4) == locaId.substring(8,9)) {
+						$('button[id=' + locaId + ']').remove();
+					}
+				} else {
+					if(subId.substring(3,5) == locaId.substring(8,10)) {
+						$('button[id=' + locaId + ']').remove();
+					}
+				}
+			});
 			
-			//오류 (11/26)
-			//각각의 div에서 길이가 0일때 창이 닫혀야함
-			//현재는 전제 div 길이가 0일때 동작함
-			//0일때 전체 버튼 삭제
-			//상세지역 div 닫는 문제 
 			if($('input:checkbox[name="sublocationBox"]:checked').length == 0) {
 				var subId = $(this).attr("id");
 				$('span[id=' + subId + ']').css("background", "#ffffff");
@@ -109,18 +134,15 @@
 				});
 				return;
 			}
-
-			var subId = $(this).attr("id");	//span에 스타일을 추가하기 위해
 			
 			if ($(this).is(":checked")) {
 				$(this).prop("checked", true);
-
 				var subLocationName = $(this).parent().find("span").text();
-				
+
 				//검색조건이 추가될때 마다 검색
 				$.ajax({
 					type : 'post',
-					url : '${home}/buttonVal',
+					url : '${home}/subLocation',
 					data : {
 						subLocationName : subLocationName
 					},
@@ -130,7 +152,6 @@
 				});
 				
 				$("#button").append('<button id=' + subId + '>'+subLocationName+'</button>');
-				
 				
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#0099ff");
@@ -170,7 +191,7 @@
 						<dl class="location" style="display: inline-block;">
 							<dt
 								style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역</dt>
-							<dd id="wow">
+							<dd>
 								<div
 									style="width: 150px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 									<ul
@@ -178,7 +199,7 @@
 										<c:if test="${locationList!=null }">
 											<c:forEach var="location" items="${locationList }">
 												<li><input type="checkbox"
-													style="display: none;" name="locationBox"
+													style="display: ;" name="locationBox"
 													id="location${location.locationno }"> <label
 													style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
 													for="location${location.locationno }"><span
@@ -196,7 +217,7 @@
 											style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
 											<i class="material-icons" style="font-size: 20px">clear</i>
 										</button>
-										<dl class="test">
+										<dl>
 											<dt
 												style="padding: 10px; background-color: #f2f2f2; color: #0099ff; font-weight: bold;">${location.location }
 												상세지역</dt>
@@ -208,7 +229,7 @@
 														<c:forEach var="sublocation" items="${sublocationList }">
 															<c:if test="${sublocation.location == location.location}">
 																<li style="display: inline;"><input
-																	style="display: none;" type="checkbox"
+																	style="display: ;" type="checkbox"
 																	id="sub${sublocation.locationno }"
 																	name="sublocationBox"> <label
 																	id="sub${sublocation.locationno }"
@@ -231,9 +252,9 @@
 				<div class="col-sm-3">div3</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-3" id="result">div3</div>
+				<div class="col-sm-3">div3</div>
 				<div class="col-sm-6">
-					<div id="button"></div>
+					<div id="result"></div>
 				</div>
 				<div class="col-sm-3">div3</div>
 			</div>

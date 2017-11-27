@@ -31,7 +31,7 @@
 </div>
 
 
-<form accept-charset="UTF-8" action="${home }/UserAcount" class="new_user" id="new_user" method="get">
+<form accept-charset="UTF-8" action="${home }/UserAcount" class="new_user" id="new_user" method="post">
 <div id="contents_wrap">
 <div id="contents">
 <div id="aboutYou" class="signup">
@@ -42,14 +42,7 @@
 <div class="signup_flow_wrap flow_type1" style="width:500px; height:740px; margin-top: 60px;">
 
 
-<!--
-<div class="flow_hd type1">
-<div class="hd_ttl_group">
-<p class="ttl">잡플래닛은 당신에게 딱 맞는 꿈의 직장을 찾아드립니다!</p>
-<p class="desc">입력된 정보는 외부에 노출되지 않고,<br>보다 나은 서비스 제공을 위한 통계자료로만 활용됩니다.</p>
-</div>
-</div>
--->
+
 
 	
 		
@@ -111,7 +104,7 @@
 <span class="radio_icon"></span><span class="radio_txt">남자</span>
 </label>
 
-<label class="btn_radio" for="gjsignup_154_0_1"><input type="radio" name="154" class="csradio" id="gjsignup_154_0_1" value="F">
+<label class="btn_radio" for="gjsignup_154_0_1"><input type="radio" name="" class="csradio" id="gjsignup_154_0_1" value="F">
 <span class="radio_icon"></span><span class="radio_txt">여자</span>
 </label>
 </div>
@@ -138,7 +131,7 @@
 <div>
 <div class="frow_ty1 select_frow">
 <div class="cssel_ty2">
-<label class="btn_sel">1960</label>
+<label class="btn_sel"></label>
 <select name="" id="gjsignup_155">
 <option value="">선택해주세요.</option><option value="1960">1960</option>
 <option value="1961">1961</option><option value="1962">1962</option>
@@ -190,7 +183,7 @@
 <div>
 <div class="frow_ty1 select_frow">
 <div class="cssel_ty2">
-<label class="btn_sel">1</label>
+<label class="btn_sel"></label>
 <select name="" id="gjsignup_132">
 <option value="">선택해주세요.</option>
 <option value="0">0</option>
@@ -235,8 +228,8 @@
 <div>
 <div class="frow_ty1 select_frow">
 <div class="cssel_ty2">
-<label class="btn_sel">IT/인터넷</label>
-<select name="147" id="gjsignup_147_3_0">
+<label class="btn_sel"></label>
+<select name="" id="gjsignup_147_3_0">
 <option value="">선택해주세요.</option>
 <option value="IT/인터넷">IT/인터넷</option>
 <option value="경영/기획/컨설팅">경영/기획/컨설팅</option>
@@ -262,8 +255,8 @@
 </div>
 <div class="frow_ty1 select_frow">
 <div class="cssel_ty2">
-<label class="btn_sel">QA(Quality Assurance)</label>
-<select name="IT/인터넷" id="gjsignup_147_3_1">
+<label class="btn_sel"></label>
+<select name="" id="gjsignup_147_3_1">
 <option value="">선택해주세요.</option>
 <option value="QA(Quality Assurance)">QA(Quality Assurance)</option>
 <option value="프로젝트매니저">프로젝트매니저</option>
@@ -319,7 +312,7 @@
 <div class="input_group frow_ty1 auto_1523_4">
 <label style="width: 412">
 <div class="iptwrap_ty1 placeholder"> 
-<input type="text" class="input_ty1 autocomplete_input undefined" name="0" id="gjsignup_1523_4_0" value="">
+<input type="text" class="input_ty1 autocomplete_input undefined" name="" id="gjsignup_1523_4_0" value="">
 </div>
 </label>
 </div>

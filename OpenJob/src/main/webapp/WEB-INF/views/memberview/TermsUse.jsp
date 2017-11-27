@@ -145,7 +145,7 @@
   <div class="terms_top">
     <h2>전체동의</h2>
     <label class="btn_check round">
-      <input id="agree_all" name="agree_all" type="checkbox" class="cscheck">
+      <input id="agree_all" name="" type="checkbox" class="cscheck">
       <span class="check_icon"></span>
     </label>
   </div>
@@ -153,7 +153,7 @@
     <div class="title1">
       <h2>개인정보 회원 이용약관 동의 <span class='txt_gra'>(필수)</span></h2>
       <label class="btn_check round" for="user_tos_service">
-        <input id="user_tos_service" name="user[tos_service]" type="checkbox" class="cscheck">
+        <input id="user_tos_service" name="" type="checkbox" class="cscheck">
         <span class="check_icon"></span>
       </label>
     </div>
@@ -371,14 +371,14 @@
     <div class="title2 sub_check">
       <h3>필수적 개인정보 수집 및 이용 동의 <span class='txt_gra'> (필수)</span></h3>
       <label class="btn_check round">
-        <input id="user_tos_privacy" name="user[tos_privacy]" type="checkbox" class="cscheck">
+        <input id="user_tos_privacy" name="" type="checkbox" class="cscheck">
         <span class="check_icon"></span>
       </label>
     </div>
     <div class="title2 sub_check">
       <h3>선택적 개인정보 수집 및 이용 동의 <span class='txt_gre'> (선택)</span></h3>
       <label class="btn_check round">
-        <input id="user_optional_tos_privacy" name="user[optional_tos_privacy]" type="checkbox" class="cscheck">
+        <input id="user_optional_tos_privacy" name="" type="checkbox" class="cscheck">
         <span class="check_icon"></span>
       </label>
     </div>
@@ -436,7 +436,7 @@
     <div class="title3">
       <h2>맞춤 채용/뉴스레터 등 마케팅 정보 수신<span class='txt_gre'> (선택) </span></h2>
       <label class="btn_check round" for="user_subscribe_notice">
-        <input id="user_subscribe_notice" name="user[subscribe_notice]" type="checkbox" class="cscheck">
+        <input id="user_subscribe_notice" name="" type="checkbox" class="cscheck">
         <span class="check_icon"></span>
       </label>
       <div class="title2 sub_check">
