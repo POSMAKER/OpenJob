@@ -14,7 +14,7 @@
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_any_language_newtemp-bf2fe9f55ada3b96ff93fe40c25b3970fb9fc3bd2fc5ad76639215282b43c0b3.css" media="all" rel="stylesheet" />
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
-
+<!--  
 <script>
     $(document).ready(function() {
         JobUI.desktop.myPageMyInformationMenu.initLnb(Option);
@@ -40,7 +40,7 @@
 
     $.get("/emails");
 </script>
-
+-->
 
 </head>
 
@@ -57,7 +57,7 @@
 </div>
 
 
-<form accept-charset="UTF-8" action="" class="new_user" id="new_user" method="post">
+<form accept-charset="UTF-8" action="" class="" id="" method="post">
 
 
 <!-- myPageInfo { -->
@@ -80,8 +80,8 @@
             <div class="table_row_div">
 			
                 <!-- 내 정보 -->
-                <a href="${home }/UserAcount" class="tab_box_a mypage_info_list myPageMyInformationMyAccount">
-                    <span  class="info tit">
+                <a href="${home }/UserAcount" class="tab_box_a mypage_info_list myPageMyInformationMyAccount" style="background-color: #48c454;">
+                    <span  class="info tit" style="font-size:15px; font-weight:bold; color: white;">
                         계정
                     </span>
                 </a>
@@ -90,7 +90,7 @@
 				
                 <!-- 팔로잉 -->
                 <a href="${home }/Favorites" class="tab_box_a mypage_info_list myPageMyFollowing">
-                    <span  class="following tit">
+                    <span  class="following tit" style="font-size:15px;">
                         관심정보
                     </span>
                 </a>
@@ -100,7 +100,7 @@
 
                 <!-- 저장 된 채용 정보 -->
                   <a href="${home }/SaveJobs" class="tab_box_a mypage_info_list myPageMyJob">
-                    <span class="job tit">
+                    <span class="job tit" style="font-size:15px;">
                         저장된 채용
                     </span>
                   </a>
@@ -133,7 +133,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="${home }/PasswordChange">
+                    <a href="${home }/PaswordChange">
                         <span class="txt">비밀번호 변경</span>
                         <span class="num notranslate"></span>
                     </a>
@@ -157,26 +157,45 @@
         <div id="mainContents" class="jpcont_rgt">
             <div class="jpcont_wrap">
   <div class="layout_my_account myaccountcon">
-    <div class="section_group">
-      <h3 class="tit">비밀번호 변경</h3>
-	  
-	  
-      <section class="my_information">
-        <div class="my_information_group">
-          <dl class="email">
-            <dt>기본정보</dt>
-            <dd>샘플입니다.<br /> 
-			샘플입니다.<br /> 
-			샘플입니다. 
-			</dd>
-          </dl>
-          <!--email_list.scss.erb-->
-<ul class="email_list">
-</ul>
- 
+  
+  
+  
+  
+
+<div class="jpcont_wrap">
+    <div class="layout_my_account my_information_my_password">
+        <div class="section_group">
+            <h3 class="tit">비밀번호 변경</h3>
+
+
+            <input id="user_reset_password_token" name="user[reset_password_token]" type="hidden"/>
+            <label class="frow_ty1 my_information_list now_pw" id="now_pw" style="margin-top: 50; margin-left: 200">
+                <span class="label_tit" >현재 비밀번호</span>
+                <div class="iptwrap_ty1 placeholder" style="margin-top: 5">
+                    <input class="input_ty1" id="user_current_password" name="user[current_password]" pattern=".{8,}" placeholder="비밀번호(8자리 이상)" title="비밀번호는 8자 이상이어야 합니다." type="password" />
+                </div>
+                <p class="error_txt"></p>
+            </label>
+
+            <label class="frow_ty1 my_information_list new_pw" id="new_pw" style="margin-left: 200">
+                <span class="label_tit">새 비밀번호</span>
+                <div class="iptwrap_ty1 placeholder" style="margin-top: 5">
+                    <input class="input_ty1" id="user_password" name="user[password]" pattern=".{8,}" placeholder="비밀번호(8자리 이상)" title="비밀번호는 8자 이상이어야 합니다." type="password" />
+                </div>
+                <p class="error_txt"></p>
+            </label>
+
+            <label class="frow_ty1 mb0 my_information_list confirm_pw" id="confirm_pw" style="margin-left: 200">
+                <div class="iptwrap_ty1 placeholder">
+                    <input class="input_ty1" id="user_password_confirmation" name="user[password_confirmation]" pattern=".{8,}" placeholder="비밀번호 확인" title="비밀번호는 8자 이상이어야 합니다." type="password" />
+                </div>
+                <p class="error_txt"></p>
+            </label>
+            <button type="submit" class="btn_ty3" style="margin-left: 200; margin-bottom: 50;">비밀번호 변경</button>
+      </div>
+    </div>
 </div>
-</section>
-</div> <!--//section_group-->
+
 
 
 

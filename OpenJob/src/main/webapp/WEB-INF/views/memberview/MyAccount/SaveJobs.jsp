@@ -81,7 +81,7 @@
 			
                 <!-- 내 정보 -->
                 <a href="${home }/UserAcount" class="tab_box_a mypage_info_list myPageMyInformationMyAccount">
-                    <span  class="info tit">
+                    <span  class="info tit" style="font-size:15px;">
                         계정
                     </span>
                 </a>
@@ -90,7 +90,7 @@
 				
                 <!-- 팔로잉 -->
                 <a href="${home }/Favorites" class="tab_box_a mypage_info_list myPageMyFollowing">
-                    <span  class="following tit">
+                    <span  class="following tit" style="font-size:15px;">
                         관심정보
                     </span>
                 </a>
@@ -99,8 +99,8 @@
 				
 
                 <!-- 저장 된 채용 정보 -->
-                  <a href="${home }/SaveJobs" class="tab_box_a mypage_info_list myPageMyJob">
-                    <span class="job tit">
+                  <a href="${home }/SaveJobs" class="tab_box_a mypage_info_list myPageMyJob" style="background-color: #48c454;">
+                    <span class="job tit" style="font-size:15px; font-weight:bold; color: white;">
                         저장된 채용
                     </span>
                   </a>
@@ -127,7 +127,7 @@
             <h2>저장된 채용</h2>
             <ul>
                 <li class="active">
-                    <a href="/profile/settings">
+                    <a href="${home }/SaveJobs">
                         <span class="txt">저장된 채용</span>
                         <span class="num notranslate"></span>
                     </a>
