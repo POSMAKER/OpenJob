@@ -22,4 +22,5 @@ public interface CompanyDAO {
 	public int insertCompanyReviewInfo(CompanyReview cr);
 	public int insertCompanyReview(CompanyReview cr);
 	public List<Post> getPost(Integer companyno);
+	public List<CompanyReview> getCompanyReview(Integer companyno);
 }

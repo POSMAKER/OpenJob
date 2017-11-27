@@ -126,14 +126,14 @@
         <nav id="profile-left-menu">
             <h2>계정</h2>
             <ul>
-                <li class="active">
-                    <a href="/profile/settings">
+                <li class="">
+                    <a href="${home }/UserAcount">
                         <span class="txt">나의 계정</span>
                         <span class="num notranslate"></span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="/profile/password">
+                <li class="active">
+                    <a href="${home }/PasswordChange">
                         <span class="txt">비밀번호 변경</span>
                         <span class="num notranslate"></span>
                     </a>
@@ -141,7 +141,7 @@
                
                
                 <li class="">
-                  <a href="/profile/match">
+                  <a href="${home }/MemberOut">
                     <span class="txt">회원탈퇴</span>
                     <span class="num notranslate"></span>
                   </a>
@@ -158,7 +158,7 @@
             <div class="jpcont_wrap">
   <div class="layout_my_account myaccountcon">
     <div class="section_group">
-      <h3 class="tit">계정</h3>
+      <h3 class="tit">비밀번호 변경</h3>
 	  
 	  
       <section class="my_information">

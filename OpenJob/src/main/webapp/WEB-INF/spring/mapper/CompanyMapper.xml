@@ -141,4 +141,9 @@ VALUES
     #{recommandscore}, 
     #{futurescore});
 	</insert>
+	<select id="getCompanyReview" parameterType="Integer" resultType="com.open.job.DTO.CompanyReview">
+		SELECT * FROM CompanyReviewInfo
+		INNER JOIN CompanyReview USING(companyreviewNo)
+		WHERE companyNo = #{companyno}
+	</select>
 </mapper>

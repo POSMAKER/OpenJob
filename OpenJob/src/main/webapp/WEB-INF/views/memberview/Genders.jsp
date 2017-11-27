@@ -31,7 +31,7 @@
 </div>
 
 
-<form accept-charset="UTF-8" action="${home }/UserAcount" class="new_user" id="new_user" method="post">
+<form accept-charset="UTF-8" action="${home }/UserAcount" class="new_user" id="new_user" method="get">
 <div id="contents_wrap">
 <div id="contents">
 <div id="aboutYou" class="signup">

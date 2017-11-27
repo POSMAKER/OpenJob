@@ -21,4 +21,5 @@ public interface CompanyService {
 	public int insertReview(CompanyReview review);
 	public List<Post> getPost(Integer companyno);
 	public String getCompBaseBody(Integer companyno);
+	public List<CompanyReview> getCompanyReview(Integer companyno);
 }

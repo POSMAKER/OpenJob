@@ -34,7 +34,21 @@ public class MemberController {
 	@RequestMapping(value = "/UserAcount")
 	public String UserAcount() {
 
-		return "/memberview/MyAccount/UserAcount";
+		return "/memberview/UserAcount";
+	}
+	
+	
+	@RequestMapping(value = "/PasswordChange")
+	public String PasswordChange() {
+		
+		return "/memberview/MyAccount/PasswordChange";
+	}
+	
+	
+	@RequestMapping(value = "/MemberOut")
+	public String MemberOut() {
+		
+		return "/memberview/MyAccount/MemberOut";
 	}
 	
 	
