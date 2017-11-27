@@ -9,6 +9,6 @@ import com.open.job.DTO.Member;
 import com.open.job.DTO.Post;
 
 public interface MemberDAO {
-	public int inserMember(Member member);
+	public int insertMember(Member member);
 	public List<Member> getMemberList();
 }
