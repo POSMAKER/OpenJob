@@ -13,4 +13,5 @@ public interface SearchDAO {
 	public List<Company> getSearchCompanyList(Map<String, String> map); 
 	public List<Location> getLocation();
 	public List<Location> getSubLocation();
+	public List<Company> getQuickCompSearch(String searchword);
 }

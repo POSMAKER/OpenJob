@@ -55,9 +55,12 @@
 			<br/>
 			총 0 개의 기업 리뷰
 		</div>
-		<div
-			style="width: 100%; background-color: #ffffff; margin-bottom: 15px; padding:15px;"
-			align="left"></div>
+		<c:forEach var="review" items="${reviewLst}">
+			<div style="width: 100%; background-color: #ffffff; margin-bottom: 15px; padding:15px;"
+			align="left">
+			<%@include file="/WEB-INF/views/companyview/Viewsub/reviewView.jsp"%>
+			</div>
+		</c:forEach>
 	</div>
 	<!-- RIGHT -->
 	<div class="col-lg-4" align="center">

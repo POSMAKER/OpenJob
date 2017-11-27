@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.CompanyReview;
 import com.open.job.DTO.Employtype;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
 import com.open.job.DTO.sub.CompanyInfo;
+import com.open.job.DTO.sub.CompanyReviewInfo;
 import com.open.job.IDAO.CompanyDAO;
 import com.open.job.IService.CompanyService;
 
@@ -63,5 +65,37 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public List<Post> getPost(Integer companyno) {
 		return cdao.getPost(companyno);
+	}
+
+	@Override
+	public String getCompBaseBody(Integer companyno) {
+		Company comp = cdao.getCompanyBase(companyno);
+		if(comp==null) return "";
+		String body = 
+				"		<table style=\"padding:15px;\">\r\n" + 
+				"			<tr>\r\n" + 
+				"				<td><img alt=\"Img not found\"\r\n" + 
+				"					onerror=\"this.src='/job/companyimgs/0.jpg';\"\r\n" + 
+				"					src=\"/job/companyimgs/"+(comp.getThumbimg().equals("")? "0.jpg":comp.getThumbimg())+"\"\r\n" + 
+				"					style=\"width: 110px; height: 110px;\"></td>\r\n" + 
+				"				<td><span\r\n" + 
+				"					style=\"font-size: 20px; font-weight: bold; margin: 5px;\">&nbsp;&nbsp;"+comp.getCompanyname()+"</span>\r\n" + 
+				"				</td>\r\n" + 
+				"			</tr>\r\n" + 
+				"		</table>\r\n";
+		return body;
+	}
+
+	@Override
+	public int insertReview(CompanyReview review) {
+		int res1 = cdao.insertCompanyReviewInfo(review);
+		int res2 = cdao.insertCompanyReview(review);
+		return res1*res2;
+	}
+
+	@Override
+	public List<CompanyReview> getCompanyReview(Integer companyno) {
+		System.out.println( cdao.getCompanyReview(companyno));
+		return cdao.getCompanyReview(companyno);
 	}
 }

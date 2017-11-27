@@ -51,7 +51,7 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<Location> getLocation() {
-		
+	
 		return sdao.getLocation();
 	}
 
@@ -59,6 +59,16 @@ public class SearchServiceImpl implements SearchService {
 	public List<Location> getSubLocation() {
 		
 		return sdao.getSubLocation();
+	}
+
+	@Override
+	public String getQuickCompSearch(String searchword, String onclickfunction_name) {
+		String body = "";
+		List<Company> compLst = sdao.getQuickCompSearch(searchword);
+		for(Company comp:compLst) {
+			body += "<div style=\"width:100%; height:30px;\"><span style=\"width:100%; height:100%; display:block;\" onclick=\""+onclickfunction_name+"('"+comp.getCompanyno()+","+comp.getCompanyname()+"')\">"+comp.getCompanyname()+"</span></div>";
+		}
+		return body;
 	}
 	
 	
