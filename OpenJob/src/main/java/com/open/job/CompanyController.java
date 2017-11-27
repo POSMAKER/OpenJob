@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.open.job.DTO.Company;
 import com.open.job.DTO.CompanyReview;
+import com.open.job.DTO.InterviewReview;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Post;
+import com.open.job.DTO.USER;
 import com.open.job.DTO.sub.CompanyInfo;
 import com.open.job.IService.CompanyService;
 import com.open.job.common.CommonService;
@@ -31,12 +34,16 @@ public class CompanyController {
 	@Autowired
 	CommonService commServ;
 
+	//**********************SORTED***********************//
+	
+	
+	//**********************MIXED***********************//
 	// 기업 정보 페이지로 이동
 	// companyNo로 DB에서 불러와서 정보를 줌
 	@RequestMapping("/{companyNo:^[0-9]*$}/info")
 	public String showCompanyInfo(@PathVariable String companyNo, Model model) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
-		model.addAttribute("company", compServ.getCompanyBase(companyno));
+		model.addAttribute("companyno",companyno);
 		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyno));
 		model.addAttribute("frmoption","review");
 		model.addAttribute("infoactive", "active");
@@ -51,6 +58,7 @@ public class CompanyController {
 			Model model
 			) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
+		model.addAttribute("companyno",companyno);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		model.addAttribute("frmoption","review");
 		model.addAttribute("reviewactive", "active");
@@ -68,9 +76,14 @@ public class CompanyController {
 			Model model
 			) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
+		model.addAttribute("companyno",companyno);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		model.addAttribute("frmoption","interview");
 		model.addAttribute("interviewactive", "active");
+		model.addAttribute("jobcategoryLst", compServ.getJobcategory());
+		model.addAttribute("locLst", compServ.getLocation());
+		model.addAttribute("employtypeLst", compServ.getEmploytype());
+		model.addAttribute("interviewLst",compServ.getCompanyInterview(companyno));
 		return "companyview/companyInterview";
 	}
 	// 기업 공고 페이지로 이동
@@ -81,6 +94,7 @@ public class CompanyController {
 			Model model
 			) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
+		model.addAttribute("companyno",companyno);
 		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		model.addAttribute("postLst",compServ.getPost(companyno));
 		model.addAttribute("frmoption","post");
@@ -90,20 +104,56 @@ public class CompanyController {
 		model.addAttribute("employtypeLst", compServ.getEmploytype());
 		return "companyview/companyPost";
 }
+	@RequestMapping("/{companyNo:^[0-9]*$}/post/{postNo:^[0-9]*$}")
+	public String showPost(
+			@PathVariable String companyNo,
+			@PathVariable String postNo,
+			Model model
+			) {
+		Integer companyno = commServ.IntegerFilter(companyNo);
+		model.addAttribute("companyno",companyno);
+		Integer postno = commServ.IntegerFilter(postNo);
+		model.addAttribute("company", compServ.getCompanyBase(companyno));
+		model.addAttribute("post",compServ.getSinglePost(postno));
+		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyno));
+		return "companyview/postView";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/jobsubcategory", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String getJobsubcategory(@RequestParam String jobcategoryno) {
 		return compServ.getSubjobcategory(commServ.IntegerFilter(jobcategoryno));
+	}
+	@ResponseBody
+	@RequestMapping(value="/getsublocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String getsublocation(@RequestParam String locationcate) {
+		return compServ.getSublocation(commServ.IntegerFilter(locationcate));
 	}
 	
 	@RequestMapping(value= "/{frmName:^.+Form$}")
 	public String showform(@PathVariable String frmName) {
 		return "companyview/Form/"+frmName;
 	}
+	
+	@RequestMapping(value= "/test")
+	public String test(
+			Model model,
+			@RequestParam String use
+			) {
+		model.addAttribute("testattribute","WOW");
+		System.out.println(use);
+		return "companyview/test";
+	}
+	
 	@RequestMapping(value="/reviewProc", method=RequestMethod.POST)
 	public String reviewProc(@ModelAttribute CompanyReview review) {
 		compServ.insertReview(review);
 		return "redirect:/company/"+review.getCompanyno()+"/review";
+	}
+	@RequestMapping(value="/interviewProc", method=RequestMethod.POST)
+	public String interviewProc(@ModelAttribute InterviewReview interview) {
+		compServ.insertInterview(interview);
+		return "redirect:/company/"+interview.getCompanyno()+"/interview";
 	}
 	@RequestMapping(value="/postProc", method=RequestMethod.POST)
 	public String postProc(@ModelAttribute Post post) {
@@ -124,4 +174,29 @@ public class CompanyController {
 			) {
 		return "true";
 	}
+	//****************FRAGMENTS*******************//
+	@RequestMapping(value="/frag_companytop")
+	public String frag_companytop(
+			@RequestParam Integer companyno,
+			Model model
+			) {
+		return "companyview/sub/companytop";
+	};
+	
+	@RequestMapping(value="/frag_companytitle")
+	public String frag_companytitle(
+			@RequestParam Integer companyno,
+			Model model
+			) {
+		model.addAttribute("company", compServ.getCompanyBase(companyno));
+		return "companyview/sub/companytitle";
+	};
+	
+	@RequestMapping(value="/frag_companynavi")
+	public String frag_companynavi(
+			@RequestParam Integer companyno,
+			Model model
+			) {
+		return "companyview/sub/companyNavi";
+	};
 }

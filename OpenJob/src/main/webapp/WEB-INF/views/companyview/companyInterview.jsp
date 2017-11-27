@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:if test="${company==null }">
-<script>
-	alert("기업 정보가 없습니다.");
-	window.location.href='${home}/';
-</script>
-</c:if>
+<!-- 예외 처리 -->
+
 <head>
 <title>${company.companyname }</title>
+<style>
+ body.modal-open {
+    overflow: hidden;
+    position:fixed;
+    width: 100%;
+}
+</style>
 </head>
-<%@include file="/WEB-INF/views/companyview/sub/companytop.jspf" %>
+<!-- NavBar -->
+<%@include file="/WEB-INF/views/common/menubar.jsp"%>
+<!-- CompanyTop -->
+<c:import url="/company/frag_companytop">
+	<c:param name="companyno" value="${companyno }"/>
+</c:import>
 <div class="row" style="padding-top: 15px;">
 	<!-- LEFT -->
 	<div class="col-lg-8" style="margin-bottom: 15px;" align="center">
@@ -53,11 +61,15 @@
 			</select>
 			<br/>
 			<br/>
-			총 0 개의 기업 리뷰
+			총 ${fn:length(interviewLst) } 개의 기업 리뷰
 		</div>
-		<div
-			style="width: 100%; background-color: #ffffff; margin-bottom: 15px; padding:15px;"
-			align="left"></div>
+		<c:forEach var="interview" items="${interviewLst}">
+			<div
+				style="width: 100%; background-color: #ffffff; margin-bottom: 15px; padding: 15px;"
+				align="left">
+				<%@include file="/WEB-INF/views/companyview/Viewsub/interviewView.jsp"%>
+			</div>
+		</c:forEach>
 	</div>
 	<!-- RIGHT -->
 	<div class="col-lg-4" align="center">

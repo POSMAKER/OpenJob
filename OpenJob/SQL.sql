@@ -9,8 +9,11 @@ SELECT * FROM CompanyReview
 ALTER TABLE CompanyReview CHANGE balancescoe balancescore VARCHAR(8) NOT NULL;
 
 SELECT * FROM CompanyReviewInfo
+SELECT * FROM CompanyReview
+
+DELETE FROM CompanyReview WHERE companyreviewNo = 6;
 
 Delete FROM  CompanyReviewInfo WHERE companyNo = 32
 
-
+ALTER TABLE InterviewReview CHANGE reviewNo interviewNo INT NOT NULL;
 SELECT * FROM Compan

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.open.job.DTO.Company;
 import com.open.job.DTO.CompanyReview;
 import com.open.job.DTO.Employtype;
+import com.open.job.DTO.InterviewReview;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
@@ -95,7 +96,41 @@ public class CompanyServiceImpl implements CompanyService{
 
 	@Override
 	public List<CompanyReview> getCompanyReview(Integer companyno) {
-		System.out.println( cdao.getCompanyReview(companyno));
 		return cdao.getCompanyReview(companyno);
+	}
+
+	@Override
+	public List<InterviewReview> getCompanyInterview(Integer companyno) {
+		return cdao.getCompanyInterview(companyno);
+	}
+
+	@Override
+	public int insertInterview(InterviewReview interview) {
+		int res1 = cdao.insertInterviewReviewInfo(interview);
+		int res2 = cdao.insertInterviewReview(interview);
+		return res1*res2;
+	}
+
+	@Override
+	public Post getSinglePost(Integer postno) {
+		return cdao.getSinglePost(postno);
+	}
+
+	@Override
+	public String getSublocation(Integer locationcate) {
+			List<Location> locationlist =  cdao.getSublocation(locationcate);
+			String body ="";
+			body += "<option value=\"\" selected>세부 근무지를 선택해 주세요</option>";
+			for(Location l : locationlist) {
+				if(l.getSublocation()==null) {
+					l.setSublocation("");
+				}else {
+				l.setLocation(l.getLocation()+" ");
+				l.setSublocation(l.getSublocation());
+				}
+				body += "<option value=\""+l.getLocation()+l.getSublocation()+"\">"+l.getSublocation()+"</option>";
+				body += "\r\n";
+			}
+		return body;
 	}
 }

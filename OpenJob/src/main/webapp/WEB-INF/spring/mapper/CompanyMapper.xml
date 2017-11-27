@@ -28,6 +28,12 @@
 		Where
 		sublocation IS null
 	</select>
+	<select id="getSublocation" parameterType="Integer" resultType="com.open.job.DTO.Location">
+		Select * From Location
+		Where locationNo &gt;=
+		#{locationno} AND locationNo &lt;
+		#{locationno} + 100
+	</select>
 	<select id="getEmploytype" resultType="com.open.job.DTO.Employtype">
 		Select * From Employtype
 	</select>
@@ -82,7 +88,7 @@
 		FROM Post
 		WHERE companyNo = #{companyno}
 	</select>
-	<insert id="insertCompanyReviewInfo">
+	<insert id="insertCompanyReviewInfo" parameterType="com.open.job.DTO.CompanyReview">
 		<selectKey keyProperty="companyreviewno" resultType="Integer"
 			order="BEFORE">
 			SELECT IFNULL(MAX(companyreviewNo),0)+1 as companyreviewNo FROM CompanyReviewInfo
@@ -108,7 +114,7 @@
 		#{employtype},
 		#{location});
 	</insert>
-	<insert id="insertCompanyReview">
+	<insert id="insertCompanyReview" parameterType="com.open.job.DTO.CompanyReview">
 		INSERT INTO CompanyReview
     (companyreviewNo,
     summary, 
@@ -145,5 +151,64 @@ VALUES
 		SELECT * FROM CompanyReviewInfo
 		INNER JOIN CompanyReview USING(companyreviewNo)
 		WHERE companyNo = #{companyno}
+	</select>
+	<select id="getCompanyInterview" parameterType="Integer" resultType="com.open.job.DTO.InterviewReview">
+	 SELECT * FROM InterviewReviewInfo
+	 INNER JOIN InterviewReview USING(interviewNo)
+	 WHERE companyNo = #{companyno}
+	</select>
+	<insert id="insertInterviewReviewInfo" parameterType="com.open.job.DTO.InterviewReview">
+		<selectKey keyProperty="interviewno" resultType="Integer"
+			order="BEFORE">
+			SELECT IFNULL(MAX(interviewNo),0)+1 as interviewNo FROM InterviewReviewInfo
+		</selectKey>
+		INSERT INTO InterviewReviewInfo
+    (interviewNo,
+    companyNo, 
+    memberNo, 
+    writeDate, 
+    career, 
+    position, 
+    jobcategory, 
+    subjobcategory, 
+    employtype, 
+    location)
+VALUES
+    (#{interviewno},
+    #{companyno}, 
+    #{memberno}, 
+    NOW(), 
+    #{career}, 
+    #{position}, 
+    #{jobcategory}, 
+    #{subjobcategory},
+    #{employtype}, 
+    #{location});
+	</insert>
+	<insert id="insertInterviewReview" parameterType="com.open.job.DTO.InterviewReview">
+	INSERT INTO InterviewReview
+    (interviewNo,
+    interviewProcess, 
+    interviewQuestion, 
+    interviewAnswer, 
+    salaryProcess, 
+    experience, 
+    interviewLevel, 
+    successed, 
+    interviewRoot)
+VALUES
+    (#{interviewno},
+    #{interviewprocess}, 
+    #{interviewquestion}, 
+    #{interviewanswer}, 
+    #{salaryprocess}, 
+    #{experience}, 
+    #{interviewlevel}, 
+    #{successed}, 
+    #{interviewroot});
+	</insert>
+	<select id="getSinglePost" parameterType="Integer" resultType="com.open.job.DTO.Post">
+	SELECT * FROM Post
+	WHERE postNo = #{postNo}
 	</select>
 </mapper>

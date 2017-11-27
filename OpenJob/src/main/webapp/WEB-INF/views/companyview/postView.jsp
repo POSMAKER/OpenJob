@@ -1,32 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!-- 예외 처리 -->
-
-<!-- HEAD -->
+    pageEncoding="UTF-8"%>
+<fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
+	integerOnly="true" var="nowdate" />
+<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
+						integerOnly="true" var="enddate" />
 <head>
-<title>${companyInfo.companyname }</title>
-<style>
- body.modal-open {
-    overflow: hidden;
-    position:fixed;
-    width: 100%;
-}
-</style>
+<title>${company.companyname } [채용]</title>    
 </head>
-<!-- NavBar -->
-<!-- NavBar -->
-<%@include file="/WEB-INF/views/common/menubar.jsp"%>
-<!-- CompanyTop -->
-<c:import url="/company/frag_companytop">
-	<c:param name="companyno" value="${companyno }"/>
-</c:import>
-
-
+<c:import url="/company/frag_companytop"/>
 
 <div class="row" style="padding: 15px;">
 	<!-- LEFT -->
-	<div class="col-lg-8"
-		style="background-color: #ffffff; margin-bottom: 15px;" align="center">
+	<div class="col-lg-8" >
+	<div style="padding-bottom:15px;">
+		<span style="background-color: white; padding:7px; font-size:14px; margin-right:5px;">${post.jobcategory }</span>
+		<span style="background-color: white; padding:7px; font-size:14px; margin-right:5px;">${post.subjobcategory }</span>
+		<span style="background-color: white; padding:7px; font-size:14px; margin-right:5px;">${post.employtype }</span>
+		<span style="background-color: white; padding:7px; font-size:14px; margin-right:5px;">${post.location }</span>
+	</div>
+	<div style="background-color: #ffffff; margin-bottom: 15px;" align="left">
+		기업소개<br>
+		${post.companyintro }<br><br>
+		주요업무<br>
+		${post.mainduty }<br><br>
+		지원자격<br>
+		${post.requirement }<br><br>
+		채용절차<br>
+		${post.process }<br><br>
+		문의처<br>
+		${post.personcharged }<br>
+		${post.emailcharged }<br>
+		${post.phonecharged }<br><br>
+		상세정보<br>
+		${post.educationrecord }<br>
+		${post.salary }<br>
+		${post.position }<br>
+		${post.duty }<br>
+		${post.career }<br><br>
+	</div>
+	<div style="background-color: #ffffff; margin-bottom: 15px;" align="center">
 		<div class="row" style="margin: 15px;">
 			<div class="col-lg-6">
 				<div class="row"><span style="font-weight: bold">웹사이트</span></div>
@@ -67,13 +79,11 @@
 				<div class="row">${companyInfo.ceo }</div>
 			</div>
 		</div>
-		<div class="row" style="margin: 15px;">
-			<div>${companyInfo.companyinfo }</div>
-		</div>
+	</div>
 	</div>
 	<!-- RIGHT -->
 	<div class="col-lg-4" align="center" style="padding-right:0px;">
-		<img src="${home }/imgs/AD1.jpg"
+		<img src="${home }/imgs/AD5.png"
 			style="width: 100%; min-width: 145px; max-width: 320px;">
 	</div>
 </div>

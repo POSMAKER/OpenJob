@@ -2,12 +2,8 @@
 	pageEncoding="UTF-8"%>
 <fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
 	integerOnly="true" var="nowdate" />
-<c:if test="${company==null }">
-	<script>
-		alert("기업 정보가 없습니다.");
-		window.location.href = '${home}/';
-	</script>
-</c:if>
+<!-- 예외 처리 -->
+
 <head>
 <title>${company.companyname }</title>
 <style>
@@ -22,9 +18,19 @@ span.subtitle{
 	color:#a6a6a6;
 	font-size: 13px;
 }
+ body.modal-open {
+    overflow: hidden;
+    position:fixed;
+    width: 100%;
+}
 </style>
 </head>
-<%@include file="/WEB-INF/views/companyview/sub/companytop.jspf"%>
+<!-- NavBar -->
+<%@include file="/WEB-INF/views/common/menubar.jsp"%>
+<!-- CompanyTop -->
+<c:import url="/company/frag_companytop">
+	<c:param name="companyno" value="${companyno }"/>
+</c:import>
 <div class="row" style="padding-top: 15px;">
 	<!-- LEFT -->
 	<div class="col-lg-12" style="margin-bottom: 15px;" align="center">

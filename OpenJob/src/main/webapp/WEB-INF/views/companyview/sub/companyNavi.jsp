@@ -41,7 +41,7 @@ body {
 	padding-right: 0 !important
 }
 </style>
-<c:url var="compurl" value="/company/${company.companyno }" />
+<c:url var="compurl" value="/company/${companyno }" />
 <div class="row flex-row-reverse">
 	<div class="col-lg-2" style="height: 0px;"></div>
 	<div class="col-lg-2" style="padding: 15px;" align="center">
