@@ -54,4 +54,10 @@
 	 />
 	 
 	 
+	 <bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="MemberMapper"
+	c:mapperInterface="com.open.job.IDAO.MemberDAO"
+	p:sqlSessionFactory-ref="sqlSessionFactoryBean"
+	/>
+	 
+	 
 </beans>

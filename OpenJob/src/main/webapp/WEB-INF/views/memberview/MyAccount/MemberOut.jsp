@@ -15,6 +15,7 @@
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
 
+<!--  
 <script>
     $(document).ready(function() {
         JobUI.desktop.myPageMyInformationMenu.initLnb(Option);
@@ -40,7 +41,7 @@
 
     $.get("/emails");
 </script>
-
+-->
 
 </head>
 
@@ -157,36 +158,26 @@
         <div id="mainContents" class="jpcont_rgt">
             <div class="jpcont_wrap">
   <div class="layout_my_account myaccountcon">
-    <div class="section_group">
-      <h3 class="tit">회원탈퇴</h3>
-	  
-	  
-      <section class="my_information">
-        <div class="my_information_group">
-          <dl class="email">
-            <dt>기본정보</dt>
-            <dd>샘플입니다.<br /> 
-			샘플입니다.<br /> 
-			샘플입니다. 
-			</dd>
-          </dl>
-          <!--email_list.scss.erb-->
-<ul class="email_list">
-</ul>
- 
+  
+  
+<div class="section_group">
+<h3 class="tit">회원탈퇴</h3>	  	  
+<section class="my_information">
+
+<div class="myaccountcon_bottom" style="margin-left: 185; margin-bottom: 100">
+<div class="member_out" style="font-size: 17; margin-top: 100">오픈잡을 더 이상 이용하지 않는다면 
+<a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>            
 </div>
+</div>
+
 </section>
 </div> <!--//section_group-->
 
 
 
-<!--
-<div class="myaccountcon_bottom">
-  <div class="member_out">잡플래닛을 더 이상 이용하지 않는다면 
-        <a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>
-  </div>
-</div>
--->
+
+
+
 </div>     
 </div>        
 </div>

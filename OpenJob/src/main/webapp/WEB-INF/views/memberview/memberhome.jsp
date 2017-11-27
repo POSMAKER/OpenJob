@@ -39,7 +39,7 @@ body {
 <body >
 <%@include file="/WEB-INF/views/common/menubar.jsp" %>    
 
-<form action="${home }/TermsUse" method="post">
+<form action="${home }/insertproc" method="post">
     <div class="signUpstep1_wrap" style="margin-top: 150px;">
         <div class="sign_wrap">
             <h2 align="center">회원가입</h2>
@@ -48,11 +48,11 @@ body {
                 <fieldset>
                     <label class="email">
                         <span class="tit">이메일 주소</span>
-                        <input autofocus="autofocus" data-valid="false" id="user_email" name="" placeholder="이메일 주소" type="email" value="" />
+                        <input autofocus="autofocus" data-valid="false" id="user_email" name="email" placeholder="이메일 주소" type="email" value="" />
                     </label>
                     
                     <label class="password">
-                        <input id="userpassword" name="" placeholder="비밀번호 (8자리 이상)" type="password" value="" />
+                        <input id="userpassword" name="password" placeholder="비밀번호 (8자리 이상)" type="password" value="" />
                     </label>
                     
                     <label class="password_check">
@@ -73,7 +73,7 @@ body {
         </section>
         
     </div>
-
+<a href="${home }/TermsUse">다음페이지</a>
 </form>    
 
 </body>
