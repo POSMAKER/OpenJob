@@ -27,7 +27,10 @@
 				</c:import>
 			</c:otherwise>
 		</c:choose>
-		<div style="background-color: #e6e6e6;">
-			<div class="row">
-				<div class="col-lg-2"></div>
-				<div class="col-lg-8">
+		<!-- Modal Form -->
+		<c:import url="/company/${frmoption}Form">
+			<c:param name="memberno" value="${USER.memberno }" />
+			<c:param name="companyno" value="${USER.companyno }" />
+			<c:param name="companyname" value="${USER.companyname }" />
+			<c:param name="memberemail" value="${USER.memberemail }" />
+		</c:import>

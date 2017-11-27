@@ -81,17 +81,9 @@ body {
 </div>
 
 
-<c:choose>
-	<c:when test="${frmoption eq 'review'}">
-		<%@include file="/WEB-INF/views/companyview/Form/reviewForm.jsp"%>
-	</c:when>
-	<c:when test="${frmoption eq 'interview'}">
-		<%@include file="/WEB-INF/views/companyview/Form/interviewForm.jsp"%>
-	</c:when>
-	<c:when test="${frmoption eq 'post'}">
-		<%@include file="/WEB-INF/views/companyview/Form/postForm.jsp"%>
-	</c:when>
-</c:choose>
+
+
+
 
 
 

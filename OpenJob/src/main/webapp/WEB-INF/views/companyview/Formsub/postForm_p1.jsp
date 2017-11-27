@@ -156,9 +156,7 @@
 			$.ajax({
 				url : '${home}/company/getsublocation',
 				type : 'POST',
-				data : {
-					"locationcate" : locationcate
-				},
+				data : {"locationcate" : locationcate},
 				success : function(result) {
 					$("#location").html(result);
 				}

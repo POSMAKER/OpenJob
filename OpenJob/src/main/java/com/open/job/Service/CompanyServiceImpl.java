@@ -122,13 +122,7 @@ public class CompanyServiceImpl implements CompanyService{
 			String body ="";
 			body += "<option value=\"\" selected>세부 근무지를 선택해 주세요</option>";
 			for(Location l : locationlist) {
-				if(l.getSublocation()==null) {
-					l.setSublocation("");
-				}else {
-				l.setLocation(l.getLocation()+" ");
-				l.setSublocation(l.getSublocation());
-				}
-				body += "<option value=\""+l.getLocation()+l.getSublocation()+"\">"+l.getSublocation()+"</option>";
+				body += "<option value=\""+l.getLocation()+(l.getSublocation()==null? "":" "+l.getSublocation())+"\">"+(l.getSublocation()==null? "전체":l.getSublocation())+"</option>";
 				body += "\r\n";
 			}
 		return body;
