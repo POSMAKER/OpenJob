@@ -43,4 +43,8 @@
 		SELECT companyNo, companyName FROM Company
 		WHERE companyName LIKE CONCAT('%',#{searchword},'%')
 	</select>
+	<select id="getResult" parameterType="String" resultType="com.open.job.DTO.Post">
+		SELECT * FROM Post
+		WHERE location = #{Location}
+	</select>
 </mapper>

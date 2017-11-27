@@ -18,7 +18,7 @@
 								<tr>
 									<td rowspan="3" style="padding:15px;"><a href="${home }/company/${company.companyno }/info"><img
 											src="${home }/companyimgs/${company.thumbimg }"
-											style="width: 100px;"></a></td>
+											style="width: 100px; height: 100px;"></a></td>
 									<td colspan="2" style="font-weight:bold;"><a href="${home }/company/${company.companyno }/info">${company.companyname }</a></td>
 								</tr>
 								<tr>

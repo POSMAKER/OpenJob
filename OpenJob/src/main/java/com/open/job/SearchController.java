@@ -90,12 +90,20 @@ public class SearchController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/buttonVal", method=RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String buttonVal(Model model, @RequestParam(value = "subLocationName")String subLocationName) {
-		String test= "";
-		logger.info(subLocationName);
-		return test;
+	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String subLocation(Model model, @RequestParam(value = "subLocationName")String subLocationName) {
+		String subLocation = subLocationName;
+		return subLocation;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/Location", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String Location(Model model, @RequestParam(value = "LocationName")String LocationName) {
+		String Location = LocationName;
+		logger.info(LocationName);
+		return searchServ.getResult(Location);
+	}
+
 	
 	// searchword는 검색 단어, onclickfunction_name은 해당 단어가 클릭되었을 때 발생하는 Javascript 함수의 이름을 지정.
 	@ResponseBody

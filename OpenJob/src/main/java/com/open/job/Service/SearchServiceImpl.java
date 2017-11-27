@@ -70,6 +70,17 @@ public class SearchServiceImpl implements SearchService {
 		}
 		return body;
 	}
+
+	@Override
+	public String getResult(String Location) {
+		List<Post> lst = sdao.getResult(Location);
+		String str = "";
+		for(Post post:lst) {
+			str += "<span>"+post.getLocation()+"</span>";
+			str += "<span>"+post.getCompanyno()+"</span>";
+		}
+		return str;
+	}
 	
 	
 
