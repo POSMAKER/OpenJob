@@ -80,8 +80,8 @@
             <div class="table_row_div">
 			
                 <!-- 내 정보 -->
-                <a href="${home }/UserAcount" class="tab_box_a mypage_info_list myPageMyInformationMyAccount">
-                    <span  class="info tit">
+                <a href="${home }/UserAcount" class="tab_box_a mypage_info_list myPageMyInformationMyAccount" style="background-color: #48c454;">
+                    <span  class="info tit" style="font-size:15px; font-weight:bold; color: white;">
                         계정
                     </span>
                 </a>
@@ -90,7 +90,7 @@
 				
                 <!-- 팔로잉 -->
                 <a href="${home }/Favorites" class="tab_box_a mypage_info_list myPageMyFollowing">
-                    <span  class="following tit">
+                    <span  class="following tit" style="font-size:15px;">
                         관심정보
                     </span>
                 </a>
@@ -100,7 +100,7 @@
 
                 <!-- 저장 된 채용 정보 -->
                   <a href="${home }/SaveJobs" class="tab_box_a mypage_info_list myPageMyJob">
-                    <span class="job tit">
+                    <span class="job tit" style="font-size:15px;">
                         저장된 채용
                     </span>
                   </a>
@@ -133,7 +133,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="${home }/PasswordChange">
+                    <a href="${home }/PaswordChange">
                         <span class="txt">비밀번호 변경</span>
                         <span class="num notranslate"></span>
                     </a>
