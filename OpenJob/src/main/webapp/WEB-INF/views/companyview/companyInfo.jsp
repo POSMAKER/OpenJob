@@ -4,7 +4,6 @@
 
 <!-- HEAD -->
 <head>
-<title>${companyInfo.companyname }</title>
 <style>
 body.modal-open {
 	overflow: hidden;

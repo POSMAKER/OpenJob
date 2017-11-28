@@ -212,8 +212,8 @@ VALUES
 	SELECT * FROM Post
 	WHERE postNo = #{postNo}
 	</select>
-	<select id="countTable" parameterType="Map" resultType="Integer">
-		SELECT COUNT(*) FROM ${tablename}
-		WHERE companyNo = #{companyno}
+	<select id="countTable" parameterType="map" resultType="Integer">
+		SELECT IFNULL(COUNT(*),0) FROM ${arg0}
+		WHERE companyNo = #{arg1}
 	</select>
 </mapper>

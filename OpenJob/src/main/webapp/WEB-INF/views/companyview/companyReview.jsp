@@ -4,7 +4,6 @@
 <!-- 예외 처리 -->
 
 <head>
-<title>${company.companyname }</title>
 <style>
 body.modal-open {
 	overflow: hidden;
@@ -17,7 +16,7 @@ body.modal-open {
 <%@include file="/WEB-INF/views/common/menubar.jsp"%>
 <!-- CompanyTop -->
 <c:import url="/company/frag_companytop">
-	<c:param name="companyno" value="${companyno }" />
+<c:param name="companyno" value="${companyno}"/>
 </c:import>
 <div style="background-color: #e6e6e6;">
 	<div class="row">
@@ -30,8 +29,8 @@ body.modal-open {
 					<div
 						style="width: 100%; background-color: #ffffff; margin-bottom: 15px;"
 						align="left">
-						전체 리뷰 통계<br> <br> <br> <br> <br> <br>
-						<br> <br> <br> <br> <br> <br> <br>
+						<c:import url="/company/reviewStat">
+						</c:import>
 					</div>
 					<div>
 						<img src="${home }/imgs/AD3.jpg"

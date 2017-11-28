@@ -41,6 +41,14 @@ body {
 	padding-right: 0 !important
 }
 </style>
+<title>${company.companyname}
+<c:choose>
+<c:when test="${infoactive eq 'active'}">[기업정보]</c:when>
+<c:when test="${reviewactive  eq 'active'}">[기업리뷰]</c:when>
+<c:when test="${interviewactive  eq 'active'}">[면접후기]</c:when>
+<c:when test="${postactive  eq 'active'}">[채용공고]</c:when>
+</c:choose>
+</title>
 <c:url var="compurl" value="/company/${companyno }" />
 <div class="row flex-row-reverse">
 	<div class="col-lg-2" style="height: 0px;"></div>
@@ -51,10 +59,10 @@ body {
 				<c:when test="${frmoption eq 'review'}">
 					<span style="font-weight: bold; font-size: 18px;">기업 리뷰 작성</span>
 				</c:when>
-				<c:when test="${frmoption == 'interview'}">
+				<c:when test="${frmoption eq 'interview'}">
 					<span style="font-weight: bold; font-size: 18px;">면접 후기 작성</span>
 				</c:when>
-				<c:when test="${frmoption == 'post'}">
+				<c:when test="${frmoption eq 'post'}">
 					<span style="font-weight: bold; font-size: 18px;">채용 공고 등록</span>
 				</c:when>
 			</c:choose>
@@ -67,13 +75,16 @@ body {
 				href="${compurl }/info">Info<br> 기업정보
 			</a></li>
 			<li class="mynaviitem"><a class="mylink ${reviewactive}"
-				href="${compurl}/review">0<br> 기업리뷰
+				href="${compurl}/review"><span
+							style="color: #ff4d4d;font-weight: bold">${reviewcount }</span><br> 기업리뷰
 			</a></li>
 			<li class="mynaviitem"><a class="mylink ${interviewactive}"
-				href="${compurl}/interview">0<br> 면접후기
+				href="${compurl}/interview"><span
+							style="color: #ff4d4d;font-weight: bold">${interviewcount }</span><br> 면접후기
 			</a></li>
 			<li class="mynaviitem"><a class="mylink ${postactive}"
-				href="${compurl}/post">0<br> 채용공고
+				href="${compurl}/post"><span
+							style="color: #ff4d4d;font-weight: bold">${postcount }</span><br> 채용공고
 			</a></li>
 		</ul>
 	</div>

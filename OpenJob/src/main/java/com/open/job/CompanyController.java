@@ -101,12 +101,6 @@ public class CompanyController {
 
 	@RequestMapping(value = "/{frmName:^.+Form$}")
 	public String showform(@PathVariable String frmName, Model model) {
-		USER USER = new USER();
-		USER.setMemberno("1");
-		USER.setCompanyno("13");
-		USER.setCompanyname("씨제이푸드빌");
-		USER.setMemberemail("kumasyrwork@cjfood.co.kr");
-		model.addAttribute("USER", USER);
 		model.addAttribute("jobcategoryLst", compServ.getJobcategory());
 		model.addAttribute("locLst", compServ.getLocation());
 		model.addAttribute("employtypeLst", compServ.getEmploytype());
@@ -170,13 +164,13 @@ public class CompanyController {
 
 	// ****************FRAGMENTS*******************//
 	@RequestMapping(value = "/frag_companytop")
-	public String frag_companytop(@RequestParam Integer companyno) {
+	public String frag_companytop(@RequestParam Integer companyno,Model model) {
+		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		return "companyview/sub/companytop";
 	};
 
 	@RequestMapping(value = "/frag_companytitle")
 	public String frag_companytitle(@RequestParam Integer companyno, Model model) {
-		model.addAttribute("company", compServ.getCompanyBase(companyno));
 		return "companyview/sub/companytitle";
 	};
 
@@ -185,7 +179,11 @@ public class CompanyController {
 		int[] tablecounts = compServ.getCountInfo(companyno);
 		model.addAttribute("reviewcount",tablecounts[0]);
 		model.addAttribute("interviewcount",tablecounts[1]);
-		model.addAttribute("reviewcount",tablecounts[2]);
+		model.addAttribute("postcount",tablecounts[2]);
 		return "companyview/sub/companyNavi";
+	};
+	@RequestMapping(value = "/reviewStat")
+	public String reviewStat(Model model) {
+		return "companyview/stat/reviewStat";
 	};
 }

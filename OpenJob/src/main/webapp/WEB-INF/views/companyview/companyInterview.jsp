@@ -3,7 +3,6 @@
 <!-- 예외 처리 -->
 
 <head>
-<title>${company.companyname }</title>
 <style>
 body.modal-open {
 	overflow: hidden;
