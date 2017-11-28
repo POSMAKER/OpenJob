@@ -23,14 +23,9 @@
 			</c:when>
 			<c:otherwise>
 				<c:import url="/company/frag_companynavi">
-					<c:param name="companyno" value="${companyno }" />
+					<c:param name="companyno_now" value="${companyno }" />
 				</c:import>
+				<!-- Modal Form -->
+				<c:import url="/company/${frmoption}Form" />
 			</c:otherwise>
 		</c:choose>
-		<!-- Modal Form -->
-		<c:import url="/company/${frmoption}Form">
-			<c:param name="memberno" value="${USER.memberno }" />
-			<c:param name="companyno" value="${USER.companyno }" />
-			<c:param name="companyname" value="${USER.companyname }" />
-			<c:param name="memberemail" value="${USER.memberemail }" />
-		</c:import>
