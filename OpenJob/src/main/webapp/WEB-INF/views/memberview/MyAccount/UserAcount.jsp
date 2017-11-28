@@ -15,6 +15,18 @@
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
 
+<style type="text/css">
+hr.style-two {
+    border: 1;
+    border-bottom: 0px;
+    background: #999;
+}
+
+
+</style>
+
+
+
 <!--  
 <script>
     $(document).ready(function() {
@@ -161,23 +173,23 @@
   <div class="layout_my_account myaccountcon">
     <div class="section_group">
       <h3 class="tit">나의 계정</h3>
+	  <hr class="style-two">
 	  
-	  
-      <section class="my_information">
+
         <div class="my_information_group">
-          <dl class="email">
-            <dt>기본정보</dt>
-            <dd>샘플입니다.<br /> 
+          
+            기본정보
+            <hr class="style-two">
+            샘플입니다.<br /> 
 			샘플입니다.<br /> 
 			샘플입니다. 
-			</dd>
-          </dl>
-          <!--email_list.scss.erb-->
-<ul class="email_list">
-</ul>
- 
+			
+
 </div>
-</section>
+
+
+
+
 </div> <!--//section_group-->
 
 
