@@ -44,4 +44,6 @@ public interface CompanyDAO {
 	public Post getSinglePost(Integer postno);
 	
 	public List<Location> getSublocation(Integer locationcate);
+	
+	public int countTable(String tablename,Integer companyno);
 }

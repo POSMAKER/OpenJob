@@ -3,10 +3,13 @@ package com.open.job;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +38,8 @@ public class CompanyController {
 	CommonService commServ;
 
 	// **********************SORTED***********************//
-
+	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
+	
 	// **********************MIXED***********************//
 	// 기업 정보 페이지로 이동
 	// companyNo로 DB에서 불러와서 정보를 줌
@@ -96,7 +100,12 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/{frmName:^.+Form$}")
-	public String showform(@PathVariable String frmName, @ModelAttribute USER USER, Model model) {
+	public String showform(@PathVariable String frmName, Model model) {
+		USER USER = new USER();
+		USER.setMemberno("1");
+		USER.setCompanyno("13");
+		USER.setCompanyname("씨제이푸드빌");
+		USER.setMemberemail("kumasyrwork@cjfood.co.kr");
 		model.addAttribute("USER", USER);
 		model.addAttribute("jobcategoryLst", compServ.getJobcategory());
 		model.addAttribute("locLst", compServ.getLocation());
@@ -124,10 +133,14 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/postProc", method = RequestMethod.POST)
-	public String postProc(@ModelAttribute Post post) {
-		System.out.println("WOWOWWOWOWO");
+	public String postProc(@ModelAttribute Post post, BindingResult errors) {
+		if(errors.hasErrors()) {
+			for(ObjectError oe: errors.getAllErrors()) {
+				logger.error(oe.getDefaultMessage());
+			}
+		}
 		compServ.insertPost(post);
-		return "redirect:/company/" + post.getCompanyno() + "/post";
+		return "redirect:/company/"+post.getCompanyno() +"/post";
 	}
 
 	@ResponseBody
@@ -169,6 +182,10 @@ public class CompanyController {
 
 	@RequestMapping(value = "/frag_companynavi")
 	public String frag_companynavi(@RequestParam Integer companyno, Model model) {
+		int[] tablecounts = compServ.getCountInfo(companyno);
+		model.addAttribute("reviewcount",tablecounts[0]);
+		model.addAttribute("interviewcount",tablecounts[1]);
+		model.addAttribute("reviewcount",tablecounts[2]);
 		return "companyview/sub/companyNavi";
 	};
 }

@@ -127,4 +127,14 @@ public class CompanyServiceImpl implements CompanyService{
 			}
 		return body;
 	}
+
+	@Override
+	public int[] getCountInfo(Integer companyno) {
+		String[] tablenames = {"CompanyReviewInfo","InterviewReviewInfo","Post"};
+		int[] tablecounts = new int[tablenames.length];
+		for(int i=0; i<tablenames.length;i++) {
+			tablecounts[i] = cdao.countTable(tablenames[i], companyno);
+		}
+		return tablecounts;
+	}
 }

@@ -27,4 +27,5 @@ public interface CompanyService {
 	public List<CompanyReview> getCompanyReview(Integer companyno);
 	public List<InterviewReview> getCompanyInterview(Integer companyno);
 	public Post getSinglePost(Integer postNo);
+	public int[] getCountInfo(Integer companyno);
 }

@@ -4,6 +4,7 @@
 	<select id="getCompanyInfo" parameterType="Integer"
 		resultType="com.open.job.DTO.sub.CompanyInfo">
 		Select * From CompanyInfo
+		Inner Join Company Using(companyNo)
 		Where companyNo = #{companyno}
 	</select>
 	<select id="getCompanyBase" parameterType="Integer"
@@ -210,5 +211,9 @@ VALUES
 	<select id="getSinglePost" parameterType="Integer" resultType="com.open.job.DTO.Post">
 	SELECT * FROM Post
 	WHERE postNo = #{postNo}
+	</select>
+	<select id="countTable" parameterType="Map" resultType="Integer">
+		SELECT COUNT(*) FROM ${tablename}
+		WHERE companyNo = #{companyno}
 	</select>
 </mapper>
