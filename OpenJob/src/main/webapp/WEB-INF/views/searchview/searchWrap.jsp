@@ -10,7 +10,14 @@
 			if ($(this).is(":checked")) {
 				$(this).prop("checked", true);
 				
-				var subLocationName = $('.location input[type=checkbox]:checked').map(function() {
+				//전체버튼
+				$('input:checkbox[id=sub' + locaId.substring(8, locaId.length) + ']').prop("checked", true);
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("background", "#0099ff");
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("border-radius", "12px");
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("font-weight", "bold");
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("color", "#ffffff");
+				
+				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
 					return this.value;
 				}).get().join(",");
 				
@@ -25,6 +32,11 @@
 					}
 				});
 				
+				//ajax 결과
+				if($('#resultPost').find('table').attr("id")=='searched'){
+					$('.search_div').css("display", "none");
+				}
+				
 				$('input:checkbox[name="locationBox"]').each(function() {
 					var locaId = $(this).attr("id");
 					$("#sub" + locaId).css("display", "none");
@@ -32,12 +44,6 @@
 
 				$("#sub" + locaId).css("display", "block");
 
-				//전체버튼
-				$('input:checkbox[id=sub' + locaId.substring(8, locaId.length) + ']').prop("checked", true);
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("background", "#0099ff");
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("border-radius", "12px");
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("font-weight", "bold");
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("color", "#ffffff");
 
 				//지역 버튼 추가
 				var locationName = $(this).parent().find("span").text();
@@ -146,13 +152,18 @@
 						$("#resultPost").html(result);
 					}
 				});
-
+				
+				//ajax 결과
+				if($('#resultPost').find('table').attr("id")=='searched'){
+					$('.search_div').css("display", "none");
+				}
+				
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#0099ff");
 				$('span[id=' + subId + ']').css("border-radius", "12px");
 				$('span[id=' + subId + ']').css("font-weight", "bold");
 				$('span[id=' + subId + ']').css("color", "#ffffff");
-
+				
 			} else {
 				$(this).prop("checked", false);
 
@@ -180,8 +191,6 @@
 			}
 		});
 
-		//span에 마우스를 올렸을 때 추가예정(11/25에 작성)
-
 	});
 </script>
 
@@ -194,7 +203,7 @@
 			<div class="searchWrap">
 				<dl style="display: inline-block;">
 					<dt
-						style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역</dt>
+						style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역 </dt>
 					<dd>
 						<div
 							style="width: 150px; height: 200px; overflow-x: hidden; overflow-y: scroll;">

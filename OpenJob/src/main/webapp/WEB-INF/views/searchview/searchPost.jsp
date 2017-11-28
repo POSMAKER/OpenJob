@@ -14,26 +14,28 @@
 						<h5>${postmsg }</h5>
 					</c:when>
 					<c:otherwise>
-						<c:forEach var="post" items="${postList }">
 						<div id="resultPost"></div>
-							<table border="1" style="min-width: 600px;">
-								<tr>
-									<td style="width: 130px; padding: 15px;" rowspan="3"><a
-										href="${home }/company/${post.companyno }/info"><img
-											src="${home }/companyimgs/${post.thumbimg }"
-											style="width: 100px;"></a></td>
-									<td colspan="2" style="font-weight: bold;"><a href="#">${post.title }</a></td>
-								</tr>
-								<tr>
-									<td colspan="2"><a
-										href="${home }/company/${post.companyno }/info">${post.companyname }</a></td>
-								</tr>
-								<tr>
-									<td>${post.jobcategory }</td>
-									<td>${post.subjobcategory }</td>
-								</tr>
-							</table>
-						</c:forEach>
+						<div class="search_div">
+							<c:forEach var="post" items="${postList }">
+								<table border="1" style="min-width: 600px;">
+									<tr>
+										<td style="width: 130px; padding: 15px;" rowspan="3"><a
+											href="${home }/company/${post.companyno }/info"><img
+												src="${home }/companyimgs/${post.thumbimg }"
+												style="width: 100px;"></a></td>
+										<td colspan="2" style="font-weight: bold;"><a href="#">${post.title }</a></td>
+									</tr>
+									<tr>
+										<td colspan="2"><a
+											href="${home }/company/${post.companyno }/info">${post.companyname }</a></td>
+									</tr>
+									<tr>
+										<td>${post.jobcategory }</td>
+										<td>${post.subjobcategory }</td>
+									</tr>
+								</table>
+							</c:forEach>
+						</div>
 					</c:otherwise>
 				</c:choose>
 			</div>
