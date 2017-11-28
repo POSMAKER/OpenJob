@@ -5,7 +5,6 @@
 <!-- 예외 처리 -->
 
 <head>
-<title>${company.companyname }</title>
 <style>
 span.tag {
 	background-color: #cceeff;
@@ -65,9 +64,8 @@ body.modal-open {
 						</c:if>
 						<div class="col-lg-4" style="padding-bottom: 15; height: 190px;"
 							align="left">
-
-							<div
-								style="background-color: #ffffff; width: 100%; height: 100%; padding: 20px;">
+							<div onclick="location.href='${home}/company/${post.companyno }/post/${post.postno}'"
+								style="background-color: #ffffff; width: 100%; height: 100%; padding: 20px; cursor:pointer">
 								<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
 									integerOnly="true" var="enddate" />
 								<div

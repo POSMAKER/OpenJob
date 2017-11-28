@@ -6,12 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body style="height:1500px">
-<%@include file="/WEB-INF/views/common/menubar.jsp" %>
-<div class="container-fluid" style="margin-top:80px">
-  <h3>기업 페이지</h3>
-  <a href="${home }/company/13/info">기업 페이지 예제</a>
- 
-</div>
+<body>
+
 </body>
 </html>

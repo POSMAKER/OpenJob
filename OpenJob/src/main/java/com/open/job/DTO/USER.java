@@ -2,33 +2,22 @@ package com.open.job.DTO;
 
 public class USER {
 	private String memberno;
-	private String memberemail;
+	private String email;
 	private String companyno;
 	private String companyname;
 	
-	public USER() {
-		super();
-	}
-
-	public USER(String memberno, String memberemail, String companyno, String companyname) {
-		super();
-		this.memberno = memberno;
-		this.memberemail = memberemail;
-		this.companyno = companyno;
-		this.companyname = companyname;
-	}
-
 	public String getMemberno() {
 		return memberno;
 	}
 	public void setMemberno(String memberno) {
 		this.memberno = memberno;
 	}
-	public String getMemberemail() {
-		return memberemail;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setMemberemail(String memberemail) {
-		this.memberemail = memberemail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getCompanyno() {
 		return companyno;

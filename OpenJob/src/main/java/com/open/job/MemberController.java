@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.open.job.DTO.Member;
 import com.open.job.IService.MemberService;
 
-
+@SessionAttributes("USER")
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -75,7 +77,13 @@ public class MemberController {
 		return "/memberview/MemberLogin";
 	}
 	//페이지 열기 끝--------------------------------
-	
+	@RequestMapping(value="/MemberLogout")
+	public String logout(
+			SessionStatus sessionStat
+			) {
+		sessionStat.setComplete();
+		return "redirect:/";
+	}
 	
 	
 	
@@ -95,12 +103,13 @@ public class MemberController {
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
 		public String loginproc(Member member, Model model) {
 			if(mServ.loginProc(member)) {
+				model.addAttribute("USER", mServ.getUserInfo(member.getEmail()));
 				return "redirect:/UserAcount";
 			}
 			model.addAttribute("msg", "회원 정보가 잘못되였습니다.");
 			return "forward:/MemberLogin"; 
 		}
-	
+
 	
 	
 	
