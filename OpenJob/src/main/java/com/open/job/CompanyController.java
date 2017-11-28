@@ -1,8 +1,5 @@
 package com.open.job;
 
-import java.util.Date;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.open.job.DTO.Company;
 import com.open.job.DTO.CompanyReview;
 import com.open.job.DTO.InterviewReview;
-import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Post;
-import com.open.job.DTO.USER;
-import com.open.job.DTO.sub.CompanyInfo;
 import com.open.job.IService.CompanyService;
 import com.open.job.common.CommonService;
 
@@ -194,10 +185,12 @@ public class CompanyController {
 
 	@RequestMapping(value = "/frag_companynavi")
 	public String frag_companynavi(@RequestParam Integer companyno, Model model) {
+
 		int[] tablecounts = compServ.getCountInfo(companyno);
 		model.addAttribute("reviewcount",tablecounts[0]);
 		model.addAttribute("interviewcount",tablecounts[1]);
 		model.addAttribute("postcount",tablecounts[2]);
+
 		return "companyview/sub/companyNavi";
 	};
 	@RequestMapping(value = "/reviewStat")

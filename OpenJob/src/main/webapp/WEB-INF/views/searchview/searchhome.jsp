@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@include file="/WEB-INF/views/common/menubar.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#category").change(function() {
@@ -33,7 +33,6 @@ td, tr {
 <title>검색 홈</title>
 </head>
 <body style="height: 1500px">
-	<%@include file="/WEB-INF/views/common/menubar.jsp"%>
 	<div class="container-fluid" style="margin-top: 100px">
 		<div align="center">
 			<div class="imgLogo">
@@ -60,8 +59,6 @@ td, tr {
 				</table>
 			</form>
 		</div>
-		<a href="${home }/searchWrap">searchWrap test</a><br>
-		<a href="${home }/addressAPI">addressAPI test</a>
 	</div>
 </body>
 </html>
