@@ -39,7 +39,7 @@ body.modal-open {
 							<div class="row">
 								<span style="font-weight: bold">본사</span>
 							</div>
-							<div class="row">${company.address }</div>
+							<div class="row">${companyInfo.address }</div>
 						</div>
 					</div>
 					<div class="row" style="margin: 15px;">
@@ -75,7 +75,7 @@ body.modal-open {
 							<div class="row">
 								<span style="font-weight: bold">산업군</span>
 							</div>
-							<div class="row" style="margin-bottom: 15px;">${company.industry }</div>
+							<div class="row" style="margin-bottom: 15px;">${companyInfo.industry }</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="row">

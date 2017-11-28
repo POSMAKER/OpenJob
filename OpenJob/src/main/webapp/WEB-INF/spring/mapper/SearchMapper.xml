@@ -45,10 +45,11 @@
 	</select>
 	<select id="getResult" parameterType="String" resultType="com.open.job.DTO.Post">
 		SELECT * FROM Post
+		Inner Join Companyimg Using(companyNo)
+		Inner join Company using(companyNo)
 		WHERE location in
 		<foreach item="loca" collection="array" open="(" separator="," close=")">
 			#{loca}
 		</foreach>
-
 	</select>
 </mapper>

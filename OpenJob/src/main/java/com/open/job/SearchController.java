@@ -68,6 +68,11 @@ public class SearchController {
 				model.addAttribute("companyList", companyList);
 			}
 		}
+		List<Location> locationList = searchServ.getLocation();
+		model.addAttribute("locationList", locationList);
+		
+		List<Location> sublocationList = searchServ.getSubLocation();
+		model.addAttribute("sublocationList", sublocationList);
 		
 		return "/searchview/detailSearchView";
 	}

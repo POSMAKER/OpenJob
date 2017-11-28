@@ -59,8 +59,6 @@ td, tr {
 				</table>
 			</form>
 		</div>
-		<a href="${home }/searchWrap">searchWrap test</a><br>
-		<a href="${home }/addressAPI">addressAPI test</a>
 	</div>
 </body>
 </html>

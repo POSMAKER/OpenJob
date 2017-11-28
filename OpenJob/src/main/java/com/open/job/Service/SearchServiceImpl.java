@@ -83,21 +83,21 @@ public class SearchServiceImpl implements SearchService {
 		List<Post> lst = sdao.getResult(loca);
 		String str = "";
 		for(Post post:lst) {
-			str = "<table border=\"1\" style=\"min-width: 600px;\">\r\n" + 
+			str += "<table id="+post.getCompanyno()+" border=\"1\" style=\"min-width: 600px;\">\r\n" + 
 					"								<tr>\r\n" + 
 					"									<td style=\"width: 130px; padding: 15px;\" rowspan=\"3\"><a\r\n" + 
-					"										href=\"${home }/company/${post.companyno }/info\"><img\r\n" + 
-					"											src=\"${home }/companyimgs/${post.thumbimg }\"\r\n" + 
+					"										href=\"/job/company/"+post.getCompanyno()+"/info\"><img\r\n" + 
+					"											src=\"/job/companyimgs/"+ post.getThumbimg() +"\"\r\n" + 
 					"											style=\"width: 100px;\"></a></td>\r\n" + 
-					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"#\">${post.title }</a></td>\r\n" + 
+					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"#\">"+post.getTitle()+"</a></td>\r\n" + 
 					"								</tr>\r\n" + 
 					"								<tr>\r\n" + 
 					"									<td colspan=\"2\"><a\r\n" + 
-					"										href=\"${home }/company/${post.companyno }/info\">${post.companyname }</a></td>\r\n" + 
+					"										href=\"/job/company/"+post.getCompanyno()+"/info\">"+post.getCompanyname()+"</a></td>\r\n" + 
 					"								</tr>\r\n" + 
 					"								<tr>\r\n" + 
-					"									<td>${post.jobcategory }</td>\r\n" + 
-					"									<td>${post.subjobcategory }</td>\r\n" + 
+					"									<td>"+post.getJobcategory()+"</td>\r\n" + 
+					"									<td>"+post.getSubjobcategory()+"</td>\r\n" + 
 					"								</tr>\r\n" + 
 					"							</table>";
 		}

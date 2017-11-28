@@ -129,7 +129,6 @@
 		</div>
 	</div>
 
-
 	<%--근무 지역, 1, select --%>
 	<div class="row" style="padding: 15px;">
 		<div class="col-lg-3">근무 지역</div>
@@ -155,7 +154,7 @@
 			var locationcate = $("#locationcate option:selected").val();
 			$.ajax({
 				url : '${home}/company/getsublocation',
-				type : 'POST',
+				type : 'post',
 				data : {"locationcate" : locationcate},
 				success : function(result) {
 					$("#location").html(result);
@@ -163,6 +162,5 @@
 			});
 		});
 	</script>
-	
-	
+
 </div>

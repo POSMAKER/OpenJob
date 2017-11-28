@@ -16,6 +16,7 @@
 		});
 	});
 </script>
+
 <html>
 <style>
 
@@ -55,6 +56,7 @@ a:active {
 		<div style="background-color: #e6e6e6; padding: 20px;">
 			<!-- 채용 정보  -->
 			<c:if test="${category ne 'company' }">
+				<%@include file="/WEB-INF/views/searchview/searchWrap.jsp"%>
 				<%@include file="/WEB-INF/views/searchview/searchPost.jsp"%>
 			</c:if>
 

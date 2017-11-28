@@ -75,7 +75,7 @@ body.modal-open {
 								<br> <span
 									style="width: 100%; overflow: hidden; display: inline-block; font-size: 17px; font-weight: bold; white-space: nowrap; text-overflow: ellipsis"><a
 									style="color: black;"
-									href="${home}/company/${company.companyno }/post/${post.postno}">${post.title}</a></span><br>
+									href="${home}/company/${post.companyno }/post/${post.postno}">${post.title}</a></span><br>
 								<span class="subtitle"
 									style="width: 100%; overflow: hidden; display: inline-block; white-space: nowrap; text-overflow: ellipsis">${post.jobcategory },
 									${post.subjobcategory }</span><br> <br> <span class="tag">${post.location }</span><span
