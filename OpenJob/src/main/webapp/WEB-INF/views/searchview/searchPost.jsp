@@ -4,7 +4,7 @@
 <div class=row id="postDiv" style="padding-bottom: 20px;">
 	<div class="col-sm-2">div2</div>
 	<div class="col-sm-7"
-		style="background-color: white; padding: 30px; min-width: 700px;">
+		style="background-color: white; padding: 30px; min-width: 800px;">
 		<strong>채용공고</strong>
 		<hr>
 		<div class=row style="padding-top: 0px;">
@@ -14,8 +14,9 @@
 						<h5>${postmsg }</h5>
 					</c:when>
 					<c:otherwise>
-						<table border="1" style="min-width: 600px;">
-							<c:forEach var="post" items="${postList }">
+						<c:forEach var="post" items="${postList }">
+						<div id="resultPost"></div>
+							<table border="1" style="min-width: 600px;">
 								<tr>
 									<td style="width: 130px; padding: 15px;" rowspan="3"><a
 										href="${home }/company/${post.companyno }/info"><img
@@ -31,8 +32,8 @@
 									<td>${post.jobcategory }</td>
 									<td>${post.subjobcategory }</td>
 								</tr>
-							</c:forEach>
-						</table>
+							</table>
+						</c:forEach>
 					</c:otherwise>
 				</c:choose>
 			</div>

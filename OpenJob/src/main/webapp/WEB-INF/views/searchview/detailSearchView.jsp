@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/views/common/menubar.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#category").change(function() {
@@ -15,6 +16,7 @@
 		});
 	});
 </script>
+
 <html>
 <style>
 
@@ -48,14 +50,13 @@ a:active {
 <title>상세검색</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/common/menubar.jsp"%>
 	<div class="container-fluid" style="margin-top: 70px; padding: 0px;">
 		<!-- 검색바 -->
 		<%@include file="/WEB-INF/views/searchview/searchBar.jsp"%>
 		<div style="background-color: #e6e6e6; padding: 20px;">
-
 			<!-- 채용 정보  -->
 			<c:if test="${category ne 'company' }">
+				<%@include file="/WEB-INF/views/searchview/searchWrap.jsp"%>
 				<%@include file="/WEB-INF/views/searchview/searchPost.jsp"%>
 			</c:if>
 
@@ -67,19 +68,3 @@ a:active {
 	</div>
 </body>
 </html>
-
-<!-- 
-
-post
-직종
-직종상세
-근무지역
-경력
-공고시작일>>>공고가 올라온 기간을 검색하기 위하여
-작성일
-
-
-company
-기업형태
-
- -->
