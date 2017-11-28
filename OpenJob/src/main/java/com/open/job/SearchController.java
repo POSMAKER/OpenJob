@@ -19,7 +19,7 @@ import com.open.job.IService.SearchService;
 
 @Controller
 public class SearchController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 
 	@Autowired
 	private SearchService searchServ;
@@ -68,6 +68,11 @@ public class SearchController {
 				model.addAttribute("companyList", companyList);
 			}
 		}
+		List<Location> locationList = searchServ.getLocation();
+		model.addAttribute("locationList", locationList);
+		
+		List<Location> sublocationList = searchServ.getSubLocation();
+		model.addAttribute("sublocationList", sublocationList);
 		
 		return "/searchview/detailSearchView";
 	}
@@ -90,11 +95,11 @@ public class SearchController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/buttonVal", method=RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String buttonVal(Model model, @RequestParam(value = "subLocationName")String subLocationName) {
-		String test= "";
-		logger.info(subLocationName);
-		return test;
+	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String subLocation(Model model, @RequestParam(value = "subLocationName")String subLocationName) {
+		String subLocation = subLocationName;
+		logger.info(subLocation);
+		return searchServ.getResult(subLocation);
 	}
 	
 	// searchword는 검색 단어, onclickfunction_name은 해당 단어가 클릭되었을 때 발생하는 Javascript 함수의 이름을 지정.

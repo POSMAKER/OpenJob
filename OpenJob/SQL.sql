@@ -9,5 +9,22 @@ SELECT * FROM CompanyReview
 ALTER TABLE CompanyReview CHANGE balancescoe balancescore VARCHAR(8) NOT NULL;
 
 SELECT * FROM CompanyReviewInfo
+SELECT * FROM CompanyReview
+
+DELETE FROM CompanyReview WHERE companyreviewNo = 6;
 
 Delete FROM  CompanyReviewInfo WHERE companyNo = 32
+
+ALTER TABLE InterviewReview CHANGE reviewNo interviewNo INT NOT NULL;
+SELECT * FROM Member
+SELECT * FROM CompanyMember
+INSERT INTO Member(gender,age,email,password,career) VALUES('M','27','kumasyr@gmail.com','1111','1')
+INSERT INTO CompanyMember VALUES('4','13','김준수','010-2979-6208')
+
+
+SELECT * FROM SavedCompany
+
+SELECT memberno, Member.email, companyno, companyname FROM Member
+LEFT Join CompanyMember USING(memberNo)
+LEFT Join Company USING(companyNo)
+WHERE Member.email = 'kumasyr@gmail.com'

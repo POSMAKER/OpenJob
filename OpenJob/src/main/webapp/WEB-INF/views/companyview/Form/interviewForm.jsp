@@ -6,7 +6,7 @@
 <div style="padding: 15px;">
 	<span style="font-size: 12px;">모든 정보는 익명으로 처리됩니다.
 	</span> <br> <br>
-	<form id="frm" action="${home }/companyhome">
+	<form id="frm" action="${home }/company/interviewProc" method="post">
 		<c:set var="companybase" />
 <%@include file="/WEB-INF/views/companyview/Formsub/interviewForm_p1.jsp" %>
 <%@include file="/WEB-INF/views/companyview/Formsub/interviewForm_p2.jsp" %>

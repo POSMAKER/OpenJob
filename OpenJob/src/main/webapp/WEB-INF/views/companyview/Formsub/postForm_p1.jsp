@@ -129,17 +129,38 @@
 		</div>
 	</div>
 
-
 	<%--근무 지역, 1, select --%>
 	<div class="row" style="padding: 15px;">
 		<div class="col-lg-3">근무 지역</div>
 		<div class="col-lg-7">
-			<select id="location" name="location">
+			<select id="locationcate" name="locationcate">
 				<option value="" selected>근무지역</option>
 				<c:forEach var="loc" items="${locLst }">
-					<option value="${loc.location }">${loc.location }</option>
+					<option value="${loc.locationno }">${loc.location }</option>
 				</c:forEach>
 			</select>
 		</div>
 	</div>
+		<%--직종 상세, 1, select (dynamic) 파일 있음, 기술 있음 --%>
+	<div class="row" style="padding: 15px;">
+		<div class="col-lg-3">근무 지역 상세</div>
+		<div class="col-lg-7">
+			<select id="location" name="location">
+			</select>
+		</div>
+	</div>
+	<script>
+		$("#locationcate").change(function suboption() {
+			var locationcate = $("#locationcate option:selected").val();
+			$.ajax({
+				url : '${home}/company/getsublocation',
+				type : 'post',
+				data : {"locationcate" : locationcate},
+				success : function(result) {
+					$("#location").html(result);
+				}
+			});
+		});
+	</script>
+
 </div>

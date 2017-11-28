@@ -43,4 +43,13 @@
 		SELECT companyNo, companyName FROM Company
 		WHERE companyName LIKE CONCAT('%',#{searchword},'%')
 	</select>
+	<select id="getResult" parameterType="Map" resultType="com.open.job.DTO.Post">
+		SELECT * FROM Post
+		Inner Join Companyimg Using(companyNo)
+		Inner join Company using(companyNo)
+		WHERE
+		<foreach item="loca" collection="array" open="(" separator="or" close=")">
+			location LIKE '%${loca}%'
+		</foreach>
+	</select>
 </mapper>

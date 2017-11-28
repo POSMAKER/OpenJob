@@ -72,7 +72,7 @@
 				<option value="" disabled selected>선택해 주세요</option>
 				<option value="Y">합격</option>
 				<option value="N">불합격</option>
-				<option value="P">대기중</option>
+				<option value="W">대기중</option>
 			</select>
 		</div>
 	</div>
@@ -89,12 +89,12 @@
 		<div class="col-lg-9">
 			<select id="interviewroot" name="interviewroot">
 				<option value="" disabled selected>선택해 주세요</option>
-				<option value="Y">온라인지원</option>
-				<option value="N">직원추천</option>
-				<option value="P">공개채용</option>
-				<option value="P">해드헌터</option>
-				<option value="P">학교 취업지원 센터</option>
-				<option value="P">기타</option> 
+				<option value="온라인지원">온라인지원</option>
+				<option value="직원추천">직원추천</option>
+				<option value="공개채용">공개채용</option>
+				<option value="해드헌터">해드헌터</option>
+				<option value="학교 취업지원 센터">학교 취업지원 센터</option>
+				<option value="기타">기타</option> 
 			</select>
 		</div>
 	</div>

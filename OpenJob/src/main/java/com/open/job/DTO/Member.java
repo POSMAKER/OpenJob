@@ -15,6 +15,11 @@ public class Member {
 
     // 비밀번호 SHA-512
     private String password;
+    
+    
+    // 경력 
+    private Integer career;
+    
 
 	public Integer getMemberno() {
 		return memberno;
@@ -54,6 +59,14 @@ public class Member {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Integer getCareer() {
+		return career;
+	}
+
+	public void setCareer(Integer career) {
+		this.career = career;
 	}
     
 }

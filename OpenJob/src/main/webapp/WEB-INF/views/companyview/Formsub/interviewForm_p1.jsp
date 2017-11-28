@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<input type="hidden" id="companyno" name="companyno"/>
-	<input type="text" name="memberno" value="${USER.memberno }"/>
+	<input type="hidden" name="memberno" value="${USER.memberno }"/>
 	<script>
 		function searchclick(data){
 			var datasplit = data.split(",");
@@ -32,7 +32,7 @@
 			});
 		});
 	</script>
-	div class="row" style="padding: 15px;">
+	<div class="row" style="padding: 15px;">
 		<div class="col-lg-3">직종</div>
 		<div class="col-lg-7">
 			<select id="jobcategory" name="jobcategory" onchange="suboption()">
@@ -78,11 +78,32 @@
 			</select>
 		</div>
 	</div>
+	<%--직급, 1 select --%>
+	<div class="row" style="padding: 15px;">
+		<div class="col-lg-3">직급</div>
+		<div class="col-lg-7">
+			<select id="position" name="position">
+				<option value="">직급</option>
+				<option value="사원">사원</option>
+				<option value="주임/계장">주임/계장</option>
+				<option value="대리">대리</option>
+				<option value="과장">과장</option>
+				<option value="차장">차장</option>
+				<option value="부장">부장</option>
+				<option value="이사">이사</option>
+				<option value="상무">상무</option>
+				<option value="전무">전무</option>
+				<option value="부사장">부사장</option>
+				<option value="사장">사장</option>
+				<option value="기타">기타</option>
+			</select>
+		</div>
+	</div>
 	<div class="row" style="padding: 15px;">
 		<div class="col-lg-3">총 경력</div>
 		<div class="col-lg-7">
-			<select id="review_years_of_experience"
-				name="review[years_of_experience]">
+			<select id="career"
+				name="career">
 				<option value="">총 경력 (이전 경력 포함)</option>
 				<c:forEach var="year" begin="1" end="20" varStatus="status">
 					<option value="${year }">${year}년차<c:if test="${status.last }">&nbsp;이상</c:if></option>		
@@ -101,4 +122,5 @@
 			</select>
 		</div>
 	</div>
+</div>
 </div>

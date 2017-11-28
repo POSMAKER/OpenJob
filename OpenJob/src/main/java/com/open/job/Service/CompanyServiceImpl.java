@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.open.job.DTO.Company;
 import com.open.job.DTO.CompanyReview;
 import com.open.job.DTO.Employtype;
+import com.open.job.DTO.InterviewReview;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
@@ -92,4 +93,67 @@ public class CompanyServiceImpl implements CompanyService{
 		int res2 = cdao.insertCompanyReview(review);
 		return res1*res2;
 	}
+
+	@Override
+	public List<CompanyReview> getCompanyReview(Integer companyno) {
+		return cdao.getCompanyReview(companyno);
+	}
+
+	@Override
+	public List<InterviewReview> getCompanyInterview(Integer companyno) {
+		return cdao.getCompanyInterview(companyno);
+	}
+
+	@Override
+	public int insertInterview(InterviewReview interview) {
+		int res1 = cdao.insertInterviewReviewInfo(interview);
+		int res2 = cdao.insertInterviewReview(interview);
+		return res1*res2;
+	}
+
+	@Override
+	public Post getSinglePost(Integer postno) {
+		return cdao.getSinglePost(postno);
+	}
+
+	@Override
+	public String getSublocation(Integer locationcate) {
+			List<Location> locationlist =  cdao.getSublocation(locationcate);
+			String body ="";
+			body += "<option value=\"\" selected>세부 근무지를 선택해 주세요</option>";
+			for(Location l : locationlist) {
+				body += "<option value=\""+l.getLocation()+(l.getSublocation()==null? "":" "+l.getSublocation())+"\">"+(l.getSublocation()==null? "전체":l.getSublocation())+"</option>";
+				body += "\r\n";
+			}
+		return body;
+	}
+
+	@Override
+	public int[] getCountInfo(Integer companyno) {
+		String[] tablenames = {"CompanyReviewInfo","InterviewReviewInfo","Post"};
+		int[] tablecounts = new int[tablenames.length];
+		for(int i=0; i<tablenames.length;i++) {
+			tablecounts[i] = cdao.countTable(tablenames[i], companyno);
+		}
+		return tablecounts;
+	}
+
+	@Override
+	public boolean doesUserFollow(Integer companyno, Integer memberno) {
+		if(cdao.getUserFollow(companyno, memberno)!=0) return true;
+		else return false;
+	}
+
+	@Override
+	public int followCompany(Integer companyno, Integer memberno, String mode) {
+		int result = 0;
+		if(mode.equals("delete")) {
+			result = cdao.unfollow(companyno, memberno);
+		}else {
+			result = cdao.follow(companyno, memberno);
+		}
+		return result;
+	}
+
+
 }

@@ -4,7 +4,7 @@ import com.open.job.DTO.sub.InterviewReviewInfo;
 
 public class InterviewReview extends InterviewReviewInfo{
 	// 면접 후기 번호 
-    private Integer reviewno;
+    private Integer interviewno;
 
     // 면접 과정 
     private String interviewprocess;
@@ -30,12 +30,12 @@ public class InterviewReview extends InterviewReviewInfo{
     // 면접 경로 참고
     private String interviewroot;
 
-	public Integer getReviewno() {
-		return reviewno;
+	public Integer getInterviewno() {
+		return interviewno;
 	}
 
-	public void setReviewno(Integer reviewno) {
-		this.reviewno = reviewno;
+	public void setInterviewno(Integer interviewno) {
+		this.interviewno = interviewno;
 	}
 
 	public String getInterviewprocess() {
