@@ -5,8 +5,26 @@
 	$(document).ready(function() {
 		$('input:checkbox[name="locationBox"]').click(function() {
 			var locaId = $(this).attr("id");
-			//지역 상세보기 열기			
+			
+			//지역 상세보기 열기
 			if ($(this).is(":checked")) {
+				$(this).prop("checked", true);
+				
+				var subLocationName = $('.location input[type=checkbox]:checked').map(function() {
+					return this.value;
+				}).get().join(",");
+				
+				$.ajax({
+					type : 'post',
+					url : '${home}/subLocation',
+					data : {
+						subLocationName : subLocationName
+					},
+					success : function(result) {
+						$("#resultPost").html(result);
+					}
+				});
+				
 				$('input:checkbox[name="locationBox"]').each(function() {
 					var locaId = $(this).attr("id");
 					$("#sub" + locaId).css("display", "none");
@@ -32,6 +50,22 @@
 				$('span[id=' + locaId + ']').css("color", "#0099ff");
 
 			} else {
+				$(this).prop("checked", false);
+				var subLocationName = $('.location input[type=checkbox]:checked').map(function() {
+					return this.value;
+				}).get().join(",");
+
+				$.ajax({
+					type : 'post',
+					url : '${home}/subLocation',
+					data : {
+						subLocationName : subLocationName
+					},
+					success : function(result) {
+						$("#resultPost").html(result);
+					}
+				});
+				
 				$("#sub" + locaId).css("display", "none");
 				$('button[id=' + locaId + ']').remove();
 
@@ -77,53 +111,27 @@
 		$('input:checkbox[name="sublocationBox"]').click(function() {
 			var subId = $(this).attr("id");
 
-			//해당 div class input의 길이가 0일 때로 수정(11/28)
-			/*if($('input:checkbox[name="sublocationBox"]:checked').length == 0) {
-				var subId = $(this).attr("id");
-				$('span[id=' + subId + ']').css("background", "#ffffff");
-				$('span[id=' + subId + ']').css("color", "black");
-				$('span[id=' + subId + ']').css("font-weight", "normal");
-
-				$('input:checkbox[name="locationBox"]').each(function(){
-					var locaId = $(this).attr("id");
-
-					if(subId.length == 6) {
-						//중복코드 수정해야함
-						if(subId.substring(3,4) == locaId.substring(8,9)) {
-							$(this).prop("checked", false);
-							$("#sub" + locaId).css("display", "none");
-							$('button[id=' + subId + ']').remove();
-							
-							$('span[id=' + locaId + ']').css("border", "none");
-							$('span[id=' + locaId + ']').css("font-weight", "normal");
-							$('span[id=' + locaId + ']').css("color", "black");
-						}
-					} else {
-						if(subId.substring(3,5) == locaId.substring(8,10)) {
-							$(this).prop("checked", false);
-							$("#sub" + locaId).css("display", "none");
-							$('button[id=' + subId + ']').remove();
-							
-							$('span[id=' + locaId + ']').css("border", "none");
-							$('span[id=' + locaId + ']').css("font-weight", "normal");
-							$('span[id=' + locaId + ']').css("color", "black");
-						}
-					}
-				});
-				return;
-			}*/
-
-
-
 			if ($(this).is(":checked")) {
 				$(this).prop("checked", true);
-				//전체 해제
-				$(this).parent().parent().find("li.all").find("input").prop("checked", false);
-				$(this).parent().parent().find("li.all").find("span").css("background", "#ffffff");
-				$(this).parent().parent().find("li.all").find("span").css("color", "black");
-				$(this).parent().parent().find("li.all").find("span").css("font-weight", "normal");
+				
+				//전체버튼 일때
+				if($(this).parent().parent().find("li.all").find("input").val() == $(this).val()){
+					//전체를 제외한 다른 버튼 false
+					$(this).parent().parent().find("li.sub").find("input").prop("checked", false);
+					$(this).parent().parent().find("li.sub").find("span").css("background", "#ffffff");
+					$(this).parent().parent().find("li.sub").find("span").css("color", "black");
+					$(this).parent().parent().find("li.sub").find("span").css("font-weight", "normal");
+					//전체버튼만 true
+					$(this).prop("checked", true);
+				} else {
+					//전체버튼 false
+					$(this).parent().parent().find("li.all").find("input").prop("checked", false);
+					$(this).parent().parent().find("li.all").find("span").css("background", "#ffffff");
+					$(this).parent().parent().find("li.all").find("span").css("color", "black");
+					$(this).parent().parent().find("li.all").find("span").css("font-weight", "normal");
+				}
 
-				var subLocationName = $('.location input[type=checkbox]:checked').map(function() {
+				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
 					return this.value;
 				}).get().join(",");
 
@@ -148,7 +156,7 @@
 			} else {
 				$(this).prop("checked", false);
 
-				var subLocationName = $('.location input[type=checkbox]:checked').map(function() {
+				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
 					return this.value;
 				}).get().join(",");
 
@@ -193,8 +201,8 @@
 							<ul style="list-style: none; padding: 10px; padding-left: 20px;">
 								<c:if test="${locationList!=null }">
 									<c:forEach var="location" items="${locationList }">
-										<li><input type="checkbox" style="display: none;"
-											name="locationBox" id="location${location.locationno }">
+										<li class="location"><input type="checkbox" style="display: ;"	
+											name="locationBox" id="location${location.locationno }" value="${location.location }">
 											<label
 											style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
 											for="location${location.locationno }"><span
@@ -206,7 +214,7 @@
 						</div>
 						<!-- 지역 상세조건  -->
 						<c:forEach var="location" items="${locationList }">
-							<div class="location" id="sublocation${location.locationno }"
+							<div class="sublocation" id="sublocation${location.locationno }"
 								style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
 								<button id="closeBtn${location.locationno }" class="closeBtn"
 									style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
@@ -221,7 +229,7 @@
 											style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 											<ul style="list-style: none; padding: 10px;">
 												<li class="all" style="display: inline;"><input
-													style="display: none;" type="checkbox"
+													style="display: ;" type="checkbox"
 													id="sub${location.locationno }" name="sublocationBox"
 													value="${location.location }"> <label
 													id="sub${location.locationno }"
@@ -232,7 +240,7 @@
 												<!-- 상세지역 -->
 												<c:forEach var="sublocation" items="${sublocationList }">
 													<c:if test="${sublocation.location == location.location}">
-														<li style="display: inline;"><input style="display: none;"
+														<li class="sub" style="display: inline;"><input style="display: ;"
 															type="checkbox" id="sub${sublocation.locationno }"
 															name="sublocationBox"
 															value="${location.location } ${sublocation.sublocation}">

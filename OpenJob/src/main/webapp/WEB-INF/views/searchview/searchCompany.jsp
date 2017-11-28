@@ -3,7 +3,7 @@
 <div class="row" id="companyDiv">
 	<div class="col-sm-2">div2</div>
 	<div class="col-sm-7"
-		style="background-color: white; padding: 30px; min-width: 700px;">
+		style="background-color: white; padding: 30px; min-width: 800px;">
 		<strong>기업정보</strong>
 		<hr>
 		<div class=row style="padding-top: 0px;">
