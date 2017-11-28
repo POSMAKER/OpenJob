@@ -77,12 +77,29 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public String getResult(String Location) {
-		List<Post> lst = sdao.getResult(Location);
+	public String getResult(String location) {
+		String[] loca = location.split(",");
+		
+		List<Post> lst = sdao.getResult(loca);
 		String str = "";
 		for(Post post:lst) {
-			str += "<span>"+post.getLocation()+"</span>";
-			str += "<span>"+post.getCompanyno()+"</span>";
+			str = "<table border=\"1\" style=\"min-width: 600px;\">\r\n" + 
+					"								<tr>\r\n" + 
+					"									<td style=\"width: 130px; padding: 15px;\" rowspan=\"3\"><a\r\n" + 
+					"										href=\"${home }/company/${post.companyno }/info\"><img\r\n" + 
+					"											src=\"${home }/companyimgs/${post.thumbimg }\"\r\n" + 
+					"											style=\"width: 100px;\"></a></td>\r\n" + 
+					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"#\">${post.title }</a></td>\r\n" + 
+					"								</tr>\r\n" + 
+					"								<tr>\r\n" + 
+					"									<td colspan=\"2\"><a\r\n" + 
+					"										href=\"${home }/company/${post.companyno }/info\">${post.companyname }</a></td>\r\n" + 
+					"								</tr>\r\n" + 
+					"								<tr>\r\n" + 
+					"									<td>${post.jobcategory }</td>\r\n" + 
+					"									<td>${post.subjobcategory }</td>\r\n" + 
+					"								</tr>\r\n" + 
+					"							</table>";
 		}
 		return str;
 	}

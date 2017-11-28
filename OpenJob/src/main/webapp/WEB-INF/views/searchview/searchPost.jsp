@@ -14,8 +14,8 @@
 						<h5>${postmsg }</h5>
 					</c:when>
 					<c:otherwise>
-						<table border="1" style="min-width: 600px;">
-							<c:forEach var="post" items="${postList }">
+						<c:forEach var="post" items="${postList }">
+							<table border="1" style="min-width: 600px;">
 								<tr>
 									<td style="width: 130px; padding: 15px;" rowspan="3"><a
 										href="${home }/company/${post.companyno }/info"><img
@@ -31,8 +31,8 @@
 									<td>${post.jobcategory }</td>
 									<td>${post.subjobcategory }</td>
 								</tr>
-							</c:forEach>
-						</table>
+							</table>
+						</c:forEach>
 					</c:otherwise>
 				</c:choose>
 			</div>

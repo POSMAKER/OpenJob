@@ -45,6 +45,10 @@
 	</select>
 	<select id="getResult" parameterType="String" resultType="com.open.job.DTO.Post">
 		SELECT * FROM Post
-		WHERE location = #{Location}
+		WHERE location in
+		<foreach item="loca" collection="array" open="(" separator="," close=")">
+			#{loca}
+		</foreach>
+
 	</select>
 </mapper>

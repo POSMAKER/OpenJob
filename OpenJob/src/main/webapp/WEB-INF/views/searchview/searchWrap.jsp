@@ -1,20 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/views/common/menubar.jsp"%>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
 		$('input:checkbox[name="locationBox"]').click(function() {
-			var locaId = $(this).attr("id");	//span에 스타일을 추가하기 위해
-			
+			var locaId = $(this).attr("id");
 			//지역 상세보기 열기			
 			if ($(this).is(":checked")) {
 				$('input:checkbox[name="locationBox"]').each(function() {
 					var locaId = $(this).attr("id");
 					$("#sub" + locaId).css("display", "none");
 				});
-
+				
 				$("#sub" + locaId).css("display", "block");
+				
+				//전체버튼
+				$('input:checkbox[id=sub' + locaId.substring(8, locaId.length) + ']').prop("checked", true);
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("background", "#0099ff");
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("border-radius", "12px");
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("font-weight", "bold");
+				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("color", "#ffffff");
 				
 				//지역 버튼 추가
 				var locationName = $(this).parent().find("span").text();
@@ -25,20 +31,7 @@
 				$('span[id=' + locaId + ']').css("border-radius", "12px");
 				$('span[id=' + locaId + ']').css("font-weight", "bold");
 				$('span[id=' + locaId + ']').css("color", "#0099ff");
-				
-				var LocationName = $(this).parent().find("span").text();
-				//검색조건이 추가될때 마다 검색
-				$.ajax({
-					type : 'post',
-					url : '${home}/Location',
-					data : {
-						LocationName : LocationName
-					},
-					success : function(result){
-						$("#result").html(result);
-					}
-				});
-				
+
 			} else {
 				$("#sub" + locaId).css("display", "none");
 				$('button[id=' + locaId + ']').remove();
@@ -65,7 +58,6 @@
 							}
 						}
 					}
-					
 				});
 				
 				//스타일
@@ -86,20 +78,7 @@
 		$('input:checkbox[name="sublocationBox"]').click(function() {
 			var subId = $(this).attr("id");
 
-			//지역전체 버튼 삭제 및  체크 해제
-			$('input:checkbox[name="locationBox"]').each(function(){
-				var locaId = $(this).attr("id");
-				if(subId.length == 6) {
-					if(subId.substring(3,4) == locaId.substring(8,9)) {
-						$('button[id=' + locaId + ']').remove();
-					}
-				} else {
-					if(subId.substring(3,5) == locaId.substring(8,10)) {
-						$('button[id=' + locaId + ']').remove();
-					}
-				}
-			});
-			
+			//해당 div class input의 길이가 0일 때로 수정(11/28)
 			if($('input:checkbox[name="sublocationBox"]:checked').length == 0) {
 				var subId = $(this).attr("id");
 				$('span[id=' + subId + ']').css("background", "#ffffff");
@@ -137,8 +116,16 @@
 			
 			if ($(this).is(":checked")) {
 				$(this).prop("checked", true);
-				var subLocationName = $(this).parent().find("span").text();
-
+				//전체 해제
+				$(this).parent().parent().find("li.all").find("input").prop("checked", false);
+				$(this).parent().parent().find("li.all").find("span").css("background", "#ffffff");
+				$(this).parent().parent().find("li.all").find("span").css("color", "black");
+				$(this).parent().parent().find("li.all").find("span").css("font-weight", "normal");
+				
+				var subLocationName = $('.location input[type=checkbox]:checked').map(function(){
+					return this.value;
+				}).get().join(",");
+				
 				//검색조건이 추가될때 마다 검색
 				$.ajax({
 					type : 'post',
@@ -147,11 +134,11 @@
 						subLocationName : subLocationName
 					},
 					success : function(result){
-						$("#result").text(result);
+						$("#result").html(result);
 					}
 				});
 				
-				$("#button").append('<button id=' + subId + '>'+subLocationName+'</button>');
+				//$("#button").append('<button id=' + subId + '>'+subLocationName+'</button>');
 				
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#0099ff");
@@ -178,7 +165,7 @@
 
 <html>
 <body>
-	<%@include file="/WEB-INF/views/common/menubar.jsp"%>
+	
 	<div class="container-fluid" style="margin-top: 70px;">
 		<%@include file="/WEB-INF/views/searchview/searchBar.jsp"%>
 		<div style="background-color: #e6e6e6; padding: 20px;">
@@ -188,7 +175,7 @@
 					style="background-color: white; padding: 30px; min-width: 800px;">
 
 					<div class="searchWrap">
-						<dl class="location" style="display: inline-block;">
+						<dl style="display: inline-block;">
 							<dt
 								style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역</dt>
 							<dd>
@@ -211,7 +198,7 @@
 								</div>
 								<!-- 지역 상세조건  -->
 								<c:forEach var="location" items="${locationList }">
-									<div id="sublocation${location.locationno }"
+									<div class="location" id="sublocation${location.locationno }"
 										style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
 										<button id="closeBtn${location.locationno }" class="closeBtn"
 											style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
@@ -225,13 +212,22 @@
 												<div
 													style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 													<ul style="list-style: none; padding: 10px;">
+														<li class="all" style="display: inline;"><input
+																	style="display: ;" type="checkbox"
+																	id="sub${location.locationno }"
+																	name="sublocationBox" value="${location.location }"> <label
+																	id="sub${location.locationno }"
+																	for="sub${location.locationno }"
+																	style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
+																		id="sub${location.locationno }"
+																		style="padding: 6px 12px 6px 12px;">전체</span></label></li>
 														<!-- 상세지역 -->
 														<c:forEach var="sublocation" items="${sublocationList }">
 															<c:if test="${sublocation.location == location.location}">
 																<li style="display: inline;"><input
 																	style="display: ;" type="checkbox"
 																	id="sub${sublocation.locationno }"
-																	name="sublocationBox"> <label
+																	name="sublocationBox" value="${location.location } ${sublocation.sublocation}"> <label
 																	id="sub${sublocation.locationno }"
 																	for="sub${sublocation.locationno }"
 																	style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
@@ -255,6 +251,7 @@
 				<div class="col-sm-3">div3</div>
 				<div class="col-sm-6">
 					<div id="result"></div>
+					<div id="button"></div>
 				</div>
 				<div class="col-sm-3">div3</div>
 			</div>

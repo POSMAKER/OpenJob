@@ -14,5 +14,5 @@ public interface SearchDAO {
 	public List<Location> getLocation();
 	public List<Location> getSubLocation();
 	public List<Company> getQuickCompSearch(String searchword);
-	public List<Post> getResult(String Location);
+	public List<Post> getResult(String[] loca);
 }
