@@ -71,7 +71,7 @@ public class SearchServiceImpl implements SearchService {
 					+ "</style>";
 		List<Company> compLst = sdao.getQuickCompSearch(searchword);
 		for(Company comp:compLst) {
-			body += "<div style=\"width:100%; height:30px;\"><span class=\"shover\" style=\"width:100%; height:100%; display:block;\" onclick=\""+onclickfunction_name+"('"+comp.getCompanyno()+","+comp.getCompanyname()+"')\">"+comp.getCompanyname()+"</span></div>";
+			body += "<div style=\"cursor:pointer; width:100%; height:30px;\"><span class=\"shover\" style=\"width:100%; height:100%; display:block;\" onclick=\""+onclickfunction_name+"('"+comp.getCompanyno()+","+comp.getCompanyname()+"')\">"+comp.getCompanyname()+"</span></div>";
 		}
 		return body;
 	}

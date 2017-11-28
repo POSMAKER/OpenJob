@@ -6,6 +6,7 @@ import java.util.Map;
 import com.open.job.DTO.Company;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
+import com.open.job.DTO.USER;
 
 public interface SearchDAO {
 	public List<Post> getAllPostList();
