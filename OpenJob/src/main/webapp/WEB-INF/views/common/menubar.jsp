@@ -37,7 +37,7 @@
 						class="dropdown-item" href="#">기업회원 가입</a> <a
 						class="dropdown-item" href="#">기업사진 관리</a>
 				</div></li>
-			<li class="nav-item"><a class="nav-link" href="${home }/">로그인</a></li>
+			<li class="nav-item"><a class="nav-link" href="${home }/MemberLogin">로그인</a></li>
 			<li class="nav-item"><a class="nav-link" href="${home }/">회원가입</a></li>
 		</ul>
 	</div>

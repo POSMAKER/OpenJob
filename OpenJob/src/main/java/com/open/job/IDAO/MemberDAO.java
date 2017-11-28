@@ -11,4 +11,5 @@ import com.open.job.DTO.Post;
 public interface MemberDAO {
 	public int insertMember(Member member);
 	public List<Member> getMemberList();
+	public String loginProc(Member member);
 }

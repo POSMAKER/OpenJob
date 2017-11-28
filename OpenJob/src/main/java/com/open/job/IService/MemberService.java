@@ -7,4 +7,5 @@ import com.open.job.DTO.Member;
 public interface MemberService {
 	public int insertMember(Member member);
 	public List<Member> getMemberList();
+	public boolean loginProc(Member member);
 }

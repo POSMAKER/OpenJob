@@ -17,6 +17,10 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO mdao;
 
+	
+	final String NOTFOUNDID = "회원 정보가 잘못되였습니다.";
+	final String FOUNDID = "로그인 성공하였습니다."; 
+	
 	@Override
 	public int insertMember(Member member) {
 		return mdao.insertMember(member);
@@ -29,5 +33,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	
+	@Override
+	public boolean loginProc(Member member) {
+		if(mdao.loginProc(member)==null)
+			return false;
+		return true;
+	}
 
 }

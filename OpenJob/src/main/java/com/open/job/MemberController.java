@@ -27,18 +27,11 @@ public class MemberController {
 
 	
 	//페이지 열기 시작--------------------------------
-	@RequestMapping(value = "/TermsUse")
-	public String TermsUse() {
+	
+	@RequestMapping(value = "/SiginUp")
+	public String SiginUp() {
 
-		return "/memberview/TermsUse";
-	}
-	
-	
-	
-	@RequestMapping(value = "/Genders")
-	public String Genders() {
-
-		return "/memberview/Genders";
+		return "/memberview/SiginUp";
 	}
 	
 	
@@ -73,6 +66,14 @@ public class MemberController {
 
 		return "/memberview/MyAccount/SaveJobs";
 	}
+	
+	
+	
+	@RequestMapping(value = "/MemberLogin")
+	public String MemberLogin() {
+
+		return "/memberview/MemberLogin";
+	}
 	//페이지 열기 끝--------------------------------
 	
 	
@@ -87,6 +88,19 @@ public class MemberController {
 		mServ.insertMember(member);
 		return "true";
 	}
+	
+	
+	
+	//멤버 로그인 
+		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
+		public String loginproc(Member member, Model model) {
+			if(mServ.loginProc(member)) {
+				return "redirect:/UserAcount";
+			}
+			model.addAttribute("msg", "회원 정보가 잘못되였습니다.");
+			return "forward:/MemberLogin"; 
+		}
+	
 	
 	
 	
