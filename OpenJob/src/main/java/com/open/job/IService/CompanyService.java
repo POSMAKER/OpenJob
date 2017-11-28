@@ -28,4 +28,6 @@ public interface CompanyService {
 	public List<InterviewReview> getCompanyInterview(Integer companyno);
 	public Post getSinglePost(Integer postNo);
 	public int[] getCountInfo(Integer companyno);
+	public boolean doesUserFollow(Integer companyno, Integer memberno);
+	public int followCompany(Integer companyno, Integer memberno, String string);
 }

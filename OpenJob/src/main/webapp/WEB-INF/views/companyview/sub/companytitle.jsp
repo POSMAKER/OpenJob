@@ -1,18 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <script>
-	function follow() {
+	function follow(followvar) {
 		if ("${USER}" == "") {
 			alert("로그인 후 이용가능 합니다.${USER}");
 			return;
 		}else{
-			alert("${userfollow eq null}")
 			$.ajax({
 				type:'post',
 				url: '${home}/company/followProc',
-				data: {memberno: "${USER.memberno}",companyno:"${company.companyno}",userfollow:"${userfollow}"},
+				data: {memberno: "${USER.memberno}",companyno:"${company.companyno}",userfollow:followvar},
 				success: function(result){
-					
+					if(result=="unselect"){
+						$("#follow").attr("class","fa fa-heart-o");
+						$("#followingbtn").attr("onclick","follow('false')")
+						return;
+					}
+					if(result=="select"){
+						$("#follow").attr("class","fa fa-heart");
+						$("#followingbtn").attr("onclick","follow('true')")
+						return;
+					}
+					alert("수정에 실패했습니다.");
 				}
 			});
 		}
@@ -39,19 +48,23 @@
 					</td>
 				</tr>
 				<tr>
-					<td><span style="margin: 5px; padding-left: 15px;"><button
-								type="button" class="btn btn-default" onclick="follow()"
-								style="background-color: white; height: 25px; padding: 0 7; font-size: 13px; font-weight: bold;">
+					<td><span style="margin: 5px; padding-left: 15px;">
 								<c:choose>
 									<c:when test="${userfollow eq true}">
-										<i class="fa fa-heart"></i>
+									<button id="followingbtn"
+								type="button" class="btn btn-default" onclick="follow('true')"
+								style="background-color: white; height: 25px; padding: 0 7; font-size: 13px; font-weight: bold;">
+										<i class="fa fa-heart" id="follow"></i>&nbsp;팔로우</button>
 									</c:when>
 									<c:otherwise>
-										<i class="fa fa-heart-o"></i>
+									<button id="followingbtn"
+								type="button" class="btn btn-default" onclick="follow('false')"
+								style="background-color: white; height: 25px; padding: 0 7; font-size: 13px; font-weight: bold;">
+										<i class="fa fa-heart-o" id="follow"></i>&nbsp;팔로우</button>
 									</c:otherwise>
 								</c:choose>
-								&nbsp;팔로우
-							</button></span></td>
+								
+							</span></td>
 				</tr>
 			</table>
 		</div>

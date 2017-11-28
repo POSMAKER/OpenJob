@@ -157,9 +157,20 @@ public class CompanyController {
 
 	@ResponseBody
 	@RequestMapping(value = "/followProc", method = RequestMethod.POST)
-	public String followProc(@RequestParam String memberno, @RequestParam String companyno,
-			@RequestParam String userfollow) {
-		return "true";
+	public String followProc(
+			@RequestParam Integer memberno, 
+			@RequestParam Integer companyno,
+			@RequestParam String userfollow
+			) {
+		int result = 0;
+		if(userfollow.equals("true")) {
+			result = compServ.followCompany(companyno, memberno,"delete");
+			if(result>0) return "unselect";
+		}else {
+			result = compServ.followCompany(companyno, memberno,"insert");
+			if(result>0) return "select";
+		}
+		return "failed";
 	}
 
 	// ****************FRAGMENTS*******************//
@@ -170,7 +181,14 @@ public class CompanyController {
 	};
 
 	@RequestMapping(value = "/frag_companytitle")
-	public String frag_companytitle(@RequestParam Integer companyno, Model model) {
+	public String frag_companytitle(
+			@RequestParam Integer companyno,
+			@RequestParam(required=false) Integer memberno,
+			Model model
+			) {
+		if(memberno!=null&&compServ.doesUserFollow(companyno, memberno)) {
+			model.addAttribute("userfollow", true);
+		}
 		return "companyview/sub/companytitle";
 	};
 

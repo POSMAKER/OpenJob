@@ -46,4 +46,10 @@ public interface CompanyDAO {
 	public List<Location> getSublocation(Integer locationcate);
 	
 	public int countTable(String tablename,Integer companyno);
+	
+	public int getUserFollow(Integer companyno, Integer memberno);
+
+	public int unfollow(Integer companyno, Integer memberno);
+
+	public int follow(Integer companyno, Integer memberno);
 }
