@@ -18,8 +18,6 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO mdao;
 
 	
-	final String NOTFOUNDID = "회원 정보가 잘못되였습니다.";
-	final String FOUNDID = "로그인 성공하였습니다."; 
 	
 	@Override
 	public int insertMember(Member member) {
