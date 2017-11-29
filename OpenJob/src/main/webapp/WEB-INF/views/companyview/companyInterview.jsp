@@ -17,7 +17,7 @@ body.modal-open {
 <c:import url="/company/frag_companytop">
 	<c:param name="companyno" value="${companyno }" />
 </c:import>
-<div class="container-fluid" style="background-color: #e6e6e6;">
+<div class="container-fluid" style="background-color: #e6e6e6; ">
 	<div class="row">
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8">

@@ -31,8 +31,8 @@ public class MemberController {
 	//페이지 열기 시작--------------------------------
 	
 	@RequestMapping(value = "/SiginUp")
-	public String SiginUp() {
-
+	public String SiginUp(Model model) {
+		model.addAttribute("nav_signuptag", "active");
 		return "/memberview/SiginUp";
 	}
 	
@@ -72,8 +72,8 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/MemberLogin")
-	public String MemberLogin() {
-
+	public String MemberLogin(Model model) {
+		model.addAttribute("nav_logintag", "active");
 		return "/memberview/MemberLogin";
 	}
 	//페이지 열기 끝--------------------------------
