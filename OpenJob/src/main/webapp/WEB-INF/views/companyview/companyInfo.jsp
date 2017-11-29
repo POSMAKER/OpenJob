@@ -18,23 +18,24 @@ body.modal-open {
 <c:import url="/company/frag_companytop">
 	<c:param name="companyno" value="${companyno }" />
 </c:import>
-<div style="background-color: #e6e6e6;">
+<div class="container-fluid" style="background-color: #e6e6e6;">
 	<div class="row">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-8">
-			<div class="row" style="padding: 15px;">
+		<div class="col-xl-2"></div>
+		<div class="col-xl-8">
+			<div class="row" style="padding-top: 15px;">
 				<!-- LEFT -->
-				<div class="col-lg-8"
-					style="background-color: #ffffff; margin-bottom: 15px;"
-					align="center">
-					<div class="row" style="margin: 15px;">
-						<div class="col-lg-6">
+				<div class="col-xl-9" style="margin-bottom: 15px;" align="center">	
+					<div
+						style="padding: 15px; width: 100%; background-color: #ffffff;"
+						align="left">
+					<div class="row" style="margin: 0 15 15 15px;">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">웹사이트</span>
 							</div>
 							<div class="row" style="margin-bottom: 15px;">${companyInfo.website }</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">본사</span>
 							</div>
@@ -42,13 +43,13 @@ body.modal-open {
 						</div>
 					</div>
 					<div class="row" style="margin: 15px;">
-						<div class="col-lg-6">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">사원수</span>
 							</div>
 							<div class="row" style="margin-bottom: 15px;">${companyInfo.employeenum }명</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">설립일</span>
 							</div>
@@ -56,13 +57,13 @@ body.modal-open {
 						</div>
 					</div>
 					<div class="row" style="margin: 15px;">
-						<div class="col-lg-6">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">기업형태</span>
 							</div>
 							<div class="row" style="margin-bottom: 15px;">${companyInfo.type }</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">매출액</span>
 							</div>
@@ -70,13 +71,13 @@ body.modal-open {
 						</div>
 					</div>
 					<div class="row" style="margin: 15px;">
-						<div class="col-lg-6">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">산업군</span>
 							</div>
 							<div class="row" style="margin-bottom: 15px;">${companyInfo.industry }</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-xl-6">
 							<div class="row">
 								<span style="font-weight: bold">대표</span>
 							</div>
@@ -87,8 +88,9 @@ body.modal-open {
 						<div>${companyInfo.companyinfo }</div>
 					</div>
 				</div>
+				</div>
 				<!-- RIGHT -->
-				<div class="col-lg-4" align="center" style="padding-right: 0px;">
+				<div class="col-xl-3" align="center">
 					<img src="${home }/imgs/AD1.jpg"
 						style="width: 100%; min-width: 145px; max-width: 320px;">
 				</div>

@@ -145,8 +145,9 @@
             <div class="jpcont_wrap">
   <div class="layout_my_account myaccountcon">
     <div class="section_group">
-      <h3 class="tit">팔로잉 기업</h3>
-	  
+    <div>&nbsp</div>
+      <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">팔로잉 기업</h3>
+	    <hr style="border-top: 1px solid #b9b9b9;">
 	  
       <section class="my_information">
         <div class="my_information_group">

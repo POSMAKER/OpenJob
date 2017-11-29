@@ -25,7 +25,7 @@ public class MemberController {
 
 
 	@Autowired
-	MemberService mServ;
+	MemberService memberServ;
 
 	
 	//페이지 열기 시작--------------------------------
@@ -77,6 +77,12 @@ public class MemberController {
 		return "/memberview/MemberLogin";
 	}
 	//페이지 열기 끝--------------------------------
+	
+	
+	
+	
+	
+	//로그 아웃
 	@RequestMapping(value="/MemberLogout")
 	public String logout(
 			SessionStatus sessionStat
@@ -93,17 +99,17 @@ public class MemberController {
 	//이메일 가입
 	@RequestMapping(value = "/insertproc", method = RequestMethod.POST)
 	public String insertproc(@ModelAttribute Member member) {
-		mServ.insertMember(member);
+		memberServ.insertMember(member);
 		return "true";
 	}
 	
 	
 	
-	//멤버 로그인 
+	//멤버 로그인 프락
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
 		public String loginproc(Member member, Model model) {
-			if(mServ.loginProc(member)) {
-				model.addAttribute("USER", mServ.getUserInfo(member.getEmail()));
+			if(memberServ.loginProc(member)) {
+				model.addAttribute("USER", memberServ.getUserInfo(member.getEmail()));
 				return "redirect:/UserAcount";
 			}
 			model.addAttribute("msg", "회원 정보가 잘못되였습니다.");
@@ -113,15 +119,15 @@ public class MemberController {
 	
 	
 	
-	/*
+
 	//이메일 가입후 보기
 		@RequestMapping(value = "/viewpage")
 		public String viewpage(Model model) {
-			List<Member> mList = mServ.getMemberList();
+			List<Member> mList = memberServ.getMemberList();
 			model.addAttribute("board", mList);
 			return "UserAcount";
 		}
-	*/
+	
 	
 	
 }

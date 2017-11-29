@@ -33,7 +33,7 @@ public interface CompanyDAO {
 
 	public int insertCompanyReview(CompanyReview cr);
 
-	public List<Post> getPost(Integer companyno);
+	public List<Post> getPost(Post post);
 
 	public List<CompanyReview> getCompanyReview(Integer companyno);
 
@@ -43,7 +43,7 @@ public interface CompanyDAO {
 
 	public int insertInterviewReview(InterviewReview interview);
 	
-	public Post getSinglePost(Integer postno);
+	public Post getSinglePost(@Param("companyno")Integer companyno,@Param("postno") Integer postno);
 	
 	public List<Location> getSublocation(Integer locationcate);
 	
@@ -54,4 +54,8 @@ public interface CompanyDAO {
 	public int unfollow(@Param("companyno") Integer companyno,@Param("memberno") Integer memberno);
 
 	public int follow(@Param("companyno") Integer companyno,@Param("memberno") Integer memberno);
+
+	public List<Jobcategory> getPostJobcateLst(Integer companyno);
+
+	public List<Jobcategory> getPostSubjobcategory(@Param("companyno") Integer companyno, @Param("jobcategory") String jobcategory);
 }

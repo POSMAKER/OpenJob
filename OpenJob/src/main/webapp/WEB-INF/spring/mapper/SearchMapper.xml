@@ -39,6 +39,14 @@
 		SELECT * FROM Location
 		WHERE sublocation IS not null order by locationno
 	</select>
+	<select id="getjobcategory" resultType="com.open.job.DTO.Jobcategory">
+		SELECT * FROM Jobcategory
+		WHERE subjobcategory IS null order by jobcategoryno
+	</select>
+	<select id="getSubjobcategory" resultType="com.open.job.DTO.Jobcategory">
+		SELECT * FROM Jobcategory
+		WHERE subjobcategory IS not null order by jobcategoryno
+	</select>
 	<select id="getQuickCompSearch" parameterType="String" resultType="com.open.job.DTO.Company">
 		SELECT companyNo, companyName FROM Company
 		WHERE companyName LIKE CONCAT('%',#{searchword},'%')
@@ -47,9 +55,10 @@
 		SELECT * FROM Post
 		Inner Join Companyimg Using(companyNo)
 		Inner join Company using(companyNo)
-		WHERE
-		<foreach item="loca" collection="array" open="(" separator="or" close=")">
-			location LIKE '%${loca}%'
+		<where>
+		<foreach item="item" collection="loca" open="(" separator="or" close=")">
+			location LIKE '%${item}%'
 		</foreach>
+		</where>
 	</select>
 </mapper>

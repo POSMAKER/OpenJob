@@ -3,8 +3,8 @@
 
 <div class=row id="postDiv" style="padding-bottom: 20px;">
 	<div class="col-sm-2">div2</div>
-	<div class="col-sm-7"
-		style="background-color: white; padding: 30px; min-width: 800px;">
+	<div class="col-sm-8"
+		style="background-color: white; padding: 30px; min-width: 1100px;">
 		<strong>채용공고</strong>
 		<hr>
 		<div class=row style="padding-top: 0px;">
@@ -14,32 +14,33 @@
 						<h5>${postmsg }</h5>
 					</c:when>
 					<c:otherwise>
-						<div id="resultPost"></div>
-						<div class="search_div">
-							<c:forEach var="post" items="${postList }">
-								<table border="1" style="min-width: 600px;">
-									<tr>
-										<td style="width: 130px; padding: 15px;" rowspan="3"><a
-											href="${home }/company/${post.companyno }/info"><img
-												src="${home }/companyimgs/${post.thumbimg }"
-												style="width: 100px;"></a></td>
-										<td colspan="2" style="font-weight: bold;"><a href="#">${post.title }</a></td>
-									</tr>
-									<tr>
-										<td colspan="2"><a
-											href="${home }/company/${post.companyno }/info">${post.companyname }</a></td>
-									</tr>
-									<tr>
-										<td>${post.jobcategory }</td>
-										<td>${post.subjobcategory }</td>
-									</tr>
-								</table>
-							</c:forEach>
+						<div id="resultPost">
+							<div class="search_div">
+								<c:forEach var="post" items="${postList }">
+									<table border="1" style="min-width: 600px;">
+										<tr>
+											<td style="width: 130px; padding: 15px;" rowspan="3"><a
+												href="${home }/company/${post.companyno }/info"><img
+													src="${home }/companyimgs/${post.thumbimg }"
+													style="width: 100px;"></a></td>
+											<td colspan="2" style="font-weight: bold;"><a href="#">${post.title }</a></td>
+										</tr>
+										<tr>
+											<td colspan="2"><a
+												href="${home }/company/${post.companyno }/info">${post.companyname }</a></td>
+										</tr>
+										<tr>
+											<td>${post.jobcategory }</td>
+											<td>${post.subjobcategory }</td>
+										</tr>
+									</table>
+								</c:forEach>
+							</div>
 						</div>
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-3">div3</div>
+	<div class="col-sm-2">div2</div>
 </div>
