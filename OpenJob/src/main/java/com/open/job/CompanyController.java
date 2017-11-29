@@ -74,7 +74,6 @@ public class CompanyController {
 	public String showCompanyPost(@PathVariable String companyNo, Model model) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("companyno", companyno);
-		model.addAttribute("postLst", compServ.getPost(companyno));
 		model.addAttribute("frmoption", "post");
 		model.addAttribute("postactive", "active");
 		return "companyview/companyPost";
@@ -133,7 +132,14 @@ public class CompanyController {
 	public String getJobsubcategory(@RequestParam String jobcategoryno) {
 		return compServ.getSubjobcategory(commServ.IntegerFilter(jobcategoryno));
 	}
-
+	@ResponseBody
+	@RequestMapping(value = "/getPostsubjobcategory", method = RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String getPostsubjobcategory(
+			@RequestParam Integer companyno,
+			@RequestParam String jobcategory
+			) {
+		return compServ.getPostsubjobcategory(companyno,jobcategory);
+	}
 	@ResponseBody
 	@RequestMapping(value = "/getsublocation", method = RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String getsublocation(@RequestParam String locationcate) {
@@ -185,16 +191,33 @@ public class CompanyController {
 
 	@RequestMapping(value = "/frag_companynavi")
 	public String frag_companynavi(@RequestParam Integer companyno, Model model) {
-
 		int[] tablecounts = compServ.getCountInfo(companyno);
 		model.addAttribute("reviewcount",tablecounts[0]);
 		model.addAttribute("interviewcount",tablecounts[1]);
 		model.addAttribute("postcount",tablecounts[2]);
-
 		return "companyview/sub/companyNavi";
 	};
+	
 	@RequestMapping(value = "/reviewStat")
 	public String reviewStat(Model model) {
 		return "companyview/stat/reviewStat";
+	};
+	
+	@RequestMapping(value = "/frag_postsearch")
+	public String frag_postsearch(
+			@RequestParam Integer companyno,
+			Model model 
+			) {
+		model.addAttribute("s_jobcateLst", compServ.getPostJobcateLst(companyno));
+		model.addAttribute("s_locationLst", compServ.getLocation());
+		return "companyview/search/postSearch";
+	};
+	@RequestMapping(value = "/frag_showpostLst")
+	public String frag_showpostLst(
+			@ModelAttribute Post post,
+			Model model 
+			) {
+		model.addAttribute("postLst", compServ.getPost(post));
+		return "companyview/search/postResult";
 	};
 }

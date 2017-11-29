@@ -84,10 +84,24 @@
 		NOW(),
 		#{title});
 	</insert>
-	<select id="getPost" parameterType="Integer" resultType="com.open.job.DTO.Post">
-		SELECT *
-		FROM Post
+	<select id="getPost" parameterType="com.open.job.DTO.Post" resultType="com.open.job.DTO.Post">
+		SELECT * FROM Post
 		WHERE companyNo = #{companyno}
+		<if test="jobcategory != null and jobcategory !='null'">
+			AND jobcategory = #{jobcategory}
+		</if>
+		<if test="subjobcategory != null and subjobcategory !='null'">
+			AND subjobcategory = #{subjobcategory}
+		</if>
+		<if test="career != null and career !='null'">
+			AND career = #{career}
+		</if>
+		<if test="location != null and location !='null'">
+			AND location LIKE CONCAT(#{location},'%')
+		</if>		
+		<if test="enddate == null or enddate =='null'">
+			AND enddate &gt; NOW()
+		</if>	
 	</select>
 	<insert id="insertCompanyReviewInfo" parameterType="com.open.job.DTO.CompanyReview">
 		<selectKey keyProperty="companyreviewno" resultType="Integer"
@@ -228,4 +242,14 @@ VALUES
 		INSERT INTO SavedCompany(companyNo, memberNo)
 		VALUES(#{companyno},#{memberno})
 	</insert>
+	<select id="getPostJobcateLst" parameterType="Integer" resultType="com.open.job.DTO.Jobcategory">
+		SELECT jobcategory FROM Post
+		WHERE companyNo = #{companyno}
+		GROUP BY jobcategory
+	</select>
+	<select id="getPostSubjobcategory" parameterType="Map" resultType="com.open.job.DTO.Jobcategory">
+		SELECT subjobcategory FROM Post
+		WHERE companyNo = #{companyno} AND jobcategory = #{jobcategory}
+		GROUP BY subjobcategory
+	</select>
 </mapper>

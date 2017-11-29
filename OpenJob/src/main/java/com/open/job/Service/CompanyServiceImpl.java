@@ -64,8 +64,8 @@ public class CompanyServiceImpl implements CompanyService{
 	}
 
 	@Override
-	public List<Post> getPost(Integer companyno) {
-		return cdao.getPost(companyno);
+	public List<Post> getPost(Post post) {
+		return cdao.getPost(post);
 	}
 
 	@Override
@@ -153,6 +153,23 @@ public class CompanyServiceImpl implements CompanyService{
 			result = cdao.follow(companyno, memberno);
 		}
 		return result;
+	}
+
+	@Override
+	public List<Jobcategory> getPostJobcateLst(Integer companyno) {
+		return cdao.getPostJobcateLst(companyno);
+	}
+
+	@Override
+	public String getPostsubjobcategory(Integer companyno, String jobcategory) {
+		List<Jobcategory> jobcatelist =  cdao.getPostSubjobcategory(companyno, jobcategory);
+		String body ="";
+		body += "<option value=\"null\">세부 직종 전체</option>";
+		for(Jobcategory j : jobcatelist) {
+			body += "<option value=\""+j.getSubjobcategory()+"\">"+j.getSubjobcategory()+"</option>";
+			body += "\r\n";
+		}
+		return body;
 	}
 
 

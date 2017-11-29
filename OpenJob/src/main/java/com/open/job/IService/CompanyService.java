@@ -22,7 +22,7 @@ public interface CompanyService {
 	public int insertPost(Post post);
 	public int insertReview(CompanyReview review);
 	public int insertInterview(InterviewReview interview);
-	public List<Post> getPost(Integer companyno);
+	public List<Post> getPost(Post post);
 	public String getCompBaseBody(Integer companyno);
 	public List<CompanyReview> getCompanyReview(Integer companyno);
 	public List<InterviewReview> getCompanyInterview(Integer companyno);
@@ -30,4 +30,6 @@ public interface CompanyService {
 	public int[] getCountInfo(Integer companyno);
 	public boolean doesUserFollow(Integer companyno, Integer memberno);
 	public int followCompany(Integer companyno, Integer memberno, String string);
+	public List<Jobcategory> getPostJobcateLst(Integer companyno);
+	public String getPostsubjobcategory(Integer companyno, String jobcategory);
 }

@@ -18,16 +18,16 @@ body.modal-open {
 <c:import url="/company/frag_companytop">
 <c:param name="companyno" value="${companyno}"/>
 </c:import>
-<div style="background-color: #e6e6e6;">
+<div class="container-fluid" style="background-color: #e6e6e6;">
 	<div class="row">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-8">
+		<div class="col-xl-2"></div>
+		<div class="col-xl-8">
 			<div class="row" style="padding-top: 15px;">
 				<!-- LEFT -->
-				<div class="col-lg-8" style="margin-bottom: 15px;" align="center">
+				<div class="col-xl-9" style="margin-bottom: 15px;" align="center">
 					<!-- 기업 리뷰 통계 -->
 					<div
-						style="width: 100%; background-color: #ffffff; margin-bottom: 15px;"
+						style="padding: 15px; width: 100%; background-color: #ffffff; margin-bottom: 15px;"
 						align="left">
 						<c:import url="/company/reviewStat">
 						</c:import>
@@ -63,7 +63,7 @@ body.modal-open {
 					</c:forEach>
 				</div>
 				<!-- RIGHT -->
-				<div class="col-lg-4" align="center">
+				<div class="col-xl-3" align="center">
 					<img src="${home }/imgs/AD2.jpg"
 						style="width: 100%; min-width: 145px; max-width: 320px;">
 				</div>

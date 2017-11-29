@@ -28,3 +28,12 @@ SELECT memberno, Member.email, companyno, companyname FROM Member
 LEFT Join CompanyMember USING(memberNo)
 LEFT Join Company USING(companyNo)
 WHERE Member.email = 'kumasyr@gmail.com'
+
+
+SELECT jobcategory FROM Post
+		WHERE companyNo = '13'
+		GROUP BY jobcategory
+		
+SELECT subjobcategory FROM Post
+		WHERE companyNo = '13' AND jobcategory ='IT/인터넷'
+		GROUP BY subjobcategory

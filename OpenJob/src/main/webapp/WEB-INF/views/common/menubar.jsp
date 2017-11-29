@@ -8,9 +8,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <style>
 </style>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+<div class="container-fluid fixed-top">
+<div class="row" style="padding:0;">
+<div class="col-xl-2  bg-dark"  style="padding:0; margin:0;"></div>
+<div class="col-xl-8"  style="padding:0; margin:0;">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 	<a class="navbar-brand" href="${home }/"><i class="fa fa-home"
-		style="font-size: 30px"></i><span class="d-md-none"
+		style="font-size: 30px"></i><span class="d-lg"
 		style="font: 25px bold;">&nbsp;Open Job</span></a>
 
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -18,8 +22,7 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="navbar-collapse collapse" id="collapsingNavbar3">
-
-		<ul class="navbar-nav">
+		<ul class="navbar-nav mr-auto">
 			<li class="nav-item"><a class="nav-link"
 				href="${home }/companyhome">기업</a></li>
 			<li class="nav-item"><a class="nav-link"
@@ -45,8 +48,11 @@
 				<li class="nav-item"><a class="nav-link" href="${home }/MemberLogin">로그인</a></li>
 				</c:otherwise>
 			</c:choose>
-			
 			<li class="nav-item"><a class="nav-link" href="${home }/">회원가입</a></li>
 		</ul>
 	</div>
 </nav>
+</div>
+<div class="col-xl-2  bg-dark"  style="padding:0;"></div>
+</div>
+</div>
