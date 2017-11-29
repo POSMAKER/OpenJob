@@ -10,22 +10,21 @@
 <head>
 
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <script data-turbolinks-track="true" src="https://jpassets.jobplanet.co.kr/assets/desktop_ko-c460c7b04b7a74de21da92c911d4cc9e3d889f312e1a211e184076212d22c3a1.js"></script>
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_any_language_newtemp-bf2fe9f55ada3b96ff93fe40c25b3970fb9fc3bd2fc5ad76639215282b43c0b3.css" media="all" rel="stylesheet" />
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
 
-<style type="text/css">
-hr.style-two {
-    border: 1;
-    border-bottom: 0px;
-    background: #999;
+
+<style>
+div.w3-container {
+  width: 350px;
+  height: 150px;
+  margin: 30px auto;
 }
-
-
 </style>
-
-
 
 <!--  
 <script>
@@ -78,7 +77,7 @@ hr.style-two {
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">user</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${email }</h1>
         </div>
     </div>
 </div>
@@ -166,46 +165,109 @@ hr.style-two {
     </div>
 </div>
 
+</div>
+        
+        
+        
 
-        </div>
         <div id="mainContents" class="jpcont_rgt">
             <div class="jpcont_wrap">
   <div class="layout_my_account myaccountcon">
     <div class="section_group">
-      <h3 class="tit">나의 계정</h3>
-	  <hr class="style-two">
+    <div>&nbsp</div>
+      <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">나의 계정</h3>
+	  <hr style="border-top: 1px solid #b9b9b9;">
 	  
-
-        <div class="my_information_group">
+      <section class="my_information">
+        <div class="my_information_group" style="height: 300px">
           
-            기본정보
-            <hr class="style-two">
-            샘플입니다.<br /> 
-			샘플입니다.<br /> 
-			샘플입니다. 
+            <h3 style="font-size: 18; margin-bottom: 25"> 기본정보</h3>
+           
+            
+            
+            
+<div class="w3-container" >
+<table class="w3-table-all" >
+
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">회원번호</td>
+		<td style="font-size: 15; ">${memberno }</td>
+	</tr>
+	
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">성별</td>
+		<td style="font-size: 15; ">${gender }</td>
+	</tr>
+	
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">나이</td>
+		<td style="font-size: 15; ">${age }</td>
+	</tr>
+	
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">경력</td>
+		<td style="font-size: 15; ">${career }</td>
+	</tr>
+	
+</table>
+</div>
+            
+            
+            
+            <!--  
+            <div >
+            
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">회원번호</span>
+			<span style="font-size: 17; margin-left: auto; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+
+
+
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">성별</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">나이</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">경력</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			</div>
+			-->
+			
 			
 
+ 
+</div>
+</section>
 </div>
 
 
 
-
-</div> <!--//section_group-->
-
-
-
-<!--
-<div class="myaccountcon_bottom">
-  <div class="member_out">잡플래닛을 더 이상 이용하지 않는다면 
-        <a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>
-  </div>
-</div>
--->
 </div>     
 </div>        
+</div> 
+
+
+
+
+
+
+      
 </div>
 </div>
-</div>
+
 </form>
 
 </body>
