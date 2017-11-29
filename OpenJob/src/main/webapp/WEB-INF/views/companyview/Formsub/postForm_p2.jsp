@@ -69,7 +69,7 @@
 		<div class="row" style="padding: 15px;">
 		<div class="col-lg-3">담당자 이메일</div>
 		<div class="col-lg-7">
-			<input type="text" id="emailcharged" name="emailcharged" style="width: 90%;" value="${USER.memberemail }" readonly/>
+			<input type="text" id="emailcharged" name="emailcharged" style="width: 90%;" value="${USER.email }" readonly/>
 		</div>
 	</div>
 	<%--담당자 번호, 2, text --%>

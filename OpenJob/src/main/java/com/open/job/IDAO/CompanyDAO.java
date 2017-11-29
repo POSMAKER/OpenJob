@@ -2,6 +2,8 @@ package com.open.job.IDAO;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.open.job.DTO.Company;
 import com.open.job.DTO.CompanyReview;
 import com.open.job.DTO.Employtype;
@@ -45,5 +47,11 @@ public interface CompanyDAO {
 	
 	public List<Location> getSublocation(Integer locationcate);
 	
-	public int countTable(String tablename,Integer companyno);
+	public int countTable(@Param( "tablename") String tablename,@Param("companyno") Integer companyno);
+	
+	public int getUserFollow(@Param("companyno") Integer companyno,@Param("memberno") Integer memberno);
+
+	public int unfollow(@Param("companyno") Integer companyno,@Param("memberno") Integer memberno);
+
+	public int follow(@Param("companyno") Integer companyno,@Param("memberno") Integer memberno);
 }

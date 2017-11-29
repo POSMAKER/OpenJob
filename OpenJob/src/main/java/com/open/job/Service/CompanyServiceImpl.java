@@ -137,4 +137,23 @@ public class CompanyServiceImpl implements CompanyService{
 		}
 		return tablecounts;
 	}
+
+	@Override
+	public boolean doesUserFollow(Integer companyno, Integer memberno) {
+		if(cdao.getUserFollow(companyno, memberno)!=0) return true;
+		else return false;
+	}
+
+	@Override
+	public int followCompany(Integer companyno, Integer memberno, String mode) {
+		int result = 0;
+		if(mode.equals("delete")) {
+			result = cdao.unfollow(companyno, memberno);
+		}else {
+			result = cdao.follow(companyno, memberno);
+		}
+		return result;
+	}
+
+
 }

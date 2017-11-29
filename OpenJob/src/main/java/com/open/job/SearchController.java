@@ -98,6 +98,7 @@ public class SearchController {
 	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String subLocation(Model model, @RequestParam(value = "subLocationName")String subLocationName) {
 		String subLocation = subLocationName;
+		logger.info(subLocation);
 		return searchServ.getResult(subLocation);
 	}
 	

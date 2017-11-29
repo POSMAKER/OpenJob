@@ -46,5 +46,5 @@ public class MemberServiceImpl implements MemberService {
 		USER USER = mdao.getUserInfo(memberemail);
 		return USER;
 	}
-
+	
 }

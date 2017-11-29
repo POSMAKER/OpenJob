@@ -212,8 +212,20 @@ VALUES
 	SELECT * FROM Post
 	WHERE postNo = #{postNo}
 	</select>
-	<select id="countTable" parameterType="map" resultType="Integer">
-		SELECT IFNULL(COUNT(*),0) FROM ${arg0}
-		WHERE companyNo = #{arg1}
+	<select id="countTable" parameterType="Map" resultType="Integer">
+		SELECT IFNULL(COUNT(*),0) FROM ${tablename}
+		WHERE companyNo = #{companyno}
 	</select>
+	<select id="getUserFollow" parameterType="Map" resultType="Integer">
+		SELECT IFNULL(COUNT(*),0) FROM SavedCompany
+		WHERE companyNo = #{companyno} AND memberNo = #{memberno}
+	</select>
+	<delete id="unfollow" parameterType="Map">
+		DELETE FROM SavedCompany
+		WHERE companyNo = #{companyno} AND memberNo = #{memberno} 
+	</delete>
+	<insert id="follow" parameterType="Map">
+		INSERT INTO SavedCompany(companyNo, memberNo)
+		VALUES(#{companyno},#{memberno})
+	</insert>
 </mapper>

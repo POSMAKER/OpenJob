@@ -83,7 +83,7 @@ public class SearchServiceImpl implements SearchService {
 		List<Post> lst = sdao.getResult(loca);
 		String str = "";
 		for(Post post:lst) {
-			str += "<table id="+post.getCompanyno()+" border=\"1\" style=\"min-width: 600px;\">\r\n" + 
+			str += "<table id='searched' border=\"1\" style=\"min-width: 600px;\">\r\n" + 
 					"								<tr>\r\n" + 
 					"									<td style=\"width: 130px; padding: 15px;\" rowspan=\"3\"><a\r\n" + 
 					"										href=\"/job/company/"+post.getCompanyno()+"/info\"><img\r\n" + 

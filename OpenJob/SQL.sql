@@ -21,6 +21,9 @@ SELECT * FROM CompanyMember
 INSERT INTO Member(gender,age,email,password,career) VALUES('M','27','kumasyr@gmail.com','1111','1')
 INSERT INTO CompanyMember VALUES('4','13','김준수','010-2979-6208')
 
+
+SELECT * FROM SavedCompany
+
 SELECT memberno, Member.email, companyno, companyname FROM Member
 LEFT Join CompanyMember USING(memberNo)
 LEFT Join Company USING(companyNo)
