@@ -16,6 +16,7 @@
 					<c:otherwise>
 						<c:forEach var="post" items="${postList }">
 						<div id="resultPost"></div>
+						
 							<table border="1" style="min-width: 600px;">
 								<tr>
 									<td style="width: 130px; padding: 15px;" rowspan="3"><a
