@@ -102,6 +102,10 @@
 		<if test="enddate == null or enddate =='null'">
 			AND enddate &gt; NOW()
 		</if>	
+		
+		<where>
+			
+		</where>
 	</select>
 	<insert id="insertCompanyReviewInfo" parameterType="com.open.job.DTO.CompanyReview">
 		<selectKey keyProperty="companyreviewno" resultType="Integer"
