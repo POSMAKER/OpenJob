@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@include file="/WEB-INF/views/common/menubar.jsp"%>
 <head>
 <title>${company.companyname }[채용]</title>
 <style>
@@ -9,7 +11,9 @@ span.head {
 }
 </style>
 </head>
-<%@include file="/WEB-INF/views/common/menubar.jsp"%>
+<c:if test="${post eq null}">
+	<c:redirect url="/companyhome"/>
+</c:if>
 <c:import url="/company/frag_companytop">
 	<c:param name="companyno" value="${companyno }" />
 </c:import>

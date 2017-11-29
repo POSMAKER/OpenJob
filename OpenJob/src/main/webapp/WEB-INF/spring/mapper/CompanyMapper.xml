@@ -228,7 +228,7 @@ VALUES
 	</insert>
 	<select id="getSinglePost" parameterType="Integer" resultType="com.open.job.DTO.Post">
 	SELECT * FROM Post
-	WHERE postNo = #{postNo} AND companyNo = #{companyno}
+	WHERE postNo = #{postno} AND companyNo = #{companyno}
 	</select>
 	<select id="countTable" parameterType="Map" resultType="Integer">
 		SELECT IFNULL(COUNT(*),0) FROM ${tablename}
