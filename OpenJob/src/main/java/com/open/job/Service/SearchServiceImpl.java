@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
 import com.open.job.IDAO.SearchDAO;
@@ -31,7 +32,6 @@ public class SearchServiceImpl implements SearchService {
 
 			return sdao.getSearchPostList(map);
 		}
-
 	}
 
 	@Override
@@ -46,18 +46,15 @@ public class SearchServiceImpl implements SearchService {
 
 			return sdao.getSearchCompanyList(map);
 		}
-
 	}
 
 	@Override
 	public List<Location> getLocation() {
-	
 		return sdao.getLocation();
 	}
 
 	@Override
 	public List<Location> getSubLocation() {
-		
 		return sdao.getSubLocation();
 	}
 
@@ -75,12 +72,45 @@ public class SearchServiceImpl implements SearchService {
 		}
 		return body;
 	}
-
+	
+	@Override
+	public List<Jobcategory> getjobcategory() {
+		return sdao.getjobcategory();
+	}
+	
+	@Override
+	public List<Jobcategory> getSubjobcategory() {
+		return sdao.getSubjobcategory();
+	}
+	
+	@Override
+	public List<String> getType() {
+		List<String> typeList = new ArrayList<String>();
+		String [] str = {"중소기업","대기업","중견기업","외국계 (외국 법인기업)","외국계 (외국 투자기업)","국내 비영리단체/협회/교육재단","대기업 계열사/자회사","국내 공공기관/공기업","병원","대학교/대학원"};
+		
+		for(int i=0;i<str.length;i++) {
+			typeList.add(str[i]);
+		}
+		return typeList;
+	}
+	
+	@Override
+	public List<String> getDate() {
+		List<String> dateList = new ArrayList<String>();
+		String [] str = {"전체","오늘","최근 3일","최근 1주일","최근 1개월"};
+		
+		for(int i=0;i<str.length;i++) {
+			dateList.add(str[i]);
+		}
+		return dateList;
+	}
+	
 	@Override
 	public String getResult(String location) {
 		String[] loca = location.split(",");
-		
+
 		List<Post> lst = sdao.getResult(loca);
+		
 		String str = "";
 		for(Post post:lst) {
 			str += "<table id='searched' border=\"1\" style=\"min-width: 600px;\">\r\n" + 
@@ -103,7 +133,5 @@ public class SearchServiceImpl implements SearchService {
 		}
 		return str;
 	}
-	
-	
 
 }

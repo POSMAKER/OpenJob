@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
 import com.open.job.IService.SearchService;
@@ -68,24 +69,30 @@ public class SearchController {
 				model.addAttribute("companyList", companyList);
 			}
 		}
+		
+		//지역 리스트
 		List<Location> locationList = searchServ.getLocation();
 		model.addAttribute("locationList", locationList);
 		
 		List<Location> sublocationList = searchServ.getSubLocation();
 		model.addAttribute("sublocationList", sublocationList);
+		
+		//직무분야 리스트
+		List<Jobcategory> jobcategoryList = searchServ.getjobcategory();
+		model.addAttribute("jobcategoryList", jobcategoryList);
+		
+		List<Jobcategory> subjobcategoryList = searchServ.getSubjobcategory();
+		model.addAttribute("subjobcategoryList", subjobcategoryList);
+		
+		//기업형태 리스트
+		List<String> typeList = searchServ.getType();		
+		model.addAttribute("typeList", typeList);
+		
+		//기간
+		List<String> dateList = searchServ.getDate();		
+		model.addAttribute("dateList", dateList);
 		
 		return "/searchview/detailSearchView";
-	}
-
-	@RequestMapping(value = "/searchWrap")
-	public String searchWrap(Model model) {
-		List<Location> locationList = searchServ.getLocation();
-		model.addAttribute("locationList", locationList);
-		
-		List<Location> sublocationList = searchServ.getSubLocation();
-		model.addAttribute("sublocationList", sublocationList);
-
-		return "/searchview/searchWrap";
 	}
 	
 	@RequestMapping(value = "/addressAPI")
@@ -96,9 +103,10 @@ public class SearchController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String subLocation(Model model, @RequestParam(value = "subLocationName")String subLocationName) {
+	public String subLocation(Model model, @RequestParam(value = "subLocationName")String subLocationName,
+			@RequestParam(value = "career")String career) {
 		String subLocation = subLocationName;
-		logger.info(subLocation);
+		logger.info(career);
 		return searchServ.getResult(subLocation);
 	}
 	

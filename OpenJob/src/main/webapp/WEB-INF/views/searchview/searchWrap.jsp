@@ -1,9 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+<style>
+
+</style>
+<div style="background-color: #e6e6e6; padding-bottom: 20px;">
+	<div class=row>
+		<div class="col-sm-2">div2</div>
+		<div class="col-sm-8"
+			style="background-color: white; padding: 30px; min-width: 1100px;">
+
+			<div class="searchWrap" style="width: 100%;">
+				<dl style="display: inline-block;">
+					<dt
+						style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역
+					</dt>
+					<dd>
+						<div
+							style="width: 200px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
+							<ul style="list-style: none; padding: 10px; padding-left: 20px;">
+								<c:if test="${locationList!=null }">
+									<c:forEach var="location" items="${locationList }">
+										<li class="location"><input type="checkbox"
+											style="display:;" name="locationBox"
+											id="location${location.locationno }"
+											value="${location.location }"> <label
+											style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
+											for="location${location.locationno }"><span
+												id="location${location.locationno }"
+												style="padding: 5px 10px 5px 10px;">${location.location }</span></label></li>
+									</c:forEach>
+								</c:if>
+							</ul>
+						</div>
+						<!-- 지역 상세조건  -->
+						<c:forEach var="location" items="${locationList }">
+							<div class="sublocation" id="sublocation${location.locationno }"
+								style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
+								<button id="closeBtn${location.locationno }" class="closeBtn"
+									style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
+									<i class="material-icons" style="font-size: 20px">clear</i>
+								</button>
+								<dl>
+									<dt
+										style="padding: 10px; background-color: #f2f2f2; color: #0099ff; font-weight: bold;">${location.location }
+										상세지역</dt>
+									<dd>
+										<div
+											style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
+											<ul class="sub_ul${location.locationno }"
+												style="list-style: none; padding: 10px;">
+												<li class="all" style="display: inline;"><input
+													style="display:;" type="checkbox"
+													id="sub${location.locationno }" name="sublocationBox"
+													value="${location.location }"> <label
+													id="sub${location.locationno }"
+													for="sub${location.locationno }"
+													style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
+														id="sub${location.locationno }"
+														style="padding: 6px 12px 6px 12px;">전체</span></label></li>
+												<!-- 상세지역 -->
+												<c:forEach var="sublocation" items="${sublocationList }">
+													<c:if test="${sublocation.location == location.location}">
+														<li class="sub" style="display: inline;"><input
+															style="display:;" type="checkbox"
+															id="sub${sublocation.locationno }" name="sublocationBox"
+															value="${location.location } ${sublocation.sublocation}">
+															<label id="sub${sublocation.locationno }"
+															for="sub${sublocation.locationno }"
+															style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
+																id="sub${sublocation.locationno }"
+																style="padding: 6px 12px 6px 12px;">${sublocation.sublocation }</span></label></li>
+													</c:if>
+												</c:forEach>
+											</ul>
+										</div>
+									</dd>
+								</dl>
+							</div>
+						</c:forEach>
+					</dd>
+				</dl>
+
+				<%@include
+					file="/WEB-INF/views/searchview/searchWrap_jobcategory.jsp"%>
+				<%@include
+					file="/WEB-INF/views/searchview/searchWrap_career.jsp"%>
+				<%@include
+					file="/WEB-INF/views/searchview/searchWrap_type.jsp"%>
+				<%@include
+					file="/WEB-INF/views/searchview/searchWrap_date.jsp"%>
+			</div>
+		</div>
+		<div class="col-sm-2">div2</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('input:checkbox[name="locationBox"]').click(function() {
+		$('input:checkbox[name="locationBox"]').change(function() {
 			var locaId = $(this).attr("id");
 			
 			//지역 상세보기 열기
@@ -21,11 +117,16 @@
 					return this.value;
 				}).get().join(",");
 				
+				var career = $('.career_ul input[type=checkbox]:checked').map(function() {
+					return this.value;
+				}).get().join(",");
+				
 				$.ajax({
 					type : 'post',
 					url : '${home}/subLocation',
 					data : {
-						subLocationName : subLocationName
+						subLocationName : subLocationName,
+						career : career
 					},
 					success : function(result) {
 						$("#resultPost").html(result);
@@ -181,8 +282,33 @@
 						$("#resultPost").html(result);
 					}
 				});
+				
+				//선택된 것이 없을 때 창 닫기
+				var cla = $(this).parent().parent().attr("class");
+				if($('.'+cla+' input[type=checkbox]:checked').length == 0){
+					$('input:checkbox[name=locationBox]').each(function(){
+						var locaId = $(this).attr("id");
+						
+						if(locaId.substring(8, locaId.length) == cla.substring(6, cla.length)){
+							$("#sub" + locaId).css("display", "none");
+							$(this).prop("checked", false);
+							
+							//스타일
+							$('span[id=' + locaId + ']').css("border", "none");
+							$('span[id=' + locaId + ']').css("font-weight", "normal");
+							$('span[id=' + locaId + ']').css("color", "black");
+							
+							$('span[id=' + subId + ']').css("color", "black");
+							$('span[id=' + subId + ']').css("background", "#ffffff");
+							$('span[id=' + subId + ']').css("font-weight", "normal");
+						}
+						
+					});
 
-				$('button[id=' + subId + ']').remove();
+					$("#sub" + locaId).css("display", "none");
+				}
+
+				//$('button[id=' + subId + ']').remove();
 
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#ffffff");
@@ -190,86 +316,5 @@
 				$('span[id=' + subId + ']').css("font-weight", "normal");
 			}
 		});
-
 	});
 </script>
-
-<div style="background-color: #e6e6e6; padding-bottom: 20px;">
-	<div class=row>
-		<div class="col-sm-2">div2</div>
-		<div class="col-sm-7"
-			style="background-color: white; padding: 30px; min-width: 800px;">
-
-			<div class="searchWrap">
-				<dl style="display: inline-block;">
-					<dt
-						style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역 </dt>
-					<dd>
-						<div
-							style="width: 150px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
-							<ul style="list-style: none; padding: 10px; padding-left: 20px;">
-								<c:if test="${locationList!=null }">
-									<c:forEach var="location" items="${locationList }">
-										<li class="location"><input type="checkbox" style="display: ;"	
-											name="locationBox" id="location${location.locationno }" value="${location.location }">
-											<label
-											style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
-											for="location${location.locationno }"><span
-												id="location${location.locationno }"
-												style="padding: 5px 10px 5px 10px;">${location.location }</span></label></li>
-									</c:forEach>
-								</c:if>
-							</ul>
-						</div>
-						<!-- 지역 상세조건  -->
-						<c:forEach var="location" items="${locationList }">
-							<div class="sublocation" id="sublocation${location.locationno }"
-								style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
-								<button id="closeBtn${location.locationno }" class="closeBtn"
-									style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
-									<i class="material-icons" style="font-size: 20px">clear</i>
-								</button>
-								<dl>
-									<dt
-										style="padding: 10px; background-color: #f2f2f2; color: #0099ff; font-weight: bold;">${location.location }
-										상세지역</dt>
-									<dd>
-										<div
-											style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
-											<ul style="list-style: none; padding: 10px;">
-												<li class="all" style="display: inline;"><input
-													style="display: ;" type="checkbox"
-													id="sub${location.locationno }" name="sublocationBox"
-													value="${location.location }"> <label
-													id="sub${location.locationno }"
-													for="sub${location.locationno }"
-													style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
-														id="sub${location.locationno }"
-														style="padding: 6px 12px 6px 12px;">전체</span></label></li>
-												<!-- 상세지역 -->
-												<c:forEach var="sublocation" items="${sublocationList }">
-													<c:if test="${sublocation.location == location.location}">
-														<li class="sub" style="display: inline;"><input style="display: ;"
-															type="checkbox" id="sub${sublocation.locationno }"
-															name="sublocationBox"
-															value="${location.location } ${sublocation.sublocation}">
-															<label id="sub${sublocation.locationno }"
-															for="sub${sublocation.locationno }"
-															style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
-																id="sub${sublocation.locationno }"
-																style="padding: 6px 12px 6px 12px;">${sublocation.sublocation }</span></label></li>
-													</c:if>
-												</c:forEach>
-											</ul>
-										</div>
-									</dd>
-								</dl>
-							</div>
-						</c:forEach>
-					</dd>
-				</dl>
-			</div>
-		</div>
-		<div class="col-sm-3">div3</div>
-	</div>
-</div>
