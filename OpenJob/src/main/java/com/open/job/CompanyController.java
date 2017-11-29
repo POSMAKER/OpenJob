@@ -84,7 +84,7 @@ public class CompanyController {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		Integer postno = commServ.IntegerFilter(postNo);
 		model.addAttribute("companyno", companyno);
-		model.addAttribute("post", compServ.getSinglePost(postno));
+		model.addAttribute("post", compServ.getSinglePost(companyno, postno));
 		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyno));
 		return "companyview/postView";
 	}

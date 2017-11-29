@@ -112,8 +112,8 @@ public class CompanyServiceImpl implements CompanyService{
 	}
 
 	@Override
-	public Post getSinglePost(Integer postno) {
-		return cdao.getSinglePost(postno);
+	public Post getSinglePost(Integer companyno, Integer postno) {
+		return cdao.getSinglePost(companyno,postno);
 	}
 
 	@Override

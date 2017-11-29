@@ -6,31 +6,35 @@
 	align="left">
 	<!-- 검색: 리뷰의 직종, 리뷰의 전/현 직 상태 -->
 	<select name="s_jobcate" id="s_jobcate">
-		<option value="null">직종 전체</option>
+		<option value="null">직종</option>
 		<c:forEach var="item" items="${s_jobcateLst}">
 			<option value="${item.jobcategory }">${item.jobcategory }</option>
 		</c:forEach>
 	</select> <select name="s_subjobcate" id="s_subjobcate">
-	<option value="null">세부 직종 전체</option>
+		<option value="null">세부 직종</option>
 	</select> <select id="s_career" name="s_career">
-		<option value="null">경력을 선택해 주세요</option>
+		<option value="null">경력</option>
 		<option value="신입">신입</option>
 		<option value="경력">경력</option>
 		<option value="null">경력무관</option>
 	</select> <select id="s_location" name="s_location">
-		<option value="null">근무지역</option>
+		<option value="null">지역</option>
 		<c:forEach var="loc" items="${s_locationLst}">
 			<option value="${loc.location}">${loc.location}</option>
 		</c:forEach>
-	</select> <br /> <br /> 
+	</select> <br /> <br />
 	<div class="container-fluid">
-	<div class="row">
-	<div class="col-lg-6" style="padding:0px;">총 <span id="postcounter"
-		style="color: #ff4d4d; font-size: 16px; font-weight: bold">0</span>
-	개의 기업 공고
-	</div>
-	<div class="col-lg-6" style="border:1px black solid">1</div>
-	</div>
+		<div class="row">
+			<div class="col-sm-6" style="padding: 0px;">
+				총 <span id="postcounter"
+					style="color: #ff4d4d; font-size: 16px; font-weight: bold">0</span>
+				개의 기업 공고
+			</div>
+			<div class="col-sm-6" style="padding: 0px;" align="right">
+				<label for="s_chkbox" style="padding: 5px;">마감된 공고 보기</label><input
+					id="s_chkbox" type="checkbox"/>
+			</div>
+		</div>
 	</div>
 </div>
 <script>
@@ -49,11 +53,14 @@
 				}
 			});
 		});
-	$("#postsearch_div select, checkbox").change(function(){
+
+
+	$("#postsearch_div select, #postsearch_div input[type='checkbox']").change(function(){
 		var jobcategory = $("#s_jobcate option:selected").val();
 		var subjobcategory = $("#s_subjobcate option:selected").val();
 		var career = $("#s_career option:selected").val();
 		var location = $("#s_location option:selected").val();
+		var title = ($("#s_chkbox").prop("checked")==true? "true":"null");
 		$.ajax({
 			url : '${home}/company/frag_showpostLst',
 			type : 'POST',
@@ -62,11 +69,14 @@
 				"jobcategory" : jobcategory,
 				"subjobcategory" : subjobcategory,
 				"career" : career,
-				"location" : location
+				"location" : location,
+				"title" : title
 			},
 			success : function(result) {
 				$("#postsearchresult_div").html(result);
 			}
 		});
 	});		
+	
+	
 </script>

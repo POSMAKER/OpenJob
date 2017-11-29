@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
-	integerOnly="true" var="nowdate" />
-<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
-	integerOnly="true" var="enddate" />
 <head>
 <title>${company.companyname }[채용]</title>
 <style>
