@@ -19,6 +19,12 @@ import com.open.job.IService.CompanyService;
 
 @Service
 public class CompanyServiceImpl implements CompanyService{
+	static final String tn_companyreview = "CompanyReview";
+	static final String tn_companyreviewinfo = "CompanyReviewInfo";
+	static final String tn_interviewreviewinfo = "InterviewReviewInfo";
+	static final String tn_interviewreview = "InterviewReview";
+	static final String tn_post = "Post";
+	
 	@Autowired CompanyDAO cdao;
 
 	@Override
@@ -95,13 +101,13 @@ public class CompanyServiceImpl implements CompanyService{
 	}
 
 	@Override
-	public List<CompanyReview> getCompanyReview(Integer companyno) {
-		return cdao.getCompanyReview(companyno);
+	public List<CompanyReview> getCompanyReview(CompanyReview review) {
+		return cdao.getCompanyReview(review);
 	}
 
 	@Override
-	public List<InterviewReview> getCompanyInterview(Integer companyno) {
-		return cdao.getCompanyInterview(companyno);
+	public List<InterviewReview> getCompanyInterview(InterviewReview review) {
+		return cdao.getCompanyInterview(review);
 	}
 
 	@Override
@@ -130,7 +136,7 @@ public class CompanyServiceImpl implements CompanyService{
 
 	@Override
 	public int[] getCountInfo(Integer companyno) {
-		String[] tablenames = {"CompanyReviewInfo","InterviewReviewInfo","Post"};
+		String[] tablenames = {tn_companyreviewinfo,tn_interviewreviewinfo,tn_post};
 		int[] tablecounts = new int[tablenames.length];
 		for(int i=0; i<tablenames.length;i++) {
 			tablecounts[i] = cdao.countTable(tablenames[i], companyno);
@@ -157,7 +163,7 @@ public class CompanyServiceImpl implements CompanyService{
 
 	@Override
 	public List<Jobcategory> getPostJobcateLst(Integer companyno) {
-		return cdao.getPostJobcateLst(companyno);
+		return cdao.getTableJobcateLst(tn_post,companyno);
 	}
 
 	@Override
@@ -170,6 +176,31 @@ public class CompanyServiceImpl implements CompanyService{
 			body += "\r\n";
 		}
 		return body;
+	}
+
+	@Override
+	public List<Jobcategory> getReviewJobcateLst(Integer companyno) {
+		return cdao.getTableJobcateLst(tn_companyreviewinfo,companyno);
+	}
+
+	@Override
+	public List<CompanyReview> getReviewStatusLst(Integer companyno) {
+		return cdao.getReviewStatusLst(companyno);
+	}
+
+	@Override
+	public List<Jobcategory> getInterviewJobcateLst(Integer companyno) {
+		return cdao.getTableJobcateLst(tn_interviewreviewinfo, companyno);
+	}
+
+	@Override
+	public List<InterviewReview> getInterviewPositionLst(Integer companyno) {
+		return cdao.getInterviewPositionLst(companyno);
+	}
+
+	@Override
+	public List<InterviewReview> getInterviewSuccessLst(Integer companyno) {
+		return cdao.getInterviewSuccessLst(companyno);
 	}
 
 

@@ -13,7 +13,7 @@
 	</select> <select name="s_subjobcate" id="s_subjobcate">
 		<option value="null">세부 직종</option>
 	</select> <select id="s_career" name="s_career">
-		<option value="null">경력</option>
+		<option value="null">경력 선택</option>
 		<option value="신입">신입</option>
 		<option value="경력">경력</option>
 		<option value="null">경력무관</option>
@@ -77,6 +77,4 @@
 			}
 		});
 	});		
-	
-	
 </script>

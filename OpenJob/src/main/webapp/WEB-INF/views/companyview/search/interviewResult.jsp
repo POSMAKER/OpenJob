@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="container-fluid">
+<c:forEach var="interview" items="${interviewLst}">
+	<div
+		style="width: 100%; background-color: #ffffff; margin-bottom: 15px; padding: 15px;"
+		align="left">
+		<div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12"
 			style="padding-bottom: 15px; padding-left: 0px;">
@@ -62,3 +66,8 @@
 		</div>
 	</div>
 </div>
+	</div>
+</c:forEach>
+<script>
+	$("#interviewcounter").html('${fn:length(interviewLst) }');
+</script>

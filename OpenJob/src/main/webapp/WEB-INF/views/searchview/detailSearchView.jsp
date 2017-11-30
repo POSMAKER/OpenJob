@@ -50,7 +50,7 @@ a:active {
 <title>상세검색</title>
 </head>
 <body>
-	<div class="container-fluid" style="margin-top: 70px; padding: 0px;">
+	<div class="container-fluid" style="margin-top: 56px; padding: 0px;">
 		<!-- 검색바 -->
 		<%@include file="/WEB-INF/views/searchview/searchBar.jsp"%>
 		<div style="background-color: #e6e6e6; padding: 20px;">

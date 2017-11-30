@@ -18,7 +18,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "home";
+		return "redirect:/searchhome";
 	}
 
 	@RequestMapping(value = "/{frmName:^.+home$}", method = RequestMethod.GET)

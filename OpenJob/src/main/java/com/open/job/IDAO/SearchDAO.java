@@ -19,5 +19,5 @@ public interface SearchDAO {
 	public List<Jobcategory> getjobcategory();
 	public List<Jobcategory> getSubjobcategory();
 	public List<Company> getQuickCompSearch(String searchword);
-	public List<Post> getResult(@Param("loca")String[] location);
+	public List<Post> getResult(@Param("loca")String[] loca, @Param("care")String[] care);
 }
