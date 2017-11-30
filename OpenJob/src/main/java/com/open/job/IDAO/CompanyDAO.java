@@ -35,9 +35,9 @@ public interface CompanyDAO {
 
 	public List<Post> getPost(Post post);
 
-	public List<CompanyReview> getCompanyReview(Integer companyno);
+	public List<CompanyReview> getCompanyReview(CompanyReview review);
 
-	public List<InterviewReview> getCompanyInterview(Integer companyno);
+	public List<InterviewReview> getCompanyInterview(InterviewReview review);
 
 	public int insertInterviewReviewInfo(InterviewReview interview);
 
@@ -55,7 +55,13 @@ public interface CompanyDAO {
 
 	public int follow(@Param("companyno") Integer companyno,@Param("memberno") Integer memberno);
 
-	public List<Jobcategory> getPostJobcateLst(Integer companyno);
-
 	public List<Jobcategory> getPostSubjobcategory(@Param("companyno") Integer companyno, @Param("jobcategory") String jobcategory);
+
+	public List<Jobcategory> getTableJobcateLst(@Param("tablename") String tablename,@Param("companyno") Integer companyno);
+
+	public List<CompanyReview> getReviewStatusLst(Integer companyno);
+
+	public List<InterviewReview> getInterviewPositionLst(Integer companyno);
+
+	public List<InterviewReview> getInterviewSuccessLst(Integer companyno);
 }

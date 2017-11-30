@@ -9,17 +9,17 @@
 			<div class="searchresult_div" id="searchresult_div" style="z-index:2; position:absolute; width:85%;max-height:150px; background-color:white; overflow-y:scroll; border:1px black solid; display:none;"></div>
 		</div>
 	</div>
-	<input type="hidden" id="companyno" name="companyno"/>
+	<input type="hidden" id="f_companyno" name="companyno"/>
 	<input type="hidden" name="memberno" value="${USER.memberno }"/>
 	<script>
 		function searchclick(data){
 			var datasplit = data.split(",");
 			$("#searchbox").val(datasplit[1]);
-			$("#companyno").val(datasplit[0]).trigger('change');
+			$("#f_companyno").val(datasplit[0]).trigger('change');
 			$("#searchresult_div").hide();
 		}
 		$("#searchbox").keyup(function(){
-			$("#companyno").val(null).trigger('change');
+			$("#f_companyno").val(null).trigger('change');
 			var keyword = $("#searchbox").val();
 			$.ajax({
 				type: 'post',

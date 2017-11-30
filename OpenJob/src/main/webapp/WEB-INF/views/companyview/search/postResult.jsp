@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
 	integerOnly="true" var="nowdate" />
+	
 <c:forEach var="post" items="${postLst }" varStatus="status">
 	<c:if test="${status.index mod 3 == 0}">
 		<div class="row">
