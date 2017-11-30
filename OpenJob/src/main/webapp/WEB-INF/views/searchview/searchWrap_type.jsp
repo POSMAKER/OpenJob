@@ -9,10 +9,10 @@
 			style="width: 200px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 			<ul style="list-style: none; padding: 10px; padding-left: 20px;">
 				<c:forEach var="type" items="${typeList }">
-					<li><input type="checkbox" style="display:;" name="" id=""
-						value=""> <label
+					<li class="type_li"><input type="checkbox" style="display:;" id="${type }"
+						value="${type }"> <label
 						style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
-						for=""><span id="" style="padding: 5px 10px 5px 10px;">${type }</span></label></li>
+						for="${type }"><span id="" style="padding: 5px 10px 5px 10px;">${type }</span></label></li>
 				</c:forEach>
 			</ul>
 		</div>

@@ -25,8 +25,8 @@
 		</div>
 
 		<c:forEach var="jobcategory" items="${jobcategoryList }">
-			<div id = "sub${jobcategory.jobcategoryno + 2000}"
-				style="z-index:10; display: none; position: absolute; left: 430px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
+			<div class="addDiv" id="sub${jobcategory.jobcategoryno + 2000}"
+				style="z-index:10; display: none; position: absolute; left: 435px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
 				<button class="closejob"
 					style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
 					<i class="material-icons" style="font-size: 20px">clear</i>

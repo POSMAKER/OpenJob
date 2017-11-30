@@ -104,8 +104,11 @@ public class SearchController {
 	@ResponseBody
 	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String subLocation(Model model, @RequestParam(value = "subLocationName", required=false , defaultValue = "null")String subLocationName,
-			@RequestParam(value = "career", required=false, defaultValue = "null")String career) {
-		logger.info(career);
+			@RequestParam(value = "career", required=false, defaultValue = "null")String career,
+			@RequestParam(value = "jobcate", required=false, defaultValue = "null")String jobcate,
+			@RequestParam(value = "type", required=false, defaultValue = "null")String type,
+			@RequestParam(value = "dday", required=false, defaultValue = "null")String dday) {
+		logger.info(subLocationName+" // "+jobcate+" // "+career+" // "+type+" // "+dday);
 		return searchServ.getResult(subLocationName, career);
 	}
 	

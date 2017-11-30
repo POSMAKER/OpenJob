@@ -32,7 +32,7 @@
 						</div>
 						<!-- 지역 상세조건  -->
 						<c:forEach var="location" items="${locationList }">
-							<div id="sublocation${location.locationno }"
+							<div class="addDiv" id="sublocation${location.locationno }"
 								style="display: none; position: absolute; left: 230px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
 								<button class="closeloca"
 									style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
@@ -92,6 +92,49 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		//경력 체크박스
+		$('.career_ul input[type=checkbox]').change(function(){
+			if($(this).is(":checked")) {
+				if($(this).attr("id")=='any') {
+					$('.career_ul input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				} else if ($(this).attr("id")=='new'){
+					$('.career_ul input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				} else {
+					$('.career_ul input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				}
+			} else {
+				$(this).prop("checked", false);
+			}
+		});
+		
+		//기간 체크박스
+		$('.dday_li input[type=checkbox]').change(function(){
+			if($(this).is(":checked")) {
+				if($(this).attr("id")=='전체') {
+					$('.dday_li input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				} else if ($(this).attr("id")=='오늘'){
+					$('.dday_li input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				} else if ($(this).attr("id")=='최근 3일'){
+					$('.dday_li input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				} else if ($(this).attr("id")=='최근 1주일'){
+					$('.dday_li input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				} else if ($(this).attr("id")=='최근 1개월'){
+					$('.dday_li input[type=checkbox]').prop("checked", false);
+					$(this).prop("checked", true);
+				}
+			} else {
+				$(this).prop("checked", false);
+			}
+		});
+		
 		//전체 div
 		$('.searchWrap input[type=checkbox]').change(function(){
 			//지역 검색
@@ -103,23 +146,20 @@
 				subLocationName = subLocationName.substring(3,subLocationName.length);
 			}
 			
-			//경력
-			$('.career_ul input[type=checkbox]').each(function(){
-				if($(this).is(":checked")) {
-					if($(this).attr("id")=='any') {
-						$('.career_ul input[type=checkbox]').prop("checked", false);
-						$(this).prop("checked", true);
-					} else {
-						$('.career_ul input[id=any]').prop("checked", false);
-						$(this).prop("checked", true);
-					}
-				} else {
-					$(this).prop("checked", false);
-				}
-			});
-			
 			//경력 검색
 			var career = $('.career_ul input[type=checkbox]:checked').map(function() {
+				return this.value;
+			}).get().join(",");
+			
+			var jobcate = $('.subjob_li input[type=checkbox]:checked').map(function() {
+				return this.value;
+			}).get().join(",");
+			
+			var type = $('.type_li input[type=checkbox]:checked').map(function() {
+				return this.value;
+			}).get().join(",");
+			
+			var dday = $('.dday_li input[type=checkbox]:checked').map(function() {
 				return this.value;
 			}).get().join(",");
 			
@@ -128,7 +168,10 @@
 				url : '${home}/subLocation',
 				data : {
 					subLocationName : subLocationName,
-					career : career
+					jobcate : jobcate,
+					career : career,
+					type : type,
+					dday : dday
 				},
 				success : function(result) {
 					$("#resultPost").html(result);
@@ -136,7 +179,6 @@
 			});
 			
 		});
-
 		
 		//지역
 		$('input:checkbox[name="locationBox"]').change(function() {
@@ -156,7 +198,7 @@
 				//새로운 지역 클릭시 다른창 닫기
 				$('input:checkbox[name="locationBox"]').each(function() {
 					var locaId = $(this).attr("id");
-					$("#sub" + locaId).css("display", "none");
+					$('.addDiv').css("display", "none");
 				});
 
 				$("#sub" + locaId).css("display", "block");
@@ -276,6 +318,7 @@
 		});
 	});
 	
+	//직무분야 직무열기
 	$('.job_li input[type=checkbox]').change(function(){
 		var jobId = $(this).attr("id");
 		
@@ -284,12 +327,12 @@
 			
 			$('input:checkbox[name="jobcategory"]').each(function() {
 				var jobId = $(this).attr("id");
-				$("#sub" + jobId).css("display", "none");
+				$('.addDiv').css("display", "none");
 			});
 			
 			$("#sub" + jobId).css("display", "block");
 		} else {
-			
+			$("#sub" + jobId).css("display", "none");
 		}
 	});
 	
