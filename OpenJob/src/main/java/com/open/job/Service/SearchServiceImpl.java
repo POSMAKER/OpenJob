@@ -106,10 +106,13 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public String getResult(String location) {
-		String[] loca = location.split(",");
+	public String getResult(String location, String career) {
+		String wrap = "";
+		wrap = location;
+		
+		String[] wrapSql = wrap.split(",");
 
-		List<Post> lst = sdao.getResult(loca);
+		List<Post> lst = sdao.getResult(wrapSql);
 		
 		String str = "";
 		for(Post post:lst) {
