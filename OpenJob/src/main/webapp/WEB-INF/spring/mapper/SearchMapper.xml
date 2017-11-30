@@ -58,9 +58,7 @@
 		<where>
 		<if test='loca!=null'>
 		location REGEXP
-		<foreach item="item" collection="loca" open="'" separator="|" close="'">
-		${item}
-		</foreach>
+		<foreach item="item" collection="loca" open="'" separator="|" close="'">${item}</foreach>
 		</if>
 
 		</where>
