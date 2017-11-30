@@ -13,8 +13,19 @@
 			style="background-color: #ffffff; width: 100%; height: 100%; padding: 20px; cursor: pointer">
 			<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
 				integerOnly="true" var="enddate" />
-			<div
-				style="margin-bottom: 10px; border: 1px lime solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: lime">D-${enddate-nowdate }</div>
+			
+				<c:choose>
+					<c:when test="${(enddate-nowdate) gt 0 }">
+					<div style="margin-bottom: 10px; border: 1px lime solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: lime"><span>D-${enddate-nowdate}</span></div>
+					</c:when>
+					<c:when test="${(enddate-nowdate) eq 0 }">
+					<div style="margin-bottom: 10px; border: 1px red solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: red">오늘 마감</div>
+					</c:when>
+					<c:otherwise>
+					<div style="margin-bottom: 10px; border: 1px gray solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: gray">마감</div>
+					</c:otherwise>
+				</c:choose>
+				
 			<br> <span
 				style="width: 100%; overflow: hidden; display: inline-block; font-size: 17px; font-weight: bold; white-space: nowrap; text-overflow: ellipsis"><a
 				style="color: black;"

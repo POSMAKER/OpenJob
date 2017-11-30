@@ -26,7 +26,7 @@ public interface CompanyService {
 	public String getCompBaseBody(Integer companyno);
 	public List<CompanyReview> getCompanyReview(Integer companyno);
 	public List<InterviewReview> getCompanyInterview(Integer companyno);
-	public Post getSinglePost(Integer postNo);
+	public Post getSinglePost(Integer companyno, Integer postno);
 	public int[] getCountInfo(Integer companyno);
 	public boolean doesUserFollow(Integer companyno, Integer memberno);
 	public int followCompany(Integer companyno, Integer memberno, String string);

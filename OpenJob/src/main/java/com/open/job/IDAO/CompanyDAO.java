@@ -43,7 +43,7 @@ public interface CompanyDAO {
 
 	public int insertInterviewReview(InterviewReview interview);
 	
-	public Post getSinglePost(Integer postno);
+	public Post getSinglePost(@Param("companyno")Integer companyno,@Param("postno") Integer postno);
 	
 	public List<Location> getSublocation(Integer locationcate);
 	

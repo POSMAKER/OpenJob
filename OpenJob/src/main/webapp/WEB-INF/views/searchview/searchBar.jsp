@@ -1,45 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- 상단 검색바 -->
-<div class="searchBar">
-	<div class="row">
+<div class="container-fluid searchBar"
+	style="height: 80px; padding: 0px;">
+	<div class="row" style="padding: 3 0px;">
 		<!-- 로고 -->
-		<div class="col-sm-4" align="right" style="padding-right: 0px;">
-			<div class="imgLogo">
-				<a href="${home }/"><img src="${home }/imgs/logo.jpg"
-					style="width: 200px; height: 65px;"></a>
+		<div class="col-xl-2 d-xl-block" style="display: none;"></div>
+		<div class="col-xl-8" style="height: 80px; padding:2 0 0 0px;"
+			align="center">
+			<div class="container-fluid" style="padding: 0">
+				<div class="row" style="margin: 0;">
+					<div class="col-md-3 d-md-block imgLogo" align="left"
+						style="display:none;">
+						<a href="${home }/"><img src="${home }/imgs/logo.jpg"
+							style="width: 100%; height: 70px;"></a>
+					</div>
+					<!-- 검색창 -->
+					<div class="col-md-6" style="padding:15px;">
+							<form action="${home }/search" method="get">
+								<table
+									style="border-style: solid; border-color: #77bbff; width: 100%;">
+									<tr style="padding: 10px;">
+										<td style="width: 15%; min-width: 70px;"><select
+											name="category" id="category"
+											style="width: 90%; border-style: none;">
+												<option value="all">통합</option>
+												<option value="company" ${companySelected }>기업</option>
+												<option value="post" ${postSelected }>채용</option>
+										</select></td>
+										<td style="width: 75%"><input type="text"
+											name="searchWord" id="searchWord"
+											placeholder="${placeholderText }"
+											style="height:35px; width: 100%; border: none;" value="${searchWord }" /></td>
+										<td style="width: 5% min-width: 30px;"><button
+												style="background: transparent; border: none; cursor: pointer;">
+												<i class="fa fa-search" style="font-size: 25px;"></i>
+											</button></td>
+									</tr>
+								</table>
+							</form>
+					</div>
+
+					<!-- 광고 -->
+					<div class="col-md-3 d-md-block"
+						style="padding-right: 0px; display: none;" align="right">
+						<img style="width: 100%;height: 70px;"
+							src="${home }/imgs/detailSearchView_AD.jpg">
+					</div>
+				</div>
 			</div>
 		</div>
-		<!-- 검색창 -->
-		<div class="col-sm-5">
-			<div align="left" style="padding-top: 10px;">
-				<form action="${home }/search" method="get">
-					<table style="border-style: solid; border-color: #77bbff;">
-						<tr style="padding: 10px;">
-							<td style="padding: 10px;"><select name="category"
-								id="category" style="width: 80px; border-style: none;">
-									<option value="all">통합</option>
-									<option value="company" ${companySelected }>기업</option>
-									<option value="post" ${postSelected }>채용</option>
-							</select></td>
-							<td style="padding: 10px;"><input type="text"
-								name="searchWord" id="searchWord"
-								placeholder="${placeholderText }"
-								style="width: 400px; border: none; min-width: 300px;"
-								value="${searchWord }" /></td>
-							<td style="padding: 10px;"><button
-									style="background: transparent; border: none; cursor: pointer;">
-									<i class="fa fa-search" style="font-size: 25px;"></i>
-								</button></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-		</div>
-		<!-- 광고 -->
-		<div class="col-sm-3"
-			style="padding-right: 0px; width: 100%; min-width: 100px; max-width: 150px;">
-			<img src="${home }/imgs/detailSearchView_AD.jpg">
-		</div>
+		<div class="col-xl-2 d-xl-block" style="display: none;"></div>
 	</div>
-</div>

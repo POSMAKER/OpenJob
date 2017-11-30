@@ -99,7 +99,7 @@
 		<if test="location != null and location !='null'">
 			AND location LIKE CONCAT(#{location},'%')
 		</if>		
-		<if test="enddate == null or enddate =='null'">
+		<if test="title == null or title =='null'">
 			AND enddate &gt; NOW()
 		</if>	
 	</select>
@@ -224,7 +224,7 @@ VALUES
 	</insert>
 	<select id="getSinglePost" parameterType="Integer" resultType="com.open.job.DTO.Post">
 	SELECT * FROM Post
-	WHERE postNo = #{postNo}
+	WHERE postNo = #{postno} AND companyNo = #{companyno}
 	</select>
 	<select id="countTable" parameterType="Map" resultType="Integer">
 		SELECT IFNULL(COUNT(*),0) FROM ${tablename}

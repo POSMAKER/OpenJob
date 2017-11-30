@@ -32,6 +32,17 @@ public class CompanyController {
 	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 	
 	// **********************MIXED***********************//
+	@RequestMapping(value = "/companyhome")
+	public String gocompanyhome(Model model) {
+		model.addAttribute("nav_companytag", "active");
+		return "companyview/companyhome";
+	}
+	@RequestMapping(value = "/posthome")
+	public String goposthome(Model model) {
+		model.addAttribute("nav_posttag", "active");
+		return "companyview/posthome";
+	}
+	
 	// 기업 정보 페이지로 이동
 	// companyNo로 DB에서 불러와서 정보를 줌
 	@RequestMapping("/{companyNo:^[0-9]*$}/info")
@@ -84,7 +95,7 @@ public class CompanyController {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		Integer postno = commServ.IntegerFilter(postNo);
 		model.addAttribute("companyno", companyno);
-		model.addAttribute("post", compServ.getSinglePost(postno));
+		model.addAttribute("post", compServ.getSinglePost(companyno, postno));
 		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyno));
 		return "companyview/postView";
 	}
