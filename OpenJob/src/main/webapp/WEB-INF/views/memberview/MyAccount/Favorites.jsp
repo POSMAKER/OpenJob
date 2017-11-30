@@ -65,7 +65,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">user</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
         </div>
     </div>
 </div>
@@ -149,18 +149,90 @@
       <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">팔로잉 기업</h3>
 	    <hr style="border-top: 1px solid #b9b9b9;">
 	  
-      <section class="my_information">
-        <div class="my_information_group">
-          <dl class="email">
-            <dt>기본정보</dt>
-            <dd>샘플입니다.<br /> 
-			샘플입니다.<br /> 
-			샘플입니다. 
-			</dd>
-          </dl>
-          <!--email_list.scss.erb-->
-<ul class="email_list">
-</ul>
+     
+    <section class="my_information">
+        <div class="my_information_group" style="height: 300px">
+          
+            <h3 style="font-size: 18; margin-bottom: 25"> 파로잉된 기업</h3>
+           
+            
+            
+            
+<div class="w3-container" >
+<table class="w3-table-all" >
+
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">기업 번호</td>
+		<td style="font-size: 15; ">${userAcount.companyno}</td>
+	</tr>
+	
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">기업 이름</td>
+		<td style="font-size: 15; ">${userAcount.companyname}</td>
+	</tr>
+	
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">주소</td>
+		<td style="font-size: 15; ">${userAcount.address }</td>
+	</tr>
+	
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">산업군</td>
+		<td style="font-size: 15; ">${userAcount.industry }</td>
+	</tr>
+	
+	<tr>
+		<td style="font-size: 15; font-weight: bold;">산업</td>
+		<td style="font-size: 15; ">${userAcount.subindustry }</td>
+	</tr>
+	
+</table>
+</div>
+            
+            
+            
+            <!--  
+            <div >
+            
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">회원번호</span>
+			<span style="font-size: 17; margin-left: auto; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+
+
+
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">성별</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">나이</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">경력</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			</div>
+			-->
+			
+			
+
+ 
+</div>
+</section>     
+  
+  
+     
+     
+     
  
 </div>
 </section>

@@ -65,7 +65,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">user</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
         </div>
     </div>
 </div>

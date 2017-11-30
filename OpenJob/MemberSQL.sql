@@ -21,3 +21,8 @@ SELECT * FROM Compan
 
 
 SELECT * FROM Member
+SELECT * FROM SavedCompany
+
+
+
+

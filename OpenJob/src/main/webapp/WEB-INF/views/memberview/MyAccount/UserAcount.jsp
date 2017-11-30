@@ -64,9 +64,10 @@ div.w3-container {
 
 
 <body >
-<div style="font-size: 16;">
-<%@include file="/WEB-INF/views/common/menubar.jsp" %>
-</div>
+
+<div style="font-size: 16;"><%@include file="/WEB-INF/views/common/menubar.jsp" %></div>
+
+
 
 
 <form>
@@ -77,7 +78,7 @@ div.w3-container {
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${email }</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
         </div>
     </div>
 </div>
@@ -191,22 +192,22 @@ div.w3-container {
 
 	<tr>
 		<td style="font-size: 15; font-weight: bold;">회원번호</td>
-		<td style="font-size: 15; ">${memberno }</td>
+		<td style="font-size: 15; ">${userAcount.memberno}</td>
 	</tr>
 	
 	<tr>
 		<td style="font-size: 15; font-weight: bold;">성별</td>
-		<td style="font-size: 15; ">${gender }</td>
+		<td style="font-size: 15; ">${userAcount.gender}</td>
 	</tr>
 	
 	<tr>
 		<td style="font-size: 15; font-weight: bold;">나이</td>
-		<td style="font-size: 15; ">${age }</td>
+		<td style="font-size: 15; ">${userAcount.age }</td>
 	</tr>
 	
 	<tr>
 		<td style="font-size: 15; font-weight: bold;">경력</td>
-		<td style="font-size: 15; ">${career }</td>
+		<td style="font-size: 15; ">${userAcount.career }</td>
 	</tr>
 	
 </table>
@@ -251,6 +252,9 @@ div.w3-container {
  
 </div>
 </section>
+
+
+
 </div>
 
 

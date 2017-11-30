@@ -6,10 +6,6 @@
 	Insert into Member(email,password,gender,age,career) values(#{email},#{password},#{gender},#{age},#{career})
 </insert>
 
-<select id="getMemberList" resultType="com.open.job.DTO.Member">
-	Select * from Member
-</select>
-
 
 <select id="loginProc" parameterType="com.open.job.DTO.Member" resultType="String">
 	Select * from Member
@@ -17,10 +13,24 @@
 	And password=#{password}
 </select>
 
+ 
 <select id="getUserInfo" parameterType="String" resultType="com.open.job.DTO.USER">
 	SELECT memberno, Member.email, companyno, companyname FROM Member
 	LEFT Join CompanyMember USING(memberNo)
 	LEFT Join Company USING(companyNo)
 	WHERE Member.email = #{email}	
 </select>
+
+
+
+<select id="getUserAcount" parameterType="String" resultType="com.open.job.DTO.UserAcount">
+	SELECT * FROM Member
+	LEFT Join SavedCompany USING(memberNo)
+	LEFT Join Company USING(companyNo)
+
+	WHERE email=#{email} 	
+</select>
+
+
+
 </mapper>
