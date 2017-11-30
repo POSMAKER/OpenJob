@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-<style>
-
-</style>
 <div style="background-color: #e6e6e6; padding-bottom: 20px;">
 	<div class=row>
 		<div class="col-sm-2">div2</div>
@@ -16,7 +12,7 @@
 					<dt
 						style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역
 					</dt>
-					<dd>
+					<dd class="location_dd">
 						<div
 							style="width: 200px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 							<ul style="list-style: none; padding: 10px; padding-left: 20px;">
@@ -36,9 +32,9 @@
 						</div>
 						<!-- 지역 상세조건  -->
 						<c:forEach var="location" items="${locationList }">
-							<div class="sublocation" id="sublocation${location.locationno }"
-								style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
-								<button id="closeBtn${location.locationno }" class="closeBtn"
+							<div id="sublocation${location.locationno }"
+								style="display: none; position: absolute; left: 230px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
+								<button class="closeloca"
 									style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
 									<i class="material-icons" style="font-size: 20px">clear</i>
 								</button>
@@ -85,12 +81,9 @@
 
 				<%@include
 					file="/WEB-INF/views/searchview/searchWrap_jobcategory.jsp"%>
-				<%@include
-					file="/WEB-INF/views/searchview/searchWrap_career.jsp"%>
-				<%@include
-					file="/WEB-INF/views/searchview/searchWrap_type.jsp"%>
-				<%@include
-					file="/WEB-INF/views/searchview/searchWrap_date.jsp"%>
+				<%@include file="/WEB-INF/views/searchview/searchWrap_career.jsp"%>
+				<%@include file="/WEB-INF/views/searchview/searchWrap_type.jsp"%>
+				<%@include file="/WEB-INF/views/searchview/searchWrap_date.jsp"%>
 			</div>
 		</div>
 		<div class="col-sm-2">div2</div>
@@ -99,6 +92,53 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		//전체 div
+		$('.searchWrap input[type=checkbox]').change(function(){
+			//지역 검색
+			var subLocationName = $('.location_dd input[type=checkbox]:checked').map(function() {
+				return this.value;
+			}).get().join(",");
+			
+			if(subLocationName.length > 2){
+				subLocationName = subLocationName.substring(3,subLocationName.length);
+			}
+			
+			//경력
+			$('.career_ul input[type=checkbox]').each(function(){
+				if($(this).is(":checked")) {
+					if($(this).attr("id")=='any') {
+						$('.career_ul input[type=checkbox]').prop("checked", false);
+						$(this).prop("checked", true);
+					} else {
+						$('.career_ul input[id=any]').prop("checked", false);
+						$(this).prop("checked", true);
+					}
+				} else {
+					$(this).prop("checked", false);
+				}
+			});
+			
+			//경력 검색
+			var career = $('.career_ul input[type=checkbox]:checked').map(function() {
+				return this.value;
+			}).get().join(",");
+			
+			$.ajax({
+				type : 'post',
+				url : '${home}/subLocation',
+				data : {
+					subLocationName : subLocationName,
+					career : career
+				},
+				success : function(result) {
+					$("#resultPost").html(result);
+				}
+			});
+			
+		});
+
+		
+		//지역
 		$('input:checkbox[name="locationBox"]').change(function() {
 			var locaId = $(this).attr("id");
 			
@@ -113,42 +153,13 @@
 				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("font-weight", "bold");
 				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("color", "#ffffff");
 				
-				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-				
-				var career = $('.career_ul input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-				
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName,
-						career : career
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
-				
-				//ajax 결과
-				if($('#resultPost').find('table').attr("id")=='searched'){
-					$('.search_div').css("display", "none");
-				}
-				
+				//새로운 지역 클릭시 다른창 닫기
 				$('input:checkbox[name="locationBox"]').each(function() {
 					var locaId = $(this).attr("id");
 					$("#sub" + locaId).css("display", "none");
 				});
 
 				$("#sub" + locaId).css("display", "block");
-
-
-				//지역 버튼 추가
-				var locationName = $(this).parent().find("span").text();
-				//$("#button").append('<button id=' + locaId + '>' + locationName + ' 전체</button>');
 
 				//스타일
 				$('span[id=' + locaId + ']').css("border", "1px solid #0099ff");
@@ -158,23 +169,8 @@
 
 			} else {
 				$(this).prop("checked", false);
-				var subLocationName = $('.location input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
 				
 				$("#sub" + locaId).css("display", "none");
-				$('button[id=' + locaId + ']').remove();
 
 				$('input:checkbox[name="sublocationBox"]').each(function() {
 					var subId = $(this).attr("id");
@@ -208,7 +204,7 @@
 		});
 
 		//지역 상세보기의 닫기버튼
-		$(".closeBtn").click(function() {
+		$(".closeloca").click(function() {
 			var id = $(this).parent().attr("id");
 			//창 닫기
 			$("#" + id).css("display", "none");
@@ -237,27 +233,6 @@
 					$(this).parent().parent().find("li.all").find("span").css("color", "black");
 					$(this).parent().parent().find("li.all").find("span").css("font-weight", "normal");
 				}
-
-				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-
-				//검색조건이 추가될때 마다 검색
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
-				
-				//ajax 결과
-				if($('#resultPost').find('table').attr("id")=='searched'){
-					$('.search_div').css("display", "none");
-				}
 				
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#0099ff");
@@ -267,21 +242,6 @@
 				
 			} else {
 				$(this).prop("checked", false);
-
-				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
 				
 				//선택된 것이 없을 때 창 닫기
 				var cla = $(this).parent().parent().attr("class");
@@ -308,8 +268,6 @@
 					$("#sub" + locaId).css("display", "none");
 				}
 
-				//$('button[id=' + subId + ']').remove();
-
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#ffffff");
 				$('span[id=' + subId + ']').css("color", "black");
@@ -317,4 +275,27 @@
 			}
 		});
 	});
+	
+	$('.job_li input[type=checkbox]').change(function(){
+		var jobId = $(this).attr("id");
+		
+		if ($(this).is(":checked")) {
+			$(this).prop("checked", true);
+			
+			$('input:checkbox[name="jobcategory"]').each(function() {
+				var jobId = $(this).attr("id");
+				$("#sub" + jobId).css("display", "none");
+			});
+			
+			$("#sub" + jobId).css("display", "block");
+		} else {
+			
+		}
+	});
+	
+	$(".closejob").click(function() {
+		var id = $(this).parent().attr("id");
+		$("#" + id).css("display", "none");
+	});
+	
 </script>

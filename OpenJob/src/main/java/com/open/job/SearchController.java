@@ -103,8 +103,9 @@ public class SearchController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String subLocation(Model model, @RequestParam(value = "subLocationName", required=false, defaultValue = "null")String subLocationName,
+	public String subLocation(Model model, @RequestParam(value = "subLocationName", required=false , defaultValue = "null")String subLocationName,
 			@RequestParam(value = "career", required=false, defaultValue = "null")String career) {
+		logger.info(career);
 		return searchServ.getResult(subLocationName, career);
 	}
 	
