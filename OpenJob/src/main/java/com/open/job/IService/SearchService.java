@@ -17,5 +17,5 @@ public interface SearchService {
 	public List<String> getType();
 	public List<String> getDate();
 	public String getQuickCompSearch(String searchword, String onclickfunction_name);
-	public String getResult(String Location);
+	public String getResult(String Location, String career);
 }

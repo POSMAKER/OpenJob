@@ -16,7 +16,7 @@
 					<dt
 						style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역
 					</dt>
-					<dd>
+					<dd class="location_dd">
 						<div
 							style="width: 200px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 							<ul style="list-style: none; padding: 10px; padding-left: 20px;">
@@ -36,7 +36,7 @@
 						</div>
 						<!-- 지역 상세조건  -->
 						<c:forEach var="location" items="${locationList }">
-							<div class="sublocation" id="sublocation${location.locationno }"
+							<div id="sublocation${location.locationno }"
 								style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
 								<button id="closeBtn${location.locationno }" class="closeBtn"
 									style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
@@ -99,6 +99,33 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('.searchWrap input[type=checkbox]').change(function(){
+			var subLocationName = $('.location_dd input[type=checkbox]:checked').map(function() {
+				return this.value;
+			}).get().join(",");
+			
+			if(subLocationName.length > 2){
+				subLocationName = subLocationName.substring(3,subLocationName.length);
+			}
+			
+			var career = $('.career_ul input[type=checkbox]:checked').map(function() {
+				return this.value;
+			}).get().join(",");
+			
+			$.ajax({
+				type : 'post',
+				url : '${home}/subLocation',
+				data : {
+					subLocationName : subLocationName,
+					career : career
+				},
+				success : function(result) {
+					$("#resultPost").html(result);
+				}
+			});
+			
+		});
+		
 		$('input:checkbox[name="locationBox"]').change(function() {
 			var locaId = $(this).attr("id");
 			
@@ -113,42 +140,12 @@
 				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("font-weight", "bold");
 				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("color", "#ffffff");
 				
-				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-				
-				var career = $('.career_ul input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-				
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName,
-						career : career
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
-				
-				//ajax 결과
-				if($('#resultPost').find('table').attr("id")=='searched'){
-					$('.search_div').css("display", "none");
-				}
-				
 				$('input:checkbox[name="locationBox"]').each(function() {
 					var locaId = $(this).attr("id");
 					$("#sub" + locaId).css("display", "none");
 				});
 
 				$("#sub" + locaId).css("display", "block");
-
-
-				//지역 버튼 추가
-				var locationName = $(this).parent().find("span").text();
-				//$("#button").append('<button id=' + locaId + '>' + locationName + ' 전체</button>');
 
 				//스타일
 				$('span[id=' + locaId + ']').css("border", "1px solid #0099ff");
@@ -158,23 +155,8 @@
 
 			} else {
 				$(this).prop("checked", false);
-				var subLocationName = $('.location input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
 				
 				$("#sub" + locaId).css("display", "none");
-				$('button[id=' + locaId + ']').remove();
 
 				$('input:checkbox[name="sublocationBox"]').each(function() {
 					var subId = $(this).attr("id");
@@ -237,27 +219,6 @@
 					$(this).parent().parent().find("li.all").find("span").css("color", "black");
 					$(this).parent().parent().find("li.all").find("span").css("font-weight", "normal");
 				}
-
-				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-
-				//검색조건이 추가될때 마다 검색
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
-				
-				//ajax 결과
-				if($('#resultPost').find('table').attr("id")=='searched'){
-					$('.search_div').css("display", "none");
-				}
 				
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#0099ff");
@@ -267,21 +228,6 @@
 				
 			} else {
 				$(this).prop("checked", false);
-
-				var subLocationName = $('.sublocation input[type=checkbox]:checked').map(function() {
-					return this.value;
-				}).get().join(",");
-
-				$.ajax({
-					type : 'post',
-					url : '${home}/subLocation',
-					data : {
-						subLocationName : subLocationName
-					},
-					success : function(result) {
-						$("#resultPost").html(result);
-					}
-				});
 				
 				//선택된 것이 없을 때 창 닫기
 				var cla = $(this).parent().parent().attr("class");
@@ -307,8 +253,6 @@
 
 					$("#sub" + locaId).css("display", "none");
 				}
-
-				//$('button[id=' + subId + ']').remove();
 
 				//스타일
 				$('span[id=' + subId + ']').css("background", "#ffffff");

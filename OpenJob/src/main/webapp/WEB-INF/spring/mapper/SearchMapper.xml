@@ -56,9 +56,15 @@
 		Inner Join Companyimg Using(companyNo)
 		Inner join Company using(companyNo)
 		<where>
-		<foreach item="item" collection="loca" open="(" separator="or" close=")">
-			location LIKE '%${item}%'
-		</foreach>
+		<if test="loca!=null">
+		location REGEXP
+		<foreach item="item" collection="loca" open="'" separator="|" close="'">${item}</foreach>
+		</if>
+		<if test="care!=null">
+		AND career in
+		<foreach collection="care" item="item" open="(" separator="," close=")">#{item}</foreach> 
+		</if>
+		
 		</where>
 	</select>
 </mapper>
