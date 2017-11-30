@@ -37,3 +37,6 @@ SELECT jobcategory FROM Post
 SELECT subjobcategory FROM Post
 		WHERE companyNo = '13' AND jobcategory ='IT/인터넷'
 		GROUP BY subjobcategory
+		
+		
+SELECT * FROM Post WHERE location REGEXP '서울|서울 강남구'
