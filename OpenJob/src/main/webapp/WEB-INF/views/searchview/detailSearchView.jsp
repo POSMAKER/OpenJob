@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/common/menubar.jsp"%>
+<fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
+	integerOnly="true" var="nowdate" />
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#category").change(function() {

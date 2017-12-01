@@ -34,6 +34,9 @@
 			</choose>
 		</where>
 	</select>
+	<select id="getType" resultType="com.open.job.DTO.Type">
+		SELECT * FROM Type
+	</select>
 	<select id="getLocation" resultType="com.open.job.DTO.Location">
 		SELECT * FROM Location
 		WHERE
@@ -60,17 +63,25 @@
 	</select>
 	<select id="getResult" parameterType="Map" resultType="com.open.job.DTO.Post">
 		SELECT * FROM Post
-		Inner Join Companyimg Using(companyNo)
-		Inner join
-		Company using(companyNo)
+		Inner join Companyimg using(companyNo)
+		Inner join Company using(companyNo)
+		Inner join CompanyInfo using(companyNo)
 		<where>
 		<if test="loca!=null">
 		location REGEXP
 		<foreach item="item" collection="loca" open="'" separator="|" close="'">${item}</foreach>
 		</if>
+		<if test="job!=null">
+		AND subjobcategory REGEXP
+		<foreach item="item" collection="job" open="'" separator="|" close="'">${item}</foreach>
+		</if>
 		<if test="care!=null">
 		AND career in
-		<foreach collection="care" item="item" open="(" separator="," close=")">#{item}</foreach> 
+		<foreach item="item" collection="care" open="(" separator="," close=")">#{item}</foreach> 
+		</if>
+		<if test="type!=null">
+		AND type in
+		<foreach item="item" collection="type" open="(" separator="," close=")">#{item}</foreach> 
 		</if>
 		</where>
 	</select>

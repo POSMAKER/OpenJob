@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
+	integerOnly="true" var="nowdate" />
+	
+<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
+	integerOnly="true" var="enddate" />
 <dl style="display: inline-block;">
 	<dt
 		style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">기간
