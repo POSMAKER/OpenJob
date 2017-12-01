@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.open.job.DTO.Member;
+import com.open.job.DTO.UserAcount;
 import com.open.job.IService.MemberService;
 
 
@@ -110,6 +111,7 @@ public class MemberController {
 	//멤버 로그인 프락
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
 		public String loginproc(Member member, Model model) {
+
 			if(memberServ.loginProc(member)) {
 				model.addAttribute("USER", memberServ.getUserInfo(member.getEmail()));
 				model.addAttribute("userAcount", memberServ.getUserAcount(member.getEmail()));
