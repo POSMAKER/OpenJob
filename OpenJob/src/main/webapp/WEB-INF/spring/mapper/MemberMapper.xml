@@ -27,8 +27,7 @@
 	SELECT * FROM Member
 	LEFT Join SavedCompany USING(memberNo)
 	LEFT Join Company USING(companyNo)
-
-	WHERE email=#{email} 	
+	WHERE email=#{email}
 </select>
 
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 
 
 
@@ -158,37 +158,41 @@
             
             
             
-<div class="w3-container" >
+<div class="w3-container" style="width: 660px;">
 <table class="w3-table-all" >
 
+
 	<tr>
-		<td style="font-size: 15; font-weight: bold;">기업 번호</td>
-		<td style="font-size: 15; ">${userAcount.companyno}</td>
+		<th style="font-size: 15; font-weight: bold;">기업 이름</td>
+		<th style="font-size: 15; font-weight: bold;">주소</td>
+		<th style="font-size: 15; font-weight: bold;">산업군</td>
+		<th style="font-size: 15; font-weight: bold;">산업</td>
 	</tr>
 	
-	<tr>
-		<td style="font-size: 15; font-weight: bold;">기업 이름</td>
-		<td style="font-size: 15; ">${userAcount.companyname}</td>
-	</tr>
-	
-	<tr>
-		<td style="font-size: 15; font-weight: bold;">주소</td>
-		<td style="font-size: 15; ">${userAcount.address }</td>
-	</tr>
-	
-	<tr>
-		<td style="font-size: 15; font-weight: bold;">산업군</td>
-		<td style="font-size: 15; ">${userAcount.industry }</td>
-	</tr>
-	
-	<tr>
-		<td style="font-size: 15; font-weight: bold;">산업</td>
-		<td style="font-size: 15; ">${userAcount.subindustry }</td>
-	</tr>
-	
+	<!--  
+	<c:choose>
+		<c:when test="${companyno != null }">
+			<tr>
+				<td colspan="4">데이터가 없습니다.</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+		-->
+			<c:forEach var="item" items="${userAcount.email}">
+				<tr>
+					<td style="font-size: 15; ">${userAcount.companyname}</td>
+					<td style="font-size: 15; ">${userAcount.address }</td>
+					<td style="font-size: 15; ">${userAcount.industry }</td>
+					<td style="font-size: 15; ">${userAcount.subindustry }</td>
+				</tr>
+			</c:forEach>
+	<!-- 		
+	</c:otherwise>
+</c:choose>	
+-->
 </table>
 </div>
-            
+        
             
             
             <!--  
@@ -235,23 +239,17 @@
      
  
 </div>
-</section>
+
 </div> <!--//section_group-->
 
 
 
-<!--
-<div class="myaccountcon_bottom">
-  <div class="member_out">잡플래닛을 더 이상 이용하지 않는다면 
-        <a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>
-  </div>
-</div>
--->
+
 </div>     
 </div>        
 </div>
 </div>
-</div>
+
 </form>
 
 </body>
