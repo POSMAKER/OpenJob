@@ -15,7 +15,7 @@
 
  
 <select id="getUserInfo" parameterType="String" resultType="com.open.job.DTO.USER">
-	SELECT memberno, Member.email, companyno, companyname FROM Member
+	SELECT memberNo, Member.email, companyNo, companyName FROM Member
 	LEFT Join CompanyMember USING(memberNo)
 	LEFT Join Company USING(companyNo)
 	WHERE Member.email = #{email}	
