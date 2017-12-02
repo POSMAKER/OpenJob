@@ -107,8 +107,13 @@ public class MemberController {
 	}
 	
 	
+<<<<<<< HEAD
+	 
+	//멤버 로그인 
+=======
 	
 	//멤버 로그인 프락
+>>>>>>> branch 'master' of https://github.com/POSMAKER/OpenJob.git
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
 		public String loginproc(Member member, Model model) {
 
