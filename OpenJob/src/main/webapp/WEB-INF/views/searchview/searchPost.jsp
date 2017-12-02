@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
+	integerOnly="true" var="nowdate" />
 <div class=row id="postDiv" style="padding-bottom: 20px;">
 	<div class="col-sm-2">div2</div>
 	<div class="col-sm-8"
@@ -16,14 +17,36 @@
 					<c:otherwise>
 						<div id="resultPost">
 							<div class="search_div">
+
 								<c:forEach var="post" items="${postList }">
+									<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
+										integerOnly="true" var="enddate" />
+
 									<table border="1" style="min-width: 600px;">
 										<tr>
 											<td style="width: 130px; padding: 15px;" rowspan="3"><a
 												href="${home }/company/${post.companyno }/info"><img
 													src="${home }/companyimgs/${post.thumbimg }"
 													style="width: 100px;"></a></td>
-											<td colspan="2" style="font-weight: bold;"><a href="#">${post.title }</a></td>
+											<td colspan="2" style="font-weight: bold;"><a href="${home }/company/${post.companyno }/post/${post.postno }">${post.title }
+													<c:choose>
+														<c:when test="${(enddate-nowdate) gt 0 }">
+															<div
+																style="border: 1px lime solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: lime">
+																<span>D-${enddate-nowdate}</span>
+															</div>
+														</c:when>
+														<c:when test="${(enddate-nowdate) eq 0 }">
+															<div
+																style="border: 1px red solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: red">오늘
+																마감</div>
+														</c:when>
+														<c:otherwise>
+															<div
+																style="border: 1px gray solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: gray">마감</div>
+														</c:otherwise>
+													</c:choose>
+											</a></td>
 										</tr>
 										<tr>
 											<td colspan="2"><a

@@ -12,6 +12,7 @@ import com.open.job.DTO.Company;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
+import com.open.job.DTO.Type;
 import com.open.job.IDAO.SearchDAO;
 import com.open.job.IService.SearchService;
 
@@ -84,14 +85,8 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public List<String> getType() {
-		List<String> typeList = new ArrayList<String>();
-		String [] str = {"중소기업","대기업","중견기업","외국계 (외국 법인기업)","외국계 (외국 투자기업)","국내 비영리단체/협회/교육재단","대기업 계열사/자회사","국내 공공기관/공기업","병원","대학교/대학원"};
-		
-		for(int i=0;i<str.length;i++) {
-			typeList.add(str[i]);
-		}
-		return typeList;
+	public List<Type> getType() {
+		return sdao.getType();
 	}
 	
 	@Override
@@ -106,10 +101,12 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public String getResult(String location) {
-		String[] loca = location.split(",");
-
-		List<Post> lst = sdao.getResult(loca);
+	public String getResult(String location, String jobcate, String career, String Type, String dday) {
+		String[] loca = (location.equals("null")? null:location.split(","));
+		String[] job = (jobcate.equals("null")? null:jobcate.split(","));
+		String[] care = (career.equals("null")? null:career.split(","));
+		String[] type = (Type.equals("null")? null:Type.split(","));
+		List<Post> lst = sdao.getResult(loca, job, care, type);
 		
 		String str = "";
 		for(Post post:lst) {
@@ -119,7 +116,8 @@ public class SearchServiceImpl implements SearchService {
 					"										href=\"/job/company/"+post.getCompanyno()+"/info\"><img\r\n" + 
 					"											src=\"/job/companyimgs/"+ post.getThumbimg() +"\"\r\n" + 
 					"											style=\"width: 100px;\"></a></td>\r\n" + 
-					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"#\">"+post.getTitle()+"</a></td>\r\n" + 
+					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"/job/company/"+post.getCompanyno()+"/post/"+post.getPostno()+"\">"+post.getTitle()+"\r\n" + 
+					"											</a></td>\r\n" + 
 					"								</tr>\r\n" + 
 					"								<tr>\r\n" + 
 					"									<td colspan=\"2\"><a\r\n" + 

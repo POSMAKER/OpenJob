@@ -1,26 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<script type="text/javascript">
 
-
-</script>
 <dl style="display: inline-block;">
 	<dt
 		style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">직무분야
 	</dt>
-	<dd>
+	<dd class="jobcategory_dd">
 		<div
 			style="width: 200px; height: 200px; overflow-x: hidden; overflow-y: scroll;">
 			<ul style="list-style: none; padding: 10px; padding-left: 20px;">
 				<c:if test="${jobcategoryList!=null }">
 					<c:forEach var="jobcategory" items="${jobcategoryList }">
-						<li><input type="checkbox" style="display:;"
-							name="jobcategory" id="${jobcategory.jobcategoryno }"
+						<li class="job_li"><input type="checkbox" style="display: none;"
+							name="jobcategory" id="${jobcategory.jobcategoryno + 2000}"
 							value="${jobcategory.jobcategory } ${jobcategory.subjobcategory}">
 							<label
-							style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
-							for="${jobcategory.jobcategoryno }"><span
+							style="padding-bottom: 5px; cursor: pointer; width: 160px; font-size: 14px"
+							for="${jobcategory.jobcategoryno + 2000}"><span id="${jobcategory.jobcategoryno + 2000}"
 								style="padding: 5px 10px 5px 10px;">${jobcategory.jobcategory }</span></label>
 						</li>
 					</c:forEach>
@@ -28,11 +24,10 @@
 			</ul>
 		</div>
 
-
 		<c:forEach var="jobcategory" items="${jobcategoryList }">
-			<div
-				style="display: none; position: absolute; left: 180px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
-				<button id="closeBtn${jobcategory.jobcategoryno }" class="closeBtn"
+			<div class="addDiv" id="sub${jobcategory.jobcategoryno + 2000}"
+				style="z-index: 10; display: none; position: absolute; left: 435px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
+				<button class="closejob"
 					style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
 					<i class="material-icons" style="font-size: 20px">clear</i>
 				</button>
@@ -42,14 +37,20 @@
 					<dd>
 						<div
 							style="width: 100%; height: 200px; overflow-x: hidden; overflow-y: scroll;">
-							<ul style="list-style: none; padding: 10px;">
+							<ul class="job_ul${jobcategory.jobcategoryno + 2000 }" style="list-style: none; padding: 10px;">
 								<c:forEach var="subjobcategory" items="${subjobcategoryList }">
-									<c:if test="${jobcategory.jobcategory == subjobcategory.jobcategory}">
-										<li style="display: inline;"><input style="display:;"
-											type="checkbox" id="${subjobcategory.jobcategoryno }" name="subjobcategory" value="${subjobcategory.subjobcategory }"> <label id="${subjobcategory.jobcategoryno }"
-											for="${subjobcategory.jobcategoryno }"
-											style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
-												id="${subjobcategory.jobcategoryno }" style="padding: 6px 12px 6px 12px;">${subjobcategory.subjobcategory }</span></label></li>
+									<c:if
+										test="${jobcategory.jobcategory == subjobcategory.jobcategory}">
+										<li class="subjob_li" style="display: inline;"><input
+											style="display: none;" type="checkbox"
+											id="${subjobcategory.jobcategoryno + 2000 }"
+											name="subjobcategory"
+											value="${subjobcategory.subjobcategory }"> <label
+											id="${subjobcategory.jobcategoryno + 2000}"
+											for="${subjobcategory.jobcategoryno + 2000}"
+											style="width: 210px; padding: 5px; cursor: pointer; font-size: 13px;"><span
+												id="${subjobcategory.jobcategoryno + 2000}"
+												style="padding: 6px 12px 6px 12px;">${subjobcategory.subjobcategory }</span></label></li>
 									</c:if>
 								</c:forEach>
 							</ul>

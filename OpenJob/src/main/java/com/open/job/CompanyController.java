@@ -61,7 +61,6 @@ public class CompanyController {
 	public String showCompanyReview(@PathVariable String companyNo, Model model) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("companyno", companyno);
-		model.addAttribute("reviewLst", compServ.getCompanyReview(companyno));
 		model.addAttribute("frmoption", "review");
 		model.addAttribute("reviewactive", "active");
 		return "companyview/companyReview";
@@ -73,7 +72,6 @@ public class CompanyController {
 	public String showCompanyInterview(@PathVariable String companyNo, Model model) {
 		Integer companyno = commServ.IntegerFilter(companyNo);
 		model.addAttribute("companyno", companyno);
-		model.addAttribute("interviewLst", compServ.getCompanyInterview(companyno));
 		model.addAttribute("frmoption", "interview");
 		model.addAttribute("interviewactive", "active");
 		return "companyview/companyInterview";
@@ -213,7 +211,41 @@ public class CompanyController {
 	public String reviewStat(Model model) {
 		return "companyview/stat/reviewStat";
 	};
-	
+	@RequestMapping(value = "/frag_reviewsearch")
+	public String frag_reviewsearch(
+			@RequestParam Integer companyno,
+			Model model 
+			) {
+		model.addAttribute("s_jobcateLst", compServ.getReviewJobcateLst(companyno));
+		model.addAttribute("s_statusLst", compServ.getReviewStatusLst(companyno));
+		return "companyview/search/reviewSearch";
+	};
+	@RequestMapping(value = "/frag_showreviewLst")
+	public String frag_showreviewLst(
+			@ModelAttribute CompanyReview review,
+			Model model 
+			) {
+		model.addAttribute("reviewLst", compServ.getCompanyReview(review));
+		return "companyview/search/reviewResult";
+	};	
+	@RequestMapping(value = "/frag_interviewsearch")
+	public String frag_interviewsearch(
+			@RequestParam Integer companyno,
+			Model model 
+			) {
+		model.addAttribute("s_jobcateLst", compServ.getInterviewJobcateLst(companyno));
+		model.addAttribute("s_positionLst", compServ.getInterviewPositionLst(companyno));
+		model.addAttribute("s_successLst", compServ.getInterviewSuccessLst(companyno));
+		return "companyview/search/interviewSearch";
+	};
+	@RequestMapping(value = "/frag_showinterviewLst")
+	public String frag_showinterviewLst(
+			@ModelAttribute InterviewReview interview,
+			Model model 
+			) {
+		model.addAttribute("interviewLst", compServ.getCompanyInterview(interview));
+		return "companyview/search/interviewResult";
+	};
 	@RequestMapping(value = "/frag_postsearch")
 	public String frag_postsearch(
 			@RequestParam Integer companyno,

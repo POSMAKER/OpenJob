@@ -16,6 +16,7 @@ import com.open.job.DTO.Company;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
+import com.open.job.DTO.Type;
 import com.open.job.IService.SearchService;
 
 @Controller
@@ -85,7 +86,7 @@ public class SearchController {
 		model.addAttribute("subjobcategoryList", subjobcategoryList);
 		
 		//기업형태 리스트
-		List<String> typeList = searchServ.getType();		
+		List<Type> typeList = searchServ.getType();		
 		model.addAttribute("typeList", typeList);
 		
 		//기간
@@ -103,11 +104,13 @@ public class SearchController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String subLocation(Model model, @RequestParam(value = "subLocationName")String subLocationName,
-			@RequestParam(value = "career")String career) {
-		String subLocation = subLocationName;
-		logger.info(career);
-		return searchServ.getResult(subLocation);
+	public String subLocation(Model model, @RequestParam(value = "subLocationName", required=false , defaultValue = "null")String subLocationName,
+			@RequestParam(value = "career", required=false, defaultValue = "null")String career,
+			@RequestParam(value = "jobcate", required=false, defaultValue = "null")String jobcate,
+			@RequestParam(value = "type", required=false, defaultValue = "null")String type,
+			@RequestParam(value = "dday", required=false, defaultValue = "null")String dday) {
+		logger.info(subLocationName+" // "+jobcate+" // "+career+" // "+type+" // "+dday);
+		return searchServ.getResult(subLocationName, jobcate, career, type, dday);
 	}
 	
 	// searchword는 검색 단어, onclickfunction_name은 해당 단어가 클릭되었을 때 발생하는 Javascript 함수의 이름을 지정.

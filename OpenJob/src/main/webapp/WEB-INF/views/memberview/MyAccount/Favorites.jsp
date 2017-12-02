@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 
 
 
@@ -65,7 +65,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">user</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
         </div>
     </div>
 </div>
@@ -149,37 +149,107 @@
       <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">팔로잉 기업</h3>
 	    <hr style="border-top: 1px solid #b9b9b9;">
 	  
-      <section class="my_information">
-        <div class="my_information_group">
-          <dl class="email">
-            <dt>기본정보</dt>
-            <dd>샘플입니다.<br /> 
-			샘플입니다.<br /> 
-			샘플입니다. 
-			</dd>
-          </dl>
-          <!--email_list.scss.erb-->
-<ul class="email_list">
-</ul>
+     
+    <section class="my_information">
+        <div class="my_information_group" style="height: 300px">
+          
+            <h3 style="font-size: 18; margin-bottom: 25"> 파로잉된 기업</h3>
+           
+            
+            
+            
+<div class="w3-container" style="width: 660px;">
+<table class="w3-table-all" >
+
+
+	<tr>
+		<th style="font-size: 15; font-weight: bold;">기업 이름</td>
+		<th style="font-size: 15; font-weight: bold;">주소</td>
+		<th style="font-size: 15; font-weight: bold;">산업군</td>
+		<th style="font-size: 15; font-weight: bold;">산업</td>
+	</tr>
+	
+	<!--  
+	<c:choose>
+		<c:when test="${companyno != null }">
+			<tr>
+				<td colspan="4">데이터가 없습니다.</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+		-->
+			<c:forEach var="item" items="${userAcount.email}">
+				<tr>
+					<td style="font-size: 15; ">${userAcount.companyname}</td>
+					<td style="font-size: 15; ">${userAcount.address }</td>
+					<td style="font-size: 15; ">${userAcount.industry }</td>
+					<td style="font-size: 15; ">${userAcount.subindustry }</td>
+				</tr>
+			</c:forEach>
+	<!-- 		
+	</c:otherwise>
+</c:choose>	
+-->
+</table>
+</div>
+        
+            
+            
+            <!--  
+            <div >
+            
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">회원번호</span>
+			<span style="font-size: 17; margin-left: auto; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+
+
+
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">성별</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">나이</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			<div>
+			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">경력</span>
+			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
+			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
+			</div>
+			
+			</div>
+			-->
+			
+			
+
  
 </div>
-</section>
+</section>     
+  
+  
+     
+     
+     
+ 
+</div>
+
 </div> <!--//section_group-->
 
 
 
-<!--
-<div class="myaccountcon_bottom">
-  <div class="member_out">잡플래닛을 더 이상 이용하지 않는다면 
-        <a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>
-  </div>
-</div>
--->
+
 </div>     
 </div>        
 </div>
 </div>
-</div>
+
 </form>
 
 </body>
