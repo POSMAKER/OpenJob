@@ -1,6 +1,8 @@
 package com.open.job.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ import com.open.job.IService.CompanyService;
 
 @Service
 public class CompanyServiceImpl implements CompanyService{
+	static final String[] cn_companyreview = {"totalScore","promotionScore","walfareScore","balanceScore","atmosphereScore","executiveScore"};
 	static final String tn_companyreview = "CompanyReview";
 	static final String tn_companyreviewinfo = "CompanyReviewInfo";
 	static final String tn_interviewreviewinfo = "InterviewReviewInfo";
@@ -201,6 +204,35 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public List<InterviewReview> getInterviewSuccessLst(Integer companyno) {
 		return cdao.getInterviewSuccessLst(companyno);
+	}
+
+	@Override
+	public CompanyReview getReviewStat(Integer companyno) {
+		return cdao.getReviewStat(companyno);
+	}
+
+	@Override
+	public InterviewReview getInterviewStat(Integer companyno) {
+		return cdao.getInterviewStat(companyno);
+	}
+
+	@Override
+	public List<Company> getReviewRank(String columnname, int limit) {
+		return cdao.getReviewRank(columnname,limit);
+	}
+
+	@Override
+	public Map<String, List<Company>> getAllReviewRank(int limit) {
+		Map<String, List<Company>> modelLst = new HashMap<String, List<Company>>();
+		for(String columnname:cn_companyreview) {
+		modelLst.put("rank_"+columnname,getReviewRank(columnname, limit));
+		}
+		return modelLst;
+	}
+
+	@Override
+	public List<Post> getAllPost() {
+		return cdao.getAllPost();
 	}
 
 

@@ -1,6 +1,7 @@
 package com.open.job.IService;
 
 import java.util.List;
+import java.util.Map;
 
 import com.open.job.DTO.Company;
 import com.open.job.DTO.CompanyReview;
@@ -43,4 +44,10 @@ public interface CompanyService {
 	public String getPostsubjobcategory(Integer companyno, String jobcategory);
 	
 	public Post getSinglePost(Integer companyno, Integer postno);
+	public CompanyReview getReviewStat(Integer companyno);
+	public InterviewReview getInterviewStat(Integer companyno);
+	public Map<String,List<Company>> getAllReviewRank(int limit);
+	public List<Company> getReviewRank(String columnname,int limit);
+	public List<Post> getAllPost();
+	
 }
