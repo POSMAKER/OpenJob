@@ -98,7 +98,7 @@ public class MemberController {
 	}
 	
 	
-	
+	 
 	//멤버 로그인 
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
 		public String loginproc(Member member, Model model) {
