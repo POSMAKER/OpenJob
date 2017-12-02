@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/common/menubar.jsp"%>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#category").change(function() {
@@ -32,8 +33,8 @@ td, tr {
 <head>
 <title>검색 홈</title>
 </head>
-<body style="height: 1500px">
-	<div class="container-fluid" style="margin-top: 100px">
+<body style="height:550px;">
+	<div class="container-fluid" style="margin-top: 200px">
 		<div align="center">
 			<div class="imgLogo">
 				<a href="${home }/"><img src="${home }/imgs/logo.jpg"

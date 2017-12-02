@@ -84,10 +84,24 @@
 		NOW(),
 		#{title});
 	</insert>
-	<select id="getPost" parameterType="Integer" resultType="com.open.job.DTO.Post">
-		SELECT *
-		FROM Post
+	<select id="getPost" parameterType="com.open.job.DTO.Post" resultType="com.open.job.DTO.Post">
+		SELECT * FROM Post
 		WHERE companyNo = #{companyno}
+		<if test="jobcategory != null and jobcategory !='null'">
+			AND jobcategory = #{jobcategory}
+		</if>
+		<if test="subjobcategory != null and subjobcategory !='null'">
+			AND subjobcategory = #{subjobcategory}
+		</if>
+		<if test="career != null and career !='null'">
+			AND career = #{career}
+		</if>
+		<if test="location != null and location !='null'">
+			AND location LIKE CONCAT(#{location},'%')
+		</if>		
+		<if test="title == null or title =='null'">
+			AND enddate &gt; NOW()
+		</if>	
 	</select>
 	<insert id="insertCompanyReviewInfo" parameterType="com.open.job.DTO.CompanyReview">
 		<selectKey keyProperty="companyreviewno" resultType="Integer"
@@ -148,15 +162,34 @@ VALUES
     #{recommandscore}, 
     #{futurescore});
 	</insert>
-	<select id="getCompanyReview" parameterType="Integer" resultType="com.open.job.DTO.CompanyReview">
+	<select id="getCompanyReview" parameterType="com.open.job.DTO.CompanyReview" resultType="com.open.job.DTO.CompanyReview">
 		SELECT * FROM CompanyReviewInfo
 		INNER JOIN CompanyReview USING(companyreviewNo)
-		WHERE companyNo = #{companyno}
+		<where>
+		companyNo = #{companyno}
+		<if test="jobcategory!=null and jobcategory!='null'">
+			AND jobcategory = #{jobcategory}
+		</if>
+		<if test="employstatus!=null and employstatus!='null'">
+			AND	 <if test="employstatus=='false'">NOT</if> employstatus = 'true'	
+		</if>
+		</where>
 	</select>
-	<select id="getCompanyInterview" parameterType="Integer" resultType="com.open.job.DTO.InterviewReview">
+	<select id="getCompanyInterview" parameterType="com.open.job.DTO.InterviewReview" resultType="com.open.job.DTO.InterviewReview">
 	 SELECT * FROM InterviewReviewInfo
 	 INNER JOIN InterviewReview USING(interviewNo)
-	 WHERE companyNo = #{companyno}
+	 <where>
+	 companyNo = #{companyno}
+	 <if test="jobcategory!=null and jobcategory!='null'">
+			AND jobcategory = #{jobcategory}
+		</if>
+		<if test="position!=null and position!='null'">
+			AND	 position = #{position}	
+		</if>
+		<if test="successed!=null and successed!='null'">
+			AND	 successed = #{successed}	
+		</if>
+	 </where>
 	</select>
 	<insert id="insertInterviewReviewInfo" parameterType="com.open.job.DTO.InterviewReview">
 		<selectKey keyProperty="interviewno" resultType="Integer"
@@ -210,7 +243,7 @@ VALUES
 	</insert>
 	<select id="getSinglePost" parameterType="Integer" resultType="com.open.job.DTO.Post">
 	SELECT * FROM Post
-	WHERE postNo = #{postNo}
+	WHERE postNo = #{postno} AND companyNo = #{companyno}
 	</select>
 	<select id="countTable" parameterType="Map" resultType="Integer">
 		SELECT IFNULL(COUNT(*),0) FROM ${tablename}
@@ -228,4 +261,30 @@ VALUES
 		INSERT INTO SavedCompany(companyNo, memberNo)
 		VALUES(#{companyno},#{memberno})
 	</insert>
+	<select id="getTableJobcateLst" parameterType="Map" resultType="com.open.job.DTO.Jobcategory">
+		SELECT jobcategory FROM ${tablename}
+		WHERE companyNo = #{companyno}
+		GROUP BY jobcategory
+	</select>
+	<select id="getPostSubjobcategory" parameterType="Map" resultType="com.open.job.DTO.Jobcategory">
+		SELECT subjobcategory FROM Post
+		WHERE companyNo = #{companyno} AND jobcategory = #{jobcategory}
+		GROUP BY subjobcategory
+	</select>
+	<select id="getReviewStatusLst" parameterType="Integer" resultType="com.open.job.DTO.CompanyReview">
+		SELECT employstatus FROM (SELECT IF(employstatus = 'true','true','false') as employstatus FROM CompanyReviewInfo
+		WHERE companyNo = #{companyno}) A
+		GROUP BY employstatus
+	</select>
+	<select id="getInterviewPositionLst" parameterType="Integer" resultType="com.open.job.DTO.InterviewReview">
+		SELECT position FROM InterviewReviewInfo
+		WHERE companyNo = #{companyno}
+		GROUP BY position
+	</select>
+		<select id="getInterviewSuccessLst" parameterType="Integer" resultType="com.open.job.DTO.InterviewReview">
+		SELECT successed FROM InterviewReview
+		INNER JOIN InterviewReviewInfo USING(interviewNo)
+		WHERE companyNo = #{companyno}
+		GROUP BY successed
+	</select>
 </mapper>

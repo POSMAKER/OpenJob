@@ -65,7 +65,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">user</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
         </div>
     </div>
 </div>
@@ -153,20 +153,21 @@
 </div>
 
 
-        </div>
-        <div id="mainContents" class="jpcont_rgt">
-            <div class="jpcont_wrap">
-  <div class="layout_my_account myaccountcon">
-  
-  
-  
-  
-
+</div>
+        
+        
+ 
+ 
+ 
+        
+        
+<div id="mainContents" class="jpcont_rgt">
 <div class="jpcont_wrap">
     <div class="layout_my_account my_information_my_password">
         <div class="section_group">
-            <h3 class="tit">비밀번호 변경</h3>
-
+        <div>&nbsp</div>
+            <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">비밀번호 변경</h3>
+    		<hr style="border-top: 1px solid #b9b9b9;">
 
             <input id="user_reset_password_token" name="user[reset_password_token]" type="hidden"/>
             <label class="frow_ty1 my_information_list now_pw" id="now_pw" style="margin-top: 50; margin-left: 200">
@@ -194,21 +195,19 @@
             <button type="submit" class="btn_ty3" style="margin-left: 200; margin-bottom: 50;">비밀번호 변경</button>
       </div>
     </div>
-</div>
+</div>  
+</div> 
 
 
 
 
-<!--
-<div class="myaccountcon_bottom">
-  <div class="member_out">잡플래닛을 더 이상 이용하지 않는다면 
-        <a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>
-  </div>
-</div>
--->
-</div>     
-</div>        
-</div>
+
+
+
+
+
+
+
 </div>
 </div>
 </form>

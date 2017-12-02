@@ -66,7 +66,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">user</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
         </div>
     </div>
 </div>
@@ -161,7 +161,9 @@
   
   
 <div class="section_group">
-<h3 class="tit">회원탈퇴</h3>	  	  
+    <div>&nbsp</div>
+<h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">회원탈퇴</h3>
+<hr style="border-top: 1px solid #b9b9b9;">	   	  
 <section class="my_information">
 
 <div class="myaccountcon_bottom" style="margin-left: 185; margin-bottom: 100">

@@ -14,20 +14,33 @@ import com.open.job.DTO.sub.CompanyInfo;
 public interface CompanyService {
 	public CompanyInfo getCompanyInfo(Integer companyno);
 	public Company getCompanyBase(Integer companyno);
+	public String getCompBaseBody(Integer companyno);
+	public int[] getCountInfo(Integer companyno);
+	public boolean doesUserFollow(Integer companyno, Integer memberno);
+	public int followCompany(Integer companyno, Integer memberno, String string);
+	
 	public List<Jobcategory> getJobcategory();
 	public String getSubjobcategory(Integer jobcategoryno);
 	public String getSublocation(Integer locationcate);
 	public List<Location> getLocation();
 	public List<Employtype> getEmploytype();
+	
 	public int insertPost(Post post);
 	public int insertReview(CompanyReview review);
 	public int insertInterview(InterviewReview interview);
-	public List<Post> getPost(Integer companyno);
-	public String getCompBaseBody(Integer companyno);
-	public List<CompanyReview> getCompanyReview(Integer companyno);
-	public List<InterviewReview> getCompanyInterview(Integer companyno);
-	public Post getSinglePost(Integer postNo);
-	public int[] getCountInfo(Integer companyno);
-	public boolean doesUserFollow(Integer companyno, Integer memberno);
-	public int followCompany(Integer companyno, Integer memberno, String string);
+	
+	public List<Post> getPost(Post post);
+	public List<CompanyReview> getCompanyReview(CompanyReview review);
+	public List<InterviewReview> getCompanyInterview(InterviewReview interview);
+	
+	public List<Jobcategory> getReviewJobcateLst(Integer companyno);
+	public List<Jobcategory> getInterviewJobcateLst(Integer companyno);
+	public List<Jobcategory> getPostJobcateLst(Integer companyno);
+	
+	public List<CompanyReview> getReviewStatusLst(Integer companyno);
+	public List<InterviewReview> getInterviewPositionLst(Integer companyno);
+	public List<InterviewReview> getInterviewSuccessLst(Integer companyno);
+	public String getPostsubjobcategory(Integer companyno, String jobcategory);
+	
+	public Post getSinglePost(Integer companyno, Integer postno);
 }

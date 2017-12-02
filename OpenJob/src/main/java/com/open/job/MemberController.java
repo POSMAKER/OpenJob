@@ -16,23 +16,26 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.open.job.DTO.Member;
+import com.open.job.DTO.UserAcount;
 import com.open.job.IService.MemberService;
 
-@SessionAttributes("USER")
+
+
+@SessionAttributes({"USER","userAcount"})
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 
 	@Autowired
-	MemberService mServ;
+	MemberService memberServ;
 
 	
 	//페이지 열기 시작--------------------------------
 	
 	@RequestMapping(value = "/SiginUp")
-	public String SiginUp() {
-
+	public String SiginUp(Model model) {
+		model.addAttribute("nav_signuptag", "active");
 		return "/memberview/SiginUp";
 	}
 	
@@ -72,11 +75,17 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/MemberLogin")
-	public String MemberLogin() {
-
+	public String MemberLogin(Model model) {
+		model.addAttribute("nav_logintag", "active");
 		return "/memberview/MemberLogin";
 	}
 	//페이지 열기 끝--------------------------------
+	
+	
+	
+	
+	
+	//로그 아웃
 	@RequestMapping(value="/MemberLogout")
 	public String logout(
 			SessionStatus sessionStat
@@ -93,17 +102,24 @@ public class MemberController {
 	//이메일 가입
 	@RequestMapping(value = "/insertproc", method = RequestMethod.POST)
 	public String insertproc(@ModelAttribute Member member) {
-		mServ.insertMember(member);
+		memberServ.insertMember(member);
 		return "true";
 	}
 	
 	
+<<<<<<< HEAD
 	 
 	//멤버 로그인 
+=======
+	
+	//멤버 로그인 프락
+>>>>>>> branch 'master' of https://github.com/POSMAKER/OpenJob.git
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
 		public String loginproc(Member member, Model model) {
-			if(mServ.loginProc(member)) {
-				model.addAttribute("USER", mServ.getUserInfo(member.getEmail()));
+
+			if(memberServ.loginProc(member)) {
+				model.addAttribute("USER", memberServ.getUserInfo(member.getEmail()));
+				model.addAttribute("userAcount", memberServ.getUserAcount(member.getEmail()));
 				return "redirect:/UserAcount";
 			}
 			model.addAttribute("msg", "회원 정보가 잘못되였습니다.");
@@ -111,17 +127,8 @@ public class MemberController {
 		}
 
 	
+
 	
-	
-	/*
-	//이메일 가입후 보기
-		@RequestMapping(value = "/viewpage")
-		public String viewpage(Model model) {
-			List<Member> mList = mServ.getMemberList();
-			model.addAttribute("board", mList);
-			return "UserAcount";
-		}
-	*/
 	
 	
 }

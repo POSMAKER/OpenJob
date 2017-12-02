@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
+import com.open.job.DTO.Type;
 import com.open.job.IDAO.SearchDAO;
 import com.open.job.IService.SearchService;
 
@@ -31,7 +33,6 @@ public class SearchServiceImpl implements SearchService {
 
 			return sdao.getSearchPostList(map);
 		}
-
 	}
 
 	@Override
@@ -46,18 +47,15 @@ public class SearchServiceImpl implements SearchService {
 
 			return sdao.getSearchCompanyList(map);
 		}
-
 	}
 
 	@Override
 	public List<Location> getLocation() {
-	
 		return sdao.getLocation();
 	}
 
 	@Override
 	public List<Location> getSubLocation() {
-		
 		return sdao.getSubLocation();
 	}
 
@@ -75,12 +73,41 @@ public class SearchServiceImpl implements SearchService {
 		}
 		return body;
 	}
-
+	
 	@Override
-	public String getResult(String location) {
-		String[] loca = location.split(",");
+	public List<Jobcategory> getjobcategory() {
+		return sdao.getjobcategory();
+	}
+	
+	@Override
+	public List<Jobcategory> getSubjobcategory() {
+		return sdao.getSubjobcategory();
+	}
+	
+	@Override
+	public List<Type> getType() {
+		return sdao.getType();
+	}
+	
+	@Override
+	public List<String> getDate() {
+		List<String> dateList = new ArrayList<String>();
+		String [] str = {"전체","오늘","최근 3일","최근 1주일","최근 1개월"};
 		
-		List<Post> lst = sdao.getResult(loca);
+		for(int i=0;i<str.length;i++) {
+			dateList.add(str[i]);
+		}
+		return dateList;
+	}
+	
+	@Override
+	public String getResult(String location, String jobcate, String career, String Type, String dday) {
+		String[] loca = (location.equals("null")? null:location.split(","));
+		String[] job = (jobcate.equals("null")? null:jobcate.split(","));
+		String[] care = (career.equals("null")? null:career.split(","));
+		String[] type = (Type.equals("null")? null:Type.split(","));
+		List<Post> lst = sdao.getResult(loca, job, care, type);
+		
 		String str = "";
 		for(Post post:lst) {
 			str += "<table id='searched' border=\"1\" style=\"min-width: 600px;\">\r\n" + 
@@ -89,7 +116,8 @@ public class SearchServiceImpl implements SearchService {
 					"										href=\"/job/company/"+post.getCompanyno()+"/info\"><img\r\n" + 
 					"											src=\"/job/companyimgs/"+ post.getThumbimg() +"\"\r\n" + 
 					"											style=\"width: 100px;\"></a></td>\r\n" + 
-					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"#\">"+post.getTitle()+"</a></td>\r\n" + 
+					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"/job/company/"+post.getCompanyno()+"/post/"+post.getPostno()+"\">"+post.getTitle()+"\r\n" + 
+					"											</a></td>\r\n" + 
 					"								</tr>\r\n" + 
 					"								<tr>\r\n" + 
 					"									<td colspan=\"2\"><a\r\n" + 
@@ -103,7 +131,5 @@ public class SearchServiceImpl implements SearchService {
 		}
 		return str;
 	}
-	
-	
 
 }

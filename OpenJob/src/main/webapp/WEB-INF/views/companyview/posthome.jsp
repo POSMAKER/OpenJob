@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>[오픈잡] 기업 홈</title>
-
-
+<title>[오픈잡] 채용 홈</title>
 </head>
 <%@include file="/WEB-INF/views/common/menubar.jsp"%>
 <body>
@@ -15,12 +12,11 @@
 		<div class="row" style="background-color:#e6e6e6;">
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
-				<h3>기업 홈</h3>
-				<a href="${home }/company/13/info">기업 페이지 예제</a>
+				<h3>채용 홈</h3>
+				<a href="${home }/company/13/post/7">채용공고 페이지 예제</a>
 			</div>
 			<div class="col-lg-2"></div>
 		</div>
-	</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -34,6 +30,6 @@
 			$("#searchWord").attr("placeholder", "회사명, 희망직무 등으로 검색");
 		}
 	});
-	$("#category option[value='company']").prop("selected", true).trigger(
-			'change');
+	$("#category option[value='post']").prop("selected", true)
+			.trigger('change');
 </script>

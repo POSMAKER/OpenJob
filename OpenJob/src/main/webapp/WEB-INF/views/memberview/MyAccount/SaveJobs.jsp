@@ -65,7 +65,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">user</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
         </div>
     </div>
 </div>
@@ -145,8 +145,9 @@
             <div class="jpcont_wrap">
   <div class="layout_my_account myaccountcon">
     <div class="section_group">
-      <h3 class="tit">저장된 채용</h3>
-	  
+    <div>&nbsp</div>
+      <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">저장된 채용</h3>
+	  <hr style="border-top: 1px solid #b9b9b9;">
 	  
       <section class="my_information">
         <div class="my_information_group">
@@ -167,13 +168,7 @@
 
 
 
-<!--
-<div class="myaccountcon_bottom">
-  <div class="member_out">잡플래닛을 더 이상 이용하지 않는다면 
-        <a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>
-  </div>
-</div>
--->
+
 </div>     
 </div>        
 </div>
