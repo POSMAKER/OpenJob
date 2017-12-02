@@ -35,11 +35,13 @@ public class CompanyController {
 	@RequestMapping(value = "/companyhome")
 	public String gocompanyhome(Model model) {
 		model.addAttribute("nav_companytag", "active");
+		model.addAllAttributes(compServ.getAllReviewRank(5));
 		return "companyview/companyhome";
 	}
 	@RequestMapping(value = "/posthome")
 	public String goposthome(Model model) {
 		model.addAttribute("nav_posttag", "active");
+		model.addAttribute("postLst", compServ.getAllPost());
 		return "companyview/posthome";
 	}
 	
@@ -208,9 +210,22 @@ public class CompanyController {
 	};
 	
 	@RequestMapping(value = "/reviewStat")
-	public String reviewStat(Model model) {
+	public String reviewStat(
+			@RequestParam Integer companyno,
+			Model model
+			) {
+		model.addAttribute("stat_review", compServ.getReviewStat(companyno));
 		return "companyview/stat/reviewStat";
 	};
+	@RequestMapping(value = "/interviewStat")
+	public String interviewStat(
+			@RequestParam Integer companyno,
+			Model model
+			) {
+		model.addAttribute("stat_interview", compServ.getInterviewStat(companyno));
+		return "companyview/stat/interviewStat";
+	};
+	
 	@RequestMapping(value = "/frag_reviewsearch")
 	public String frag_reviewsearch(
 			@RequestParam Integer companyno,

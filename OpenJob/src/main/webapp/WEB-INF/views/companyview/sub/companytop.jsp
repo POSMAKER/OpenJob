@@ -16,7 +16,29 @@
 				<c:import url="/company/frag_companynavi">
 					<c:param name="companyno_now" value="${companyno }" />
 				</c:import>
-				<!-- Modal Form -->
-				<c:import url="/company/${frmoption}Form" />
+				<c:choose>
+					<c:when test="${USER.memberno !=null}">
+						<c:choose>
+							<c:when test="${frmoption eq 'post' and USER.companyno != companyno }">
+								<script>
+								$("#navi_frmBtn").click(function(){
+								alert("해당 기업 담당자만 사용 가능합니다.");
+								});
+								</script>
+							</c:when>
+							<c:otherwise>
+								<!-- Modal Form -->
+								<c:import url="/company/${frmoption}Form" />
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:otherwise>
+						<script>
+							$("#navi_frmBtn").click(function(){
+								alert("로그인 후 사용 가능합니다.");
+							});
+						</script>
+					</c:otherwise>
+				</c:choose>
 			</c:otherwise>
 		</c:choose>

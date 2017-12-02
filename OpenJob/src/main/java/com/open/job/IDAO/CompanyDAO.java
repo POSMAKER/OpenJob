@@ -64,4 +64,12 @@ public interface CompanyDAO {
 	public List<InterviewReview> getInterviewPositionLst(Integer companyno);
 
 	public List<InterviewReview> getInterviewSuccessLst(Integer companyno);
+
+	public CompanyReview getReviewStat(Integer companyno);
+
+	public InterviewReview getInterviewStat(Integer companyno);
+
+	public List<Company> getReviewRank(@Param("columnname") String columnname,@Param("limit") int limit);
+
+	public List<Post> getAllPost();
 }

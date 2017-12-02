@@ -71,7 +71,7 @@ li.compnav-item {
 					data-target="#collapsingNavbar1">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<button type="button" data-toggle="modal" data-target="#myModal"
+				<button id="navi_frmBtn" type="button" data-toggle="modal" data-target="#myModal"
 					data-backdrop="static" data-keyboard="false"
 					class="btn btn-success"
 					style="margin: 15 5px; width: 200px; height: 41px;">

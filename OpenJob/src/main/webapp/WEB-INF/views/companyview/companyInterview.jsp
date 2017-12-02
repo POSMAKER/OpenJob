@@ -25,12 +25,9 @@ body.modal-open {
 				<!-- LEFT -->
 				<div class="col-xl-9" style="margin-bottom: 15px;" align="center">
 					<!-- 기업 리뷰 통계 -->
-					<div
-						style="padding: 15px; width: 100%; background-color: #ffffff; margin-bottom: 15px;"
-						align="left">
-						전체 리뷰 통계<br> <br> <br> <br> <br> <br>
-						<br> <br> <br> <br> <br> <br>
-					</div>
+					<c:import url="/company/interviewStat">
+							<c:param name="companyno" value="${companyno }" />
+						</c:import>
 					<div>
 						<img src="${home }/imgs/AD3.jpg"
 							style="width: 100%; min-width: 145px; margin-bottom: 15px;">
