@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.open.job.DTO.Member;
+import com.open.job.DTO.SavedCompany;
+import com.open.job.DTO.USER;
 import com.open.job.DTO.UserAcount;
 import com.open.job.IService.MemberService;
 
 
 
-@SessionAttributes({"USER","userAcount"})
+@SessionAttributes({"USER"})
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -58,13 +60,13 @@ public class MemberController {
 		return "/memberview/MyAccount/MemberOut";
 	}
 	
-	
+	/*
 	@RequestMapping(value = "/Favorites")
 	public String Favorites() {
 
 		return "/memberview/MyAccount/Favorites";
 	}
-	
+	*/
 	
 	@RequestMapping(value = "/SaveJobs")
 	public String SaveJobs() {
@@ -103,22 +105,31 @@ public class MemberController {
 	@RequestMapping(value = "/insertproc", method = RequestMethod.POST)
 	public String insertproc(@ModelAttribute Member member) {
 		memberServ.insertMember(member);
-		return "true";
+		return "forward:/loginproc";
 	}
 
 
-		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
-		public String loginproc(Member member, Model model) {
 
-			if(memberServ.loginProc(member)) {
-				model.addAttribute("USER", memberServ.getUserInfo(member.getEmail()));
-				model.addAttribute("userAcount", memberServ.getUserAcount(member.getEmail()));
-				return "redirect:/UserAcount";
-			}
-			model.addAttribute("msg", "회원 정보가 잘못되였습니다.");
-			return "forward:/MemberLogin"; 
+	//멤버 로그인 프락
+	@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
+	public String loginproc(Member member, Model model) {
+
+		if(memberServ.loginProc(member)) {
+			model.addAttribute("USER", memberServ.getUserInfo(member.getEmail()));
+			//model.addAttribute("userAcount", memberServ.getFollowCompany(member.getEmail()));
+			return "redirect:/UserAcount";
 		}
+		model.addAttribute("msg", "회원 정보가 잘못되였습니다.");
+		return "forward:/MemberLogin"; 
+	}
 
+	
+	@RequestMapping(value = "/Favorites")
+	public String FollowCompany(USER user, Model model, String membemail) {
+		List<UserAcount> FollowCompanyList = memberServ.getFollowCompany(user.getEmail());
+		model.addAttribute("followCompanyList", FollowCompanyList);
+		return "/memberview/MyAccount/Favorites"; 
+	}
 	
 
 	
