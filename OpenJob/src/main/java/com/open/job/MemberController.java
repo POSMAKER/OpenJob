@@ -105,11 +105,7 @@ public class MemberController {
 		memberServ.insertMember(member);
 		return "true";
 	}
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/POSMAKER/OpenJob.git
+
 
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
 		public String loginproc(Member member, Model model) {
