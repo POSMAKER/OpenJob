@@ -289,12 +289,12 @@ VALUES
 	</select>
 	<select id="getReviewStat" parameterType="Integer" resultType="com.open.job.DTO.CompanyReview">
 		SELECT
-		Round(AVG(totalScore),1) AS totalScore,
-		Round(AVG(promotionScore),1) AS promotionScore,
-		Round(AVG(walfareScore),1) AS walfareScore,
-		Round(AVG(balanceScore),1) AS balanceScore,
-		Round(AVG(atmosphereScore),1) AS atmosphereScore,
-		Round(AVG(executiveScore),1) AS executiveScore,
+		Round(AVG(totalScore),1)*10 AS totalScore,
+		Round(AVG(promotionScore),1)*10 AS promotionScore,
+		Round(AVG(walfareScore),1)*10 AS walfareScore,
+		Round(AVG(balanceScore),1)*10 AS balanceScore,
+		Round(AVG(atmosphereScore),1)*10 AS atmosphereScore,
+		Round(AVG(executiveScore),1)*10 AS executiveScore,
 		ROUND(COUNT(IF(recommandScore='Y',1,null))/COUNT(*)*100,0) recommandScore,
 		ROUND(COUNT(IF(futureScore='U',1,null))/COUNT(*)*100,0) futureScore,
 		ROUND(COUNT(IF(CEOScore='Y',1,null))/COUNT(*)*100,0) CEOScore 
@@ -304,7 +304,7 @@ VALUES
 	</select>
 	<select id="getInterviewStat" parameterType="Integer" resultType="com.open.job.DTO.InterviewReview">
 		SELECT
-		Round(AVG(interviewlevel),1) AS interviewlevel,
+		Round(AVG(interviewlevel),1)*10 AS interviewlevel,
 		CONCAT(ROUND(COUNT(IF(experience='P',1,null))/COUNT(*)*100,0),',',
 				ROUND(COUNT(IF(experience='N',1,null))/COUNT(*)*100,0),',',
 				ROUND(COUNT(IF(experience='S',1,null))/COUNT(*)*100,0)) AS experience,
@@ -324,7 +324,7 @@ VALUES
 	<select id="getReviewRank" parameterType="Map" resultType="com.open.job.DTO.Company">
 		SELECT
 		companyname, companyno,
-		IFNull(Round(AVG(${columnname}),1),0) AS address
+		IFNull(Round(AVG(${columnname}),1)*10,0) AS address
 		FROM Company 
 		LEFT JOIN CompanyReviewInfo USING(companyno)
 		LEFT JOIN CompanyReview USING(companyreviewNo)
