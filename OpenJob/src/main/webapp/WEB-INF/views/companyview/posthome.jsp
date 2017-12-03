@@ -9,17 +9,20 @@
 <body>
 	<div class="container-fluid" style="margin-top: 56px">
 		<%@include file="/WEB-INF/views/searchview/searchBar.jsp"%>
-		<div class="row" style="background-color:#e6e6e6;">
+		<div class="row" style="background-color: #e6e6e6;">
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
-				<h3>채용 홈</h3>
-				<a href="${home }/company/13/post/7">채용공고 페이지 예제</a><br>
-			<c:forEach var="item" items="${postLst }">
-				${item.companyno}:${item.postno}<br>
-				${item.thumbimg} :: ${item.title }<br>
-				${item.location }:${item.jobcategory }:${item.subjobcategory }:${item.type }:${item.career }<br>
-			</c:forEach>	
-				
+				<c:forEach var="item" items="${postLst }">
+					<div
+						style="padding: 15px; width: 100%; background-color: #ffffff; margin-bottom: 15px; margin-top: 15px; padding:0 15px;">
+							<img
+							src="${home }/companyimgs/${item.thumbimg}" width="70px"
+							height="70px"><span
+							style="font-weight: bold; font-size: 16px;"><a href="${home }/company/${item.companyno}/post/${item.postno}">${item.title }</a></span><br>	
+						<span style="color:gray; font-size: 14px;">${item.location }·${item.jobcategory }·${item.subjobcategory }·${item.type }·${item.career }</span><br>
+					</div>
+				</c:forEach>
+
 			</div>
 			<div class="col-lg-2"></div>
 		</div>

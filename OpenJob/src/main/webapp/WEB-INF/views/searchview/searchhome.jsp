@@ -38,10 +38,10 @@ td, tr {
 		<div align="center">
 			<div class="imgLogo">
 				<a href="${home }/"><img src="${home }/imgs/logo.jpg"
-					style="width: 400px; height: 130px;"></a>
+					style="min-width:300px; width: 30%;"></a>
 			</div>
 			<form action="${home }/search" method="get">
-				<table>
+				<table style="width:40%;min-width:300px;">
 					<tr>
 						<td><select name="category" id="category"
 							style="width: 80px; border-style: none;">
@@ -51,7 +51,7 @@ td, tr {
 						</select></td>
 						<td><input type="text" name="searchWord" id="searchWord"
 							placeholder="기업, 채용공고를 검색해보세요."
-							style="width: 400px; min-width: 300px; border: none;" /></td>
+							style="width: 100%;border: none;" /></td>
 						<td><button
 								style="background: transparent; border: none; cursor: pointer;">
 								<i class="fa fa-search" style="font-size: 25px;"></i>

@@ -278,4 +278,12 @@ public class CompanyController {
 		model.addAttribute("postLst", compServ.getPost(post));
 		return "companyview/search/postResult";
 	};
+	@RequestMapping(value = "/frag_bar")
+	public String frag_bar(
+			@RequestParam(required=false, defaultValue="0") Integer bar_value,
+			Model model 
+			) {
+		model.addAttribute("bar_value", bar_value);
+		return "companyview/stat/bar";
+	};
 }
