@@ -55,6 +55,9 @@
 		Jobcategory
 		WHERE subjobcategory IS not null order by jobcategoryno
 	</select>
+	<select id="getDday" resultType="com.open.job.DTO.Dday">
+		SELECT * FROM Dday
+	</select>
 	<select id="getQuickCompSearch" parameterType="String"
 		resultType="com.open.job.DTO.Company">
 		SELECT companyNo, companyName FROM Company
@@ -82,6 +85,10 @@
 		<if test="type!=null">
 		AND type in
 		<foreach item="item" collection="type" open="(" separator="," close=")">#{item}</foreach> 
+		</if>
+		<if test="dday!=null">
+		AND startDate > date_sub(now(), interval 
+		<foreach item="item" collection="dday" open="(" separator="," close=")">#{item}</foreach> day)
 		</if>
 		</where>
 	</select>

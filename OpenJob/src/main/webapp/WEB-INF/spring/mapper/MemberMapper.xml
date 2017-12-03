@@ -22,13 +22,32 @@
 </select>
 
 
-
+<!-- 
 <select id="getUserAcount" parameterType="String" resultType="com.open.job.DTO.UserAcount">
 	SELECT * FROM Member
 	LEFT Join SavedCompany USING(memberNo)
 	LEFT Join Company USING(companyNo)
 	WHERE email=#{email}
 </select>
+--> 
+
+
+<!--  
+<select id="getFollowCompany" resultType="com.open.job.DTO.SavedCompany"> 
+	Select * from SavedCompany
+</select>
+-->
+
+
+
+<select id="getFollowCompany" parameterType="String" resultType="com.open.job.DTO.UserAcount"> 
+	SELECT * FROM Member
+	INNER Join SavedCompany USING(memberNo)
+	INNER Join Company USING(companyNo)
+	WHERE email = #{email}
+
+</select>
+
 
 
 

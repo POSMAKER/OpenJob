@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.open.job.DTO.Member;
+import com.open.job.DTO.SavedCompany;
 import com.open.job.DTO.USER;
 import com.open.job.DTO.UserAcount;
 import com.open.job.IDAO.MemberDAO;
@@ -50,11 +51,20 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
+	public List<UserAcount> getFollowCompany(String membemail) {
+		List<UserAcount> userAcountLst = memberDao.getFollowCompany(membemail);
+		return userAcountLst;
+	}
+
+
+
+	/*
+	@Override
 	public UserAcount getUserAcount(String membemail) {
 		UserAcount userAcount = memberDao.getUserAcount(membemail);
 		return userAcount;
 	}
-
+	*/
 
 
 	

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Dday;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
@@ -90,7 +91,7 @@ public class SearchController {
 		model.addAttribute("typeList", typeList);
 		
 		//기간
-		List<String> dateList = searchServ.getDate();		
+		List<Dday> dateList = searchServ.getDday();		
 		model.addAttribute("dateList", dateList);
 		
 		return "/searchview/detailSearchView";

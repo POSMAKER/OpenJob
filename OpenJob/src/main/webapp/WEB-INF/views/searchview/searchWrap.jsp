@@ -7,7 +7,7 @@
 		<div class="col-sm-8"
 			style="background-color: white; padding: 30px; min-width: 1100px;">
 
-			<div class="searchWrap" style="width: 100%;">
+			<div class="searchWrap" style="padding-left: 10px; width: 1030px;">
 				<dl style="display: inline-block;">
 					<dt
 						style="padding: 10px; background-color: #4a5470; color: #fff; font-weight: bold;">지역
@@ -22,7 +22,7 @@
 											style="display: none;" name="locationBox"
 											id="location${location.locationno }"
 											value="${location.location }"> <label
-											style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
+											style="padding-bottom: 5px; cursor: pointer; width: 150px; font-size: 14px"
 											for="location${location.locationno }"><span
 												id="location${location.locationno }"
 												style="padding: 5px 10px 5px 10px;">${location.location }</span></label></li>
@@ -33,7 +33,7 @@
 						<!-- 지역 상세조건  -->
 						<c:forEach var="location" items="${locationList }">
 							<div class="addDiv" id="sublocation${location.locationno }"
-								style="display: none; position: absolute; left: 230px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
+								style="display: none; position: absolute; left: 240px; top: 30px; width: auto; min-width: 70%; max-width: 600px; height: 255px; background-color: #fff; border: 1px solid black;">
 								<button class="closeloca"
 									style="top: 12px; right: 12px; display: block; position: absolute; background: transparent; border: none; cursor: pointer; padding: 0px;">
 									<i class="material-icons" style="font-size: 20px">clear</i>
@@ -130,25 +130,42 @@
 		
 		//기간 체크박스
 		$('.dday_li input[type=checkbox]').click(function(){
+			var ddayId = $(this).attr("id");
 			if($(this).is(":checked")) {
-				if($(this).attr("id")=='전체') {
+				if($(this).val()=='null') {
 					$('.dday_li input[type=checkbox]').prop("checked", false);
 					$(this).prop("checked", true);
-				} else if ($(this).attr("id")=='오늘'){
+				} else if ($(this).val()=='1'){
 					$('.dday_li input[type=checkbox]').prop("checked", false);
 					$(this).prop("checked", true);
-				} else if ($(this).attr("id")=='최근 3일'){
+				} else if ($(this).val()=='3'){
 					$('.dday_li input[type=checkbox]').prop("checked", false);
 					$(this).prop("checked", true);
-				} else if ($(this).attr("id")=='최근 1주일'){
+				} else if ($(this).val()=='7'){
 					$('.dday_li input[type=checkbox]').prop("checked", false);
 					$(this).prop("checked", true);
-				} else if ($(this).attr("id")=='최근 1개월'){
+				} else if ($(this).val()=='30'){
 					$('.dday_li input[type=checkbox]').prop("checked", false);
 					$(this).prop("checked", true);
 				}
+				
+				//스타일
+				$('.dday_li span').css("border", "none");
+				$('.dday_li span').css("font-weight", "normal");
+				$('.dday_li span').css("color", "black");
+				
+				//스타일
+				$('span[id=' + ddayId + ']').css("border", "1px solid #0099ff");
+				$('span[id=' + ddayId + ']').css("border-radius", "12px");
+				$('span[id=' + ddayId + ']').css("font-weight", "bold");
+				$('span[id=' + ddayId + ']').css("color", "#0099ff");
 			} else {
 				$(this).prop("checked", false);
+				
+				//스타일
+				$('span[id=' + ddayId + ']').css("border", "none");
+				$('span[id=' + ddayId + ']').css("font-weight", "normal");
+				$('span[id=' + ddayId + ']').css("color", "black");
 			}
 		});
 

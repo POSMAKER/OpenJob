@@ -65,7 +65,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${USER.email}</h1>
         </div>
     </div>
 </div>
@@ -165,31 +165,30 @@
 	<tr>
 		<th style="font-size: 15; font-weight: bold;">기업 이름</td>
 		<th style="font-size: 15; font-weight: bold;">주소</td>
-		<th style="font-size: 15; font-weight: bold;">산업군</td>
 		<th style="font-size: 15; font-weight: bold;">산업</td>
+		<th style="font-size: 15; font-weight: bold;">산업군</td>
 	</tr>
 	
-	<!--  
+	
 	<c:choose>
-		<c:when test="${companyno != null }">
+		<c:when test="${followCompanyList==null }">
 			<tr>
 				<td colspan="4">데이터가 없습니다.</td>
 			</tr>
 		</c:when>
+		
 		<c:otherwise>
-		-->
-			<c:forEach var="item" items="${userAcount.email}">
+			 <c:forEach var="item" items="${followCompanyList}">
 				<tr>
-					<td style="font-size: 15; ">${userAcount.companyname}</td>
-					<td style="font-size: 15; ">${userAcount.address }</td>
-					<td style="font-size: 15; ">${userAcount.industry }</td>
-					<td style="font-size: 15; ">${userAcount.subindustry }</td>
+					<td style="font-size: 15; ">${item.companyname}</td>
+					<td style="font-size: 15; ">${item.address }</td>
+					<td style="font-size: 15; ">${item.industry }</td>
+					<td style="font-size: 15; ">${item.subindustry }</td>
 				</tr>
 			</c:forEach>
-	<!-- 		
 	</c:otherwise>
 </c:choose>	
--->
+
 </table>
 </div>
         

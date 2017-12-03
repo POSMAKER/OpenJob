@@ -10,7 +10,7 @@
 			<ul style="list-style: none; padding: 10px; padding-left: 20px;">
 				<c:forEach var="type" items="${typeList }">
 					<li class="type_li"><input type="checkbox" style="display: none;" id="${type.typeno }"
-						value="${type }"> <label
+						value="${type.type }"> <label
 						style="padding-bottom: 5px; cursor: pointer; width: 190px; font-size: 14px"
 						for="${type.typeno }"><span id="${type.typeno }" style="padding: 5px 10px 5px 10px;">${type.type }</span></label></li>
 				</c:forEach>
