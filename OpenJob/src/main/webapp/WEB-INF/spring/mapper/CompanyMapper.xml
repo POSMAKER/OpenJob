@@ -287,4 +287,56 @@ VALUES
 		WHERE companyNo = #{companyno}
 		GROUP BY successed
 	</select>
+	<select id="getReviewStat" parameterType="Integer" resultType="com.open.job.DTO.CompanyReview">
+		SELECT
+		Round(AVG(totalScore),1) AS totalScore,
+		Round(AVG(promotionScore),1) AS promotionScore,
+		Round(AVG(walfareScore),1) AS walfareScore,
+		Round(AVG(balanceScore),1) AS balanceScore,
+		Round(AVG(atmosphereScore),1) AS atmosphereScore,
+		Round(AVG(executiveScore),1) AS executiveScore,
+		ROUND(COUNT(IF(recommandScore='Y',1,null))/COUNT(*)*100,0) recommandScore,
+		ROUND(COUNT(IF(futureScore='U',1,null))/COUNT(*)*100,0) futureScore,
+		ROUND(COUNT(IF(CEOScore='Y',1,null))/COUNT(*)*100,0) CEOScore 
+		FROM CompanyReview 
+		INNER JOIN CompanyReviewInfo USING(companyreviewNo)
+		WHERE Companyno = #{companyno}	
+	</select>
+	<select id="getInterviewStat" parameterType="Integer" resultType="com.open.job.DTO.InterviewReview">
+		SELECT
+		Round(AVG(interviewlevel),1) AS interviewlevel,
+		CONCAT(ROUND(COUNT(IF(experience='P',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(experience='N',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(experience='S',1,null))/COUNT(*)*100,0)) AS experience,
+		CONCAT(ROUND(COUNT(IF(successed='Y',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(successed='N',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(successed='W',1,null))/COUNT(*)*100,0)) AS successed,
+		CONCAT(ROUND(COUNT(IF(interviewroot='온라인지원',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(interviewroot='직원추천',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(interviewroot='공개채용',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(interviewroot='해드헌터',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(interviewroot='학교 취업지원 센터',1,null))/COUNT(*)*100,0),',',
+				ROUND(COUNT(IF(interviewroot='기타',1,null))/COUNT(*)*100,0)) AS interviewroot	
+		FROM InterviewReview 
+		INNER JOIN InterviewReviewInfo USING(interviewNo)
+		WHERE companyNo = #{companyno}
+	</select>
+	<select id="getReviewRank" parameterType="Map" resultType="com.open.job.DTO.Company">
+		SELECT
+		companyname, companyno,
+		IFNull(Round(AVG(${columnname}),1),0) AS address
+		FROM Company 
+		LEFT JOIN CompanyReviewInfo USING(companyno)
+		LEFT JOIN CompanyReview USING(companyreviewNo)
+		GROUP BY (companyno)
+		ORDER BY address DESC
+		LIMIT #{limit}
+	</select>
+	<select id="getAllPost" resultType="com.open.job.DTO.Post">
+		SELECT companyNo, postNo, thumbimg, title, location, jobcategory, subjobcategory, type, career FROM Post 
+		INNER JOIN Company USING (companyNo)
+		INNER JOIN CompanyInfo USING (companyNo)
+		INNER JOIN Companyimg USING (companyNo)
+		ORDER BY writedate DESC
+	</select>
 </mapper>

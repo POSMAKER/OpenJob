@@ -49,6 +49,9 @@ public class Post extends SubCommonInfo{
     // 경력 
     private String career;
 
+    // 출력용
+    private String type;
+    
     // 공고 마감일 Null이면 채용시 마감.
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date enddate;
@@ -67,6 +70,9 @@ public class Post extends SubCommonInfo{
     //회사이름
     private String companyname;
     
+    //회사이미지
+    private String thumbimg;
+    
     public String getCompanyname() {
 		return companyname;
 	}
@@ -83,7 +89,7 @@ public class Post extends SubCommonInfo{
 		this.thumbimg = thumbimg;
 	}
 
-	private String thumbimg;
+	
 
 	public Integer getPostno() {
 		return postno;
@@ -227,6 +233,14 @@ public class Post extends SubCommonInfo{
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
     
 }

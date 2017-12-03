@@ -13,10 +13,17 @@
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
 				<h3>채용 홈</h3>
-				<a href="${home }/company/13/post/7">채용공고 페이지 예제</a>
+				<a href="${home }/company/13/post/7">채용공고 페이지 예제</a><br>
+			<c:forEach var="item" items="${postLst }">
+				${item.companyno}:${item.postno}<br>
+				${item.thumbimg} :: ${item.title }<br>
+				${item.location }:${item.jobcategory }:${item.subjobcategory }:${item.type }:${item.career }<br>
+			</c:forEach>	
+				
 			</div>
 			<div class="col-lg-2"></div>
 		</div>
+	</div>
 </body>
 </html>
 <script type="text/javascript">

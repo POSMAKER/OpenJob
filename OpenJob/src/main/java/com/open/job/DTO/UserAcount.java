@@ -18,6 +18,7 @@ public class UserAcount {
 	private String subindustry;
 	
 	
+	
 	public String getMemberno() {
 		return memberno;
 	}
@@ -54,10 +55,6 @@ public class UserAcount {
 	public void setCareer(String career) {
 		this.career = career;
 	}
-	
-	
-	
-	
 	public String getCompanyno() {
 		return companyno;
 	}
@@ -88,6 +85,10 @@ public class UserAcount {
 	public void setSubindustry(String subindustry) {
 		this.subindustry = subindustry;
 	}
+	
+	
+	
+	
 	
 	
 	

@@ -26,6 +26,15 @@
 				</button>
 				<div class="navbar-collapse collapse" id="collapsingNavbar3">
 					<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link ${nav_posttag }"
+							style="width: 50px;" href="${home }/company/posthome">채용</a> <c:if
+								test="${nav_posttag !=null }">
+								<svg class="d-md-block"
+									style="position: relative; bottom: -3px; display: none;"
+									height="10" width="50">
+							  <polygon points="15,10 25,0 35,10" style="fill:white;" />
+							</svg>
+							</c:if></li>
 						<li class="nav-item"><a class="nav-link ${nav_companytag }"
 							style="width: 50px;" href="${home }/company/companyhome">기업</a> <c:if
 								test="${nav_companytag !=null }">
@@ -35,15 +44,7 @@
 							  <polygon points="15,10 25,0 35,10" style="fill:white;" />
 							</svg>
 							</c:if>
-						<li class="nav-item"><a class="nav-link ${nav_posttag }"
-							style="width: 50px;" href="${home }/company/posthome">채용</a> <c:if
-								test="${nav_posttag !=null }">
-								<svg class="d-md-block"
-									style="position: relative; bottom: -3px; display: none;"
-									height="10" width="50">
-							  <polygon points="15,10 25,0 35,10" style="fill:white;" />
-							</svg>
-							</c:if></li>
+						
 					</ul>
 
 					<ul class="navbar-nav ml-auto">

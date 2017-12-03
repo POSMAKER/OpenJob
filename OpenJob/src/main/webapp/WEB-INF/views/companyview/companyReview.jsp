@@ -16,7 +16,7 @@ body.modal-open {
 <%@include file="/WEB-INF/views/common/menubar.jsp"%>
 <!-- CompanyTop -->
 <c:import url="/company/frag_companytop">
-<c:param name="companyno" value="${companyno}"/>
+	<c:param name="companyno" value="${companyno}" />
 </c:import>
 <div class="container-fluid" style="background-color: #e6e6e6;">
 	<div class="row">
@@ -26,12 +26,9 @@ body.modal-open {
 				<!-- LEFT -->
 				<div class="col-xl-9" style="margin-bottom: 15px;" align="center">
 					<!-- 기업 리뷰 통계 -->
-					<div
-						style="padding: 15px; width: 100%; background-color: #ffffff; margin-bottom: 15px;"
-						align="left">
-						<c:import url="/company/reviewStat">
-						</c:import>
-					</div>
+					<c:import url="/company/reviewStat">
+						<c:param name="companyno" value="${companyno }" />
+					</c:import>
 					<div>
 						<img src="${home }/imgs/AD3.jpg"
 							style="width: 100%; min-width: 145px; margin-bottom: 15px;">
@@ -43,8 +40,8 @@ body.modal-open {
 					<!-- 기업 리뷰 검색 결과 페이지 -->
 					<div id="reviewsearchresult_div">
 						<c:import url="/company/frag_showreviewLst">
-						<c:param name="companyno" value="${companyno }" />
-					</c:import>
+							<c:param name="companyno" value="${companyno }" />
+						</c:import>
 					</div>
 				</div>
 				<!-- RIGHT -->

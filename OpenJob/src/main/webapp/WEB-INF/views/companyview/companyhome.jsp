@@ -16,7 +16,38 @@
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
 				<h3>기업 홈</h3>
-				<a href="${home }/company/13/info">기업 페이지 예제</a>
+				<a href="${home }/company/13/info">기업 페이지 예제</a><br>
+					<c:forEach var="item" items="${rank_totalScore}">
+						${item.companyname }:${item.address }<br>
+					</c:forEach><br>
+					<c:forEach var="item" items="${rank_promotionScore}">
+						${item.companyname }:${item.address }<br>
+					</c:forEach><br>
+					<c:forEach var="item" items="${rank_walfareScore}">
+						${item.companyname }:${item.address }<br>
+					</c:forEach><br>
+					<c:forEach var="item" items="${rank_balanceScore}">
+						${item.companyname }:${item.address }<br>
+					</c:forEach><br>
+					<c:forEach var="item" items="${rank_atmosphereScore}">
+						${item.companyname }:${item.address }<br>
+					</c:forEach><br>
+					<c:forEach var="item" items="${rank_executiveScore}">
+						${item.companyname }:${item.address }<br>
+					</c:forEach><br>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			</div>
 			<div class="col-lg-2"></div>
 		</div>
