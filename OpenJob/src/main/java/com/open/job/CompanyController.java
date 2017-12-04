@@ -180,6 +180,15 @@ public class CompanyController {
 		}
 		return "failed";
 	}
+	@RequestMapping(value = "/savePost", method = RequestMethod.POST)
+	public String savePost(
+			@RequestParam Integer memberno, 
+			@RequestParam Integer postno,
+			@RequestParam String usersaved
+			) {
+		compServ.savePost(postno, memberno,usersaved);
+		return "forward:/company/frag_savebtn";
+	}
 
 	// ****************FRAGMENTS*******************//
 	@RequestMapping(value = "/frag_companytop")
@@ -277,6 +286,17 @@ public class CompanyController {
 			) {
 		model.addAttribute("postLst", compServ.getPost(post));
 		return "companyview/search/postResult";
+	};
+	@RequestMapping(value = "/frag_savebtn")
+	public String frag_posttitle(
+			@RequestParam Integer postno,
+			@RequestParam(required=false) Integer memberno,
+			Model model 
+			) {
+		if(memberno!=null) {
+		model.addAttribute("postsaved", compServ.isSavedPost(postno,memberno));
+		}
+		return "companyview/sub/savebtn";
 	};
 	@RequestMapping(value = "/frag_bar")
 	public String frag_bar(

@@ -72,4 +72,10 @@ public interface CompanyDAO {
 	public List<Company> getReviewRank(@Param("columnname") String columnname,@Param("limit") int limit);
 
 	public List<Post> getAllPost();
+
+	public int getSavedPost(@Param("postno") Integer postno, @Param("memberno") Integer memberno);
+
+	public int savePost(@Param("postno") Integer postno, @Param("memberno") Integer memberno);
+
+	public int unsavePost(@Param("postno") Integer postno, @Param("memberno") Integer memberno);
 }

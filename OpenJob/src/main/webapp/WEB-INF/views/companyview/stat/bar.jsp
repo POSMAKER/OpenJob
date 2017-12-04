@@ -5,11 +5,18 @@
 		<c:choose>
 			<c:when test="${bar_value div 10 >= i }">
 				<div class="progress-bar mainbar"></div>
-				<div class="progress-bar seperator"></div>
+			<c:choose>
+				<c:when test="${i eq 5}">
+						<div class="progress-bar mainbar" style="width:1%"></div>
+					</c:when>
+					<c:otherwise>
+					<div class="progress-bar seperator"></div>
+					</c:otherwise>
+				</c:choose>
 			</c:when>
 			<c:otherwise>
-				<div class="progress-bar mainbar"
-					style="width:${(bar_value mod 10)*2}%;"></div>
+						<div class="progress-bar mainbar"
+							style="width:${(bar_value mod 10)*2}%;"></div>
 			</c:otherwise>
 		</c:choose>
 	</c:if>
