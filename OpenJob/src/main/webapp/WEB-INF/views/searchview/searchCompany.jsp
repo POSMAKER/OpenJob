@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="row" id="companyDiv">
-	<div class="col-sm-2">div2</div>
-	<div class="col-sm-8"
+	<div class="col-xl-2">div2</div>
+	<div class="col-xl-8"
 		style="background-color: white; padding: 30px; min-width: 1100px;">
 		<strong>기업정보</strong>
 		<hr>
@@ -36,5 +36,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-2">div2</div>
+	<div class="col-xl-2">div2</div>
 </div>

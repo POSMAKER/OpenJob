@@ -86,9 +86,9 @@ div.seperator {
 	</div>
 	<div class="col-xl-6" style="padding-left: 40px; margin-bottom: 15px;">
 				<span class="stat_title">면접 경험</span>
-				<div id="experience_chart" style="width: 300px; height: 100px; margin-bottom: 15px;"></div>
+				<div id="experience_chart" style="width: 270px; height: 100px; margin-bottom: 15px;"></div>
 				<span class="stat_title">합격 여부</span>
-				<div id="successed_chart" style="width: 300px; height: 100px"></div>		
+				<div id="successed_chart" style="width: 270px; height: 100px"></div>		
 				</div>
 				
 	</div>

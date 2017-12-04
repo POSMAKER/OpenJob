@@ -3,7 +3,7 @@
 <html>
 <script>
 function savepost(mode){
-	if('${USER.memberno == null}'){
+	if(${USER.memberno == null}){
 		alert("로그인 후 이용 가능합니다.");
 		return;
 	}

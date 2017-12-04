@@ -9,8 +9,8 @@
 </script>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-6" style="min-width: 350px; padding: 10px;">
+		<div class="col-xl-2"></div>
+		<div class="col-xl-6" style="min-width: 350px; padding: 10px;">
 			<div style="padding-left: 15px;">
 				<span style="margin-bottom: 10px; font-weight: bold"> <c:choose>
 						<c:when test="${(enddate-nowdate)+1 gt 0 }">
@@ -38,7 +38,7 @@
 			</div>
 
 		</div>
-		<div class="col-lg-2">
+		<div class="col-xl-2">
 			<div id="savebtn_div">
 				<c:import url="/company/frag_savebtn">
 					<c:param name="postno" value="${post.postno }" />
@@ -46,6 +46,6 @@
 				</c:import>
 			</div>
 		</div>
-		<div class="col-lg-2"></div>
+		<div class="col-xl-2"></div>
 	</div>
 </div>

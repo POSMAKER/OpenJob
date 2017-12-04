@@ -3,8 +3,8 @@
 
 <div style="background-color: #e6e6e6; padding-bottom: 20px;">
 	<div class=row>
-		<div class="col-sm-2"></div>
-		<div class="col-sm-8"
+		<div class="col-xl-2"></div>
+		<div class="col-xl-8"
 			style="background-color: white; padding: 30px; min-width: 1100px;">
 
 			<div class="searchWrap" style="padding-left: 10px; width: 1030px;">
@@ -86,7 +86,7 @@
 				<%@include file="/WEB-INF/views/searchview/searchWrap_date.jsp"%>
 			</div>
 		</div>
-		<div class="col-sm-2"></div>
+		<div class="col-xl-2"></div>
 	</div>
 </div>
 
