@@ -43,7 +43,7 @@ td, tr {
 			<form action="${home }/search" method="get">
 				<table style="width:40%;min-width:300px;">
 					<tr>
-						<td><select name="category" id="category"
+						<td style="width:100px;"><select name="category" id="category"
 							style="width: 80px; border-style: none;">
 								<option value="all">통합</option>
 								<option value="company">기업</option>
@@ -52,7 +52,7 @@ td, tr {
 						<td><input type="text" name="searchWord" id="searchWord"
 							placeholder="기업, 채용공고를 검색해보세요."
 							style="width: 100%;border: none;" /></td>
-						<td><button
+						<td style="width:40px;"><button
 								style="background: transparent; border: none; cursor: pointer;">
 								<i class="fa fa-search" style="font-size: 25px;"></i>
 							</button></td>

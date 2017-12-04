@@ -12,16 +12,49 @@
 		<div class="row" style="background-color: #e6e6e6;">
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
-				<c:forEach var="item" items="${postLst }">
-					<div
-						style="padding: 15px; width: 100%; background-color: #ffffff; margin-bottom: 15px; margin-top: 15px; padding:0 15px;">
-							<img
-							src="${home }/companyimgs/${item.thumbimg}" width="70px"
-							height="70px"><span
-							style="font-weight: bold; font-size: 16px;"><a href="${home }/company/${item.companyno}/post/${item.postno}">${item.title }</a></span><br>	
-						<span style="color:gray; font-size: 14px;">${item.location }·${item.jobcategory }·${item.subjobcategory }·${item.type }·${item.career }</span><br>
-					</div>
-				</c:forEach>
+				<div
+					style="padding: 25px; width: 100%; background-color: #ffffff; margin-bottom: 15px; margin-top: 15px; padding: 0 15px;">
+					<c:forEach var="post" items="${postLst }">
+						<table border="0" style="min-width: 600px;">
+							<tr>
+								<td style="width: 130px; padding: 1px;" rowspan="3"><a
+									href="${home }/company/${post.companyno }/info"><img
+										src="${home }/companyimgs/${post.thumbimg }"
+										style="padding: 5px; width: 100px; border: 1px solid gray; border-radius: 7px;"></a></td>
+								<td colspan="2" style="font-size: 15px; font-weight: bold;"><a
+									href="${home }/company/${post.companyno }/post/${post.postno }">${post.title }
+										<c:choose>
+											<c:when test="${(enddate-nowdate+1) gt 0 }">
+												<div
+													style="border: 1px lime solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: lime">
+													<span>D-${enddate-nowdate+1}</span>
+												</div>
+											</c:when>
+											<c:when test="${(enddate-nowdate+1) == 0 }">
+												<div
+													style="border: 1px red solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: red">오늘
+													마감</div>
+											</c:when>
+											<c:otherwise>
+												<div
+													style="border: 1px gray solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: gray">마감</div>
+											</c:otherwise>
+										</c:choose>
+								</a></td>
+							</tr>
+							<tr>
+								<td colspan="2"><a
+									href="${home }/company/${post.companyno }/info">${post.companyname }</a></td>
+							</tr>
+							<tr>
+								<td><span style="color: gray; font-size: 14px;">${post.location }
+										· ${post.jobcategory } · ${post.subjobcategory } · ${post.type }
+										· ${post.career }</span></td>
+							</tr>
+						</table>
+						<hr>
+					</c:forEach>
+				</div>
 
 			</div>
 			<div class="col-lg-2"></div>
@@ -41,5 +74,5 @@
 		}
 	});
 	$("#category option[value='post']").prop("selected", true)
-			.trigger('change');
+		.trigger('change');
 </script>
