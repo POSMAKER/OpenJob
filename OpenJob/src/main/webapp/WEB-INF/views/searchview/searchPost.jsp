@@ -3,7 +3,7 @@
 <fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
 	integerOnly="true" var="nowdate" />
 <div class=row id="postDiv" style="padding-bottom: 20px;">
-	<div class="col-sm-2">div2</div>
+	<div class="col-sm-2"></div>
 	<div class="col-sm-8"
 		style="background-color: white; padding: 30px; min-width: 1100px;">
 		<strong>채용공고</strong>
@@ -67,5 +67,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-2">div2</div>
+	<div class="col-sm-2"></div>
 </div>

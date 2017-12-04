@@ -18,6 +18,7 @@
 				<when test='category neq "company"'>
 					title LIKE '%${searchWord}%' or companyname LIKE
 					'%${searchWord}%'
+					AND writeDate > date_sub(now(), interval 0 day)
 				</when>
 			</choose>
 		</where>

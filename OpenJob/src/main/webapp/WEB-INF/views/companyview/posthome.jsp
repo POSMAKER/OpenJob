@@ -1,5 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<style>
+a:link {
+	color: black;
+	font-family: sans-serif;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	font-family: sans-serif;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #cc3300;
+	font-weight: bold;
+}
+
+a:active {
+	color: #ff00cc;
+	text-decoration: underline;
+}
+</style>
 <fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
 	integerOnly="true" var="nowdate" />
 <html>
@@ -15,7 +38,7 @@
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
 				<div
-					style="padding: 25px; width: 100%; background-color: #ffffff; margin-bottom: 15px; margin-top: 15px; padding: 0 15px;">
+					style="padding: 35px; width: 100%; background-color: #ffffff; margin-bottom: 15px; margin-top: 15px; padding: 0 15px;">
 					<hr>
 					<c:forEach var="post" items="${postLst }">
 					<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
