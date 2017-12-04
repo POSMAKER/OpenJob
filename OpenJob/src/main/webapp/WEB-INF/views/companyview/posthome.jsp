@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<fmt:parseNumber value="${timenow.time/(1000*60*60*24)}"
+	integerOnly="true" var="nowdate" />
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,6 +18,8 @@
 					style="padding: 25px; width: 100%; background-color: #ffffff; margin-bottom: 15px; margin-top: 15px; padding: 0 15px;">
 					<hr>
 					<c:forEach var="post" items="${postLst }">
+					<fmt:parseNumber value="${post.enddate.time/(1000*60*60*24)}"
+										integerOnly="true" var="enddate" />
 						<table border="0" style="min-width: 600px;">
 							<tr>
 								<td style="width: 130px; padding: 1px;" rowspan="3"><a

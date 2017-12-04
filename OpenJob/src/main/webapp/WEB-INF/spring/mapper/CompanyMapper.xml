@@ -333,7 +333,7 @@ VALUES
 		LIMIT #{limit}
 	</select>
 	<select id="getAllPost" resultType="com.open.job.DTO.Post">
-		SELECT companyNo, postNo, thumbimg, title, location, jobcategory, subjobcategory, type, career, companyName FROM Post 
+		SELECT companyNo, postNo, thumbimg, title, location, jobcategory, subjobcategory, type, career, companyName, enddate FROM Post 
 		INNER JOIN Company USING (companyNo)
 		INNER JOIN CompanyInfo USING (companyNo)
 		INNER JOIN Companyimg USING (companyNo)
