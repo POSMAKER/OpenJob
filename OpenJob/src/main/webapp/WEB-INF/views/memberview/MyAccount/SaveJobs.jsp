@@ -134,8 +134,9 @@
   
   
 <div class="my_information_group">
+<h3 style="font-size: 18; margin-bottom: 25"> 저장된 채용</h3>
 
-<div class="" style="width: 660px; height: auto; font-size: 17px;" align="center">
+<div class="" style="width: 660px; height: auto; font-size: 17px; margin-top: 30;" align="center">
 <table class="">
 	<tr>
 		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 회사소개 </th>
