@@ -115,7 +115,7 @@ public class MemberController {
 		model.addAttribute("followCompanyList", FollowCompanyList);
 		return "/memberview/MyAccount/Favorites"; 
 	}
-	
+	 
 	
 	@RequestMapping(value = "/SaveJobs")
 	public String SaveJobs(USER user, Model model, String membemail) {
