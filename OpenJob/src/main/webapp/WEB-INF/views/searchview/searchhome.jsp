@@ -38,21 +38,21 @@ td, tr {
 		<div align="center">
 			<div class="imgLogo">
 				<a href="${home }/"><img src="${home }/imgs/logo.jpg"
-					style="width: 400px; height: 130px;"></a>
+					style="min-width:300px; width: 30%;"></a>
 			</div>
 			<form action="${home }/search" method="get">
-				<table>
+				<table style="width:40%;min-width:300px;">
 					<tr>
-						<td><select name="category" id="category"
-							style="width: 80px; border-style: none;">
+						<td style="width:70px;"><select name="category" id="category"
+							style="width: 70px; border-style: none;">
 								<option value="all">통합</option>
 								<option value="company">기업</option>
 								<option value="post">채용</option>
 						</select></td>
 						<td><input type="text" name="searchWord" id="searchWord"
 							placeholder="기업, 채용공고를 검색해보세요."
-							style="width: 400px; min-width: 300px; border: none;" /></td>
-						<td><button
+							style="width: 100%;border: none;" /></td>
+						<td style="width:50px;"><button
 								style="background: transparent; border: none; cursor: pointer;">
 								<i class="fa fa-search" style="font-size: 25px;"></i>
 							</button></td>

@@ -289,12 +289,12 @@ VALUES
 	</select>
 	<select id="getReviewStat" parameterType="Integer" resultType="com.open.job.DTO.CompanyReview">
 		SELECT
-		Round(AVG(totalScore),1) AS totalScore,
-		Round(AVG(promotionScore),1) AS promotionScore,
-		Round(AVG(walfareScore),1) AS walfareScore,
-		Round(AVG(balanceScore),1) AS balanceScore,
-		Round(AVG(atmosphereScore),1) AS atmosphereScore,
-		Round(AVG(executiveScore),1) AS executiveScore,
+		Round(AVG(totalScore)*10,0) AS totalScore,
+		Round(AVG(promotionScore)*10,0) AS promotionScore,
+		Round(AVG(walfareScore)*10,0) AS walfareScore,
+		Round(AVG(balanceScore)*10,0) AS balanceScore,
+		Round(AVG(atmosphereScore)*10,0) AS atmosphereScore,
+		Round(AVG(executiveScore)*10,0) AS executiveScore,
 		ROUND(COUNT(IF(recommandScore='Y',1,null))/COUNT(*)*100,0) recommandScore,
 		ROUND(COUNT(IF(futureScore='U',1,null))/COUNT(*)*100,0) futureScore,
 		ROUND(COUNT(IF(CEOScore='Y',1,null))/COUNT(*)*100,0) CEOScore 
@@ -304,7 +304,7 @@ VALUES
 	</select>
 	<select id="getInterviewStat" parameterType="Integer" resultType="com.open.job.DTO.InterviewReview">
 		SELECT
-		Round(AVG(interviewlevel),1) AS interviewlevel,
+		Round(AVG(interviewlevel)*10,0) AS interviewlevel,
 		CONCAT(ROUND(COUNT(IF(experience='P',1,null))/COUNT(*)*100,0),',',
 				ROUND(COUNT(IF(experience='N',1,null))/COUNT(*)*100,0),',',
 				ROUND(COUNT(IF(experience='S',1,null))/COUNT(*)*100,0)) AS experience,
@@ -324,7 +324,7 @@ VALUES
 	<select id="getReviewRank" parameterType="Map" resultType="com.open.job.DTO.Company">
 		SELECT
 		companyname, companyno,
-		IFNull(Round(AVG(${columnname}),1),0) AS address
+		IFNull(Round(AVG(${columnname})*10,0),0) AS address
 		FROM Company 
 		LEFT JOIN CompanyReviewInfo USING(companyno)
 		LEFT JOIN CompanyReview USING(companyreviewNo)
@@ -333,10 +333,22 @@ VALUES
 		LIMIT #{limit}
 	</select>
 	<select id="getAllPost" resultType="com.open.job.DTO.Post">
-		SELECT companyNo, postNo, thumbimg, title, location, jobcategory, subjobcategory, type, career FROM Post 
+		SELECT companyNo, postNo, thumbimg, title, location, jobcategory, subjobcategory, type, career, companyName, enddate FROM Post 
 		INNER JOIN Company USING (companyNo)
 		INNER JOIN CompanyInfo USING (companyNo)
 		INNER JOIN Companyimg USING (companyNo)
 		ORDER BY writedate DESC
 	</select>
+	<select id="getSavedPost" parameterType="Map" resultType="Integer">
+		SELECT IFNULL(COUNT(*),0) FROM SavedPost
+		WHERE postno = #{postno} AND memberno = #{memberno}
+	</select>
+	<insert id="savePost">
+		INSERT INTO SavedPost(postNo,memberNo)
+		VALUES(#{postno},#{memberno}) 
+	</insert>
+	<delete id="unsavePost">
+		DELETE FROM SavedPost
+		WHERE postNo = #{postno} AND memberno=#{memberno}
+	</delete>
 </mapper>

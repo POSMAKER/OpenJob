@@ -3,6 +3,7 @@ package com.open.job.IService;
 import java.util.List;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Dday;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
@@ -16,7 +17,7 @@ public interface SearchService {
 	public List<Jobcategory> getjobcategory();
 	public List<Jobcategory> getSubjobcategory();
 	public List<Type> getType();
-	public List<String> getDate();
+	public List<Dday> getDday();
 	public String getQuickCompSearch(String searchword, String onclickfunction_name);
 	public String getResult(String Location, String jobcate, String career, String type, String dday);
 }

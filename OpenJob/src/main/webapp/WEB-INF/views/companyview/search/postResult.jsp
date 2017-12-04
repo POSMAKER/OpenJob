@@ -16,10 +16,10 @@
 				integerOnly="true" var="enddate" />
 			
 				<c:choose>
-					<c:when test="${(enddate-nowdate) gt 0 }">
-					<div style="margin-bottom: 10px; border: 1px lime solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: lime"><span>D-${enddate-nowdate}</span></div>
+					<c:when test="${(enddate-nowdate+1) gt 0 }">
+					<div style="margin-bottom: 10px; border: 1px lime solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: lime"><span>D-${enddate-nowdate+1}</span></div>
 					</c:when>
-					<c:when test="${(enddate-nowdate) eq 0 }">
+					<c:when test="${(enddate-nowdate+1) == 0 }">
 					<div style="margin-bottom: 10px; border: 1px red solid; display: inline-block; padding: 0 10px; border-radius: 10px; color: red">오늘 마감</div>
 					</c:when>
 					<c:otherwise>

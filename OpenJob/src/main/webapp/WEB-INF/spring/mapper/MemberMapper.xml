@@ -49,6 +49,22 @@
 </select>
 
 
+<select id="getSaveJobsInfo" parameterType="String" resultType="com.open.job.DTO.UserAcount"> 
+	SELECT * FROM Member
+	INNER Join SavedPost USING(memberNo) 
+	INNER Join Post USING(postNo)
+	WHERE email = #{email}
+
+</select>
+
+
+<select id="getUserAcountInfo" parameterType="String" resultType="com.open.job.DTO.UserAcount"> 
+	SELECT * FROM Member
+	WHERE email = #{email} 
+
+</select>
+
+
 
 
 </mapper>

@@ -235,5 +235,25 @@ public class CompanyServiceImpl implements CompanyService{
 		return cdao.getAllPost();
 	}
 
+	@Override
+	public boolean isSavedPost(Integer postno_now, Integer memberno_now) {
+		if(cdao.getSavedPost(postno_now,memberno_now) >= 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int savePost(Integer postno, Integer memberno, String usersaved) {
+		int result = 0;
+		if(usersaved.equals("true")) {
+			result = cdao.savePost(postno, memberno);
+		} else {
+			result = cdao.unsavePost(postno, memberno);
+		}
+		return result;
+	}
+
 
 }

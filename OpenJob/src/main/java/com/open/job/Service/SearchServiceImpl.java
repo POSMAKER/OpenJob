@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.open.job.DTO.Company;
+import com.open.job.DTO.Dday;
 import com.open.job.DTO.Jobcategory;
 import com.open.job.DTO.Location;
 import com.open.job.DTO.Post;
@@ -90,14 +91,8 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public List<String> getDate() {
-		List<String> dateList = new ArrayList<String>();
-		String [] str = {"전체","오늘","최근 3일","최근 1주일","최근 1개월"};
-		
-		for(int i=0;i<str.length;i++) {
-			dateList.add(str[i]);
-		}
-		return dateList;
+	public List<Dday> getDday() {
+		return sdao.getDday();
 	}
 	
 	@Override
@@ -106,17 +101,19 @@ public class SearchServiceImpl implements SearchService {
 		String[] job = (jobcate.equals("null")? null:jobcate.split(","));
 		String[] care = (career.equals("null")? null:career.split(","));
 		String[] type = (Type.equals("null")? null:Type.split(","));
-		List<Post> lst = sdao.getResult(loca, job, care, type);
+		String[] day = (dday.equals("null")? null:dday.split(","));
+		
+		List<Post> lst = sdao.getResult(loca, job, care, type, day);
 		
 		String str = "";
 		for(Post post:lst) {
-			str += "<table id='searched' border=\"1\" style=\"min-width: 600px;\">\r\n" + 
+			str += "<table id='searched' border=\"0\" style=\"min-width: 600px;\">\r\n" + 
 					"								<tr>\r\n" + 
-					"									<td style=\"width: 130px; padding: 15px;\" rowspan=\"3\"><a\r\n" + 
+					"									<td style=\"width: 130px; padding: 1px;\" rowspan=\"3\"><a\r\n" + 
 					"										href=\"/job/company/"+post.getCompanyno()+"/info\"><img\r\n" + 
 					"											src=\"/job/companyimgs/"+ post.getThumbimg() +"\"\r\n" + 
-					"											style=\"width: 100px;\"></a></td>\r\n" + 
-					"									<td colspan=\"2\" style=\"font-weight: bold;\"><a href=\"/job/company/"+post.getCompanyno()+"/post/"+post.getPostno()+"\">"+post.getTitle()+"\r\n" + 
+					"											style=\"padding: 5px; width: 100px; border: 1px solid gray; border-radius: 7px;\"></a></td>\r\n" + 
+					"									<td colspan=\"2\" style=\"font-size: 15px; font-weight: bold;\"><a href=\"/job/company/"+post.getCompanyno()+"/post/"+post.getPostno()+"\">"+post.getTitle()+"\r\n" + 
 					"											</a></td>\r\n" + 
 					"								</tr>\r\n" + 
 					"								<tr>\r\n" + 
@@ -124,12 +121,11 @@ public class SearchServiceImpl implements SearchService {
 					"										href=\"/job/company/"+post.getCompanyno()+"/info\">"+post.getCompanyname()+"</a></td>\r\n" + 
 					"								</tr>\r\n" + 
 					"								<tr>\r\n" + 
-					"									<td>"+post.getJobcategory()+"</td>\r\n" + 
-					"									<td>"+post.getSubjobcategory()+"</td>\r\n" + 
+					"									<td><span style=\"color:gray; font-size: 14px;\">"+ post.getLocation()+" · "+post.getJobcategory()+" · "+post.getSubjobcategory()+" · "+post.getType()+" · "+post.getCareer()+"</span></td>\r\n" + 
 					"								</tr>\r\n" + 
-					"							</table>";
+					"							</table>" +
+					"							<hr>";
 		}
 		return str;
 	}
-
 }

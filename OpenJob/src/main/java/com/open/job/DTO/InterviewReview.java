@@ -22,7 +22,7 @@ public class InterviewReview extends InterviewReviewInfo{
     private String experience;
 
     // 면접 난이도 1~5
-    private Float interviewlevel;
+    private Integer interviewlevel;
 
     // 합격 여부 Y,N,Wait
     private String successed;
@@ -78,11 +78,11 @@ public class InterviewReview extends InterviewReviewInfo{
 		this.experience = experience;
 	}
 
-	public Float getInterviewlevel() {
+	public Integer getInterviewlevel() {
 		return interviewlevel;
 	}
 
-	public void setInterviewlevel(Float interviewlevel) {
+	public void setInterviewlevel(Integer interviewlevel) {
 		this.interviewlevel = interviewlevel;
 	}
 

@@ -19,22 +19,22 @@ public class CompanyReview extends CompanyReviewInfo{
     private String wishlist;
 
     // 총 평점 1~5
-    private Float totalscore;
+    private Integer totalscore;
 
     // 승진 기회 1~5
-    private Float promotionscore;
+    private Integer promotionscore;
 
     // 복지 1~5
-    private Float walfarescore;
+    private Integer walfarescore;
 
     // 삶의질 1~5
-    private Float balancescore;
+    private Integer balancescore;
 
     // 사내문화 1~5
-    private Float atmospherescore;
+    private Integer atmospherescore;
 
     // 경영진 1~5
-    private Float executivescore;
+    private Integer executivescore;
 
     // CEO지지 Y,N
     private String ceoscore;
@@ -85,51 +85,51 @@ public class CompanyReview extends CompanyReviewInfo{
 		this.wishlist = wishlist;
 	}
 
-	public Float getTotalscore() {
+	public Integer getTotalscore() {
 		return totalscore;
 	}
 
-	public void setTotalscore(Float totalscore) {
+	public void setTotalscore(Integer totalscore) {
 		this.totalscore = totalscore;
 	}
 
-	public Float getPromotionscore() {
+	public Integer getPromotionscore() {
 		return promotionscore;
 	}
 
-	public void setPromotionscore(Float promotionscore) {
+	public void setPromotionscore(Integer promotionscore) {
 		this.promotionscore = promotionscore;
 	}
 
-	public Float getWalfarescore() {
+	public Integer getWalfarescore() {
 		return walfarescore;
 	}
 
-	public void setWalfarescore(Float walfarescore) {
+	public void setWalfarescore(Integer walfarescore) {
 		this.walfarescore = walfarescore;
 	}
 
-	public Float getBalancescore() {
+	public Integer getBalancescore() {
 		return balancescore;
 	}
 
-	public void setBalancescore(Float balancescoe) {
+	public void setBalancescore(Integer balancescoe) {
 		this.balancescore = balancescoe;
 	}
 
-	public Float getAtmospherescore() {
+	public Integer getAtmospherescore() {
 		return atmospherescore;
 	}
 
-	public void setAtmospherescore(Float atmospherescore) {
+	public void setAtmospherescore(Integer atmospherescore) {
 		this.atmospherescore = atmospherescore;
 	}
 
-	public Float getExecutivescore() {
+	public Integer getExecutivescore() {
 		return executivescore;
 	}
 
-	public void setExecutivescore(Float executivescore) {
+	public void setExecutivescore(Integer executivescore) {
 		this.executivescore = executivescore;
 	}
 

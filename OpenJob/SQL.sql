@@ -21,7 +21,7 @@ FOREIGN KEY (companyreviewNo) REFERENCES InterviewReviewInfo(companyreviewNo)
 ON DELETE CASCADE
 
 SELECT * FROM CompanyReview
-DELETE FROM CompanyReview WHERE companyreviewNo = '7'
+DELETE FROM CompanyReviewInfo WHERE companyreviewNo = '17'
 
 ALTER TABLE CompanyReview CHANGE reviewNo interviewNo INT NOT NULL;
 SELECT * FROM Member

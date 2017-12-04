@@ -49,5 +49,7 @@ public interface CompanyService {
 	public Map<String,List<Company>> getAllReviewRank(int limit);
 	public List<Company> getReviewRank(String columnname,int limit);
 	public List<Post> getAllPost();
+	public boolean isSavedPost(Integer postno_now, Integer memberno_now);
+	public int savePost(Integer postno, Integer memberno, String usersaved);
 	
 }

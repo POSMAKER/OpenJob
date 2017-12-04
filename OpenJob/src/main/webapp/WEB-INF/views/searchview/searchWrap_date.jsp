@@ -15,10 +15,10 @@
 			<ul style="list-style: none; padding: 10px; padding-left: 20px;">
 			<c:set var="no" value="1" />
 				<c:forEach var="dday" items="${dateList }">
-					<li class="dday_li"><input type="checkbox" style="display:;" id="${dday }"
-						value="${dday }"> <label
-						style="padding-bottom: 5px; cursor: pointer; width: 110px; font-size: 14px"
-						for="${dday }"><span id="" style="padding: 5px 10px 5px 10px;">${dday }</span></label></li>
+					<li class="dday_li"><input type="checkbox" style="display: none;" id="${dday.ddayval }"
+						value="${dday.ddayval }"> <label
+						style="padding-bottom: 5px; cursor: pointer; width: 150px; font-size: 14px"
+						for="${dday.ddayval }"><span id="${dday.ddayval }" style="padding: 5px 10px 5px 10px;">${dday.dday }</span></label></li>
 				</c:forEach>
 			</ul>
 		</div>

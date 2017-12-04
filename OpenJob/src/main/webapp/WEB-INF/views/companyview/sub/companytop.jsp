@@ -1,6 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
+<script>
+function savepost(mode){
+	if(${USER.memberno == null}){
+		alert("로그인 후 이용 가능합니다.");
+		return;
+	}
+	if(mode){
+		$.ajax({
+		type:'post',
+		url:'${home}/company/savePost',
+		data:{
+			'memberno': '${USER.memberno}',
+			'postno': '${post.postno}',
+			'usersaved': mode
+		},
+		success: function(result){
+			$("#savebtn_div").html(result);
+		}
+		});
+	}
+}
+</script>
 <body>
 	<div class="container-fluid" style="margin-top: 55px; padding: 0px;">
 		<!-- CompanyTitle -->
@@ -10,7 +32,7 @@
 		<!-- Company Navbar or PostTitle -->
 		<c:choose>
 			<c:when test="${post!=null }">
-				<%@include file="/WEB-INF/views/companyview/sub/posttitle.jsp"%>
+			<%@include file="/WEB-INF/views/companyview/sub/posttitle.jsp" %>
 			</c:when>
 			<c:otherwise>
 				<c:import url="/company/frag_companynavi">
@@ -42,3 +64,4 @@
 				</c:choose>
 			</c:otherwise>
 		</c:choose>
+		</div>
