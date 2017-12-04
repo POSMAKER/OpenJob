@@ -87,7 +87,7 @@
 		<foreach item="item" collection="type" open="(" separator="," close=")">#{item}</foreach> 
 		</if>
 		<if test="dday!=null">
-		AND startDate > date_sub(now(), interval 
+		AND writeDate > date_sub(now(), interval 
 		<foreach item="item" collection="dday" open="(" separator="," close=")">#{item}</foreach> day)
 		</if>
 		</where>
