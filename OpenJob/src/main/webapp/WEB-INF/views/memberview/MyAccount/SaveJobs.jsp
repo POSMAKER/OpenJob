@@ -138,9 +138,8 @@
 <div class="" style="width: 660px; height: auto; font-size: 17px;" align="center">
 <table class="">
 	<tr>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 기업 이름 </th>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 주소 </th>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 산업 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 회사소개 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 주요업무 </th>
 		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 상세보기 </th>
 	</tr>
 				
@@ -148,7 +147,7 @@
 		<tr style="margin-top: 150;">
 			<td style="font-size: 16px; ">${item.companyintro}</td>
 			<td style="font-size: 16px; ">${item.mainduty }</td>
-			<td style="font-size: 16px; color: blue;"><a onclick="window.open('${home }/company/${item.companyno}/info');">상세보기</a></td>
+			<td style="font-size: 16px; color: blue;"><a onclick="window.open('${home }/company/${item.companyno }/post/${item.postno }');">상세보기</a></td>
 		</tr>
 	</c:forEach>
 	
