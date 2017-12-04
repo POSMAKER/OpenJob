@@ -10,12 +10,21 @@ public class UserAcount {
 	private String password;
 	private String career;
 	
+	
 	// 파로잉 기업
 	private String companyno;
 	private String companyname;
 	private String address;
 	private String industry;
 	private String subindustry;
+	
+	
+	
+	// 저장된 채용
+	private String postno;
+	private String companyintro;
+	private String mainduty;
+	
 	
 	
 	
@@ -84,6 +93,24 @@ public class UserAcount {
 	}
 	public void setSubindustry(String subindustry) {
 		this.subindustry = subindustry;
+	}
+	public String getPostno() {
+		return postno;
+	}
+	public void setPostno(String postno) {
+		this.postno = postno;
+	}
+	public String getCompanyintro() {
+		return companyintro;
+	}
+	public void setCompanyintro(String companyintro) {
+		this.companyintro = companyintro;
+	}
+	public String getMainduty() {
+		return mainduty;
+	}
+	public void setMainduty(String mainduty) {
+		this.mainduty = mainduty;
 	}
 	
 	

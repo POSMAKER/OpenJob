@@ -58,13 +58,28 @@ public class MemberServiceImpl implements MemberService {
 
 
 
-	/*
+
 	@Override
-	public UserAcount getUserAcount(String membemail) {
-		UserAcount userAcount = memberDao.getUserAcount(membemail);
-		return userAcount;
+	public UserAcount getUserAcountInfo(String membemail) {
+		return memberDao.getUserAcountInfo(membemail);
 	}
-	*/
+
+
+
+
+	@Override
+	public List<UserAcount> getSaveJobsInfo(String membemail) {
+		List<UserAcount> saveJobLst = memberDao.getSaveJobsInfo(membemail);
+		return saveJobLst;
+	}
+
+
+
+
+
+
+
+
 
 
 	

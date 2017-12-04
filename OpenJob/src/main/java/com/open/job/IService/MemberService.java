@@ -11,8 +11,7 @@ public interface MemberService {
 	public int insertMember(Member member);
 	public boolean loginProc(Member member);
 	public USER getUserInfo(String memberemail);
-	//public UserAcount getUserAcount(String membemail);
 	public List<UserAcount> getFollowCompany(String membemail);
-
-	
+	public UserAcount getUserAcountInfo(String membemail);
+	public List<UserAcount> getSaveJobsInfo(String membemail);	
 }
