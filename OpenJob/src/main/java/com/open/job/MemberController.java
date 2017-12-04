@@ -42,11 +42,7 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/UserAcount")
-	public String UserAcount() {
-
-		return "/memberview/MyAccount/UserAcount";
-	}
+	
 	
 	@RequestMapping(value = "/PaswordChange")
 	public String PaswordChange() {
@@ -60,19 +56,8 @@ public class MemberController {
 		return "/memberview/MyAccount/MemberOut";
 	}
 	
-	/*
-	@RequestMapping(value = "/Favorites")
-	public String Favorites() {
-
-		return "/memberview/MyAccount/Favorites";
-	}
-	*/
 	
-	@RequestMapping(value = "/SaveJobs")
-	public String SaveJobs() {
-
-		return "/memberview/MyAccount/SaveJobs";
-	}
+	
 	
 	
 	
@@ -131,6 +116,26 @@ public class MemberController {
 		return "/memberview/MyAccount/Favorites"; 
 	}
 	
+	
+	@RequestMapping(value = "/SaveJobs")
+	public String SaveJobs(USER user, Model model, String membemail) {
+		List<UserAcount> SaveJobList = memberServ.getSaveJobsInfo(user.getEmail());
+		model.addAttribute("saveJobList", SaveJobList);
+		return "/memberview/MyAccount/SaveJobs"; 
+	}
+	
+	
+	@RequestMapping(value = "/UserAcount")
+	public String UserAcount(USER user,Model model, String membemail) {
+		model.addAttribute("userAcount", memberServ.getUserAcountInfo(user.getEmail()));
+		return "/memberview/MyAccount/UserAcount";
+	}
+	
+	@RequestMapping(value = "/FollowCompanyDetail")
+	public String FollowCompanyDetail(USER user,Model model, String membemail) {
+		model.addAttribute("userAcount", memberServ.getUserAcountInfo(user.getCompanyno()));
+		return "redirect:/{companyNo:^[0-9]*$}/info";
+	}
 
 	
 	

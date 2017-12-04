@@ -15,31 +15,6 @@
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
 
-<script>
-    $(document).ready(function() {
-        JobUI.desktop.myPageMyInformationMenu.initLnb(Option);
-    });
-</script>
-
-<script>
-    var feMobileCheck = new feUI.feMobileCheck;
-    ;(function($) {
-        $(function() {
-            if( feMobileCheck.get() === true ){
-                $('body').on('click', '.not_action', function(){
-                    $(this).find('.um_tooltip').fadeToggle();
-                });
-            }
-        });
-    })(jQuery);
-    var beforeUnload = function(e){
-        $('body').off("click", ".not_action");
-    };
-    $(window).on('beforeunload', beforeUnload);
-    $(document).on('page:before-change', beforeUnload);
-
-    $.get("/emails");
-</script>
 
 
 </head>
@@ -65,7 +40,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${USER.email}</h1>
         </div>
     </div>
 </div>
@@ -144,27 +119,46 @@
         <div id="mainContents" class="jpcont_rgt">
             <div class="jpcont_wrap">
   <div class="layout_my_account myaccountcon">
-    <div class="section_group">
-    <div>&nbsp</div>
-      <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">저장된 채용</h3>
-	  <hr style="border-top: 1px solid #b9b9b9;">
-	  
-      <section class="my_information">
-        <div class="my_information_group">
-          <dl class="email">
-            <dt>기본정보</dt>
-            <dd>샘플입니다.<br /> 
-			샘플입니다.<br /> 
-			샘플입니다. 
-			</dd>
-          </dl>
-          <!--email_list.scss.erb-->
-<ul class="email_list">
-</ul>
+  
+  
+
+<div class="section_group">
+<div>&nbsp</div>
+  <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">저장된 채용</h3>
+<hr style="border-top: 1px solid #b9b9b9;">	
+
+
+  
+  
+<div class="my_information_group">
+
+<div class="" style="width: 660px; height: auto; font-size: 17px;" align="center">
+<table class="">
+	<tr>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 기업 이름 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 주소 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 산업 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 상세보기 </th>
+	</tr>
+				
+	 <c:forEach var="item" items="${saveJobList}">
+		<tr style="margin-top: 150;">
+			<td style="font-size: 16px; ">${item.companyintro}</td>
+			<td style="font-size: 16px; ">${item.mainduty }</td>
+			<td style="font-size: 16px; color: blue;"><a onclick="window.open('${home }/company/${item.companyno}/info');">상세보기</a></td>
+		</tr>
+	</c:forEach>
+	
+</table>	 
+</div> 
+</br>
+</br>
+ 
  
 </div>
-</section>
 </div> <!--//section_group-->
+
+
 
 
 
