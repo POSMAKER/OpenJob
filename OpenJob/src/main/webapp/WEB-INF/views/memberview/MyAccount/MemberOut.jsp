@@ -168,7 +168,7 @@
 
 <div class="myaccountcon_bottom" style="margin-left: 185; margin-bottom: 100">
 <div class="member_out" style="font-size: 17; margin-top: 100">오픈잡을 더 이상 이용하지 않는다면 
-<a href="/profile/wanttoleave" class="link_blue">회원탈퇴</a>            
+<a href="${home }/UserAcount" class="link_blue">회원탈퇴</a>            
 </div>
 </div>
 

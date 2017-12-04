@@ -10,13 +10,7 @@
 <head>
 
 
-<!-- 
-<script data-turbolinks-track="true" src="https://jpassets.jobplanet.co.kr/assets/desktop_ko-c460c7b04b7a74de21da92c911d4cc9e3d889f312e1a211e184076212d22c3a1.js"></script>
-<<<<<<< HEAD
- 
-=======
- -->
->>>>>>> branch 'master' of https://github.com/POSMAKER/OpenJob.git
+
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_any_language_newtemp-bf2fe9f55ada3b96ff93fe40c25b3970fb9fc3bd2fc5ad76639215282b43c0b3.css" media="all" rel="stylesheet" />
 
 
@@ -42,7 +36,7 @@
 </div>
 
 
-<form accept-charset="UTF-8" action="" class="new_user" id="new_user" method="post">
+<form accept-charset="UTF-8" action="" class="new_user" id="new_user" method="post" style="padding-top:0px;">
 
 
 <!-- myPageInfo { -->
