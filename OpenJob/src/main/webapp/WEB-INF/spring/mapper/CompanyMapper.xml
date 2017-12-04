@@ -333,10 +333,22 @@ VALUES
 		LIMIT #{limit}
 	</select>
 	<select id="getAllPost" resultType="com.open.job.DTO.Post">
-		SELECT companyNo, postNo, thumbimg, title, location, jobcategory, subjobcategory, type, career FROM Post 
+		SELECT companyNo, postNo, thumbimg, title, location, jobcategory, subjobcategory, type, career, companyName, enddate FROM Post 
 		INNER JOIN Company USING (companyNo)
 		INNER JOIN CompanyInfo USING (companyNo)
 		INNER JOIN Companyimg USING (companyNo)
 		ORDER BY writedate DESC
 	</select>
+	<select id="getSavedPost" parameterType="Map" resultType="Integer">
+		SELECT IFNULL(COUNT(*),0) FROM SavedPost
+		WHERE postno = #{postno} AND memberno = #{memberno}
+	</select>
+	<insert id="savePost">
+		INSERT INTO SavedPost(postNo,memberNo)
+		VALUES(#{postno},#{memberno}) 
+	</insert>
+	<delete id="unsavePost">
+		DELETE FROM SavedPost
+		WHERE postNo = #{postno} AND memberno=#{memberno}
+	</delete>
 </mapper>

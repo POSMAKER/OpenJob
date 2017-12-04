@@ -110,7 +110,7 @@ public class SearchController {
 			@RequestParam(value = "jobcate", required=false, defaultValue = "null")String jobcate,
 			@RequestParam(value = "type", required=false, defaultValue = "null")String type,
 			@RequestParam(value = "dday", required=false, defaultValue = "null")String dday) {
-		logger.info(subLocationName+" // "+jobcate+" // "+career+" // "+type+" // "+dday);
+		//logger.info(subLocationName+" // "+jobcate+" // "+career+" // "+type+" // "+dday);
 		return searchServ.getResult(subLocationName, jobcate, career, type, dday);
 	}
 	

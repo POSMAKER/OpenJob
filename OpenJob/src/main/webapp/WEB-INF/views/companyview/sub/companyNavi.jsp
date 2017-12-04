@@ -71,8 +71,8 @@ li.compnav-item {
 					data-target="#collapsingNavbar1">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<button id="navi_frmBtn" type="button" data-toggle="modal" data-target="#myModal"
-					data-backdrop="static" data-keyboard="false"
+				<button id="navi_frmBtn" type="button" data-toggle="modal"
+					data-target="#myModal" data-backdrop="static" data-keyboard="false"
 					class="btn btn-success"
 					style="margin: 15 5px; width: 200px; height: 41px;">
 					<c:choose>
@@ -84,11 +84,11 @@ li.compnav-item {
 						</c:when>
 						<c:when test="${frmoption eq 'post'}">
 							<span style="font-weight: bold; font-size: 18px;">채용 공고 등록</span>
+
 						</c:when>
 					</c:choose>
 				</button>
 			</nav>
-
 		</div>
 		<div class="col-xl-2  bg-light" style="padding: 0;"></div>
 	</div>

@@ -25,7 +25,7 @@ div.seperator {
 		style="width: 100%; background-color: #ffffff; margin-bottom: 15px; padding: 15px;"
 		align="left">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row" style="border-bottom: 1px solid lightgray;">
 				<div class="col-lg-12"
 					style="padding-bottom: 15px; padding-left: 0px;">
 					<span style="font-size: 12px;"> ${review.jobcategory }&nbsp;|
@@ -39,12 +39,12 @@ div.seperator {
 			</div>
 			<div class="row">
 				<div class="col-sm-3"
-					style="padding-left: 0px; padding-bottom: 15px;">
+					style="padding-left: 0px; padding-bottom: 15px; border-right: 1px solid lightgray;">
 					<span
 						style="font-size: 13px;">총 만족도
 							&nbsp;&nbsp;&nbsp;${review.totalscore}</span>
 						<div id="tot" class="progress total_bar"
-							style="width: 100px; height: 7px;">
+							style="width: 130px; height: 7px;">
 							<c:import url="/company/frag_bar">
 								<c:param name="bar_value" value="${review.totalscore*10 }" />
 							</c:import>
@@ -52,27 +52,27 @@ div.seperator {
 					<span style="font-size: 13px;">승진
 							기회&nbsp;&nbsp;&nbsp;${review.promotionscore}</span>
 						<div class="progress"
-							style="width: 100px; height: 10px; margin-bottom: 10px;">
+							style="width: 130px; height: 10px; margin-bottom: 10px;">
 							<c:import url="/company/frag_bar">
 								<c:param name="bar_value" value="${review.promotionscore*10 }" />
 							</c:import>
 						</div> <span style="font-size: 13px;">복지 및
 							급여&nbsp;&nbsp;&nbsp;${review.walfarescore}</span>
 						<div class="progress"
-							style="width: 100px; height: 10px; margin-bottom: 10px;">
+							style="width: 130px; height: 10px; margin-bottom: 10px;">
 							<c:import url="/company/frag_bar">
 								<c:param name="bar_value" value="${review.walfarescore*10 }" />
 							</c:import>
 						</div> <span style="font-size: 13px;">삶의
 							균형&nbsp;&nbsp;&nbsp;${review.balancescore}</span>
 						<div class="progress"
-							style="width: 100px; height: 10px; margin-bottom: 10px;">
+							style="width: 130px; height: 10px; margin-bottom: 10px;">
 							<c:import url="/company/frag_bar">
 								<c:param name="bar_value" value="${review.balancescore*10 }" />
 							</c:import>
 						</div> <span style="font-size: 13px;">사내문화&nbsp;&nbsp;&nbsp;${review.atmospherescore}</span>
 						<div class="progress"
-							style="width: 100px; height: 10px; margin-bottom: 10px;">
+							style="width: 130px; height: 10px; margin-bottom: 10px;">
 							<c:import url="/company/frag_bar">
 								<c:param name="bar_value" value="${review.atmospherescore*10 }" />
 							</c:import>
@@ -81,7 +81,7 @@ div.seperator {
 							<span style="font-size: 13px;">경영진&nbsp;&nbsp;&nbsp;${review.executivescore}</span>
 						</div>
 						<div class="progress"
-							style="width: 100px; height: 10px; margin-bottom: 10px;">
+							style="width: 130px; height: 10px; margin-bottom: 10px;">
 							<c:import url="/company/frag_bar">
 								<c:param name="bar_value" value="${review.executivescore*10 }" />
 							</c:import>

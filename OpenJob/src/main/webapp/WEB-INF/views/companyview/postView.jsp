@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@include file="/WEB-INF/views/common/menubar.jsp"%>
 <head>
-<title>${company.companyname }[채용]</title>
+<title>[채용]${post.title }</title>
 <style>
 span.head {
 	font-size: 23px;

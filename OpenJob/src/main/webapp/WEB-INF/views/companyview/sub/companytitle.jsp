@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<style>
+	.title{
+		color:white;
+	}
+	.title:hover{
+		color:lightgray;
+	}
+</style>
 <script>
 	function follow(followvar) {
 		if ("${USER}" == "") {
@@ -39,7 +47,7 @@
 						src="${home }/companyimgs/${company.thumbimg}"
 						style="width: 110px; height: 110px;"></td>
 					<td><span
-						style="font-size: 25px; font-weight: bold; margin: 5px; color: white; padding-left: 15px;">${company.companyname }</span>
+						style="font-size: 25px; font-weight: bold; margin: 5px; color: white; padding-left: 15px;"><a class="title" href="${home }/company/${company.companyno}/info">${company.companyname }</a></span>
 					</td>
 				</tr>
 				<tr>

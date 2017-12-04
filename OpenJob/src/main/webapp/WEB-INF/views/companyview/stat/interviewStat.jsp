@@ -7,9 +7,10 @@
       google.charts.setOnLoadCallback(experienceChart);
       google.charts.setOnLoadCallback(successedChart);
       var options = {
-    		  legend:{textStyle:{fontSize: 14}},
+    		  legend:{textStyle:{fontSize: 19}},
               enableInteractivity: false,
               chartArea: {'width': '100%', 'height': '100%'},
+              pieSliceTextStyle:{fontSize:12},
               slices: {
                   0: { color: 'purple' },
                   1: { color: 'lightgray' }
@@ -54,7 +55,10 @@ div.seperator {
 .total_bar div.mainbar {
 	background-color: orange;
 }
-
+.stat_title{
+	font-weight: bold;
+	font-size: 16px;
+}
 </style>
 <div
 	style="padding: 15px; width: 100%; background-color: #ffffff; margin-bottom: 15px;"
@@ -65,11 +69,13 @@ div.seperator {
 		<span style="font-size: 40px;">${stat_interview.interviewlevel div 10}</span>
 				&nbsp;&nbsp;&nbsp;면접 난이도
 			<div class="progress total_bar"
-				style="width: 150px; height: 7px; margin-bottom: 10px;">
+				style="width: 150px; height: 7px; margin-bottom: 15px;">
 				<c:import url="/company/frag_bar">
 					<c:param name="bar_value" value="${stat_interview.interviewlevel }" />
 				</c:import>
-			</div>		
+			</div>
+	<div style="margin-bottom: 15px;">
+	<span class="stat_title">면접 경로</span><br>
 	온라인 지원&nbsp;&nbsp;&nbsp;${fn:split(stat_interview.interviewroot,",")[0]}%<br>
 	직원추천&nbsp;&nbsp;&nbsp;${fn:split(stat_interview.interviewroot,",")[1]}%<br>
 	공개채용&nbsp;&nbsp;&nbsp;${fn:split(stat_interview.interviewroot,",")[2]}%<br>
@@ -77,11 +83,12 @@ div.seperator {
 	학교 취업지원 센터&nbsp;&nbsp;&nbsp;${fn:split(stat_interview.interviewroot,",")[4]}%<br>
 	기타&nbsp;&nbsp;&nbsp;${fn:split(stat_interview.interviewroot,",")[5]}%<br>
 	</div>
-	<div class="col-xl-6" style="padding-left: 40px;">
-				면접 경험
-				<div id="experience_chart" style="width: 100%; height: 90px"></div>
-				합격 여부
-				<div id="successed_chart" style="width: 100%; height: 90px"></div>		
+	</div>
+	<div class="col-xl-6" style="padding-left: 40px; margin-bottom: 15px;">
+				<span class="stat_title">면접 경험</span>
+				<div id="experience_chart" style="width: 300px; height: 100px; margin-bottom: 15px;"></div>
+				<span class="stat_title">합격 여부</span>
+				<div id="successed_chart" style="width: 300px; height: 100px"></div>		
 				</div>
 				
 	</div>

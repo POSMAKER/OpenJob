@@ -69,8 +69,8 @@ div.seperator {
 	position: absolute;
 	left: 1px;
 	top: 1px;
-	width: 70px;
-	line-height: 70px;
+	width: 90px;
+	line-height: 90px;
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
@@ -134,32 +134,32 @@ div.seperator {
 		</div>
 		<div class="col-xl-6" style="padding-left: 55px;">
 			<div class="row" style="margin-bottom:15px; margin-top:15px;">
-				<div class="col-xl-7"
+				<div class="col-xl-5"
 					style="padding: 20 0 10 0; font-size:16px;">직원의
 					기업 추천율</div>
-				<div class="col-xl-5" style="padding-left: 0px;">
+				<div class="col-xl-7" style="padding-left: 0px;">
 					<div class="donutCell">
-						<div id="recommand_chart" style="width: 70px; height: 70px"></div>
+						<div id="recommand_chart" style="width:90px; height: 90px"></div>
 						<div class="centerLabel">${stat_review.recommandscore}%</div>
 					</div>
 				</div>
 			</div>
 			<div class="row" style="margin-bottom:15px;">
-				<div class="col-xl-7"
+				<div class="col-xl-5"
 					style="padding: 20 0 10 0;font-size:16px;">성장 가능성</div>
-				<div class="col-xl-5" style="padding-left: 0px;">
+				<div class="col-xl-7" style="padding-left: 0px;">
 					<div class="donutCell">
-						<div id="future_chart" style="width: 70px; height: 70px"></div>
+						<div id="future_chart" style="width: 90px; height: 90px"></div>
 						<div class="centerLabel">${stat_review.futurescore}%</div>
 					</div>
 				</div>
 			</div>
 			<div class="row" style="margin-bottom:15px;">
-				<div class="col-xl-7"
+				<div class="col-xl-5"
 					style="padding: 20 0 10 0; font-size:16px;">CEO 지지율</div>
-				<div class="col-xl-5" style="padding-left: 0px;">
+				<div class="col-xl-7" style="padding-left: 0px;">
 					<div class="donutCell">
-						<div id="ceo_chart" style="width: 70px; height: 70px"></div>
+						<div id="ceo_chart" style="width: 90px; height: 90px"></div>
 						<div class="centerLabel">${stat_review.ceoscore}%</div>
 					</div>
 				</div>
