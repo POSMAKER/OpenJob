@@ -31,7 +31,6 @@ public class SearchController {
 	public String search(Model model, 
 			@RequestParam(value = "category", required = false, defaultValue = "all") String category,
 			@RequestParam(value = "searchWord") String searchWord) {
-		
 		//검색어, 검색옵션 저장
 		model.addAttribute("searchWord", searchWord);
 		model.addAttribute("category", category);
@@ -97,21 +96,15 @@ public class SearchController {
 		return "/searchview/detailSearchView";
 	}
 	
-	@RequestMapping(value = "/addressAPI")
-	public String addressAPI(Model model) {
-
-		return "/searchview/addressAPI";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/subLocation", method=RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String subLocation(Model model, @RequestParam(value = "subLocationName", required=false , defaultValue = "null")String subLocationName,
+	@RequestMapping(value = "/searchResult", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String searchResult(Model model, @RequestParam(value = "subLocationName", required=false , defaultValue = "null")String subLocationName,
 			@RequestParam(value = "career", required=false, defaultValue = "null")String career,
 			@RequestParam(value = "jobcate", required=false, defaultValue = "null")String jobcate,
 			@RequestParam(value = "type", required=false, defaultValue = "null")String type,
 			@RequestParam(value = "dday", required=false, defaultValue = "null")String dday) {
 		//logger.info(subLocationName+" // "+jobcate+" // "+career+" // "+type+" // "+dday);
-		return searchServ.getResult(subLocationName, jobcate, career, type, dday);
+		model.addAttribute("resultLst", searchServ.getResult(subLocationName, jobcate, career, type, dday));
+		return "/searchview/searchResult";
 	}
 	
 	// searchword는 검색 단어, onclickfunction_name은 해당 단어가 클릭되었을 때 발생하는 Javascript 함수의 이름을 지정.

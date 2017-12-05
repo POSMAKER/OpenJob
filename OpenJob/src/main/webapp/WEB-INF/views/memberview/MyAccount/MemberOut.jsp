@@ -9,39 +9,12 @@
 
 <head>
 
-
+<!--  
 <script data-turbolinks-track="true" src="https://jpassets.jobplanet.co.kr/assets/desktop_ko-c460c7b04b7a74de21da92c911d4cc9e3d889f312e1a211e184076212d22c3a1.js"></script>
+-->
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_any_language_newtemp-bf2fe9f55ada3b96ff93fe40c25b3970fb9fc3bd2fc5ad76639215282b43c0b3.css" media="all" rel="stylesheet" />
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
-
-<!--  
-<script>
-    $(document).ready(function() {
-        JobUI.desktop.myPageMyInformationMenu.initLnb(Option);
-    });
-</script>
-
-<script>
-    var feMobileCheck = new feUI.feMobileCheck;
-    ;(function($) {
-        $(function() {
-            if( feMobileCheck.get() === true ){
-                $('body').on('click', '.not_action', function(){
-                    $(this).find('.um_tooltip').fadeToggle();
-                });
-            }
-        });
-    })(jQuery);
-    var beforeUnload = function(e){
-        $('body').off("click", ".not_action");
-    };
-    $(window).on('beforeunload', beforeUnload);
-    $(document).on('page:before-change', beforeUnload);
-
-    $.get("/emails");
-</script>
--->
 
 </head>
 
@@ -66,7 +39,7 @@
     <div id="myPageInfo">
         <span class="ico_me_l"></span>
         <div class="my_info">
-            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${userAcount.email}</h1>
+            <h1 class="my_name notranslate" style="font-size: 28; margin-top: 10px;">${USER.email}</h1>
         </div>
     </div>
 </div>

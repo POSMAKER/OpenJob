@@ -11,14 +11,13 @@
 		parameterType="Map">
 		SELECT * FROM Post
 		Inner Join Companyimg Using(companyNo)
-		Inner join
-		Company using(companyNo)
+		Inner join Company using(companyNo)
+		Inner join CompanyInfo using(companyNo)
 		<where>
 			<choose>
 				<when test='category neq "company"'>
 					title LIKE '%${searchWord}%' or companyname LIKE
 					'%${searchWord}%'
-					AND writeDate > date_sub(now(), interval 0 day)
 				</when>
 			</choose>
 		</where>

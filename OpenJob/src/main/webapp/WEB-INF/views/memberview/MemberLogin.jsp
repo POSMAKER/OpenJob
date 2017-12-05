@@ -7,31 +7,6 @@
 <title>로그인 | open job</title>
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-9e36f0fd692409f5eace0c055e85be3ff81ae764dbec870d5ebb8e51092e9166.css" media="all" rel="stylesheet" />
 
-<!--  
-<style>
-body {
-    background-color: #ebecee;
-}
-.sign_main {
-    background-color: #ffffff;
-    width: 300px;
-    padding: 60px;
-    margin: 150px auto auto auto;
-}
-.email {
-    background-color: white;
-    color: black;
-    border: 5px solid #e7e7e7;
-    
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    
-    cursor: pointer;
-}
-</style>
--->
 </head>
 
 

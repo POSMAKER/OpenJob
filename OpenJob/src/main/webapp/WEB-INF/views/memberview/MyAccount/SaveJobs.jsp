@@ -9,13 +9,8 @@
 
 <head>
 
-<!-- 
-<script data-turbolinks-track="true" src="https://jpassets.jobplanet.co.kr/assets/desktop_ko-c460c7b04b7a74de21da92c911d4cc9e3d889f312e1a211e184076212d22c3a1.js"></script>
--->
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_any_language_newtemp-bf2fe9f55ada3b96ff93fe40c25b3970fb9fc3bd2fc5ad76639215282b43c0b3.css" media="all" rel="stylesheet" />
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
-
-
 
 
 </head>
@@ -134,26 +129,30 @@
   
   
 <div class="my_information_group">
+<h3 style="font-size: 18; margin-bottom: 25"> 저장된 채용</h3>
 
-<div class="" style="width: 660px; height: auto; font-size: 17px;" align="center">
+<div class="" style="width: 660px; height: auto; font-size: 17px; margin-top: 30;" align="center">
 <table class="">
 	<tr>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 회사소개 </th>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 주요업무 </th>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 상세보기 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 150px; height: 40px;">&nbsp 회사이름 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 240px; height: 40px;"> 공고제목 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 162px; height: 40px;"> 주요업무 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 110px; height: 40px;"> 공고마감일 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 85px; height: 40px;"> 상세보기 </th>
 	</tr>
 				
 	 <c:forEach var="item" items="${saveJobList}">
-		<tr style="margin-top: 150;">
-			<td style="font-size: 16px; ">${item.companyintro}</td>
+		<tr>
+			<td style="font-size: 16px; ">&nbsp ${item.companyname}</td>
+			<td style="font-size: 16px; ">${item.title}</td>
 			<td style="font-size: 16px; ">${item.mainduty }</td>
+			<td style="font-size: 16px; ">${item.enddate }</td>
 			<td style="font-size: 16px; color: blue;"><a onclick="window.open('${home }/company/${item.companyno }/post/${item.postno }');">상세보기</a></td>
 		</tr>
 	</c:forEach>
 	
 </table>	 
 </div> 
-</br>
 </br>
  
  
