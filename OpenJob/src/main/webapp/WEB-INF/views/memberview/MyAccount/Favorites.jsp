@@ -9,8 +9,6 @@
 
 <head>
 
-
-
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_any_language_newtemp-bf2fe9f55ada3b96ff93fe40c25b3970fb9fc3bd2fc5ad76639215282b43c0b3.css" media="all" rel="stylesheet" />
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
@@ -129,21 +127,21 @@
 
       
 <div class="my_information_group">
-<h3 style="font-size: 18; margin-bottom: 25"> 파로잉된 기업</h3>
+<h3 style="font-size: 18; margin-bottom: 25"> 팔로잉된 기업</h3>
 
 
 <div class="" style="width: 660px; height: auto; font-size: 17px;" align="center">
 <table class="">
 	<tr>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 기업 이름 </th>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 10;"> 주소 </th>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 산업 </th>
-		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9;"> 상세보기 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 160px; height: 40px;"> &nbsp 기업 이름 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 330px; height: 40px;"> 주소 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 90px; height: 40px;"> 산업 </th>
+		<th style="font-size: 16px; font-weight: bold; background: #f1f1f1; border-bottom: 1px solid #b9b9b9; width: 70px; height: 40px;"> 상세보기 </th>
 	</tr>
 				
 	 <c:forEach var="item" items="${followCompanyList}">
-		<tr style="margin-top: 150;">
-			<td style="font-size: 16px; ">${item.companyname}</td>
+		<tr>
+			<td style="font-size: 16px; ">&nbsp ${item.companyname}</td>
 			<td style="font-size: 16px; ">${item.address }</td>
 			<td style="font-size: 16px; ">${item.industry }</td>
 			<td style="font-size: 16px; color: blue;"><a onclick="window.open('${home }/company/${item.companyno}/info');">상세보기</a></td>

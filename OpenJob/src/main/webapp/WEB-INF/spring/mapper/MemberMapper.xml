@@ -53,6 +53,7 @@
 	SELECT * FROM Member
 	INNER Join SavedPost USING(memberNo) 
 	INNER Join Post USING(postNo)
+	INNER Join Company USING(companyNo)
 	WHERE email = #{email}
 
 </select>
