@@ -108,13 +108,6 @@ public class CompanyController {
 		return "companyview/Form/" + frmName;
 	}
 
-	@RequestMapping(value = "/test")
-	public String test(Model model, @RequestParam String use) {
-		model.addAttribute("testattribute", "WOW");
-		System.out.println(use);
-		return "companyview/test";
-	}
-
 	@RequestMapping(value = "/reviewProc", method = RequestMethod.POST)
 	public String reviewProc(@ModelAttribute CompanyReview review) {
 		compServ.insertReview(review);
@@ -157,12 +150,14 @@ public class CompanyController {
 		return compServ.getSublocation(commServ.IntegerFilter(locationcate));
 	}
 
+
 	@ResponseBody
 	@RequestMapping(value = "/getcompbasebody", method = RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String getCompBasebody(@RequestParam String companyno) {
 		return compServ.getCompBaseBody(commServ.IntegerFilter(companyno));
 	}
 
+	
 	@ResponseBody
 	@RequestMapping(value = "/followProc", method = RequestMethod.POST)
 	public String followProc(

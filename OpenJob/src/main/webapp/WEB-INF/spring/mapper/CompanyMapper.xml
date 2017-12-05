@@ -248,6 +248,9 @@ VALUES
 	<select id="countTable" parameterType="Map" resultType="Integer">
 		SELECT IFNULL(COUNT(*),0) FROM ${tablename}
 		WHERE companyNo = #{companyno}
+		<if test="tablename eq Post">
+		AND enddate &gt; NOW()
+		</if>
 	</select>
 	<select id="getUserFollow" parameterType="Map" resultType="Integer">
 		SELECT IFNULL(COUNT(*),0) FROM SavedCompany
