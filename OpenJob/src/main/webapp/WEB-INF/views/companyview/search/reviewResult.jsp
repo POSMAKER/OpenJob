@@ -93,17 +93,17 @@ div.seperator {
 					<br>
 					<div>
 						<span class="heading" style="color: blue">장점</span><br>
-						${review.positive }
+						<pre style="white-space: pre-wrap;">${review.positive }</pre>
 					</div>
 					<br>
 					<div>
 						<span class="heading" style="color: red">단점</span><br>
-						${review.negative }
+						<pre style="white-space: pre-wrap;">${review.negative }</pre>
 					</div>
 					<br>
 					<div>
 						<span class="heading">경영진에게 바라는 점</span><br>
-						${review.wishlist }
+						<pre style="white-space: pre-wrap;">${review.wishlist }</pre>
 					</div>
 					<br>
 					<div>

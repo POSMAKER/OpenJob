@@ -130,3 +130,5 @@ SELECT * FROM Post WHERE location REGEXP '서울|서울 강남구'
 
 SELECT * FROM CompanyReviewInfo WHERE NOT employstatus = 'true'
 
+SELECT * FROM CompanyMember
+UPDATE CompanyMember Set companyNo='562' WHERE memberNo = '3'

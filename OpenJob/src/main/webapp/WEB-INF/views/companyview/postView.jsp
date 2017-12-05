@@ -37,9 +37,9 @@ span.head {
 						style="background-color: #ffffff; margin-bottom: 15px; padding: 20px;"
 						align="left">
 						<span class="head">기업소개</span><br> ${post.companyintro }<br> <br> 
-						<span class="head">주요업무</span><br> ${post.mainduty }<br> <br> 
-						<span class="head">지원자격</span><br> ${post.requirement }<br> <br> 
-						<span class="head">채용절차</span><br> ${post.process }<br> <br>
+						<span class="head">주요업무</span><br> <pre style="white-space: pre-wrap;">${post.mainduty }</pre><br> <br> 
+						<span class="head">지원자격</span><br> <pre style="white-space: pre-wrap;">${post.requirement }</pre><br> <br> 
+						<span class="head">채용절차</span><br> <pre style="white-space: pre-wrap;">${post.process }</pre><br> <br>
 						<span class="head">문의처</span><br>
 						<div class="row" style="padding:5 15px;" >
 						<div class="col-xl-3" style="padding:5px; height: 75px;"><div style="background-color: gray; color:white; width: 100%; height: 100%; padding:5px;"><span style="font-weight: bold; color:lightgreen">담당자</span><br>${post.personcharged }</div></div>

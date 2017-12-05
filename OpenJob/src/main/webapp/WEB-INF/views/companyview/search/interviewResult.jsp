@@ -39,11 +39,11 @@
 			<div style="font-weight: bold; font-size: 18px;">"${interview.interviewprocess }"</div>
 			<br>
 			<div>
-				<span class="heading">면접 질문</span><br> ${interview.interviewquestion }
+				<span class="heading">면접 질문</span><br> <pre style="white-space: pre-wrap;">${interview.interviewquestion }</pre>
 			</div>
 			<br>
 			<div>
-				<span class="heading">질문 답변</span><br> ${interview.interviewanswer }
+				<span class="heading">질문 답변</span><br> <pre style="white-space: pre-wrap;">${interview.interviewanswer }</pre>
 			</div>
 			<br>
 			<div>
