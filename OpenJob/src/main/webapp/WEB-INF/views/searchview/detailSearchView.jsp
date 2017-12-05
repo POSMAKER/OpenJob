@@ -21,7 +21,6 @@
 
 <html>
 <style>
-
 .row {
 	margin: 0px;
 }
@@ -58,7 +57,9 @@ a:active {
 		<div style="background-color: #e6e6e6; padding: 20px;">
 			<!-- 채용 정보  -->
 			<c:if test="${category ne 'company' }">
-				<%@include file="/WEB-INF/views/searchview/searchWrap.jsp"%>
+				<c:if test="${category eq 'post' }">
+					<%@include file="/WEB-INF/views/searchview/searchWrap.jsp"%>
+				</c:if>
 				<%@include file="/WEB-INF/views/searchview/searchPost.jsp"%>
 			</c:if>
 

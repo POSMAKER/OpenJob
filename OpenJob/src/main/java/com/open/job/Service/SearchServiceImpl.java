@@ -96,36 +96,36 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public String getResult(String location, String jobcate, String career, String Type, String dday) {
+	public List<Post> getResult(String location, String jobcate, String career, String Type, String dday) {
 		String[] loca = (location.equals("null")? null:location.split(","));
 		String[] job = (jobcate.equals("null")? null:jobcate.split(","));
 		String[] care = (career.equals("null")? null:career.split(","));
 		String[] type = (Type.equals("null")? null:Type.split(","));
 		String[] day = (dday.equals("null")? null:dday.split(","));
 		
-		List<Post> lst = sdao.getResult(loca, job, care, type, day);
+		List<Post> resultLst = sdao.getResult(loca, job, care, type, day);
 		
-		String str = "";
-		for(Post post:lst) {
-			str += "<table id='searched' border=\"0\" style=\"min-width: 600px;\">\r\n" + 
-					"								<tr>\r\n" + 
-					"									<td style=\"width: 130px; padding: 1px;\" rowspan=\"3\"><a\r\n" + 
-					"										href=\"/job/company/"+post.getCompanyno()+"/info\"><img\r\n" + 
-					"											src=\"/job/companyimgs/"+ post.getThumbimg() +"\"\r\n" + 
-					"											style=\"padding: 5px; width: 100px; border: 1px solid gray; border-radius: 7px;\"></a></td>\r\n" + 
-					"									<td colspan=\"2\" style=\"font-size: 15px; font-weight: bold;\"><a href=\"/job/company/"+post.getCompanyno()+"/post/"+post.getPostno()+"\">"+post.getTitle()+"\r\n" + 
-					"											</a></td>\r\n" + 
-					"								</tr>\r\n" + 
-					"								<tr>\r\n" + 
-					"									<td colspan=\"2\"><a\r\n" + 
-					"										href=\"/job/company/"+post.getCompanyno()+"/info\">"+post.getCompanyname()+"</a></td>\r\n" + 
-					"								</tr>\r\n" + 
-					"								<tr>\r\n" + 
-					"									<td><span style=\"color:gray; font-size: 14px;\">"+ post.getLocation()+" · "+post.getJobcategory()+" · "+post.getSubjobcategory()+" · "+post.getType()+" · "+post.getCareer()+"</span></td>\r\n" + 
-					"								</tr>\r\n" + 
-					"							</table>" +
-					"							<hr>";
-		}
-		return str;
+//		String str = "";
+//		for(Post post:lst) {
+//			str += "<table id='searched' border=\"0\" style=\"min-width: 600px;\">\r\n" + 
+//					"								<tr>\r\n" + 
+//					"									<td style=\"width: 130px; padding: 1px;\" rowspan=\"3\"><a\r\n" + 
+//					"										href=\"/company/"+post.getCompanyno()+"/info\"><img\r\n" + 
+//					"											src=\"/companyimgs/"+ post.getThumbimg() +"\"\r\n" + 
+//					"											style=\"padding: 5px; width: 100px; border: 1px solid gray; border-radius: 7px;\"></a></td>\r\n" + 
+//					"									<td colspan=\"2\" style=\"font-size: 15px; font-weight: bold;\"><a href=\"/company/"+post.getCompanyno()+"/post/"+post.getPostno()+"\">"+post.getTitle()+"\r\n" + 
+//					"											</a></td>\r\n" + 
+//					"								</tr>\r\n" + 
+//					"								<tr>\r\n" + 
+//					"									<td colspan=\"2\"><a\r\n" + 
+//					"										href=\"/company/"+post.getCompanyno()+"/info\">"+post.getCompanyname()+"</a></td>\r\n" + 
+//					"								</tr>\r\n" + 
+//					"								<tr>\r\n" + 
+//					"									<td><span style=\"color:gray; font-size: 14px;\">"+ post.getLocation()+" · "+post.getJobcategory()+" · "+post.getSubjobcategory()+" · "+post.getType()+" · "+post.getCareer()+"</span></td>\r\n" + 
+//					"								</tr>\r\n" + 
+//					"							</table>" +
+//					"							<hr>";
+//		}
+		return resultLst;
 	}
 }

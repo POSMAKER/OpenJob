@@ -20,8 +20,7 @@
 									<c:forEach var="location" items="${locationList }">
 										<li class="location"><input type="checkbox"
 											style="display: none;" name="locationBox"
-											id="location${location.locationno }"
-											value="${location.location }"> <label
+											id="location${location.locationno }" value="null"> <label
 											style="padding-bottom: 5px; cursor: pointer; width: 150px; font-size: 14px"
 											for="location${location.locationno }"><span
 												id="location${location.locationno }"
@@ -55,7 +54,8 @@
 													for="sub${location.locationno }"
 													style="width: 140px; padding: 5px; cursor: pointer; font-size: 13px;"><span
 														id="sub${location.locationno }"
-														style="padding: 6px 12px 6px 12px;">전체</span></label></li>
+														style="padding: 6px 12px 6px 12px;">${location.location }
+															전체</span></label></li>
 												<!-- 상세지역 -->
 												<c:forEach var="sublocation" items="${sublocationList }">
 													<c:if test="${sublocation.location == location.location}">
@@ -91,8 +91,7 @@
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-
+	$(document).ready(function() {	
 		//경력 체크박스
 		$('.career_ul input[type=checkbox]').click(function() {
 			var careId = $(this).attr("id");
@@ -172,17 +171,9 @@
 		//지역
 		$('input:checkbox[name="locationBox"]').change(function() {
 			var locaId = $(this).attr("id");
-
 			//지역 상세보기 열기
 			if ($(this).is(":checked")) {
 				$(this).prop("checked", true);
-
-				//전체버튼
-				$('input:checkbox[id=sub' + locaId.substring(8, locaId.length) + ']').prop("checked", true);
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("background", "#0099ff");
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("border-radius", "12px");
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("font-weight", "bold");
-				$('span[id=sub' + locaId.substring(8, locaId.length) + ']').css("color", "#ffffff");
 
 				//새로운 지역 클릭시 다른창 닫기
 				$('input:checkbox[name="locationBox"]').each(function() {
@@ -424,10 +415,6 @@
 			return this.value;
 		}).get().join(",");
 
-		if (subLocationName.length > 2) {
-			subLocationName = subLocationName.substring(3, subLocationName.length);
-		}
-
 		//경력 검색
 		var career = $('.career_ul input[type=checkbox]:checked').map(function() {
 			return this.value;
@@ -448,7 +435,7 @@
 
 		$.ajax({
 			type : 'post',
-			url : '${home}/subLocation',
+			url : '${home}/searchResult',
 			data : {
 				subLocationName : subLocationName,
 				jobcate : jobcate,
@@ -461,11 +448,10 @@
 			}
 		});
 	});
-	
 </script>
 <style>
 .searchWrap {
-	-ms-user-select: none; 
+	-ms-user-select: none;
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
