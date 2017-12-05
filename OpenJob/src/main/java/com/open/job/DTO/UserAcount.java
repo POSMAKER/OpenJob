@@ -22,8 +22,9 @@ public class UserAcount {
 	
 	// 저장된 채용
 	private String postno;
-	private String companyintro;
+	private String title;
 	private String mainduty;
+	private String enddate;
 	
 	
 	
@@ -100,14 +101,21 @@ public class UserAcount {
 	public void setPostno(String postno) {
 		this.postno = postno;
 	}
-	public String getCompanyintro() {
-		return companyintro;
-	}
-	public void setCompanyintro(String companyintro) {
-		this.companyintro = companyintro;
-	}
+	
 	public String getMainduty() {
 		return mainduty;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
 	}
 	public void setMainduty(String mainduty) {
 		this.mainduty = mainduty;

@@ -16,8 +16,6 @@
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_any_language_newtemp-bf2fe9f55ada3b96ff93fe40c25b3970fb9fc3bd2fc5ad76639215282b43c0b3.css" media="all" rel="stylesheet" />
 <link data-turbolinks-track="true" href="https://jpassets.jobplanet.co.kr/assets/desktop_ko-KR_newtemp-a2b99e9e6b29f675dfbb4cdf82ed1c871b26870560b4ce4ce50c79a304bcc493.css" media="all" rel="stylesheet" />
 
-
-
 <style>
 div.w3-container {
   width: 350px;
@@ -26,33 +24,6 @@ div.w3-container {
 }
 </style>
 
-<!--  
-<script>
-    $(document).ready(function() {
-        JobUI.desktop.myPageMyInformationMenu.initLnb(Option);
-    });
-</script>
-
-<script>
-    var feMobileCheck = new feUI.feMobileCheck;
-    ;(function($) {
-        $(function() {
-            if( feMobileCheck.get() === true ){
-                $('body').on('click', '.not_action', function(){
-                    $(this).find('.um_tooltip').fadeToggle();
-                });
-            }
-        });
-    })(jQuery);
-    var beforeUnload = function(e){
-        $('body').off("click", ".not_action");
-    };
-    $(window).on('beforeunload', beforeUnload);
-    $(document).on('page:before-change', beforeUnload);
-
-    $.get("/emails");
-</script>
--->
 
 </head>
 
@@ -71,7 +42,6 @@ div.w3-container {
 
 
 <form>
-
 
 <!-- myPageInfo { -->
 <div id="myPageInfoWrap" style=" height: 100px; margin-top: 57px;">
@@ -179,16 +149,15 @@ div.w3-container {
       <h3 class="" style="font-size: 22; margin-left: 25; margin-top: 10; font-weight: bold;">나의 계정</h3>
 	  <hr style="border-top: 1px solid #b9b9b9;">
 	  
-      <section class="my_information">
-        <div class="my_information_group" style="height: 300px">
+        <div class="my_information_group" style="height: 280px">
           
             <h3 style="font-size: 18; margin-bottom: 25"> 기본정보</h3>
            
             
             
             
-<div class="w3-container" >
-<table class="w3-table-all" >
+<div class="w3-container" align="center" style="margin-left: 120; margin-top: 50px;">
+<table class="w3-table-all" style="width: 400px; height: 170px;">
 
 	<tr>
 		<td style="font-size: 15; font-weight: bold;">회원번호</td>
@@ -213,45 +182,8 @@ div.w3-container {
 </table>
 </div>
             
-            
-            
-            <!--  
-            <div >
-            
-			<div>
-			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">회원번호</span>
-			<span style="font-size: 17; margin-left: auto; float: left;">샘플입니다.</span><br/>
-			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
-			</div>
-
-
-
-			<div>
-			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">성별</span>
-			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
-			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
-			</div>
-			
-			<div>
-			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">나이</span>
-			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
-			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
-			</div>
-			
-			<div>
-			<span style="font-size: 17; margin-left: 200; float: left; font-weight: bold;">경력</span>
-			<span style="font-size: 17; margin-left: 100; float: left;">샘플입니다.</span><br/>
-			<hr style="border-top: 1px solid #bebebe; width: 450; margin-top: 7;"><br/>
-			</div>
-			
-			</div>
-			-->
-			
-			
-
  
 </div>
-</section>
 
 
 
