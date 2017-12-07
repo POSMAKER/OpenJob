@@ -4,11 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CommonService {
-	public Integer IntegerFilter(String text) {
-		try {
-			return Integer.parseInt(text);
-		}catch(NumberFormatException e) {
-			return null;
-		}
+	public String getCapitalized(String text) {
+		return text.substring(0, 1).toUpperCase()+text.substring(1);
 	}
 }

@@ -1,5 +1,6 @@
 package com.open.job;
 
+import org.junit.internal.matchers.SubstringMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,59 +45,31 @@ public class CompanyController {
 		model.addAttribute("postLst", compServ.getAllPost());
 		return "companyview/posthome";
 	}
-	
-	// 기업 정보 페이지로 이동
-	// companyNo로 DB에서 불러와서 정보를 줌
-	@RequestMapping("/{companyNo:^[0-9]*$}/info")
-	public String showCompanyInfo(@PathVariable String companyNo, Model model) {
-		Integer companyno = commServ.IntegerFilter(companyNo);
-		model.addAttribute("companyno", companyno);
-		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyno));
-		model.addAttribute("frmoption", "review");
-		model.addAttribute("infoactive", "active");
-		return "companyview/companyInfo";
+	// 각 기업 컨텐츠 페이지로 이동
+	@RequestMapping("/{companyNo:^[0-9]*$}/{contentName:info|review|interview|post}")
+	public String showCompanyContents(
+			@PathVariable("companyNo") Integer companyNo,
+			@PathVariable("contentName") String contentName,
+			Model model
+			) {
+			String contentpage = commServ.getCapitalized(contentName);
+			model.addAttribute("companyno", companyNo);
+			model.addAttribute("frmoption", "info".equals(contentName)? "review":contentName);
+			model.addAttribute(contentName+"active", "active");
+			if("info".equals(contentName)) {
+				model.addAttribute("companyInfo", compServ.getCompanyInfo(companyNo));
+			}
+			return "companyview/company"+contentpage;
 	}
-
-	// 기업 리뷰 페이지로 이동
-	// companyNo로 DB에서 불러와서 정보를 줌
-	@RequestMapping("/{companyNo:^[0-9]*$}/review")
-	public String showCompanyReview(@PathVariable String companyNo, Model model) {
-		Integer companyno = commServ.IntegerFilter(companyNo);
-		model.addAttribute("companyno", companyno);
-		model.addAttribute("frmoption", "review");
-		model.addAttribute("reviewactive", "active");
-		return "companyview/companyReview";
-	}
-
-	// 기업 면접후기 페이지로 이동
-	// companyNo로 DB에서 불러와서 정보를 줌
-	@RequestMapping("/{companyNo:^[0-9]*$}/interview")
-	public String showCompanyInterview(@PathVariable String companyNo, Model model) {
-		Integer companyno = commServ.IntegerFilter(companyNo);
-		model.addAttribute("companyno", companyno);
-		model.addAttribute("frmoption", "interview");
-		model.addAttribute("interviewactive", "active");
-		return "companyview/companyInterview";
-	}
-
-	// 기업 공고 페이지로 이동
-	// companyNo로 DB에서 불러와서 정보를 줌
-	@RequestMapping("/{companyNo:^[0-9]*$}/post")
-	public String showCompanyPost(@PathVariable String companyNo, Model model) {
-		Integer companyno = commServ.IntegerFilter(companyNo);
-		model.addAttribute("companyno", companyno);
-		model.addAttribute("frmoption", "post");
-		model.addAttribute("postactive", "active");
-		return "companyview/companyPost";
-	}
-
 	@RequestMapping("/{companyNo:^[0-9]*$}/post/{postNo:^[0-9]*$}")
-	public String showPost(@PathVariable String companyNo, @PathVariable String postNo, Model model) {
-		Integer companyno = commServ.IntegerFilter(companyNo);
-		Integer postno = commServ.IntegerFilter(postNo);
-		model.addAttribute("companyno", companyno);
-		model.addAttribute("post", compServ.getSinglePost(companyno, postno));
-		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyno));
+	public String showPost(
+			@PathVariable("companyNo") Integer companyNo,
+			@PathVariable("companyNo") Integer postNo, 
+			Model model
+			) {
+		model.addAttribute("companyno", companyNo);
+		model.addAttribute("post", compServ.getSinglePost(companyNo, postNo));
+		model.addAttribute("companyInfo", compServ.getCompanyInfo(companyNo));
 		return "companyview/postView";
 	}
 
@@ -121,20 +94,15 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/postProc", method = RequestMethod.POST)
-	public String postProc(@ModelAttribute Post post, BindingResult errors) {
-		if(errors.hasErrors()) {
-			for(ObjectError oe: errors.getAllErrors()) {
-				logger.error(oe.getDefaultMessage());
-			}
-		}
+	public String postProc(@ModelAttribute Post post) {
 		compServ.insertPost(post);
 		return "redirect:/company/"+post.getCompanyno() +"/post";
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/jobsubcategory", method = RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String getJobsubcategory(@RequestParam String jobcategoryno) {
-		return compServ.getSubjobcategory(commServ.IntegerFilter(jobcategoryno));
+	public String getJobsubcategory(@RequestParam Integer jobcategoryno) {
+		return compServ.getSubjobcategory(jobcategoryno);
 	}
 	@ResponseBody
 	@RequestMapping(value = "/getPostsubjobcategory", method = RequestMethod.POST, produces = "application/text; charset=utf8")
@@ -146,32 +114,24 @@ public class CompanyController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "/getsublocation", method = RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String getsublocation(@RequestParam String locationcate) {
-		return compServ.getSublocation(commServ.IntegerFilter(locationcate));
+	public String getsublocation(@RequestParam Integer locationcate) {
+		return compServ.getSublocation(locationcate);
 	}
-
-
-	@ResponseBody
-	@RequestMapping(value = "/getcompbasebody", method = RequestMethod.POST, produces = "application/text; charset=utf8")
-	public String getCompBasebody(@RequestParam String companyno) {
-		return compServ.getCompBaseBody(commServ.IntegerFilter(companyno));
-	}
-
 	
 	@ResponseBody
-	@RequestMapping(value = "/followProc", method = RequestMethod.POST)
-	public String followProc(
+	@RequestMapping(value = "/followCompany", method = RequestMethod.POST)
+	public String followCompany(
 			@RequestParam Integer memberno, 
 			@RequestParam Integer companyno,
 			@RequestParam String userfollow
 			) {
-		int result = 0;
-		if(userfollow.equals("true")) {
-			result = compServ.followCompany(companyno, memberno,"delete");
-			if(result>0) return "unselect";
-		}else {
-			result = compServ.followCompany(companyno, memberno,"insert");
-			if(result>0) return "select";
+		int result = compServ.followCompany(companyno, memberno,userfollow);
+		if(result>0) {
+			if(userfollow.equals("true")) {
+				return "unselect";
+			}else {
+				return "select";
+			}
 		}
 		return "failed";
 	}
