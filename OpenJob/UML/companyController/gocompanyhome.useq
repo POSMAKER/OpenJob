@@ -5,10 +5,10 @@
     type="class" autoSize="true">    
     <position height="-1" width="-1" x="451" y="0"/>    
     <execution id="2">      
-      <position height="240" width="146" x="5" y="83"/>    
+      <position height="345" width="146" x="5" y="82"/>    
     </execution>    
     <execution id="5">      
-      <position height="24" width="7" x="75" y="251"/>    
+      <position height="24" width="7" x="75" y="355"/>    
     </execution>  
   </object>  
   <object id="6" language="java" name="com.open.job.IService.CompanyService" project="OpenJob" 
@@ -16,24 +16,28 @@
     type="interface" autoSize="true">    
     <position height="-1" width="-1" x="674" y="0"/>    
     <execution id="4">      
-      <position height="192" width="131" x="155" y="107"/>    
+      <position height="297" width="131" x="155" y="106"/>    
     </execution>    
-    <execution id="10">      
-      <position height="24" width="7" x="217" y="202"/>    
+    <execution id="8">      
+      <position height="145" width="7" x="217" y="201"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="24" width="7" x="220" y="274"/>    
     </execution>  
   </object>  
-  <object id="11" language="java" name="com.open.job.IDAO.CompanyDAO" project="OpenJob" 
+  <object id="13" language="java" name="com.open.job.IDAO.CompanyDAO" project="OpenJob" 
     file="/OpenJob/src/main/java/com/open/job/IDAO/CompanyDAO.java" binary="false" label="companyDAO" type="interface" 
     autoSize="true">    
     <position height="-1" width="-1" x="673" y="0"/>    
-    <execution id="8">      
-      <position height="72" width="111" x="290" y="178"/>    
+    <execution id="11">      
+      <position height="76" width="111" x="290" y="246"/>    
     </execution>  
   </object>  
-  <combined-fragment id="13" interaction-operator="LOOP">    
-    <interaction-operand id="14" constraint="통계 5개 항목에 대해 (String:열 이름)">      
-      <fragment refId="12"/>      
-      <fragment refId="7"/>    
+  <combined-fragment id="15" interaction-operator="LOOP">    
+    <interaction-operand id="16" constraint="기업 리뷰 6개 통계 항목">      
+      <fragment refId="14"/>      
+      <fragment refId="7"/>      
+      <fragment refId="10"/>    
     </interaction-operand>  
   </combined-fragment>  
   <message id="3" operation="getAllReviewRank(int):java.util.Map&lt;String,List&lt;Company&gt;&gt;" asynchronous="false">    
@@ -48,8 +52,12 @@
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="5"/>  
   </message>  
-  <message id="12" asynchronous="false">    
+  <message id="10" operation="getReviewRank(java.lang.String,int):java.util.List&lt;Company&gt;" asynchronous="false">    
     <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="10"/>  
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="14" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
   </message>
 </sequence-diagram>

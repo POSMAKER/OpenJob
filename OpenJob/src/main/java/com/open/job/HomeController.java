@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);	
+	// 메인
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "redirect:/searchhome";
 	}
-
+	// 홈 보내기
 	@RequestMapping(value = "/{frmName:^.+home$}", method = RequestMethod.GET)
 	public String gohome(@PathVariable String frmName) {
 		String folderName = frmName.substring(0, frmName.length()-4)+"view/";

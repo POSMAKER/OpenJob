@@ -2,8 +2,6 @@ package com.open.job;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,15 +20,15 @@ import com.open.job.IService.SearchService;
 
 @Controller
 public class SearchController {
-	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
-
 	@Autowired
 	private SearchService searchServ;
 
+	//******** 기본 검색 ********//
 	@RequestMapping(value = "/search")
 	public String search(Model model, 
 			@RequestParam(value = "category", required = false, defaultValue = "all") String category,
-			@RequestParam(value = "searchWord") String searchWord) {
+			@RequestParam(value = "searchWord") String searchWord
+			) {
 		//검색어, 검색옵션 저장
 		model.addAttribute("searchWord", searchWord);
 		model.addAttribute("category", category);
@@ -45,7 +43,6 @@ public class SearchController {
 		} else if("all".equals(category)) {
 			model.addAttribute("placeholderText", "기업, 채용공고를 검색해보세요.");
 		}
-
 		
 		//채용 검색
 		if ("post".equals(category) || "all".equals(category)) {
@@ -81,7 +78,6 @@ public class SearchController {
 		//직무분야 리스트
 		List<Jobcategory> jobcategoryList = searchServ.getjobcategory();
 		model.addAttribute("jobcategoryList", jobcategoryList);
-		
 		List<Jobcategory> subjobcategoryList = searchServ.getSubjobcategory();
 		model.addAttribute("subjobcategoryList", subjobcategoryList);
 		
@@ -96,6 +92,7 @@ public class SearchController {
 		return "/searchview/detailSearchView";
 	}
 	
+	//*********상세 검색**********//
 	@RequestMapping(value = "/searchResult", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String searchResult(Model model, @RequestParam(value = "subLocationName", required=false , defaultValue = "null")String subLocationName,
 			@RequestParam(value = "career", required=false, defaultValue = "null")String career,
@@ -107,6 +104,7 @@ public class SearchController {
 		return "/searchview/searchResult";
 	}
 	
+	//*********빠른 검색**********//
 	// searchword는 검색 단어, onclickfunction_name은 해당 단어가 클릭되었을 때 발생하는 Javascript 함수의 이름을 지정.
 	@ResponseBody
 	@RequestMapping(value="/quick_companysearch", method=RequestMethod.POST, produces = "application/text; charset=utf8")

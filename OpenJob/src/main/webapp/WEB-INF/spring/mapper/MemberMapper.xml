@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.open.job.IDAO.MemberDAO">
-
 <insert id="insertMember" parameterType="com.open.job.DTO.Member">
 	Insert into Member(email,password,gender,age,career) values(#{email},#{password},#{gender},#{age},#{career})
 </insert>
-
-
 <select id="loginProc" parameterType="com.open.job.DTO.Member" resultType="String">
 	Select * from Member
 	Where email=#{email}
 	And password=#{password}
 </select>
-
- 
 <select id="getUserInfo" parameterType="String" resultType="com.open.job.DTO.USER">
 	SELECT memberNo, Member.email, companyNo, companyName FROM Member
 	LEFT Join CompanyMember USING(memberNo)
 	LEFT Join Company USING(companyNo)
 	WHERE Member.email = #{email}	
 </select>
-
-
 <!-- 
 <select id="getUserAcount" parameterType="String" resultType="com.open.job.DTO.UserAcount">
 	SELECT * FROM Member
@@ -37,35 +30,21 @@
 	Select * from SavedCompany
 </select>
 -->
-
-
-
 <select id="getFollowCompany" parameterType="String" resultType="com.open.job.DTO.UserAcount"> 
 	SELECT * FROM Member
 	INNER Join SavedCompany USING(memberNo)
 	INNER Join Company USING(companyNo)
 	WHERE email = #{email}
-
 </select>
-
-
 <select id="getSaveJobsInfo" parameterType="String" resultType="com.open.job.DTO.UserAcount"> 
 	SELECT * FROM Member
 	INNER Join SavedPost USING(memberNo) 
 	INNER Join Post USING(postNo)
 	INNER Join Company USING(companyNo)
 	WHERE email = #{email}
-
 </select>
-
-
 <select id="getUserAcountInfo" parameterType="String" resultType="com.open.job.DTO.UserAcount"> 
 	SELECT * FROM Member
 	WHERE email = #{email} 
-
 </select>
-
-
-
-
 </mapper>
