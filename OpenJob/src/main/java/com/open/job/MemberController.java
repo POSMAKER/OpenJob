@@ -62,6 +62,7 @@ public class MemberController {
 		model.addAttribute("saveJobList", SaveJobList);
 		return "/memberview/MyAccount/SaveJobs"; 
 	}
+	
 	//*********인증**********//
 	// 로그인
 		@RequestMapping(value = "/loginproc", method = RequestMethod.POST)
