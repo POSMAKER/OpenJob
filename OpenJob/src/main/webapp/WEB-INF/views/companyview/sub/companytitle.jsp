@@ -16,7 +16,7 @@
 		}else{
 			$.ajax({
 				type:'post',
-				url: '${home}/company/followProc',
+				url: '${home}/company/followCompany',
 				data: {memberno: "${USER.memberno}",companyno:"${company.companyno}",userfollow:followvar},
 				success: function(result){
 					if(result=="unselect"){

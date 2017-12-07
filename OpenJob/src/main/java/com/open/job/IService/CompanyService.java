@@ -15,7 +15,6 @@ import com.open.job.DTO.sub.CompanyInfo;
 public interface CompanyService {
 	public CompanyInfo getCompanyInfo(Integer companyno);
 	public Company getCompanyBase(Integer companyno);
-	public String getCompBaseBody(Integer companyno);
 	public int[] getCountInfo(Integer companyno);
 	public boolean doesUserFollow(Integer companyno, Integer memberno);
 	public int followCompany(Integer companyno, Integer memberno, String string);

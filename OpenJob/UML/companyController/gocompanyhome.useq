@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="JPEG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="com.open.job.CompanyController" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/CompanyController.java" binary="false" label="companyController" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="451" y="0"/>    
+    <execution id="2">      
+      <position height="240" width="146" x="5" y="83"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="24" width="7" x="75" y="251"/>    
+    </execution>  
+  </object>  
+  <object id="6" language="java" name="com.open.job.IService.CompanyService" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/IService/CompanyService.java" binary="false" label="companyService" 
+    type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="674" y="0"/>    
+    <execution id="4">      
+      <position height="192" width="131" x="155" y="107"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="24" width="7" x="217" y="202"/>    
+    </execution>  
+  </object>  
+  <object id="11" language="java" name="com.open.job.IDAO.CompanyDAO" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/IDAO/CompanyDAO.java" binary="false" label="companyDAO" type="interface" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="673" y="0"/>    
+    <execution id="8">      
+      <position height="72" width="111" x="290" y="178"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="13" interaction-operator="LOOP">    
+    <interaction-operand id="14" constraint="통계 5개 항목에 대해 (String:열 이름)">      
+      <fragment refId="12"/>      
+      <fragment refId="7"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="getAllReviewRank(int):java.util.Map&lt;String,List&lt;Company&gt;&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="7" operation="getReviewRank(java.lang.String,int):java.util.List&lt;Company&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </message>  
+  <message id="12" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>
+</sequence-diagram>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="JPEG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="com.open.job.CompanyController" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/CompanyController.java" binary="false" label="companyController" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="437" y="0"/>    
+    <execution id="2">      
+      <position height="531" width="146" x="5" y="83"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="24" width="7" x="75" y="207"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="24" width="7" x="75" y="369"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="24" width="7" x="75" y="542"/>    
+    </execution>  
+  </object>  
+  <object id="12" language="java" name="com.open.job.IService.CompanyService" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/IService/CompanyService.java" binary="false" label="companyService" 
+    type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="515" y="0"/>    
+    <execution id="4">      
+      <position height="148" width="131" x="155" y="107"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="24" width="7" x="217" y="155"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="133" width="131" x="155" y="284"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="24" width="7" x="217" y="332"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="142" width="131" x="155" y="448"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="24" width="7" x="217" y="496"/>    
+    </execution>  
+  </object>  
+  <object id="25" language="java" name="com.open.job.IDAO.CompanyDAO" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/IDAO/CompanyDAO.java" binary="false" label="companyDAO" type="interface" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="704" y="0"/>    
+    <execution id="14">      
+      <position height="72" width="111" x="290" y="131"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="72" width="111" x="290" y="308"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="72" width="111" x="290" y="472"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="getJobcategory():java.util.List&lt;Jobcategory&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="getLocation():java.util.List&lt;Location&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="getEmploytype():java.util.List&lt;Employtype&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="13" operation="getJobcategory():java.util.List&lt;Jobcategory&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="17" operation="getLocation():java.util.List&lt;Location&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="21" operation="getEmploytype():java.util.List&lt;Employtype&gt;" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="26" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="27" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="28" asynchronous="false">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>
+</sequence-diagram>

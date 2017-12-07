@@ -78,25 +78,6 @@ public class CompanyServiceImpl implements CompanyService{
 	}
 
 	@Override
-	public String getCompBaseBody(Integer companyno) {
-		Company comp = cdao.getCompanyBase(companyno);
-		if(comp==null) return "";
-		String body = 
-				"		<table style=\"padding:15px;\">\r\n" + 
-				"			<tr>\r\n" + 
-				"				<td><img alt=\"Img not found\"\r\n" + 
-				"					onerror=\"this.src='/job/companyimgs/0.jpg';\"\r\n" + 
-				"					src=\"/job/companyimgs/"+(comp.getThumbimg().equals("")? "0.jpg":comp.getThumbimg())+"\"\r\n" + 
-				"					style=\"width: 110px; height: 110px;\"></td>\r\n" + 
-				"				<td><span\r\n" + 
-				"					style=\"font-size: 20px; font-weight: bold; margin: 5px;\">&nbsp;&nbsp;"+comp.getCompanyname()+"</span>\r\n" + 
-				"				</td>\r\n" + 
-				"			</tr>\r\n" + 
-				"		</table>\r\n";
-		return body;
-	}
-
-	@Override
 	public int insertReview(CompanyReview review) {
 		int res1 = cdao.insertCompanyReviewInfo(review);
 		int res2 = cdao.insertCompanyReview(review);
@@ -154,9 +135,9 @@ public class CompanyServiceImpl implements CompanyService{
 	}
 
 	@Override
-	public int followCompany(Integer companyno, Integer memberno, String mode) {
+	public int followCompany(Integer companyno, Integer memberno, String userfollow) {
 		int result = 0;
-		if(mode.equals("delete")) {
+		if(userfollow.equals("true")) {
 			result = cdao.unfollow(companyno, memberno);
 		}else {
 			result = cdao.follow(companyno, memberno);

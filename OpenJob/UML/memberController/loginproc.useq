@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="JPEG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="com.open.job.MemberController" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/MemberController.java" binary="false" label="memberController" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="411" y="0"/>    
+    <execution id="2">      
+      <position height="398" width="138" x="5" y="87"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="24" width="7" x="71" y="213"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="24" width="7" x="71" y="413"/>    
+    </execution>  
+  </object>  
+  <object id="9" language="java" name="com.open.job.IService.MemberService" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/IService/MemberService.java" binary="false" label="memberService" 
+    type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="428" y="0"/>    
+    <execution id="4">      
+      <position height="150" width="123" x="147" y="111"/>    
+    </execution>    
+    <execution id="13">      
+      <position height="24" width="7" x="205" y="171"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="141" width="123" x="147" y="320"/>    
+    </execution>    
+    <execution id="17">      
+      <position height="24" width="7" x="205" y="368"/>    
+    </execution>  
+  </object>  
+  <object id="18" language="java" name="com.open.job.IDAO.MemberDAO" project="OpenJob" 
+    file="/OpenJob/src/main/java/com/open/job/IDAO/MemberDAO.java" binary="false" label="memberDAO" type="interface" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="706" y="0"/>    
+    <execution id="11">      
+      <position height="72" width="103" x="274" y="147"/>    
+    </execution>    
+    <execution id="15">      
+      <position height="72" width="103" x="274" y="344"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="21" interaction-operator="OPT">    
+    <interaction-operand id="22" constraint="로그인 인증이 참이라면">      
+      <fragment refId="5"/>      
+      <fragment refId="14"/>      
+      <fragment refId="16"/>      
+      <fragment refId="20"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="loginProc(com.open.job.DTO.Member):boolean" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="getUserInfo(java.lang.String):com.open.job.DTO.USER" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="10" operation="loginProc(com.open.job.DTO.Member):java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="12" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="14" operation="getUserInfo(java.lang.String):com.open.job.DTO.USER" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="19" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="20" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>
+</sequence-diagram>
